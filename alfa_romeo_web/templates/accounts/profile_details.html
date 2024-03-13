@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block extra_style %}
+        <link rel="stylesheet" href="{% static "/style/profile_details.css" %}">
+{% endblock %}
+
+{% block main_content %}
+
+    
+    <div class="profile-details">
+         <h2>Profile Details</h2>
+         <div class="both-containers">
+             <div class="profile_img">
+                <div class="image">
+                    {% if object.profile_picture %}
+                        <img src="{{ object.profile_picture }}" alt="img8"/>
+                    {% else %}
+                        <img src="{% static 'images/no-profile-picture.jpg' %}" alt="img8"/>
+                    {% endif %}
+                </div>
+             </div>
+             <div class="personal">
+                    <p>{{ profile.user.email }}</p>
+                
+                    {% if object.full_name %}
+                        <h3 class="names">{{ object.full_name }}</h3>
+                    {% endif %}
+    
+                    {% if object.date_of_birth %}
+                        {{ object.date_of_birth|date }}
+                    {% endif %}
+    
+                    <p class="email">{{ object.user.email }}</p>
+             
+                    
+                    <a href="{% url 'edit-profile' pk=object.pk %}">
+                        Edit Profile
+                        <i class="fa-solid fa-pen"></i>
+                    </a>
+                    <a href="{% url 'password-change' pk=object.pk %}">
+                        Change Password
+                       <i class="fa-solid fa-key"></i>
+                    </a>
+                    <a href="{% url 'delete-profile' pk=object.pk %}">
+                        Delete Profile
+                        <i class="fa-solid fa-trash"></i>
+                    </a>
+
+             </div>
+         </div>
+    </div>
+   
+
+{% endblock %}

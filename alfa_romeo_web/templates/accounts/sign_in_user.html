@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block extra_style %}
+        <link rel="stylesheet" href="{% static "/style/sign_in_style.css" %}">
+{% endblock %}
+
+{% block main_content %}
+    
+        <div class="content">
+            <form class="forms" action="{% url "login-user" %}?next={{ next }}" method="post">
+                <div class="login-form-container">
+                    {{ form.as_p }}
+                
+                    <button type="submit">Log in</button>
+                    <p>Don't have an account ?
+                        <a href="{% url 'register-user' %}">Register here</a>
+                    </p>
+                    
+                    {% csrf_token %}
+                </div>
+{#                <div class="login-form-container form-container">#}
+{#                    <label for="uname"><b>Username</b></label>#}
+{#                    <input type="text" placeholder="Enter Username" name="uname" required>#}
+{#                #}
+{#                    <label for="psw"><b>Password</b></label>#}
+{#                    <input type="password" placeholder="Enter Password" name="psw" required>#}
+{#                #}
+{#                    <button type="submit">Login</button>#}
+{#                    <p>If you dont have account register below</p>#}
+{#                    <button type="submit">Register</button>#}
+{#                    <a href="{% url 'register-user' %}">Register</a>#}
+{#                    <!-- <label>#}
+{#                      <input type="checkbox" checked="checked" name="remember"> Remember me#}
+{#                    </label> -->#}
+{#                  </div>#}
+            </form>
+        </div>
+    
+{% endblock %}

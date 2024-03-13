@@ -1,0 +1,82 @@
+/* HEADER */
+
+/* MAIN */
+/* MAIN */
+.profile-details{
+    background-image: linear-gradient(rgba(0,0,0,0.75),rgba(0,0,0,0.75)), url("/static/images/background.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    color: white;
+    align-content: center;
+    background-position-y: 70%;
+    max-height: 700px;
+    height: 700px;
+    vertical-align: middle;
+}
+
+.profile-details h2{
+    margin-top: 30px;
+    font-size: 30px;
+    text-align: center
+}
+
+.personal{
+    background-color: rgba(255,255,255,0.5);
+    border-radius: 20px;
+    text-align: center;
+    color: black;
+    width: 400px;
+    max-width: 400px;
+}
+
+.personal p{
+    margin-top: 10px;
+    font-size: 24px;
+}
+
+/*.personal a{*/
+/*    display: block;*/
+/*    text-decoration: none;*/
+/*    color: white;*/
+/*}*/
+
+.personal a{
+    display: block;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 250px;
+    padding: 6px 0;
+    text-align: center;
+    border-radius: 30px;
+    font-weight: bold;
+    border: 2px solid red;
+    background: transparent;
+    color: black;
+    cursor: pointer;
+    text-decoration: none;
+    overflow: hidden;
+}
+
+.both-containers{
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    margin-top: 60px;
+;
+}
+
+.image{
+    border-radius: 100px;
+    overflow: hidden;
+    max-width: 200px;
+    max-height: 200px;
+}
+.image img{
+    max-width: 200px;
+}
+
+/* FOOTER */

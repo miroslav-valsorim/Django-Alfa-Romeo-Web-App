@@ -1,0 +1,131 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block extra_style %}
+        <link rel="stylesheet" href="{% static "/style/main_page_style.css" %}">
+{% endblock %}
+
+{% block main_content %}
+        <div class="content">
+            <h2>Welcome to Alfa Romeo Museum</h2>
+            <p>The Museo Alfa Romeo tells the legendary story of the brand, via a project and an 
+                installation designed to reflect its: historical presence, beauty and speed,
+                 an essential part of the Alfa Romeo Dna. As the visitors admire car after car, 
+                 they travel through the companys glorious history and also discover stories and 
+                 curious facts with the help of videos, images and interactive access points, 
+                 in a crescendo of emotions.
+            </p>
+            <div class="content-buttons">
+                <button type="button" class="content-buttons-two"><span></span>TICKETS</button>
+                <button type="button" class="content-buttons-two"><span></span>MORE INFORMATION</button>
+            </div>
+        </div>
+        <section class="content-two">
+            <h3>Events</h3>
+            <section class="events-container">
+                <div class="event-card">
+                    <h3>Retro Track Day</h3>
+                    <div class="image-container">
+                        <img src="{% static 'images/goodwood-47.jpg' %}" alt="alfa romeo track">
+                    </div>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptas rem numquam delectus tempora nesciunt atque eos saepe, nostrum, nemo reiciendis soluta exercitationem consectetur in ullam iure. Ipsam accusantium expedita fugiat!</p>
+                    <a href="#">More information</a>
+                </div>
+                <div class="event-card">
+                    <h3>Track Day</h3>
+                    <div class="image-container">
+                        <img src="{% static 'images/Alfa+Romeo+Giulia+TrackDay+at+Boxberg+(35).jpg' %}" alt="alfa romeo track">
+                    </div>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptas rem numquam delectus tempora nesciunt atque eos saepe, nostrum, nemo reiciendis soluta exercitationem consectetur in ullam iure. Ipsam accusantium expedita fugiat!</p>
+                    <a href="#">More information</a>
+                </div>
+                <div class="event-card">
+                    <h3>Open Bonnets Day</h3>
+                    <div class="image-container">
+                        <img src="{% static 'images/download (1).jpg' %}" alt="alfa romeo track">
+                    </div>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptas rem numquam delectus tempora nesciunt atque eos saepe, nostrum, nemo reiciendis soluta exercitationem consectetur in ullam iure. Ipsam accusantium expedita fugiat!</p>
+                    <a href="#">More information</a>
+                </div>
+                <div class="event-card">
+                    <h3>Test Drive Day</h3>
+                    <div class="image-container">
+                        <img src="{% static 'images/5d82588127c1928a764a6a0a70a1f1aa88439696.jpeg' %}" alt="alfa romeo track">
+                    </div>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptas rem numquam delectus tempora nesciunt atque eos saepe, nostrum, nemo reiciendis soluta exercitationem consectetur in ullam iure. Ipsam accusantium expedita fugiat!</p>
+                    <a href="#">More information</a>
+                </div>
+            </section>
+        </section>
+        <section class="content-three">
+            <h3>News</h3>
+            <section class="news-container">
+                <div class="news-card">
+                    <h3>New Model Announcement</h3>
+                    <div class="image-container">
+                        <img src="{% static 'images/milano.jpg' %}" alt="alfa romeo track">
+                    </div>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptas rem numquam delectus tempora nesciunt atque eos saepe, nostrum, nemo reiciendis soluta exercitationem consectetur in ullam iure. Ipsam accusantium expedita fugiat!</p>
+                    <a href="#">More information</a>
+                </div>
+                <div class="news-card">
+                    <h3>Upgrading Safety Features</h3>
+                    <div class="image-container">
+                        <img src="{% static 'images/car-1.jpg' %}" alt="alfa romeo track">
+                    </div>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptas rem numquam delectus tempora nesciunt atque eos saepe, nostrum, nemo reiciendis soluta exercitationem consectetur in ullam iure. Ipsam accusantium expedita fugiat!</p>
+                    <a href="#">More information</a>
+                </div>
+                <div class="news-card">
+                    <h3>New Stradale Peoples Feedback</h3>
+                    <div class="image-container">
+                        <img src="{% static 'images/77a7993d23659e43081ed45681e7f204-620x427.jpg' %}" alt="alfa romeo track">
+                    </div>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptas rem numquam delectus tempora nesciunt atque eos saepe, nostrum, nemo reiciendis soluta exercitationem consectetur in ullam iure. Ipsam accusantium expedita fugiat!</p>
+                    <a href="#">More information</a>
+                </div>
+            </section>
+        </section>
+        <section class="content-four">
+            <h3>Merchandise</h3>
+            <section class="merch-container">
+                <div class="merch-card">
+                    <h3>Product</h3>
+                    <div class="image-container">
+                        <img src="{% static 'images/AR_Mmerchandising-content-grid-legal-strip-hoodie.jpg' %}" alt="alfa romeo track">
+                    </div>
+                    <p>Details:</p>
+                    <p>Price:</p>
+                    <a href="#">Buy</a>
+                </div>
+                <div class="merch-card">
+                    <h3>Product</h3>
+                    <div class="image-container">
+                        <img src="{% static 'images/alfa-romeo-f1-team-stake-c43-2023-bottas-guanyu-doppel-set-1-43.jpg' %}" alt="alfa romeo track">
+                    </div>
+                    <p>Details:</p>
+                    <p>Price:</p>
+                    <a href="#">Buy</a>
+                </div>
+                <div class="merch-card">
+                    <h3>Product</h3>
+                    <div class="image-container">
+                        <img src="{% static 'images/flat1_480x480.webp' %}" alt="alfa romeo track">
+                    </div>
+                    <p>Details:</p>
+                    <p>Price:</p>
+                    <a href="#">Buy</a>
+                </div>
+                <div class="merch-card">
+                    <h3>Product</h3>
+                    <div class="image-container">
+                        <img src="{% static 'images/s-l1600_7__85000.jpg' %}" alt="alfa romeo track">
+                    </div>
+                    <p>Details:</p>
+                    <p>Price:</p>
+                    <a href="#">Buy</a>
+                </div>
+            </section>
+        </section>
+{% endblock %}

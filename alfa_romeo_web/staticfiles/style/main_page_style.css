@@ -1,0 +1,287 @@
+/* HEADER */
+
+/* MAIN */
+.content{
+    background-image: linear-gradient(rgba(0,0,0,0.75),rgba(0,0,0,0.75)), url("/static/images/background.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    color: white;
+    align-content: center;
+    background-position-y: 70%;
+    max-height: 700px;
+    height: 700px;
+    /* margin-top: 40px; */
+    /* box-sizing: border-box; */
+    /* align-items: center; */
+    /* width: 100%; */
+    /* position: absolute; */
+    /* top: 50%; */
+    /* transform: translateY(-50%);
+    text-align: center; */
+    /* padding-left: 40px;
+    padding-right: 20px; */
+}
+.content h2{
+    font-size: 40px;
+    margin-top: 140px;
+    text-align: center;
+}
+.content p{
+    /* margin: 40px auto; */
+    margin: auto;
+    margin-top: 50px;
+    margin-bottom: 20px;
+    font-weight: 100;
+    line-height: 25px;
+    max-width: 600px;
+    text-align: center;
+}
+
+/* .content .content-buttons{
+    display: inline-block;
+    
+} */
+
+button{
+    /* margin: auto; */
+    width: 200px;
+    padding: 15px 0;
+    text-align: center;
+    margin: 20px 10px;
+    border-radius: 30px;
+    font-weight: bold;
+    border: 2px solid red;
+    background: transparent;
+    color: #fff;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.content-buttons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 80px;
+}
+
+/* .content-buttons .content-buttons-twobutton{
+    position: relative;
+} */
+
+span{
+    background: red;
+    height: 100%;
+    width: 0;
+    border-radius: 25px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: 0;
+    transition: 0.5s;
+}
+/* button:hover span{
+    width: 100%;
+}
+button:hover{
+    border: none;
+} */
+
+
+/* Main container */
+
+/* EVENTS PART*/
+.content-two h3{
+    font-size: 30px;
+    padding-top: 30px;
+    text-align: center;
+    color: white;
+}
+.content-two{
+    background-color: #333;
+    display: flex;
+    flex-direction: column;
+}
+
+.events-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.event-card{
+    max-width: 400px;
+    flex-direction: row;
+    align-items: center;
+    color: white;
+    padding: 20px;
+    background-color: rgb(69, 75, 82);
+    border-radius: 20px;
+    margin: 20px;
+}
+
+.event-card .image-container{
+    max-width: 400px;
+    max-height: 220px;
+    overflow: hidden;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+.event-card .image-container img{
+    background-size: cover;
+    width: 100%;
+    height: auto;
+    align-items: center;
+}
+
+.event-card p{
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.event-card a{
+    display: block;
+    text-align: center;
+    color: white;
+    text-decoration: none;
+    align-items: center;
+    border: solid 1px red;
+    border-radius: 20px;
+    padding: 5px;
+    margin: auto;
+}
+
+/* NEWS PART */
+.content-three h3{
+    font-size: 30px;
+    padding-top: 30px;
+    text-align: center;
+    color: white;
+}
+
+.content-three{
+    background-color: rgb(69, 75, 82);
+    display: flex;
+    flex-direction: column;
+}
+
+.news-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.news-card{
+    max-width: 400px;
+    flex-direction: row;
+    align-items: center;
+    color: white;
+    padding: 20px;
+    background-color:  #333;
+    border-radius: 20px;
+    margin: 20px;
+}
+
+.news-card .image-container{
+    max-width: 400px;
+    max-height: 220px;
+    overflow: hidden;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+.news-card .image-container img{
+    background-size: cover;
+    width: 100%;
+    height: auto;
+    align-items: center;
+}
+
+.news-card p{
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.news-card a{
+    display: block;
+    text-align: center;
+    color: white;
+    text-decoration: none;
+    align-items: center;
+    border: solid 1px red;
+    border-radius: 20px;
+    padding: 5px;
+    margin: auto;
+}
+
+
+/* MERCHENDISE PART */
+.content-four h3{
+    font-size: 30px;
+    padding-top: 30px;
+    text-align: center;
+    color: white;
+}
+
+.content-four{
+    background-color: rgb(101, 107, 113);
+    display: flex;
+    flex-direction: column;
+}
+
+.merch-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.merch-card{
+    max-width: 400px;
+    flex-direction: row;
+    align-items: center;
+    color: white;
+    padding: 20px;
+    background-color:  #514e4e;
+    border-radius: 20px;
+    margin: 20px;
+}
+
+.merch-card .image-container{
+    max-width: 400px;
+    max-height: 220px;
+    overflow: hidden;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+.merch-card .image-container img{
+    background-size: cover;
+    width: 100%;
+    height: auto;
+    align-items: center;
+}
+
+.merch-card p{
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.merch-card a{
+    display: block;
+    text-align: center;
+    color: white;
+    text-decoration: none;
+    align-items: center;
+    border: solid 1px red;
+    border-radius: 20px;
+    padding: 5px;
+    margin: auto;
+}
+
+/* FOOTER */

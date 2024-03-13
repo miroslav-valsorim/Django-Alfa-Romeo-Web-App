@@ -1,0 +1,67 @@
+/* HEADER */
+
+/* MAIN */
+
+.profile-delete{
+    background-image: linear-gradient(rgba(0,0,0,0.75),rgba(0,0,0,0.75)), url("/static/images/background.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    color: white;
+    align-content: center;
+    background-position-y: 70%;
+    max-height: 700px;
+    height: 700px;
+    align-items: center;
+}
+
+.profile-delete .delete-div h2{
+    margin: auto;
+    font-size: 30px;
+    text-align: center;
+}
+
+.delete-div{
+    margin: auto;
+}
+
+.buttons{
+    display: flex;
+    margin-top: 20px;
+}
+
+.buttons button{
+    display: block;
+    margin: auto;
+    width: 250px;
+    padding: 6px 0;
+    text-align: center;
+    border-radius: 30px;
+    font-weight: bold;
+    border: 2px solid red;
+    background: red;
+    color: white;
+    cursor: pointer;
+    text-decoration: none;
+    overflow: hidden;
+}
+
+.buttons a{
+    display: block;
+    margin: auto;
+    width: 250px;
+    padding: 6px 0;
+    text-align: center;
+    border-radius: 30px;
+    font-weight: bold;
+    border: 2px solid red;
+    background: transparent;
+    color: white;
+    cursor: pointer;
+    text-decoration: none;
+    overflow: hidden;
+}
+
+/* FOOTER */

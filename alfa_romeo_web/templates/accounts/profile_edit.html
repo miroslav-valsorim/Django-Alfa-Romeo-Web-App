@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block extra_style %}
+        <link rel="stylesheet" href="{% static "/style/profile_edit.css" %}">
+{% endblock %}
+
+{% block main_content %}
+
+    
+    <div class="profile-edit">
+         <h2>Edit Profile</h2>
+         <div class="both-containers">
+              <div class="profile_img">
+                <div class="image">
+                    {% if object.profile_picture %}
+                        <img src="{{ object.profile_picture }}" alt="img8"/>
+                    {% else %}
+                        <img src="{% static 'images/no-profile-picture.jpg' %}" alt="img8"/>
+                    {% endif %}
+                </div>
+             </div>
+             <div class="edit-form-container">
+                 <form action="{% url 'edit-profile' pk=object.pk %}" method="post">
+                     {{ form.as_p }}
+                     {% csrf_token %}
+                     <button>Update</button>
+                 </form>
+             </div>
+         </div>
+    </div>
+   
+
+{% endblock %}

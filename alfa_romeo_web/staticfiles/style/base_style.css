@@ -1,0 +1,146 @@
+body{
+    background-color: black;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.logo{
+    width: 50px;
+    background-color: #af1e2d;
+    margin-left: 30px;
+    margin-right: 30px;
+}
+
+/*  ---------- DROP DOWN MENU ------------  */
+
+  /* .dropbtn {
+    background-color: #af1e2d;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+  } */
+
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+
+  .dropdown-content {
+    /* margin-top: 10px; */
+    display: none;
+    position: absolute;
+    background-color: #af1e2d;
+    min-width: 150px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+
+  .dropdown-content a {
+    /* color: black; */
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+
+  .dropdown-content a:hover {
+    background-color: #e40101
+  }
+
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+
+  .dropdown:hover .dropbtn {
+    background-color: #af1e2d;
+  }
+
+/* ------------------------   */
+
+.header{
+    background-color: #af1e2d;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    position: sticky;
+    top: 0px;
+    z-index: 1;
+}
+
+.navigation .nav-item a{
+    color: white;
+    text-decoration: none;
+}
+
+.navigation .list{
+    display: flex;
+    gap: 20px;
+    font-size: 14px;
+    text-transform: uppercase;
+}
+
+/* .btn-search{
+    all:unset;
+    color: white;
+    padding: 4px;
+    cursor: pointer;
+    margin-right: 30px;
+} */
+
+.navigation{
+    margin-left: auto;
+    margin-right: 150px;
+    display: block;
+}
+.navigation ul li{
+    position: relative;
+}
+
+.navigation ul li::after{
+    content: '';
+    height: 2px;
+    width: 0;
+    background: white;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    transition: 0.5s;
+}
+.navigation ul li:hover::after{
+    width: 100%;
+}
+
+
+/* FOOTER */
+
+footer{
+    padding: 30px;
+    background-color: black;
+    color: white;
+    display: flex;
+    justify-content: center;
+}
+
+.footer-logo{
+    max-width: 80px;
+    margin-right: 500px;
+}
+.helpful-links ul{
+    display: flex;
+    flex-direction: row;
+}
+
+.helpful-links ul li {
+    margin-right: 50px;
+}
+
+.helpful-links ul li a{
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.helpful-links ul{
+    list-style-type: none;
+}

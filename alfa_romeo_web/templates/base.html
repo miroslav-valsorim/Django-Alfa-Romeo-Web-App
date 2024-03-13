@@ -1,0 +1,134 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alfa Romeo Museum</title>
+    <link rel="stylesheet" href="">
+    <link rel="stylesheet" href="{% static "/style/reset.css" %}">
+    {% block extra_style %}
+    {% endblock %}
+    <link rel="stylesheet" href="{% static "/style/base_style.css" %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <header class="header">
+        <a href="{% url "main_page" %}" class="logo-a">
+            <img src="{% static 'images/header_logo.png' %}" alt="Logo" class="logo">
+        </a>
+
+        <nav class="navigation">
+            <ul class="list" role="list">
+                <li class="nav-item">
+                    <a href="#">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </a>
+                </li>
+                <div class="dropdown">
+                    <li class="nav-item">
+                        <a href="#">The Museum</a>
+                        <div class="dropdown-content">
+                            <a href="#">Gallery</a>
+                            <a href="#">History and Founders</a>
+                            <a href="#">Documentation Centre</a>
+                            </div>
+                    </li>
+                </div>
+                <li class="nav-item">
+                    <a href="#">History</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#">Tickets</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#">Events</a>
+                </li>
+                <div class="dropdown">
+                    <li class="nav-item">
+                        <a href="#">Merchandise</a>
+                        <div class="dropdown-content">
+                            <a href="#">Model Cars</a>
+                            <a href="#">Accesoaries</a>
+                            <a href="#">Clothing</a>
+                            </div>
+                    </li>
+                </div>
+                <li class="nav-item">
+                    <a href="#">News</a>
+                </li>
+            
+                {% if not user.is_authenticated %}
+                    
+                    <li class="nav-item">
+                        <a href="{% url 'login-user' %}">Sign In</a>
+                    </li>
+                    
+                {% else %}
+                    
+{#                    <li class="nav-item">#}
+{#                        <a href="{% url 'logout-user' %}">Log Out</a>#}
+{#                    </li>#}
+                    <li class="nav-item">
+                        <a href="#">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                        </a>
+                    </li>
+{#                    <li>#}
+{#                        <a href="#">#}
+{#                            <i class="fa-solid fa-user"></i>#}
+{#                        </a>#}
+{#                    </li>#}
+                     <div class="dropdown">
+                        <li class="nav-item">
+                            <a href="{% url 'details-profile' pk=request.user.pk %}">
+                                <i class="fa-solid fa-user"></i>
+                            </a>
+                            <div class="dropdown-content">
+                                <a href="{% url 'logout-user' %}">Log Out</a>
+                                <a href="{% url 'edit-profile' pk=request.user.pk %}">Edit Profile</a>
+                                <a href="{% url 'details-profile' pk=request.user.pk %}">View Profile</a>
+                                </div>
+                        </li>
+                    </div>
+                    
+                {% endif %}
+                <!-- <button class="btn-search">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button> -->
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+       {% block main_content %}
+           
+       {% endblock%}
+    </main>
+    <footer>
+        <div class="footer-logo">
+            <img src="{% static 'images/Alfa-romeo-quadrifoglio-logo.png' %}" alt="">
+        </div>
+        <div class="helpful-links">
+            <ul>
+                <li class="nav-item">
+                    <a href="#">Events</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#">About Museum</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#">Merchandise</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#">News</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#">Contact us</a>
+                </li>
+            </ul>
+        </div>
+    </footer>
+</body>
+</html>
