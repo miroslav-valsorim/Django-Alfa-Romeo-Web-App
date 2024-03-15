@@ -12,7 +12,7 @@
 
         {% for category in object_list %}
             
-            <a href="{% url 'museum_gallery' %}?category={{ category.id }}">
+            <a href="{% url 'museum_listing' %}?category={{ category.id }}">
                 <div class="museum-category">
                     <h3>{{ category.name }}</h3>
                     <div class="museum-img-container">

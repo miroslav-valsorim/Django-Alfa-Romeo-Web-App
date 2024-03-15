@@ -30,12 +30,8 @@
                     <li class="nav-item">
                         <a href="{% url "museum_categories" %}">The Museum <i class="fa-solid fa-angles-down"></i></a>
                         <div class="dropdown-content">
-                            {# TODO!!! links below have to be reworked and not hardcoded !#}
-{#                            <a href="{% url 'museum_gallery' %}?category=4">Gallery</a>#}
-{#                            <a href="{% url 'museum_gallery' %}?category=5">History and Founders</a>#}
-{#                            <a href="{% url 'museum_gallery' %}?category=6">Documentation Centre</a>#}
                             {% for category in navbar_categories %}
-                                <a href="{% url 'museum_gallery' %}?category={{ category.id }}">{{ category.name }}</a>
+                                <a href="{% url 'museum_listing' %}?category={{ category.id }}">{{ category.name }}</a>
                             {% endfor %}
                         </div>
                     </li>
@@ -154,16 +150,11 @@
             <div class="about-museum footer-div">
                 <h2>Museum:</h2>
                  <ul>
-                    <li class="">
-                       <a href="">Gallery</a>
-                    </li>
-                    <li class="">
-                        <a href="">History and Founders</a>
-                    </li>
-                     <li class="">
-                        <a href="">Documentation Center</a>
-                    </li>
-                   
+                     {% for category in navbar_categories %}
+                         <li>
+                             <a href="{% url 'museum_listing' %}?category={{ category.id }}">{{ category.name }}</a>
+                         </li>
+                     {% endfor %}
                 </ul>
             </div>
              <div class="merch footer-div">

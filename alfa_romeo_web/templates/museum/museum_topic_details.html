@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block extra_style %}
+    <link rel="stylesheet" href="{% static '/style/museum_topic_details.css' %}">
+{% endblock %}
+
+{% block main_content %}
+    
+    <div class="wrapper">
+        <div class="museum-topic-details">
+            <a href="{{ request.META.HTTP_REFERER }}"><i class="fa-solid fa-angles-left"></i> Back</a>
+            <h2>{{ object.header }}</h2>
+            <div class="image-container">
+                <img src="{{ object.img_field.url }}" alt="{{ object.header }} img">
+            </div>
+            <h3>Year: {{ object.year }}</h3>
+            <p>{{ object.description }}</p>
+        </div>
+    </div>
+
+
+{% endblock %}

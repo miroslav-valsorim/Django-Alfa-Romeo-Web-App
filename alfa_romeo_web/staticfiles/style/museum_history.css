@@ -1,3 +1,23 @@
-.testt{
-    background-color: red;
+.museum-gallery{
+    background-color: white;
+}
+
+.museum-item-container{
+    max-width: 1400px;
+    margin: auto;
+}
+
+.museum-item-container h2{
+    padding-top: 40px;
+    text-align: center;
+}
+
+.museum-item-container p{
+    padding: 40px;
+    font-size: 20px;
+    line-height: 30px;
+}
+
+.order-by{
+    display: none;
 }

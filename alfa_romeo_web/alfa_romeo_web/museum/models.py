@@ -34,6 +34,10 @@ class MuseumTopic(models.Model):
         blank=False,
         null=False,
     )
+    year = models.IntegerField(
+        blank=True,
+        null=True,
+    )
     category = models.ForeignKey(
         MuseumCategory,
         on_delete=models.CASCADE,
@@ -58,6 +62,9 @@ class MuseumTopic(models.Model):
             return MuseumTopic.objects.filter(category=category_id)
         else:
             return MuseumTopic.get_all_topics()
+
+    # def __str__(self):
+    #     return f"{self.id} {self.category} {self.header}"
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)

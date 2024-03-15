@@ -1,3 +1,106 @@
-.testt{
-    background-color: white;
+.wrapper{
+    background-color: rgb(20 20 20);
+}
+
+.museum-gallery{
+    background-color: rgb(20 20 20);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap:4px;
+    max-width: 1400px;
+    margin: auto;
+    padding: 50px 0 50px 0;
+    position: relative;
+}
+
+.museum-item-container{
+    width: 300px;
+    flex-direction: row;
+    align-items: center;
+    color: white;
+    padding: 20px;
+    background-color: rgb(69, 75, 82);
+    border-radius: 6px;
+    margin: 20px;
+    transition: 0.5s;
+}
+
+.museum-item-container:hover{
+    transform: scale(1.05);
+    box-shadow: 0 0 15px white;
+}
+
+.museum-item-container h2{
+    text-align: center;
+    color: lightgray;
+}
+
+.museum-gallery .card-a{
+    display: block;
+    text-align: center;
+    color: black;
+    text-decoration: none;
+    align-items: center;
+    width: 200px;
+    /*border: solid 1px red;*/
+    background-color: rgba(255,255,255,0.5);
+    border-radius: 20px;
+    padding: 5px;
+    margin: auto;
+    margin-top: 20px;
+    transition: 0.5s;
+}
+
+.museum-gallery .card-a:hover{
+    background-color: #930000;
+}
+
+.museum-image-container{
+    width: 250px;
+    height: 200px;
+    overflow: hidden;
+    max-height: 250px;
+    margin: auto;
+    margin-top: 10px;
+}
+
+.museum-image-container img{
+    background-size: cover;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+.paginate-wrap{
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%)
+}
+
+.paginate-wrap nav ul{
+    display: flex;
+}
+
+.paginate-wrap nav ul li{
+    margin: 0 10px;
+    list-style: none;
+    font-weight: 700;
+}
+
+.paginate-wrap nav ul li a{
+    color: white;
+    text-decoration: none;
+}
+
+.order-by{
+    position: absolute;
+    right:0;
+    color: white;
+    margin-top: 20px;
+    margin-right: 20px;
+    font-weight: 700;
+}
+
+.pagination li.active a {
+    color: red;
 }

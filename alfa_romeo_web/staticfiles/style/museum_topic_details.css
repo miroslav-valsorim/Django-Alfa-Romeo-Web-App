@@ -1,0 +1,47 @@
+.wrapper{
+    background-color: white;
+}
+
+.museum-topic-details{
+    background-color: #f3efef;
+    max-width: 1400px;
+    margin: auto;
+    position: relative;
+}
+
+.museum-topic-details h2{
+    text-align: center;
+    padding-top: 20px;
+}
+
+.image-container{
+    margin: auto;
+    margin-top: 20px;
+    align-items: center;
+    width: 500px;
+    height: 350px;
+    overflow: hidden;
+}
+
+.museum-topic-details h3{
+    text-align: center;
+    margin-top: 20px;
+}
+
+.museum-topic-details p{
+    max-width: 900px;
+    margin: auto;
+    margin-top: 20px;
+    padding-bottom: 20px;
+}
+
+.museum-topic-details a{
+    position: absolute;
+    top: 0;
+    margin-top: 20px;
+    margin-left: 20px;
+    text-decoration: None;
+    color: black;
+    font-size: 18px;
+    font-weight: 600;
+}

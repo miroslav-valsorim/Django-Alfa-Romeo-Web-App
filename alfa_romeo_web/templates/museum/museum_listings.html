@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block extra_style %}
+    {% for item in object_list %}
+        {% if item.category_name %}
+            {% if item.category_name == 'Gallery' %}
+                <link rel="stylesheet" href="{% static '/style/museum_gallery.css' %}">
+            {% elif item.category_name == 'History and Founders' %}
+                <link rel="stylesheet" href="{% static '/style/museum_history.css' %}">
+            {% elif item.category_name == 'Documentation Center' %}
+                <link rel="stylesheet" href="{% static '/style/museum_documentation.css' %}">
+            {% endif %}
+        {% endif %}
+    {% endfor %}
+
+{% endblock %}
+
+{% block main_content %}
+    <div class="wrapper">
+       
+        <div class="museum-gallery">
+        
+             <div class="order-by">
+                <form action="" method="get" id="order-form">
+                 <form action="" method="get" id="order-form">
+                    {% if category_id %}
+                        <input type="hidden" name="category" value="{{ category_id }}">
+                    {% endif %}
+                    <label for="order_by">Order By:</label>
+                    <select name="order_by" id="order_by">
+                        <optgroup label="Order By">
+                            <option value="year" {% if order_by == 'year' %}selected{% endif %}>Year</option>
+                            <option value="header" {% if order_by == 'header' %}selected{% endif %}>Header</option>
+                        </optgroup>
+                    </select>
+                    <input type="submit" style="display: none;"> <!-- Hidden submit button -->
+                </form>
+                
+                <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+                <script>
+                    $(document).ready(function() {
+                        $('#order_by').change(function() {
+                            $('#order-form').submit(); // Submit the form when an option is selected
+                        });
+                    });
+                </script>
+            </div>
+            
+            {% for item in object_list %}
+             
+                    <div class="museum-item-container">
+                        {% if item.header %}
+                            <h2>{{ item.header }}</h2>
+                        {% endif %}
+                        
+                        {% if item.img_field %}
+                            <div class="museum-image-container">
+                                <img src="{{ item.img_field.url }}" alt="{{ item.header }} img">
+                            </div>
+                        {% endif %}
+                    
+                    {% if item.category_name %}
+                        {% if item.category_name != 'Gallery' %}
+                            <p>{{ item.description }}</p>
+                        {% else %}
+                            <a class="card-a" href="{% url 'museum_topic_detail' slug=item.slug %}">More Information</a>
+                        {% endif %}
+                    {% endif %}
+                    
+                    </div>
+            
+            {% endfor %}
+        
+            {% if is_paginated %}
+                <div class="paginate-wrap">
+                    <nav>
+                        <ul class="pagination">
+                            {% if page_obj.has_previous %}
+                                <li><a href="?{% if category_id %}category={{ category_id }}&{% endif %}page={{ page_obj.previous_page_number }}&order_by={{ order_by }}"><i class="fa-solid fa-angles-left"></i></a></li>
+                            {% endif %}
+                            {% for i in paginator.page_range %}
+                                {% if page_obj.number == i %}
+                                    <li class="active"><a href="?{% if category_id %}category={{ category_id }}&{% endif %}page={{ i }}&order_by={{ order_by }}">{{ i }}</a></li>
+                                {% else %}
+                                    <li><a href="?{% if category_id %}category={{ category_id }}&{% endif %}page={{ i }}&order_by={{ order_by }}">{{ i }}</a></li>
+                                {% endif %}                            
+                            {% endfor %}
+                            {% if page_obj.has_next %}
+                                <li><a href="?{% if category_id %}category={{ category_id }}&{% endif %}page={{ page_obj.next_page_number }}&order_by={{ order_by }}"> <i class="fa-solid fa-angles-right"></i></a></li>
+                            {% endif %}
+                        </ul>
+                    </nav>
+                </div>
+            {% endif %}
+        
+        </div>
+    </div>
+
+{% endblock %}
