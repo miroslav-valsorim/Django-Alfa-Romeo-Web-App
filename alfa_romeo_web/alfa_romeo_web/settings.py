@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     "alfa_romeo_web.accounts.apps.AccountsConfig",
     "alfa_romeo_web.main_page.apps.MainPageConfig",
+    "alfa_romeo_web.museum.apps.MuseumConfig",
 ]
 
 MIDDLEWARE = [
@@ -65,6 +66,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'alfa_romeo_web.museum.context_processors.navbar_objects'
             ],
         },
     },
@@ -123,6 +125,10 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = (
     BASE_DIR / 'staticfiles',
 )
+
+MEDIA_ROOT = BASE_DIR / 'mediafiles'
+
+MEDIA_URL = "/media/"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field

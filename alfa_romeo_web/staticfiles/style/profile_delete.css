@@ -17,6 +17,10 @@
     align-items: center;
 }
 
+.profile-delete form{
+    margin: auto;
+}
+
 .profile-delete .delete-div h2{
     margin: auto;
     font-size: 30px;

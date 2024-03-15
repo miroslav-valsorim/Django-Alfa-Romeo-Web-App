@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block extra_style %}
+    {% for item in object_list %}
+        {% if item.category_name %}
+            {% if item.category_name == 'Gallery' %}
+                <link rel="stylesheet" href="{% static '/style/museum_gallery.css' %}">
+            {% elif item.category_name == 'History and Founders' %}
+                <link rel="stylesheet" href="{% static '/style/museum_history.css' %}">
+            {% elif item.category_name == 'Documentation Center' %}
+                <link rel="stylesheet" href="{% static '/style/museum_documentation.css' %}">
+            {% endif %}
+        {% endif %}
+    {% endfor %}
+{#                <link rel="stylesheet" href="{% static '/style/museum_gallery.css' %}">#}
+
+{% endblock %}
+
+{% block main_content %}
+
+    <div class="testt">
+
+        {% for item in object_list %}
+        
+                <div style="width:150px; border: solid black 1px; margin-bottom: 5px; display: inline-block; ">
+                    {{ item.header }}
+                    <hr>
+                    {{ item.img_field }} 
+                    <hr>
+                    {{ item.description }}
+                    <hr>
+                    {{ item.category }}
+                    <hr>
+        
+                </div>
+        
+        {% endfor %}
+    
+    </div>
+
+{% endblock %}

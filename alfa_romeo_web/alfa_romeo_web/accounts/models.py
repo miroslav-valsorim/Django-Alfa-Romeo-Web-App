@@ -31,6 +31,9 @@ class AlfaRomeoUser(auth_models.AbstractBaseUser, auth_models.PermissionsMixin):
 
     objects = AlfaRomeoUserManager()
 
+    class Meta:
+        verbose_name_plural = "Alfa Romeo Website Users"
+
 
 class Profile(models.Model):
     MAX_FIRST_NAME_LENGTH = 30

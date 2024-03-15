@@ -28,12 +28,16 @@
                 </li>
                 <div class="dropdown">
                     <li class="nav-item">
-                        <a href="#">The Museum</a>
+                        <a href="{% url "museum_categories" %}">The Museum <i class="fa-solid fa-angles-down"></i></a>
                         <div class="dropdown-content">
-                            <a href="#">Gallery</a>
-                            <a href="#">History and Founders</a>
-                            <a href="#">Documentation Centre</a>
-                            </div>
+                            {# TODO!!! links below have to be reworked and not hardcoded !#}
+{#                            <a href="{% url 'museum_gallery' %}?category=4">Gallery</a>#}
+{#                            <a href="{% url 'museum_gallery' %}?category=5">History and Founders</a>#}
+{#                            <a href="{% url 'museum_gallery' %}?category=6">Documentation Centre</a>#}
+                            {% for category in navbar_categories %}
+                                <a href="{% url 'museum_gallery' %}?category={{ category.id }}">{{ category.name }}</a>
+                            {% endfor %}
+                        </div>
                     </li>
                 </div>
                 <li class="nav-item">
@@ -47,10 +51,10 @@
                 </li>
                 <div class="dropdown">
                     <li class="nav-item">
-                        <a href="#">Merchandise</a>
+                        <a href="#">Merchandise <i class="fa-solid fa-angles-down"></i></a>
                         <div class="dropdown-content">
                             <a href="#">Model Cars</a>
-                            <a href="#">Accesoaries</a>
+                            <a href="#">Accessories</a>
                             <a href="#">Clothing</a>
                             </div>
                     </li>
@@ -107,28 +111,80 @@
        {% endblock%}
     </main>
     <footer>
-        <div class="footer-logo">
-            <img src="{% static 'images/Alfa-romeo-quadrifoglio-logo.png' %}" alt="">
-        </div>
-        <div class="helpful-links">
-            <ul>
-                <li class="nav-item">
-                    <a href="#">Events</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#">About Museum</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#">Merchandise</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#">News</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#">Contact us</a>
-                </li>
-            </ul>
-        </div>
+       <div class="footer-links">
+            <div class="footer-logo">
+            <a href="{% url 'main_page' %}">
+                <img src="{% static 'images/Alfa-romeo-quadrifoglio-logo.png' %}" alt="">
+            </a>
+            </div>
+            <div class="contacts footer-div">
+                <h2>Contacts:</h2>
+                 <ul>
+                    <li class="">
+                        <p>
+                            <i class="fa-solid fa-phone"></i> 0899 XX XX XX
+                        </p>
+                    </li>
+                    <li class="">
+                        <p>
+                            <i class="fa-solid fa-envelope"></i> gmail@gmail.com
+                        </p>
+                    </li>
+                   <div class="links-web">
+                       <ul>
+                           <li>
+                               <a href="">
+                                   <i class="fa-brands fa-linkedin"></i>
+                               </a>
+                           </li>
+                           <li>
+                               <a href="">
+                                   <i class="fa-brands fa-square-facebook"></i>
+                               </a>
+                           </li>
+                           <li>
+                               <a href="">
+                                   <i class="fa-brands fa-square-instagram"></i>
+                               </a>
+                           </li>
+                       </ul>
+                   </div>
+                </ul>
+            </div>
+            <div class="about-museum footer-div">
+                <h2>Museum:</h2>
+                 <ul>
+                    <li class="">
+                       <a href="">Gallery</a>
+                    </li>
+                    <li class="">
+                        <a href="">History and Founders</a>
+                    </li>
+                     <li class="">
+                        <a href="">Documentation Center</a>
+                    </li>
+                   
+                </ul>
+            </div>
+             <div class="merch footer-div">
+                <h2>Merchandise:</h2>
+                 <ul>
+                    <li class="">
+                       <a href="">Model Cars</a>
+                    </li>
+                    <li class="">
+                        <a href="">Accessories</a>
+                    </li>
+                     <li class="">
+                        <a href="">Clothes</a>
+                    </li>
+                   
+                </ul>
+            </div>
+       </div>
+       <p class="rights-reserved">
+           © Alfa Romeo Web, All Right Reserved. By Miroslav Hristov
+       </p>
     </footer>
 </body>
 </html>

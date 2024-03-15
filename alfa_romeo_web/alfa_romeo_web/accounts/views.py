@@ -68,12 +68,22 @@ class ProfileEditView(OwnerRequiredMixin, views.UpdateView):
         return form
 
 
-class ProfileDeleteView(OwnerRequiredMixin, views.DeleteView):
-    queryset = Profile.objects.all()
-    template_name = "accounts/profile_delete.html"
-
-
 class ProfileChangePasswordView(OwnerRequiredMixin, auth_views.PasswordChangeView):
     form_class = auth_forms.PasswordChangeForm
     template_name = "accounts/password_change.html"
     success_url = reverse_lazy('main_page')
+
+
+class ProfileDeleteView(OwnerRequiredMixin, views.DeleteView):
+    model = UserModel
+    queryset = Profile.objects.all()
+    template_name = "accounts/profile_delete.html"
+    success_url = reverse_lazy('main_page')
+
+    def get_object(self, queryset=None):
+        return self.request.user
+
+    def delete(self, request, *args, **kwargs):
+        user = self.get_object()
+        user.delete()
+        return redirect(self.get_success_url())
