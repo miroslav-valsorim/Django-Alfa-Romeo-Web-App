@@ -5,7 +5,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alfa Romeo Museum</title>
+    <title>Alfa Romeo</title>
+    <link rel="icon" type="image/x-icon" href="{% static 'images/Alfa-romeo-quadrifoglio-logo.png' %}">
     <link rel="stylesheet" href="">
     <link rel="stylesheet" href="{% static "/style/reset.css" %}">
     {% block extra_style %}
@@ -28,17 +29,24 @@
                 </li>
                 <div class="dropdown">
                     <li class="nav-item">
-                        <a href="{% url "museum_categories" %}">The Museum <i class="fa-solid fa-angles-down"></i></a>
+                        <a href="{% url "museum_categories" %}">Museum <i class="fa-solid fa-angles-down"></i></a>
                         <div class="dropdown-content">
-                            {% for category in navbar_categories %}
+                            {% for category in museum_categories %}
                                 <a href="{% url 'museum_listing' %}?category={{ category.id }}">{{ category.name }}</a>
                             {% endfor %}
                         </div>
                     </li>
                 </div>
-                <li class="nav-item">
-                    <a href="#">History</a>
-                </li>
+                <div class="dropdown">
+                    <li class="nav-item">
+                        <a href="{% url 'history_categories' %}">History <i class="fa-solid fa-angles-down"></i></a>
+                        <div class="dropdown-content">
+                                {% for category in history_categories %}
+                                    <a href="{% url 'history_details' pk=category.pk %}">{{ category.name }}</a>
+                                {% endfor %}
+                        </div>
+                    </li>
+                </div>
                 <li class="nav-item">
                     <a href="#">Tickets</a>
                 </li>
@@ -150,7 +158,7 @@
             <div class="about-museum footer-div">
                 <h2>Museum:</h2>
                  <ul>
-                     {% for category in navbar_categories %}
+                     {% for category in museum_categories %}
                          <li>
                              <a href="{% url 'museum_listing' %}?category={{ category.id }}">{{ category.name }}</a>
                          </li>

@@ -1,15 +1,15 @@
 from django.contrib import admin
 from django.db.models import F
 
-from alfa_romeo_web.museum.models import MuseumCategory, MuseumTopic
+from alfa_romeo_web.history.models import HistoryCategory, History
 
 
-@admin.register(MuseumCategory)
+@admin.register(HistoryCategory)
 class ModelNameAdmin(admin.ModelAdmin):
     list_display = ('name', 'id',)
 
 
-@admin.register(MuseumTopic)
+@admin.register(History)
 class ModelNameAdmin(admin.ModelAdmin):
     list_display = ('get_category_name', 'id', 'header')
     ordering = ('category__name',)

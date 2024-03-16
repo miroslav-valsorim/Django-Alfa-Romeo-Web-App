@@ -16,7 +16,7 @@
                 <img src="{{ object.img_field.url }}" alt="{{ object.header }} img">
             </div>
             <h3>Year: {{ object.year }}</h3>
-            <p>{{ object.description }}</p>
+            <p>{{ object.description | linebreaks }}</p>
         </div>
     </div>
 

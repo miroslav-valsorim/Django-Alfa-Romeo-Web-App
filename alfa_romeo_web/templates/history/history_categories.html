@@ -10,13 +10,13 @@
 
     <div class="content">
 
-        {% for category in object_list %}
-            
-            <a href="{% url 'museum_listing' %}?category={{ category.id }}">
+        {% for story in object_list %}
+
+            <a href="{% url 'history_details' pk=story.pk %}">
                 <div class="museum-category">
-                    <h3>{{ category.name }}</h3>
+                    <h3>{{ story.name }}</h3>
                     <div class="museum-img-container">
-                        <img src="{{ category.img_field.url }}" alt="{{ category.name }} img">
+                        <img src="{{ story.img_field.url }}" alt="{{ story.name }} img">
                     </div>
                 </div>
             </a>

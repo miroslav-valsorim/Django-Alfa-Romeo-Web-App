@@ -15,12 +15,23 @@
 }
 
 .image-container{
+    display: flex;
     margin: auto;
     margin-top: 20px;
     align-items: center;
     width: 500px;
     height: 350px;
     overflow: hidden;
+    justify-content: center;
+    position: relative;
+}
+
+.image-container img{
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .museum-topic-details h3{
@@ -31,8 +42,9 @@
 .museum-topic-details p{
     max-width: 900px;
     margin: auto;
-    margin-top: 20px;
+    margin-top: 10px;
     padding-bottom: 20px;
+    font-size: 20px;
 }
 
 .museum-topic-details a{

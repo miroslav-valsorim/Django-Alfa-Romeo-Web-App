@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block extra_style %}
+    <link rel="stylesheet" href="{% static "/style/history_details.css" %}">
+{% endblock %}
+
+{% block main_content %}
+    
+    <div class="wrapper">
+        <div class="history-details">
+            <a href="{% url 'history_categories' %}"><i class="fa-solid fa-angles-left"></i> Back</a>
+            <h2>{{ object.header }}</h2>
+            <div class="description-photo">
+                <div class="image-container">
+                    <img src="{{ object.img_field.url }}" alt="{{ object.header }} img">
+                </div>
+                <div class="paragraphs">
+                    <p>{{ object.description | linebreaks }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

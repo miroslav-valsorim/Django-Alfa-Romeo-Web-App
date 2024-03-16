@@ -1,0 +1,51 @@
+.wrapper{
+    background-color: #bfbfbf;
+}
+
+.history-details{
+    background-color: #bfbfbf;
+    max-width: 1200px;
+    margin: auto;
+    position: relative;
+}
+
+.history-details h2{
+    text-align: center;
+    padding-top: 20px;
+    font-size: 30px;
+    color: dimgray;
+}
+
+.image-container{
+    width: 500px;
+    height: 500px;
+    overflow: hidden;
+    float: left;
+    margin: 10px 20px 20px 10px;
+    border-radius: 10px;
+}
+
+.image-container img{
+    width: 100%;
+}
+
+.paragraphs p{
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+
+.history-details a{
+    position: absolute;
+    top: 0;
+    margin-top: 20px;
+    margin-left: 20px;
+    text-decoration: None;
+    color: black;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.description-photo{
+    margin-top: 40px;
+    padding-bottom: 40px;
+}

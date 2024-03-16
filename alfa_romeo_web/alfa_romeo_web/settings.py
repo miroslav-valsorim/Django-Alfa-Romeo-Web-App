@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     "alfa_romeo_web.accounts.apps.AccountsConfig",
     "alfa_romeo_web.main_page.apps.MainPageConfig",
     "alfa_romeo_web.museum.apps.MuseumConfig",
+    "alfa_romeo_web.history.apps.HistoryConfig",
 ]
 
 MIDDLEWARE = [

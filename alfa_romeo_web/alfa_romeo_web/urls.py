@@ -10,7 +10,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('alfa_romeo_web.main_page.urls')),
     path('account/', include('alfa_romeo_web.accounts.urls')),
-    path('museum/', include('alfa_romeo_web.museum.urls'))
+    path('museum/', include('alfa_romeo_web.museum.urls')),
+    path('history/', include('alfa_romeo_web.history.urls')),
 ]
 
 if settings.DEBUG:

@@ -2,26 +2,26 @@ from django.db import models
 from django.utils.text import slugify
 
 
-class MuseumCategory(models.Model):
+class HistoryCategory(models.Model):
     name = models.CharField(max_length=50)
     img_field = models.ImageField(
-        upload_to='museum_gallery/',
+        upload_to='history/',
         blank=False,
         null=False,
     )
 
     @staticmethod
     def get_all_categories():
-        return MuseumCategory.objects.all()
+        return HistoryCategory.objects.all()
 
     def __str__(self):
         return self.name
 
     class Meta:
-        verbose_name_plural = "Museum Categories"
+        verbose_name_plural = "History Categories"
 
 
-class MuseumTopic(models.Model):
+class History(models.Model):
     MAX_HEADER_LENGTH = 150
     header = models.CharField(
         max_length=MAX_HEADER_LENGTH,
@@ -37,37 +37,28 @@ class MuseumTopic(models.Model):
         blank=False,
         null=False,
     )
-    year = models.IntegerField(
-        blank=True,
-        null=True,
-    )
     category = models.ForeignKey(
-        MuseumCategory,
+        HistoryCategory,
         on_delete=models.CASCADE,
-    )
-    slug = models.SlugField(
-        unique=True,
-        null=False,
-        blank=True,
     )
 
     class Meta:
-        verbose_name_plural = "Museum Topics"
+        verbose_name_plural = "History"
 
     @staticmethod
-    def get_topics_by_id(ids):
-        return MuseumTopic.objects.filter(id__in=ids)
+    def get_story_by_id(ids):
+        return History.objects.filter(id__in=ids)
 
     @staticmethod
-    def get_all_topics():
-        return MuseumTopic.objects.all()
+    def get_all_stories():
+        return History.objects.all()
 
     @staticmethod
-    def get_all_topics_by_categoryid(category_id):
+    def get_all_stories_by_categoryid(category_id):
         if category_id:
-            return MuseumTopic.objects.filter(category=category_id)
+            return History.objects.filter(category=category_id)
         else:
-            return MuseumTopic.get_all_topics()
+            return History.get_all_stories()
 
     def __str__(self):
         return f"ID: {self.id} / Category: {self.category} / Header: {self.header}"
