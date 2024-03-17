@@ -1,5 +1,8 @@
+from django.contrib.auth import get_user_model
 from django.db import models
 from django.utils.text import slugify
+
+UserModel = get_user_model()
 
 
 class HistoryCategory(models.Model):
@@ -23,6 +26,12 @@ class HistoryCategory(models.Model):
 
 class History(models.Model):
     MAX_HEADER_LENGTH = 150
+
+    created_by = models.ForeignKey(
+        UserModel,
+        on_delete=models.CASCADE,
+        related_name='history_creator',
+    )
     header = models.CharField(
         max_length=MAX_HEADER_LENGTH,
         blank=False,
@@ -40,6 +49,15 @@ class History(models.Model):
     category = models.ForeignKey(
         HistoryCategory,
         on_delete=models.CASCADE,
+    )
+    is_active = models.BooleanField(
+        default=True
+    )
+    created = models.DateTimeField(
+        auto_now_add=True,
+    )
+    updated = models.DateTimeField(
+        auto_now=True,
     )
 
     class Meta:
@@ -63,10 +81,10 @@ class History(models.Model):
     def __str__(self):
         return f"ID: {self.id} / Category: {self.category} / Header: {self.header}"
 
-    def save(self, *args, **kwargs):
-        super().save(*args, **kwargs)
-
-        if not self.slug:  # slugify("My name") -> "My-name"
-            self.slug = slugify(f"{self.category}-{self.header}-{self.pk}")
-
-        super().save(*args, **kwargs)
+    # def save(self, *args, **kwargs):
+    #     super().save(*args, **kwargs)
+    #
+    #     if not self.slug:  # slugify("My name") -> "My-name"
+    #         self.slug = slugify(f"{self.category}-{self.header}-{self.pk}")
+    #
+    #     super().save(*args, **kwargs)

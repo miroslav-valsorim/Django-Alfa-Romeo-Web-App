@@ -104,3 +104,9 @@
 .pagination li.active a {
     color: red;
 }
+
+.car-year{
+    margin-top:10px;
+    text-align: center;
+    font-size: 18px
+}

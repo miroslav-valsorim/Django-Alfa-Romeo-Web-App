@@ -11,9 +11,10 @@ class ModelNameAdmin(admin.ModelAdmin):
 
 @admin.register(MuseumTopic)
 class ModelNameAdmin(admin.ModelAdmin):
-    list_display = ('get_category_name', 'id', 'header')
+    list_display = ('get_category_name', 'created_by', 'is_active', 'id', 'header', 'created', 'updated')
     ordering = ('category__name',)
     search_fields = ('header', 'category__name')
+    list_editable = ('is_active',)
 
     def get_queryset(self, request):
         queryset = super().get_queryset(request)

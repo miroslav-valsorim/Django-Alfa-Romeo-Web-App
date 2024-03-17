@@ -18,7 +18,7 @@ class ListMuseumView(views.ListView):
         order_by = self.request.GET.get('order_by', 'year')
 
         if category_id:
-            queryset = MuseumTopic.get_all_topics_by_categoryid(category_id)
+            queryset = MuseumTopic.get_all_topics_by_categoryid(category_id).filter(is_active=True)
         else:
             queryset = MuseumTopic.objects.all()
 

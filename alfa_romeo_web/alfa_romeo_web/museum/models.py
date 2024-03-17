@@ -1,5 +1,8 @@
+from django.contrib.auth import get_user_model
 from django.db import models
 from django.utils.text import slugify
+
+UserModel = get_user_model()
 
 
 class MuseumCategory(models.Model):
@@ -23,6 +26,12 @@ class MuseumCategory(models.Model):
 
 class MuseumTopic(models.Model):
     MAX_HEADER_LENGTH = 150
+
+    created_by = models.ForeignKey(
+        UserModel,
+        on_delete=models.CASCADE,
+        related_name='topic_creator',
+    )
     header = models.CharField(
         max_length=MAX_HEADER_LENGTH,
         blank=False,
@@ -44,6 +53,15 @@ class MuseumTopic(models.Model):
     category = models.ForeignKey(
         MuseumCategory,
         on_delete=models.CASCADE,
+    )
+    is_active = models.BooleanField(
+        default=True
+    )
+    created = models.DateTimeField(
+        auto_now_add=True,
+    )
+    updated = models.DateTimeField(
+        auto_now=True,
     )
     slug = models.SlugField(
         unique=True,
