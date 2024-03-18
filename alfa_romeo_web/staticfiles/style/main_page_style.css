@@ -26,9 +26,9 @@
     transition: 0.7s;
 }
 
-.content:hover{
-    transform:scale(1.03);
-}
+/*.content:hover{*/
+/*    transform:scale(1.03);*/
+/*}*/
 
 .content h2{
     font-size: 40px;
@@ -51,8 +51,9 @@
     
 } */
 
-.content button{
+.content a{
     /* margin: auto; */
+    text-decoration: none;
     width: 200px;
     padding: 15px 0;
     text-align: center;
@@ -68,7 +69,7 @@
     transition: 0.5s;
 }
 
-.content button:hover{
+.content a:hover{
     transform:scale(1.03);
     background-color: red;
 }
@@ -110,7 +111,7 @@ button:hover{
     font-size: 30px;
     padding-top: 30px;
     text-align: center;
-    color: white;
+    color: #adadad;
 }
 .content-two{
     background-color: #333;
@@ -127,23 +128,31 @@ button:hover{
 
 .events-container .event-card:hover{
     transform:scale(1.05);
+    background-color: rgba(255,255,255,0.7);
+    box-shadow: 0 0 15px #9d9d9d
+
 }
 
 .event-card{
     max-width: 400px;
     flex-direction: row;
     align-items: center;
-    color: white;
-    padding: 20px;
-    background-color: rgb(69, 75, 82);
-    border-radius: 20px;
+    color: black;
+    padding: 20px 0;
+    background-color: rgba(255,255,255,0.4);
+    /*background-color: rgb(69, 75, 82);*/
+    /*border-radius: 20px;*/
     margin: 20px;
     transition: 0.5s;
 }
 
+.event-card h3{
+    color: #414040;
+}
+
 .event-card .image-container{
     max-width: 400px;
-    max-height: 220px;
+    max-height: 250px;
     overflow: hidden;
     margin-top: 30px;
     margin-bottom: 20px;
@@ -156,25 +165,37 @@ button:hover{
     transition: 0.5s;
 }
 
-.event-card .image-container:hover img{
-    transform:scale(1.2);
-}
+/*.event-card .image-container:hover img{*/
+/*    transform:scale(1.2);*/
+/*}*/
 
 .event-card p{
     text-align: center;
     margin-bottom: 20px;
+    padding: 0 10px;
 }
 
 .event-card a{
     display: block;
-    text-align: center;
-    color: white;
-    text-decoration: none;
-    align-items: center;
-    border: solid 1px red;
-    border-radius: 20px;
-    padding: 5px;
     margin: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 250px;
+    padding: 6px 0;
+    text-align: center;
+    border-radius: 30px;
+    font-weight: bold;
+    border: 2px solid red;
+    background: transparent;
+    color: black;
+    cursor: pointer;
+    text-decoration: none;
+    overflow: hidden;
+    transition: 0.5s;
+}
+
+.event-card a:hover{
+    background-color: red;
 }
 
 /* NEWS PART */

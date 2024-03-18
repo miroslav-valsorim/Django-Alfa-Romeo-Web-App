@@ -17,45 +17,26 @@
                  in a crescendo of emotions.
             </p>
             <div class="content-buttons">
-                <button type="button" class="content-buttons-two"><span></span>TICKETS</button>
-                <button type="button" class="content-buttons-two"><span></span>MORE INFORMATION</button>
+                <a class="content-buttons-two" href="">TICKETS</a>
+                <a class="content-buttons-two" href="{% url 'museum_categories' %}">MORE INFORMATION</a>
             </div>
         </div>
         <section class="content-two">
             <h3>Events</h3>
+        
             <section class="events-container">
-                <div class="event-card">
-                    <h3>Retro Track Day</h3>
-                    <div class="image-container">
-                        <img src="{% static 'images/goodwood-47.jpg' %}" alt="alfa romeo track">
+            
+                {% for event in event_list %}
+                    <div class="event-card">
+                        <h3>{{ event.title }}</h3>
+                        <div class="image-container">
+                            <img src="{{event.img_field.url}}" alt="{{ event.title}}">
+                        </div>
+                        <p>{{ event.description|slice:":300" }}</p>
+                        <a href="{% url 'event_details' slug=event.slug %}">Full information</a>
                     </div>
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptas rem numquam delectus tempora nesciunt atque eos saepe, nostrum, nemo reiciendis soluta exercitationem consectetur in ullam iure. Ipsam accusantium expedita fugiat!</p>
-                    <a href="#">More information</a>
-                </div>
-                <div class="event-card">
-                    <h3>Track Day</h3>
-                    <div class="image-container">
-                        <img src="{% static 'images/Alfa+Romeo+Giulia+TrackDay+at+Boxberg+(35).jpg' %}" alt="alfa romeo track">
-                    </div>
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptas rem numquam delectus tempora nesciunt atque eos saepe, nostrum, nemo reiciendis soluta exercitationem consectetur in ullam iure. Ipsam accusantium expedita fugiat!</p>
-                    <a href="#">More information</a>
-                </div>
-                <div class="event-card">
-                    <h3>Open Bonnets Day</h3>
-                    <div class="image-container">
-                        <img src="{% static 'images/download (1).jpg' %}" alt="alfa romeo track">
-                    </div>
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptas rem numquam delectus tempora nesciunt atque eos saepe, nostrum, nemo reiciendis soluta exercitationem consectetur in ullam iure. Ipsam accusantium expedita fugiat!</p>
-                    <a href="#">More information</a>
-                </div>
-                <div class="event-card">
-                    <h3>Test Drive Day</h3>
-                    <div class="image-container">
-                        <img src="{% static 'images/5d82588127c1928a764a6a0a70a1f1aa88439696.jpeg' %}" alt="alfa romeo track">
-                    </div>
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptas rem numquam delectus tempora nesciunt atque eos saepe, nostrum, nemo reiciendis soluta exercitationem consectetur in ullam iure. Ipsam accusantium expedita fugiat!</p>
-                    <a href="#">More information</a>
-                </div>
+                {% endfor %}
+
             </section>
         </section>
         <section class="content-three">

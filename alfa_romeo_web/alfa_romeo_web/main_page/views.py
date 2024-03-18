@@ -1,11 +1,17 @@
-from django.shortcuts import render
+from django.views import generic as views
+
+from alfa_romeo_web.events.models import Event
 
 
-# Create your views here.
+class MainListView(views.ListView):
+    template_name = 'main_page/main.html'
+    queryset = Event.objects.all()
 
-def main_page(request):
-    context = {
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
 
-    }
-
-    return render(request, "main_page/main.html", context)
+        # limit the items up to 3 or 4 on the main page and show the newest (latest added)
+        context['event_list'] = Event.objects.all().filter(is_active=True).order_by('-created')[:3]
+        # context['news_list'] = News.objects.all()
+        # context['merch'] = Merch.objects.all()
+        return context

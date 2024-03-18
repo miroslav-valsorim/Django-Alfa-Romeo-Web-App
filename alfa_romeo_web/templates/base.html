@@ -48,10 +48,10 @@
                     </li>
                 </div>
                 <li class="nav-item">
-                    <a href="#">Tickets</a>
+                    <a href="{% url 'events_list' %}">Events</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#">Events</a>
+                    <a href="#">Tickets</a>
                 </li>
                 <div class="dropdown">
                     <li class="nav-item">
@@ -74,20 +74,11 @@
                     </li>
                     
                 {% else %}
-                    
-{#                    <li class="nav-item">#}
-{#                        <a href="{% url 'logout-user' %}">Log Out</a>#}
-{#                    </li>#}
                     <li class="nav-item">
                         <a href="#">
                             <i class="fa-solid fa-cart-shopping"></i>
                         </a>
                     </li>
-{#                    <li>#}
-{#                        <a href="#">#}
-{#                            <i class="fa-solid fa-user"></i>#}
-{#                        </a>#}
-{#                    </li>#}
                      <div class="dropdown">
                         <li class="nav-item">
                             <a href="{% url 'details-profile' pk=request.user.pk %}">

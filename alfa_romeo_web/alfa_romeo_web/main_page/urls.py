@@ -1,7 +1,7 @@
 from django.urls import path
 
-from alfa_romeo_web.main_page.views import main_page
+from alfa_romeo_web.main_page.views import MainListView
 
 urlpatterns = (
-    path("", main_page, name="main_page"),
+    path("", MainListView.as_view(), name="main_page"),
 )

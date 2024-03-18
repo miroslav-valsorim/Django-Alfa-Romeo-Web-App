@@ -13,7 +13,7 @@ class UserAdmin(auth_admin.UserAdmin):
     add_form = AlfaRomeoUserCreationForm
     form = AlfaRomeoChangeForm
 
-    list_display = ('pk', 'email', 'is_staff', 'is_superuser')
+    list_display = ('pk', 'email', 'is_staff', 'is_superuser', 'date_joined')
     search_fields = ('email',)
     ordering = ('pk',)
 
@@ -37,6 +37,6 @@ class UserAdmin(auth_admin.UserAdmin):
 
 @admin.register(Profile)
 class ModelNameAdmin(admin.ModelAdmin):
-    list_display = ('user_id', 'first_name', 'last_name', 'date_of_birth')
+    list_display = ('user_id', 'first_name', 'last_name', 'date_of_birth', "updated")
     ordering = ('user_id',)
     search_fields = ('first_name', 'last_name',)

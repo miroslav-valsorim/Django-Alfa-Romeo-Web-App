@@ -17,7 +17,11 @@ class AlfaRomeoUser(auth_models.AbstractBaseUser, auth_models.PermissionsMixin):
         },
     )
 
-    date_joined = models.DateTimeField(_("date joined"), default=timezone.now)
+    date_joined = models.DateTimeField(
+        _("date joined"),
+        default=timezone.now,
+        editable=False,
+    )
 
     is_staff = models.BooleanField(
         default=False,
@@ -56,9 +60,19 @@ class Profile(models.Model):
         null=True,
     )
 
+    phone_number = models.CharField(
+        max_length=15,
+        blank=True,
+        null=True,
+    )
+
     profile_picture = models.URLField(
         blank=True,
         null=True,
+    )
+
+    updated = models.DateTimeField(
+        auto_now=True
     )
 
     user = models.OneToOneField(
@@ -66,6 +80,9 @@ class Profile(models.Model):
         primary_key=True,
         on_delete=models.CASCADE,
     )
+
+    def __str__(self):
+        return f'{self.first_name} {self.last_name}'
 
     @property
     def full_name(self):
