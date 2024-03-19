@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block extra_style %}
+    <link rel="stylesheet" href="{% static "/style/news_details.css" %}">
+{% endblock %}
+
+{% block main_content %}
+    
+    <div class="news-detail-content" 
+         style="background-image: linear-gradient(rgba(0,0,0,0.75),rgba(0,0,0,0.75)), url({{ object.img_field.url }});">
+    
+        <div class="news-detail-container">
+            
+           
+                <div class="news-card">
+                    <a href="{% url 'news_list' %}"><i class="fa-solid fa-angles-left"></i> Back</a>
+                    <h2>{{ object.title }}</h2>
+                    <div class="image-container">
+                        <img src="{{ object.img_field.url }}" alt="{{ object.title }} img">
+                    </div>
+                    <p>{{ object.description | linebreaks }}</p>
+                </div>
+
+        </div>
+    
+    </div>
+
+{% endblock %}

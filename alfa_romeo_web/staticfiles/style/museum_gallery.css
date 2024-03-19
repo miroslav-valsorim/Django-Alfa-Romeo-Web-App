@@ -1,9 +1,16 @@
 .wrapper{
-    background-color: rgb(20 20 20);
+    background-image: linear-gradient(rgba(0,0,0,0.75),rgba(0,0,0,0.75)), url("/static/images/quadrifoglio_pattern.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    color: white;
+    align-content: center;
 }
 
 .museum-gallery{
-    background-color: rgb(20 20 20);
+    /*background-color: rgb(20 20 20);*/
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap:4px;
@@ -17,10 +24,10 @@
     width: 300px;
     flex-direction: row;
     align-items: center;
-    color: white;
-    padding: 20px;
-    background-color: rgb(69, 75, 82);
-    border-radius: 6px;
+    color: black;
+    /*padding: 20px;*/
+    /*background-color: rgb(69, 75, 82);*/
+    background-color: rgba(255,255,255,0.5);
     margin: 20px;
     transition: 0.5s;
 }
@@ -32,7 +39,8 @@
 
 .museum-item-container h2{
     text-align: center;
-    color: lightgray;
+    color: black;
+    margin-top: 10px;
 }
 
 .museum-gallery .card-a{
@@ -46,8 +54,7 @@
     background-color: rgba(255,255,255,0.5);
     border-radius: 20px;
     padding: 5px;
-    margin: auto;
-    margin-top: 20px;
+    margin: 20px auto;
     transition: 0.5s;
 }
 
@@ -56,8 +63,8 @@
 }
 
 .museum-image-container{
-    width: 250px;
-    height: 200px;
+    width: 300px;
+    height: 230px;
     overflow: hidden;
     max-height: 250px;
     margin: auto;

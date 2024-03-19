@@ -74,7 +74,7 @@
                             <p>{{ item.description }}</p>
                         {% elif item.category_name == 'Gallery' %}
                             <p class="car-year">Year: {{ item.year }}</p>
-                            <a class="card-a" href="{% url 'museum_topic_detail' slug=item.slug %}">More Information</a>
+                            <a class="card-a" href="{% url 'museum_topic_detail' slug=item.slug %}">Full Review</a>
                         {% endif %}
                     {% endif %}
 

@@ -1,6 +1,7 @@
 from django.views import generic as views
 
 from alfa_romeo_web.events.models import Event
+from alfa_romeo_web.news.models import News
 
 
 class MainListView(views.ListView):
@@ -12,6 +13,6 @@ class MainListView(views.ListView):
 
         # limit the items up to 3 or 4 on the main page and show the newest (latest added)
         context['event_list'] = Event.objects.all().filter(is_active=True).order_by('-created')[:3]
-        # context['news_list'] = News.objects.all()
+        context['news_list'] = News.objects.all().filter(is_active=True).order_by('-created')[:3]
         # context['merch'] = Merch.objects.all()
         return context

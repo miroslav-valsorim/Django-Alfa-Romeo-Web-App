@@ -1,0 +1,110 @@
+.news-content{
+    background-image: linear-gradient(rgba(0,0,0,0.75),rgba(0,0,0,0.75)), url("/static/images/quadrifoglio_pattern.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    color: white;
+    align-content: center;
+    background-position-y: 70%;
+    max-height: 900px;
+    height: 800px;
+    vertical-align: middle;
+}
+
+.news-cards-container{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 1400px;
+    margin: auto;
+}
+
+.news-card{
+    max-width: 400px;
+    height: 550px;
+    background-color: rgba(255,255,255,0.5);
+    color: black;
+    text-align: center;
+    transition: 0.5s;
+    margin: 20px;
+}
+
+.news-card:hover{
+    transform: scale(1.1);
+    background-color: rgba(255,255,255,0.7);
+    box-shadow: 0 0 15px #1a1a1a
+}
+
+.news-card h2{
+    padding-top: 20px;
+}
+
+.news-card p{
+    margin-top: 20px;
+    padding: 0 10px;
+}
+
+.news-card a{
+    display: block;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 250px;
+    padding: 6px 0;
+    text-align: center;
+    border-radius: 30px;
+    font-weight: bold;
+    border: 2px solid red;
+    background: transparent;
+    color: black;
+    cursor: pointer;
+    text-decoration: none;
+    overflow: hidden;
+    transition: 0.5s;
+}
+
+.news-card a:hover{
+    background-color: red;
+}
+
+.image-container{
+    width: 400px;
+    height: 250px;
+    overflow: hidden;
+    margin: auto;
+    margin-top: 20px;
+}
+
+.image-container img{
+    width: 100%;
+    object-fit: contain;
+}
+
+.paginate-wrap{
+    display: block;
+    /*position: absolute;*/
+    /*bottom: 70px;*/
+    /*left: 50%;*/
+    /*transform: translateX(-50%)*/
+    margin: 10px auto;
+}
+
+.paginate-wrap nav ul{
+    display: flex;
+}
+
+.paginate-wrap nav ul li{
+    margin: 0 10px;
+    list-style: none;
+    font-weight: 700;
+}
+
+.paginate-wrap nav ul li a{
+    color: white;
+    text-decoration: none;
+}
+
+.pagination li.active a {
+    color: red;
+}

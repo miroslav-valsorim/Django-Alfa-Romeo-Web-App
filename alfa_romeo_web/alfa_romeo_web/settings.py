@@ -37,11 +37,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
     "alfa_romeo_web.accounts.apps.AccountsConfig",
     "alfa_romeo_web.main_page.apps.MainPageConfig",
     "alfa_romeo_web.museum.apps.MuseumConfig",
     "alfa_romeo_web.history.apps.HistoryConfig",
     "alfa_romeo_web.events.apps.EventsConfig",
+    "alfa_romeo_web.news.apps.NewsConfig",
 ]
 
 MIDDLEWARE = [

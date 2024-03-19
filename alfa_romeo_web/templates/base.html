@@ -50,6 +50,9 @@
                 <li class="nav-item">
                     <a href="{% url 'events_list' %}">Events</a>
                 </li>
+                 <li class="nav-item">
+                    <a href="{% url 'news_list' %}">News</a>
+                </li>
                 <li class="nav-item">
                     <a href="#">Tickets</a>
                 </li>
@@ -63,9 +66,6 @@
                             </div>
                     </li>
                 </div>
-                <li class="nav-item">
-                    <a href="#">News</a>
-                </li>
             
                 {% if not user.is_authenticated %}
                     

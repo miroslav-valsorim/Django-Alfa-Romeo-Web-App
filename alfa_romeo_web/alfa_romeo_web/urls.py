@@ -14,6 +14,7 @@ urlpatterns = [
     path('museum/', include('alfa_romeo_web.museum.urls')),
     path('history/', include('alfa_romeo_web.history.urls')),
     path('events/', include('alfa_romeo_web.events.urls')),
+    path('news/', include('alfa_romeo_web.news.urls')),
 ]
 
 if settings.DEBUG:

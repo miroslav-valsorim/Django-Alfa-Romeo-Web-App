@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block extra_style %}
+    <link rel="stylesheet" href="{% static "/style/news_list.css" %}">
+{% endblock %}
+
+{% block main_content %}
+    
+    <div class="news-content">
+    
+        <div class="news-cards-container">
+            
+            {% for news in object_list %}
+                <div class="news-card">
+                    <h2>{{ news.title }}</h2>
+                    <div class="image-container">
+                        <img src="{{ news.img_field.url }}" alt="{{ news.title }} img">
+                    </div>
+                    <p>{{ news.description|slice:":300" }}...</p>
+                    <a href="{% url 'news_details' slug=news.slug %}">Full Information</a>
+                </div>
+            {% endfor %}
+        </div>
+    
+                {% if is_paginated %}
+                    <div class="paginate-wrap">
+                        <nav>
+                            <ul class="pagination">
+                                {% if page_obj.has_previous %}
+                                    <li><a href="?page={{ page_obj.previous_page_number }}"><i class="fa-solid fa-angles-left"></i></a></li>
+                                {% endif %}
+                                {% for i in paginator.page_range %}
+                                    {% if page_obj.number == i %}
+                                        <li class="active"><a href="?page={{ i }}">{{ i }}</a></li>
+                                    {% else %}
+                                        <li><a href="?page={{ i }}">{{ i }}</a></li>
+                                    {% endif %}
+                                {% endfor %}
+                                {% if page_obj.has_next %}
+                                    <li><a href="?page={{ page_obj.next_page_number }}"> <i class="fa-solid fa-angles-right"></i></a></li>
+                                {% endif %}
+                            </ul>
+                        </nav>
+                    </div>
+                {% endif %}
+    
+    </div>
+
+{% endblock %}

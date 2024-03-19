@@ -22,7 +22,7 @@
             </div>
         </div>
         <section class="content-two">
-            <h3>Events</h3>
+            <h3>LATEST EVENTS ADDED FOR 2024</h3>
         
             <section class="events-container">
             
@@ -40,32 +40,18 @@
             </section>
         </section>
         <section class="content-three">
-            <h3>News</h3>
+            <h3>LATEST NEWS</h3>
             <section class="news-container">
-                <div class="news-card">
-                    <h3>New Model Announcement</h3>
+                {% for news in news_list %}
+                     <div class="news-card">
+                    <h3>{{ news.title}}</h3>
                     <div class="image-container">
-                        <img src="{% static 'images/milano.jpg' %}" alt="alfa romeo track">
+                        <img src="{{news.img_field.url}}" alt="alfa romeo track">
                     </div>
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptas rem numquam delectus tempora nesciunt atque eos saepe, nostrum, nemo reiciendis soluta exercitationem consectetur in ullam iure. Ipsam accusantium expedita fugiat!</p>
-                    <a href="#">More information</a>
+                         <p>{{ news.description|slice:":300" }}</p>
+                    <a href="{% url 'news_details' slug=news.slug %}">Read Article </a>
                 </div>
-                <div class="news-card">
-                    <h3>Upgrading Safety Features</h3>
-                    <div class="image-container">
-                        <img src="{% static 'images/car-1.jpg' %}" alt="alfa romeo track">
-                    </div>
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptas rem numquam delectus tempora nesciunt atque eos saepe, nostrum, nemo reiciendis soluta exercitationem consectetur in ullam iure. Ipsam accusantium expedita fugiat!</p>
-                    <a href="#">More information</a>
-                </div>
-                <div class="news-card">
-                    <h3>New Stradale Peoples Feedback</h3>
-                    <div class="image-container">
-                        <img src="{% static 'images/77a7993d23659e43081ed45681e7f204-620x427.jpg' %}" alt="alfa romeo track">
-                    </div>
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptas rem numquam delectus tempora nesciunt atque eos saepe, nostrum, nemo reiciendis soluta exercitationem consectetur in ullam iure. Ipsam accusantium expedita fugiat!</p>
-                    <a href="#">More information</a>
-                </div>
+                {% endfor %}
             </section>
         </section>
         <section class="content-four">

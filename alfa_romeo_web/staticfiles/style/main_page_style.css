@@ -108,7 +108,7 @@ button:hover{
 
 /* EVENTS PART*/
 .content-two h3{
-    font-size: 30px;
+    font-size: 24px;
     padding-top: 30px;
     text-align: center;
     color: #adadad;
@@ -200,7 +200,7 @@ button:hover{
 
 /* NEWS PART */
 .content-three h3{
-    font-size: 30px;
+    font-size: 24px;
     padding-top: 30px;
     text-align: center;
     color: white;
@@ -219,20 +219,28 @@ button:hover{
     margin-bottom: 20px;
 }
 
+.news-container .news-card:hover{
+    transform:scale(1.05);
+    background-color: rgba(26, 26, 26, 0.51);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.99)
+
+}
+
 .news-card{
     max-width: 400px;
     flex-direction: row;
     align-items: center;
-    color: white;
-    padding: 20px;
-    background-color:  #333;
-    border-radius: 20px;
+    color: black;
+    padding: 20px 0;
+    background-color: rgba(0, 0, 0, 0.66);
+    /*background-color: rgba(100, 100, 100, 0.81);*/
     margin: 20px;
+    transition: 0.5s;
 }
 
 .news-card .image-container{
-    max-width: 400px;
-    max-height: 220px;
+   max-width: 400px;
+    max-height: 250px;
     overflow: hidden;
     margin-top: 30px;
     margin-bottom: 20px;
@@ -243,23 +251,37 @@ button:hover{
     width: 100%;
     height: auto;
     align-items: center;
+    transition: 0.5s;
 }
 
 .news-card p{
     text-align: center;
     margin-bottom: 20px;
+    padding: 0 10px;
+    color: white;
 }
 
 .news-card a{
     display: block;
-    text-align: center;
-    color: white;
-    text-decoration: none;
-    align-items: center;
-    border: solid 1px red;
-    border-radius: 20px;
-    padding: 5px;
     margin: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 250px;
+    padding: 6px 0;
+    text-align: center;
+    border-radius: 30px;
+    font-weight: bold;
+    border: 2px solid red;
+    background: transparent;
+    color: white;
+    cursor: pointer;
+    text-decoration: none;
+    overflow: hidden;
+    transition: 0.5s;
+}
+
+.news-card a:hover{
+    background-color: red;
 }
 
 
