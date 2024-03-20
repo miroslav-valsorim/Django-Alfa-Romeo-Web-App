@@ -54,16 +54,16 @@
                     <a href="{% url 'news_list' %}">News</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#">Tickets</a>
+                    <a href="{% url 'tickets_list' %}">Tickets</a>
                 </li>
                 <div class="dropdown">
                     <li class="nav-item">
-                        <a href="#">Merchandise <i class="fa-solid fa-angles-down"></i></a>
+                        <a href="{% url 'products_list' %}">Store <i class="fa-solid fa-angles-down"></i></a>
                         <div class="dropdown-content">
-                            <a href="#">Model Cars</a>
-                            <a href="#">Accessories</a>
-                            <a href="#">Clothing</a>
-                            </div>
+                            {% for category in product_categories %}
+                                <a href="{% url 'products_list' %}?category={{ category.id }}">{{category.name}}</a>
+                            {% endfor %}
+                        </div>
                     </li>
                 </div>
             
@@ -157,18 +157,13 @@
                 </ul>
             </div>
              <div class="merch footer-div">
-                <h2>Merchandise:</h2>
+                <h2>Store:</h2>
                  <ul>
-                    <li class="">
-                       <a href="">Model Cars</a>
-                    </li>
-                    <li class="">
-                        <a href="">Accessories</a>
-                    </li>
-                     <li class="">
-                        <a href="">Clothes</a>
-                    </li>
-                   
+                    {% for category in product_categories %}
+                         <li>
+                             <a href="{% url 'products_list' %}?category={{ category.id }}">{{ category.name }}</a>
+                         </li>
+                     {% endfor %}
                 </ul>
             </div>
        </div>

@@ -17,7 +17,7 @@
                  in a crescendo of emotions.
             </p>
             <div class="content-buttons">
-                <a class="content-buttons-two" href="">TICKETS</a>
+                <a class="content-buttons-two" href="{% url "tickets_list" %}">TICKETS</a>
                 <a class="content-buttons-two" href="{% url 'museum_categories' %}">MORE INFORMATION</a>
             </div>
         </div>
@@ -55,44 +55,31 @@
             </section>
         </section>
         <section class="content-four">
-            <h3>Merchandise</h3>
+            <h3>ALFA ROMEO STORE</h3>
             <section class="merch-container">
-                <div class="merch-card">
-                    <h3>Product</h3>
-                    <div class="image-container">
-                        <img src="{% static 'images/AR_Mmerchandising-content-grid-legal-strip-hoodie.jpg' %}" alt="alfa romeo track">
+                {% for product in products_list %}
+                    <div class="merch-card">
+                        <h3>{{ product.title }}</h3>
+                        <div class="image-container">
+                            <img src="{{ product.image.url }}" alt="alfa romeo track">
+                        </div>
+                        <div class="prices-container">
+                        
+                                 {% if product.discount_price %}
+                          {#    TODO: this style should be done in css but didnt work, #}
+                                    <p style="text-decoration-line: line-through;" class="underline-price">Price: {{ product.price }} $</p>
+                                    <p style="color: red" class="discount-price">{{ product.discount_price }} $</p>
+                                {% else %}
+                                     <p class="normal-price">Price: {{ product.price }} $</p>
+                                {% endif %}
+                        </div>
+                        <div class="links-container">
+                            <a class="details" href="{% url "product_details" slug=product.slug %}">Details</a>
+                            <a class="add-to-cart" href="">ADD TO CART <i class="fa-solid fa-cart-shopping"></i></a>
+    {#                      <a href="{% url "add_to_cart" slug=item.slug %}">ADD TO CART</a>#}
+                        </div>
                     </div>
-                    <p>Details:</p>
-                    <p>Price:</p>
-                    <a href="#">Buy</a>
-                </div>
-                <div class="merch-card">
-                    <h3>Product</h3>
-                    <div class="image-container">
-                        <img src="{% static 'images/alfa-romeo-f1-team-stake-c43-2023-bottas-guanyu-doppel-set-1-43.jpg' %}" alt="alfa romeo track">
-                    </div>
-                    <p>Details:</p>
-                    <p>Price:</p>
-                    <a href="#">Buy</a>
-                </div>
-                <div class="merch-card">
-                    <h3>Product</h3>
-                    <div class="image-container">
-                        <img src="{% static 'images/flat1_480x480.webp' %}" alt="alfa romeo track">
-                    </div>
-                    <p>Details:</p>
-                    <p>Price:</p>
-                    <a href="#">Buy</a>
-                </div>
-                <div class="merch-card">
-                    <h3>Product</h3>
-                    <div class="image-container">
-                        <img src="{% static 'images/s-l1600_7__85000.jpg' %}" alt="alfa romeo track">
-                    </div>
-                    <p>Details:</p>
-                    <p>Price:</p>
-                    <a href="#">Buy</a>
-                </div>
+                {% endfor %}
             </section>
         </section>
 {% endblock %}

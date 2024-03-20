@@ -38,7 +38,7 @@ class ListMuseumView(views.ListView):
             else:
                 item.category_name = None
 
-        context['order_by'] = self.request.GET.get('order_by', 'contributors')
+        context['order_by'] = self.request.GET.get('order_by', 'year')
 
         context['category_id'] = self.request.GET.get('category')
 

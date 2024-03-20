@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block extra_style %}
+    <link rel="stylesheet" href="{% static "/style/product_details.css" %}">
+{% endblock %}
+
+{% block main_content %}
+
+<div class="product-detail">
+     
+     <div class="detail-container">
+         
+         <h2>{{ object.title }}</h2>
+            
+            <div class="wrapper">
+                    {% if object.image %}
+                    <div class="image-container">
+                         <img src="{{ object.image.url }}" alt="{{ object.title}} img">
+                     </div>
+                    {% endif %}
+                     <div class="info">
+                        <p>{{ object.description }}</p> 
+                         
+                          <div class="prices-container">
+                                {% if object.discount_price %}
+                          {#    TODO: this style should be done in css but didnt work, #}
+                                    <p style="text-decoration-line: line-through;" class="underline-price">Price: {{object.price }} $</p>
+                                    <p style="color: red" class="discount-price">{{ object.discount_price }} $</p>
+                                {% else %}
+                                     <p class="normal-price">Price: {{ object.price }} $</p>
+                                {% endif %}
+                          </div>
+                        
+                        <a class="add-to-cart" href="">ADD TO CART <i class="fa-solid fa-cart-shopping"></i></a>
+                     </div>
+            </div>
+         
+     </div>
+
+</div>
+
+{% endblock %}

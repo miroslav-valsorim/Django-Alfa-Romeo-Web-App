@@ -19,7 +19,7 @@
                         <img src="{{ news.img_field.url }}" alt="{{ news.title }} img">
                     </div>
                     <p>{{ news.description|slice:":300" }}...</p>
-                    <a href="{% url 'news_details' slug=news.slug %}">Full Information</a>
+                    <a href="{% url 'news_details' slug=news.slug %}">Read Article</a>
                 </div>
             {% endfor %}
         </div>

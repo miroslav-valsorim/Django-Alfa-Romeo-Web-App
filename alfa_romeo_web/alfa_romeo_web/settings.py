@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     "alfa_romeo_web.history.apps.HistoryConfig",
     "alfa_romeo_web.events.apps.EventsConfig",
     "alfa_romeo_web.news.apps.NewsConfig",
+    "alfa_romeo_web.products.apps.ProductsConfig",
 ]
 
 MIDDLEWARE = [
@@ -70,7 +71,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'alfa_romeo_web.museum.context_processors.navbar_objects'
+                'alfa_romeo_web.museum.context_processors.navbar_objects',
+                'alfa_romeo_web.products.context_processors.navbar_product_objects',
             ],
         },
     },
