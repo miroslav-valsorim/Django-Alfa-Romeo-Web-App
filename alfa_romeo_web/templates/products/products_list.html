@@ -9,18 +9,26 @@
 {% block main_content %}
 
 <div class="products-wrapper">
+    
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
 
      <div class="products-categories">
 
             <a href="{% url 'products_list' %}" >All Products</a>
-    
+
             {% for category in categories %}
                 <a style="margin-left: 10px" href="{% url 'products_list' %}?category={{ category.id }}">{{category.name}}</a>
             {% endfor %}
-    
+
      </div>
     <div class="products-container">
-    
+
              <div class="order-by">
                     <form action="" method="get" id="order-form">
                          <form action="" method="get" id="order-form">
@@ -38,7 +46,7 @@
                             </select>
                             <input type="submit" style="display: none;"> <!-- Hidden submit button -->
                     </form>
-    
+
                     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
                     <script>
                         $(document).ready(function() {
@@ -48,18 +56,18 @@
                         });
                     </script>
             </div>
-    
+
             {% for item in object_list %}
-        
+
                 <div class="product-card">
                     <h2>{{ item.title }}</h2>
-                
+
                     {% if item.image %}
                         <div class="image-container">
                             <img src="{{ item.image.url }}" alt="{{ item.title }} img">
                         </div>
                     {% endif %}
-                    
+
                     <div class="prices-container">
                         {% if item.discount_price %}
                   {#    TODO: this style should be done in css but didnt work, #}
@@ -69,17 +77,22 @@
                              <p class="normal-price">Price: {{ item.price }} $</p>
                         {% endif %}
                     </div>
-                    
-                
-                    <div class="links-container">
-                        <a href="{% url "product_details" slug=item.slug %}">Details</a>
-                        <a class="add-to-cart" href="">ADD TO CART <i class="fa-solid fa-cart-shopping"></i></a>
-{#                      <a href="{% url "add_to_cart" slug=item.slug %}">ADD TO CART</a>#}
-                    </div>
-        
+
+                     {% if user.is_authenticated %}
+                        <div class="links-container">
+                            <a href="{% url "product_details" slug=item.slug %}">Details</a>
+                            <a class="add-to-cart" href="{% url "add_to_cart" slug=item.slug %}">ADD TO CART <i class="fa-solid fa-cart-shopping"></i></a>
+                        </div>
+                    {% else %}
+                         <div class="links-container">
+                            <a href="{% url "product_details" slug=item.slug %}">Details</a>
+                            <a href="{% url 'login-user' %}">Sign in to purchase</a>
+                        </div>
+                    {% endif %}
+
                 </div>
-        
-            {% endfor %}        
+
+            {% endfor %}
     </div>
 
                 {% if is_paginated %}

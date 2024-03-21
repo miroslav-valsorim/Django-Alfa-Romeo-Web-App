@@ -1,0 +1,15 @@
+from django.contrib import admin
+
+from alfa_romeo_web.cart.models import OrderItem, ShoppingCart
+
+
+@admin.register(OrderItem)
+class ModelNameAdmin(admin.ModelAdmin):
+    list_display = ('id', 'user', 'ordered')
+    search_fields = ('user',)
+
+
+@admin.register(ShoppingCart)
+class ModelNameAdmin(admin.ModelAdmin):
+    list_display = ('id', 'user', 'ordered')
+    search_fields = ('user',)

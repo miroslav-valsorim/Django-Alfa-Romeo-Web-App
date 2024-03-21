@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block extra_style %}
+    <link rel="stylesheet" href="{% static "/style/cart_details.css" %}">
+{% endblock %}
+
+{% block main_content %}
+    
+    <div class="container">
+        
+            {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+ 
+            <div class="table-container">
+                <h2>Order Summary</h2>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col"><span>&#8470;</span></th>
+                            <th scope="col">Image</th>
+                            <th scope="col">Item</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Quantity</th>
+                            <th scope="col">Total Item Price</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for order_item in object.items.all %}
+                            <tr>
+                                <th scope="row">{{ forloop.counter }}</th>
+                                <td>
+                                    {% if order_item.item.image %}
+                                        <div class="image-container"><img src="{{ order_item.get_image }}" alt="{{ object.title}} img"> </div>
+                                    {% endif %}
+                                </td>
+                                <td>{{ order_item.item.title }}</td>
+                                <td>{{ order_item.item.price }} $</td>
+                                <td>
+                                    <a class="links" href="{% url 'remove_single_item_from_cart' slug=order_item.item.slug %}"> <i class="fa-solid fa-minus"></i> </a>
+                                    {{ order_item.quantity }}
+                                    <a class="links" href="{% url 'add_single_item_to_cart' slug=order_item.item.slug %}"> <i class="fa-solid fa-plus"></i> </a>
+                                </td>
+                                <td>
+                                {% if order_item.item.discount_price %}
+                                    ${{ order_item.get_total_discount_item_price }}
+                                    <span class="badge badge-primary">(Saving ${{ order_item.get_amount_saved }})</span>
+                                {% else %}
+                                    ${{ order_item.get_total_item_price }}
+                                {% endif %}
+                                </td>
+                                <td> 
+                                    <a class="remove-item" href="{% url 'remove_from_cart' order_item.item.slug %}"><i class="fa-solid fa-trash"></i></a>
+                                </td>
+                            </tr>
+                        {% empty %}
+                            <tr>
+                                <td colspan='5'>Your cart is empty</td>
+                            </tr>
+                         
+                        {% endfor %}
+                        
+                        {% if object.get_total %}
+                            <tr>
+                                <td colspan="5"><b>Order Total Price: </b></td>
+                                <td><b>${{ object.get_total }}</b></td>
+                            </tr>
+                        {% endif %}
+                    </tbody>
+                </table>
+            
+                <div class="links-container">
+                    {% if object.items.all %}
+                        <a class="bottom-links" href='{% url 'products_list' %}'>Continue shopping</a>
+                        <a class="bottom-links" href="">Proceed to checkout</a>
+                    {% else %}
+                        <a class="bottom-links" href='{% url 'products_list' %}'>Continue shopping</a>
+                    {% endif %}
+                </div>
+        
+            </div>
+    </div>
+
+{% endblock %}

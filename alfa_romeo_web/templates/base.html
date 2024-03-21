@@ -1,4 +1,6 @@
 {% load static %}
+{% load cart_template_tags %}
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -75,8 +77,8 @@
                     
                 {% else %}
                     <li class="nav-item">
-                        <a href="#">
-                            <i class="fa-solid fa-cart-shopping"></i>
+                        <a href="{% url 'cart_details' %}">
+                            <i class="fa-solid fa-cart-shopping"> {{ request.user | cart_item_count }}</i>
                         </a>
                     </li>
                      <div class="dropdown">

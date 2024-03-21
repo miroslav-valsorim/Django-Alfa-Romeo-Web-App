@@ -1,0 +1,92 @@
+.container{
+    background-color: white;
+}
+
+.container .messages{
+    background-color: white;
+}
+
+.image-container{
+    max-width: 100px;
+    margin: auto;
+}
+
+.image-container img{
+    width: 100%;
+}
+
+.table-container{
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px 0 30px 0;
+}
+
+.table-container h2{
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.table{
+    margin: auto;
+}
+
+.messages{
+    margin: 0;
+    text-decoration: none;
+    text-align: center;
+    padding: 10px 0;
+}
+
+.messages li{
+    font-size: 20px;
+}
+
+.links{
+    margin: 0 10px;
+    text-decoration: none;
+    color: black;
+}
+
+.links-container{
+    /*margin-top: 50px;*/
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.bottom-links{
+    margin: 20px 10px;
+    text-decoration: none;
+    color: black;
+    border-radius: 20px;
+    padding: 5px 20px;
+    background-color: #52e128;
+    font-weight: bold;
+    transition: 0.5s;
+}
+
+.bottom-links:hover{
+    background-color: #38ff00;
+    transform: scale(1.1);
+}
+
+.remove-item{
+    text-decoration: none;
+    color: red;
+    font-size: 20px;
+}
+
+table {
+    border-collapse: collapse;
+}
+th {
+    background-color: rgba(100, 100, 100, 0.81);
+    color:white;
+}
+th, td {
+    width:150px;
+    text-align:center;
+    border:1px solid black;
+    padding:5px;
+    font-size: 16px;
+}

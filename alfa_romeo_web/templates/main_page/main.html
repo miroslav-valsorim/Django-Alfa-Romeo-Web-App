@@ -73,11 +73,17 @@
                                      <p class="normal-price">Price: {{ product.price }} $</p>
                                 {% endif %}
                         </div>
-                        <div class="links-container">
-                            <a class="details" href="{% url "product_details" slug=product.slug %}">Details</a>
-                            <a class="add-to-cart" href="">ADD TO CART <i class="fa-solid fa-cart-shopping"></i></a>
-    {#                      <a href="{% url "add_to_cart" slug=item.slug %}">ADD TO CART</a>#}
-                        </div>
+                        {% if user.is_authenticated %}
+                            <div class="links-container">
+                                <a class="details" href="{% url "product_details" slug=product.slug %}">Details</a>
+                                <a class="add-to-cart" href="{% url "add_to_cart" slug=product.slug %}">ADD TO CART <i class="fa-solid fa-cart-shopping"></i></a>
+                            </div>
+                        {% else %}
+                            <div class="links-container">
+                                <a class="details" href="{% url "product_details" slug=product.slug %}">Details</a>
+                                <a class="signin" href="{% url 'login-user' %}">Sign in to purchase</a>
+                            </div>
+                        {% endif %}
                     </div>
                 {% endfor %}
             </section>

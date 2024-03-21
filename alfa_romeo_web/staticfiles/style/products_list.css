@@ -9,7 +9,7 @@
     align-content: center;
     background-position-y: 30%;
     /*max-height: 900px;*/
-    height: 850px;
+    /*height: 850px;*/
     vertical-align: middle;
 }
 
@@ -33,6 +33,7 @@
     color:white;
     text-decoration: none;
     font-weight: bold;
+    font-size: 20px;
 }
 
 .product-card{
@@ -107,8 +108,12 @@
     border-radius: 20px;
     padding: 4px 10px;
     margin: 0 5px 5px 5px;
-    font-weight: bold;
+    font-weight: 500;
     transition: 0.5s;
+}
+
+.links-container a:hover{
+    background-color: black;
 }
 
 .links-container .add-to-cart{
@@ -159,4 +164,15 @@
     /*margin-top: 20px;*/
     /*margin-right: 20px;*/
     font-weight: 700;
+}
+
+.messages{
+    margin: 0;
+    text-decoration: none;
+    text-align: center;
+    padding: 10px 0;
+}
+
+.messages li{
+    font-size: 20px;
 }

@@ -10,13 +10,28 @@
 
 <div class="tickets-wrapper">
 
+        
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
     <div class="tickets-container">
     
             {% for item in object_list %}
-                <div class="tickets-card">
+
+                <div class="product-card">
                     <h2>{{ item.title }}</h2>
 
-                    <p class="description">{{ item.description }}</p>
+                    {% if not item.image %}
+                        <div class="image-container">
+                            <img src="{% static 'images/line-icon-for-tickets-vector.jpg' %}" alt="{{ item.title }} img">
+                        </div>
+                    {% endif %}
+
                     <div class="prices-container">
                         {% if item.discount_price %}
                   {#    TODO: this style should be done in css but didnt work, #}
@@ -26,14 +41,19 @@
                              <p class="normal-price">Price: {{ item.price }} $</p>
                         {% endif %}
                     </div>
-                    
-                
-                    <div class="links-container">
-                        <a href="{% url "product_details" slug=item.slug %}">Details</a>
-                        <a class="add-to-cart" href="">ADD TO CART <i class="fa-solid fa-cart-shopping"></i></a>
-{#                      <a href="{% url "add_to_cart" slug=item.slug %}">ADD TO CART</a>#}
-                    </div>
-        
+
+                     {% if user.is_authenticated %}
+                        <div class="links-container">
+                            <a href="{% url "product_details" slug=item.slug %}">Details</a>
+                            <a class="add-to-cart" href="{% url "add_to_cart" slug=item.slug %}">ADD TO CART <i class="fa-solid fa-cart-shopping"></i></a>
+                        </div>
+                    {% else %}
+                         <div class="links-container">
+                            <a href="{% url "product_details" slug=item.slug %}">Details</a>
+                            <a href="{% url 'login-user' %}">Sign in to purchase</a>
+                        </div>
+                    {% endif %}
+
                 </div>
 
             {% endfor %}

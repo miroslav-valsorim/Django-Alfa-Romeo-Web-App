@@ -1,5 +1,5 @@
 .tickets-wrapper{
-    background-image: linear-gradient(rgba(0,0,0,0.55),rgba(0,0,0,0.55)), url("/static/images/cofani-aperti-3.jpg");
+    background-image: linear-gradient(rgba(0,0,0,0.55),rgba(0,0,0,0.55)), url("/static/images/54628e9d-b642-417c-89fa-722c3077715a.webp");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -9,7 +9,7 @@
     align-content: center;
     background-position-y: 30%;
     /*max-height: 900px;*/
-    height: 700px;
+    height: 850px;
     vertical-align: middle;
 }
 
@@ -23,44 +23,40 @@
     position: relative;
 }
 
-.tickets-categories{
-    margin-top: 10px;
-    text-align: center;
-    color:white;
-}
-
-.tickets-categories a{
-    color:white;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.tickets-card{
+.product-card{
     width: 270px;
-    height: 270px;
     margin: 10px;
     background-color: rgba(255,255,255,0.7);
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     transition: 0.5s;
-    position: relative;
 }
 
-.tickets-card:hover{
+.product-card:hover{
     transform: scale(1.05);
     box-shadow: 0 0 20px gray;
 }
 
-.tickets-card h2{
+.product-card h2{
     font-size: 20px;
     color: black;
     text-align: center;
     margin-top: 10px;
 }
 
-.tickets-card .description{
-    margin: 10px;
-    color: black;
-    text-align: center;
+.image-container{
+    width: 270px;
+    height: 210px;
+    overflow: hidden;
+    max-height: 250px;
+    margin: auto;
+    margin-top: 10px;
+}
+
+.image-container img{
+    background-size: cover;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
 }
 
 .prices-container{
@@ -71,8 +67,6 @@
     margin: 5px 15px;
     color: black;
     font-weight: 550;
-    position: absolute;
-    bottom: 40px;
 }
 
 .links-container{
@@ -80,8 +74,6 @@
     flex-direction: row;
     justify-content: space-between;
     margin: 0 5px;
-    position: absolute;
-    bottom: 0;
 }
 
 .links-container a{
@@ -96,8 +88,12 @@
     border-radius: 20px;
     padding: 4px 10px;
     margin: 0 5px 5px 5px;
-    font-weight: bold;
+    font-weight: 500;
     transition: 0.5s;
+}
+
+.links-container a:hover{
+    background-color: black;
 }
 
 .links-container .add-to-cart{
@@ -109,12 +105,9 @@
     background-color: greenyellow;
 }
 
+
 .paginate-wrap{
     display: block;
-    /*position: absolute;*/
-    /*bottom: 70px;*/
-    /*left: 50%;*/
-    /*transform: translateX(-50%)*/
     margin: 10px auto;
     background-color: rgba(255,255,255,0.5);
     border-radius: 20px;
@@ -139,3 +132,13 @@
     color: red;
 }
 
+.messages{
+    margin: 0;
+    text-decoration: none;
+    text-align: center;
+    padding: 10px 0;
+}
+
+.messages li{
+    font-size: 20px;
+}
