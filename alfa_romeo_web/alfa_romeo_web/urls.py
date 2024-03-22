@@ -17,6 +17,7 @@ urlpatterns = [
     path('news/', include('alfa_romeo_web.news.urls')),
     path('products/', include('alfa_romeo_web.products.urls')),
     path('cart/', include('alfa_romeo_web.cart.urls')),
+    path('checkout/', include('alfa_romeo_web.checkout.urls')),
 ]
 
 if settings.DEBUG:

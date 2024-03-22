@@ -2,18 +2,11 @@
 
 /* MAIN */
 .profile-edit{
-    background-image: linear-gradient(rgba(0,0,0,0.75),rgba(0,0,0,0.75)), url("/static/images/background.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
+    background-color: white;
     display: flex;
     flex-direction: column;
-    color: white;
+    color: black;
     align-content: center;
-    background-position-y: 70%;
-    max-height: 700px;
-    height: 700px;
-    vertical-align: middle;
 }
 .profile-edit h2{
     margin-top: 30px;
@@ -34,7 +27,7 @@
 }
 
 .edit-form-container input{
-    background-color: rgba(255,255,255,0.5);
+    background-color: rgba(100, 100, 100, 0.81);
     border: none;
     border-radius: 10px;
     margin-bottom: 10px;
@@ -45,30 +38,28 @@
 }
 
 .edit-form-container input:hover{
-    background-color: white;
+    background-color: rgba(100, 100, 100, 0.66);
 }
 
 .edit-form-container label{
     font-size: 20px;
 }
 .edit-form-container button{
-    margin: auto;
-    margin-top: 10px;
-    width: 200px;
-    padding: 15px 0;
-    text-align: center;
-    border-radius: 30px;
+    margin: 20px 10px;
+    text-decoration: none;
+    color: black;
+    border-radius: 20px;
+    padding: 5px 20px;
+    background-color: #52e128;
     font-weight: bold;
-    border: 2px solid red;
-    background: transparent;
-    color: #fff;
+    transition: 0.5s;
     cursor: pointer;
-    position: relative;
-    overflow: hidden;
+    border: none;
 }
 
 .edit-form-container button:hover{
-    background-color: red;
+    background-color: #38ff00;
+    transform: scale(1.1);
 }
 
 .edit-form-container p{
@@ -83,7 +74,7 @@
     justify-content: center;
     gap: 100px;
     align-items: center;
-    margin-top: 60px;
+    margin-top: 30px;
 }
 
 .image{

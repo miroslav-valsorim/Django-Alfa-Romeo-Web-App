@@ -50,10 +50,15 @@
     border: none;
     border-radius: 10px;
     margin-bottom: 10px;
-    padding: 10px 0px 10px 0px;
+    padding: 10px 0 10px 0;
     font-size: 15px;
     text-align: center;
     display: block;
+    width: 300px;
+}
+
+.login-form-container input:hover{
+    background-color: white;
 }
 
 .login-form-container label{
@@ -73,6 +78,10 @@
     cursor: pointer;
     position: relative;
     overflow: hidden;
+}
+
+.login-form-container button:hover{
+    background-color: red;
 }
 
 .login-form-container p{

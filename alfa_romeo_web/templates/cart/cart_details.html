@@ -79,7 +79,7 @@
                 <div class="links-container">
                     {% if object.items.all %}
                         <a class="bottom-links" href='{% url 'products_list' %}'>Continue shopping</a>
-                        <a class="bottom-links" href="">Proceed to checkout</a>
+                        <a class="bottom-links" href="{% url 'first_step' pk=request.user.pk %}">Proceed to checkout</a>
                     {% else %}
                         <a class="bottom-links" href='{% url 'products_list' %}'>Continue shopping</a>
                     {% endif %}

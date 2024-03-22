@@ -38,13 +38,13 @@ def logout_view(request):
 class ProfileDetailsView(OwnerRequiredMixin, views.DetailView):
     queryset = (Profile.objects.prefetch_related('user').all())
     template_name = "accounts/profile_details.html"
-    fields = ("first_name", "last_name", "date_of_birth", "profile_picture")
+    fields = ("first_name", "last_name", "date_of_birth", 'phone_number', "profile_picture")
 
 
 class ProfileEditView(OwnerRequiredMixin, views.UpdateView):
     queryset = Profile.objects.all()
     template_name = "accounts/profile_edit.html"
-    fields = ("first_name", "last_name", "date_of_birth", "profile_picture")
+    fields = ("first_name", "last_name", "date_of_birth", 'phone_number', "profile_picture")
 
     def get_success_url(self):
         return reverse('details-profile', kwargs={'pk': self.object.pk})
@@ -61,6 +61,9 @@ class ProfileEditView(OwnerRequiredMixin, views.UpdateView):
         form.fields["date_of_birth"].widget.attrs["placeholder"] = "YYYY-MM-DD"
         form.fields["date_of_birth"].widget.attrs["type"] = "date"
         form.fields["date_of_birth"].label = "Birthday"
+
+        form.fields["phone_number"].widget.attrs["placeholder"] = "Phone Number"
+        form.fields["phone_number"].label = "Phone Number"
 
         form.fields["profile_picture"].widget.attrs["placeholder"] = "https://"
         form.fields["profile_picture"].label = "Profile Picture"

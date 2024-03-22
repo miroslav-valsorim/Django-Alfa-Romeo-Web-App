@@ -11,7 +11,7 @@ class ListProductsView(views.ListView):
 
     def get_queryset(self):
         category_id = self.request.GET.get('category')
-        order_by = self.request.GET.get('order_by')
+        order_by = self.request.GET.get('order_by', 'created')
 
         if category_id:
             queryset = Products.get_all_products_by_categoryid(category_id).filter(is_active=True)
@@ -38,7 +38,7 @@ class ListProductsView(views.ListView):
         # Exclude the category "tickets"
         categories = [category for category in categories if category.name != "Tickets"]
 
-        context['order_by'] = self.request.GET.get('order_by', '-created')
+        context['order_by'] = self.request.GET.get('order_by', 'created')
 
         context['category_id'] = self.request.GET.get('category')
 

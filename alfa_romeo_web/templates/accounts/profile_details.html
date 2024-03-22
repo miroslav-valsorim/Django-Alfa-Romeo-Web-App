@@ -22,17 +22,20 @@
                 </div>
              </div>
              <div class="personal">
-                    <p>{{ profile.user.email }}</p>
                 
                     {% if object.full_name %}
                         <h3 class="names">{{ object.full_name }}</h3>
                     {% endif %}
     
                     {% if object.date_of_birth %}
-                        {{ object.date_of_birth|date }}
+                        <p>Birthday: {{ object.date_of_birth|date }}</p>
+                    {% endif %}
+             
+                    {% if object.phone_number %}
+                        <p>Phone: {{ object.phone_number }}</p>
                     {% endif %}
     
-                    <p class="email">{{ object.user.email }}</p>
+                    <p class="email">Email: {{ object.user.email }}</p>
              
                     
                     <a href="{% url 'edit-profile' pk=object.pk %}">
