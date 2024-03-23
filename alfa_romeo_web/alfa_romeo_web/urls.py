@@ -7,8 +7,10 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
+    # Admin
     path('admin/', admin.site.urls),
 
+    # Our URLs
     path('', include('alfa_romeo_web.main_page.urls')),
     path('account/', include('alfa_romeo_web.accounts.urls')),
     path('museum/', include('alfa_romeo_web.museum.urls')),
@@ -18,6 +20,9 @@ urlpatterns = [
     path('products/', include('alfa_romeo_web.products.urls')),
     path('cart/', include('alfa_romeo_web.cart.urls')),
     path('checkout/', include('alfa_romeo_web.checkout.urls')),
+
+    # PayPal URL
+    path('', include('paypal.standard.ipn.urls')),
 ]
 
 if settings.DEBUG:

@@ -38,6 +38,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    #  PayPal
+    'paypal.standard.ipn',
+
+    # Our apps
     "alfa_romeo_web.accounts.apps.AccountsConfig",
     "alfa_romeo_web.main_page.apps.MainPageConfig",
     "alfa_romeo_web.museum.apps.MuseumConfig",
@@ -146,6 +150,11 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'accounts.AlfaRomeoUser'
 
 LOGIN_REDIRECT_URL = reverse_lazy('main_page')
+
 LOGIN_URL = reverse_lazy('login-user')
+
 LOGOUT_REDIRECT_URL = reverse_lazy('main_page')
 
+PAYPAL_RECEIVER_EMAIL = 'sb-ec9fy30016830@business.example.com'
+
+PAYPAL_TEST = True

@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block extra_style %}
+        <link rel="stylesheet" href="{% static "/style/payment.css" %}">
+{% endblock %}
+
+{% block main_content %}
+    
+        <div class="container">
+              <h2>Checkout</h2>
+
+        
+            <div class="final-payment">
+                <h3>Products ordered</h3>
+                {% for item in order.items.all %}
+                    <li>{{ item.quantity }} x {{ item.item.title }} - {{ item.get_total_item_price }}$</li>
+                {% endfor %}
+                <p class="final-price">TOTAL PAYMENT: {{ order.get_total }} $</p>
+    
+                <button>{{paypal.render}}</button>
+             </div>  
+        
+        </div> 
+    
+{% endblock %}

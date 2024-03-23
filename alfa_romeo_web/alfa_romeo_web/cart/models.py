@@ -2,6 +2,7 @@ from django.contrib.auth import get_user_model
 from django.db import models
 from django.utils import timezone
 
+from alfa_romeo_web.checkout.models import ShippingAddress
 from alfa_romeo_web.products.models import Products
 
 UserModel = get_user_model()
@@ -67,12 +68,12 @@ class ShoppingCart(models.Model):
         default=timezone.now,
     )
 
-    # billing_address = models.ForeignKey(
-    #     BillingAddress,
-    #     on_delete=models.SET_NULL,
-    #     null=True,
-    #     blank=True,
-    # )
+    shipping_address = models.ForeignKey(
+        ShippingAddress,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+    )
 
     def __str__(self):
         return self.user.email

@@ -102,3 +102,6 @@ class Products(models.Model):
             self.slug = slugify(f"{self.category}-{self.title}-{self.pk}")
 
         super().save(*args, **kwargs)
+
+    def __str__(self):
+        return self.title

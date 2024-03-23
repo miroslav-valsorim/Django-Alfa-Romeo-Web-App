@@ -1,0 +1,31 @@
+.container{
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.container h2{
+    margin: 10px 0;
+}
+
+.final-payment{
+    margin: auto;
+}
+
+.final-payment li{
+    list-style: none;
+}
+
+.final-payment button{
+    background-color: #38ff00;
+    margin-bottom: 20px;
+    border-radius: 20px;
+    border: none;
+}
+
+.final-price{
+    margin: 20px 0;
+    font-weight: bold;
+    font-size: 20px;
+}

@@ -1,3 +1,8 @@
 from django.contrib import admin
 
-# Register your models here.
+from alfa_romeo_web.checkout.models import ShippingAddress
+
+
+@admin.register(ShippingAddress)
+class ModelNameAdmin(admin.ModelAdmin):
+    pass
