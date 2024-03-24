@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     "alfa_romeo_web.products.apps.ProductsConfig",
     "alfa_romeo_web.cart.apps.CartConfig",
     "alfa_romeo_web.checkout.apps.CheckoutConfig",
+    "alfa_romeo_web.forum.apps.ForumConfig",
 ]
 
 MIDDLEWARE = [

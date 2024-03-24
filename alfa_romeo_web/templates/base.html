@@ -12,166 +12,28 @@
     <link rel="stylesheet" href="">
     <link rel="stylesheet" href="{% static "/style/reset.css" %}">
     {% block extra_style %}
+        
     {% endblock %}
     <link rel="stylesheet" href="{% static "/style/base_style.css" %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
     <header class="header">
-        <a href="{% url "main_page" %}" class="logo-a">
-            <img src="{% static 'images/header_logo.png' %}" alt="Logo" class="logo">
-        </a>
-
-        <nav class="navigation">
-            <ul class="list" role="list">
-                <li class="nav-item">
-                    <a href="#">
-                        <i class="fa-solid fa-magnifying-glass"></i>
-                    </a>
-                </li>
-                <div class="dropdown">
-                    <li class="nav-item">
-                        <a href="{% url "museum_categories" %}">Museum <i class="fa-solid fa-angles-down"></i></a>
-                        <div class="dropdown-content">
-                            {% for category in museum_categories %}
-                                <a href="{% url 'museum_listing' %}?category={{ category.id }}">{{ category.name }}</a>
-                            {% endfor %}
-                        </div>
-                    </li>
-                </div>
-                <div class="dropdown">
-                    <li class="nav-item">
-                        <a href="{% url 'history_categories' %}">History <i class="fa-solid fa-angles-down"></i></a>
-                        <div class="dropdown-content">
-                                {% for category in history_categories %}
-                                    <a href="{% url 'history_details' pk=category.pk %}">{{ category.name }}</a>
-                                {% endfor %}
-                        </div>
-                    </li>
-                </div>
-                <li class="nav-item">
-                    <a href="{% url 'events_list' %}">Events</a>
-                </li>
-                 <li class="nav-item">
-                    <a href="{% url 'news_list' %}">News</a>
-                </li>
-                <li class="nav-item">
-                    <a href="{% url 'tickets_list' %}">Tickets</a>
-                </li>
-                <div class="dropdown">
-                    <li class="nav-item">
-                        <a href="{% url 'products_list' %}">Store <i class="fa-solid fa-angles-down"></i></a>
-                        <div class="dropdown-content">
-                            {% for category in product_categories %}
-                                <a href="{% url 'products_list' %}?category={{ category.id }}">{{category.name}}</a>
-                            {% endfor %}
-                        </div>
-                    </li>
-                </div>
-            
-                {% if not user.is_authenticated %}
-                    
-                    <li class="nav-item">
-                        <a href="{% url 'login-user' %}">Sign In</a>
-                    </li>
-                    
-                {% else %}
-                    <li class="nav-item">
-                        <a href="{% url 'cart_details' %}">
-                            <i class="fa-solid fa-cart-shopping"> {{ request.user | cart_item_count }}</i>
-                        </a>
-                    </li>
-                     <div class="dropdown">
-                        <li class="nav-item">
-                            <a href="{% url 'details-profile' pk=request.user.pk %}">
-                                <i class="fa-solid fa-user"></i>
-                            </a>
-                            <div class="dropdown-content">
-                                <a href="{% url 'logout-user' %}">Log Out</a>
-                                <a href="{% url 'edit-profile' pk=request.user.pk %}">Edit Profile</a>
-                                <a href="{% url 'details-profile' pk=request.user.pk %}">View Profile</a>
-                                </div>
-                        </li>
-                    </div>
-                    
-                {% endif %}
-                <!-- <button class="btn-search">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                </button> -->
-            </ul>
-        </nav>
+        
+            {% include 'partials/header.html' %}
+        
     </header>
-
+    
     <main>
        {% block main_content %}
            
        {% endblock%}
     </main>
+    
     <footer>
-       <div class="footer-links">
-            <div class="footer-logo">
-            <a href="{% url 'main_page' %}">
-                <img src="{% static 'images/Alfa-romeo-quadrifoglio-logo.png' %}" alt="">
-            </a>
-            </div>
-            <div class="contacts footer-div">
-                <h2>Contacts:</h2>
-                 <ul>
-                    <li class="">
-                        <p>
-                            <i class="fa-solid fa-phone"></i> 0899 XX XX XX
-                        </p>
-                    </li>
-                    <li class="">
-                        <p>
-                            <i class="fa-solid fa-envelope"></i> gmail@gmail.com
-                        </p>
-                    </li>
-                   <div class="links-web">
-                       <ul>
-                           <li>
-                               <a href="">
-                                   <i class="fa-brands fa-linkedin"></i>
-                               </a>
-                           </li>
-                           <li>
-                               <a href="">
-                                   <i class="fa-brands fa-square-facebook"></i>
-                               </a>
-                           </li>
-                           <li>
-                               <a href="">
-                                   <i class="fa-brands fa-square-instagram"></i>
-                               </a>
-                           </li>
-                       </ul>
-                   </div>
-                </ul>
-            </div>
-            <div class="about-museum footer-div">
-                <h2>Museum:</h2>
-                 <ul>
-                     {% for category in museum_categories %}
-                         <li>
-                             <a href="{% url 'museum_listing' %}?category={{ category.id }}">{{ category.name }}</a>
-                         </li>
-                     {% endfor %}
-                </ul>
-            </div>
-             <div class="merch footer-div">
-                <h2>Store:</h2>
-                 <ul>
-                    {% for category in product_categories %}
-                         <li>
-                             <a href="{% url 'products_list' %}?category={{ category.id }}">{{ category.name }}</a>
-                         </li>
-                     {% endfor %}
-                </ul>
-            </div>
-       </div>
-       <p class="rights-reserved">
-           © Alfa Romeo Web, All Right Reserved. By Miroslav Hristov
-       </p>
+
+        {% include 'partials/footer.html' %}
+        
     </footer>
 </body>
 </html>

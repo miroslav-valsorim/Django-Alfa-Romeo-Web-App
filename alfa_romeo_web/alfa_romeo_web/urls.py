@@ -20,6 +20,7 @@ urlpatterns = [
     path('products/', include('alfa_romeo_web.products.urls')),
     path('cart/', include('alfa_romeo_web.cart.urls')),
     path('checkout/', include('alfa_romeo_web.checkout.urls')),
+    path('forum/', include('alfa_romeo_web.forum.urls')),
 
     # PayPal URL
     path('', include('paypal.standard.ipn.urls')),

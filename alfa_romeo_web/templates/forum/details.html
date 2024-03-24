@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block extra_style %}
+    
+{% endblock %}
+
+{% block main_content %}
+    <div style="background-color: white">
+    
+         <hr>
+    <div>Topic: {{ post.title }}</div>
+    <div>Author: {{post.user.first_name}} {{ post.user.last_name }}</div>
+    <div>Description: {{ post.content }}</div>
+    <ul>
+        {% for comment in post.comments.all %}
+            <li>{{ comment }}</li>
+            <ul>
+            {% for reply in comment.replies.all %}
+                <li>{{ reply }}</li>
+                {{ reply.user }}
+                {{ reply.date  }}
+            {% endfor %}
+            </ul>
+              <form action="." method="post">
+                {% csrf_token %}
+                <div  id="comment{{comment.id}}">
+                <textarea name="reply" id="" placeholder="reply here ... "></textarea>
+                <input type="submit" value="submit" name="reply-form">
+                <input type="hidden" name="comment-id" value="{{comment.id}}">
+                 </div>
+                </form>
+        {% endfor %}
+    </ul>
+        <form action="." method="post">
+            {% csrf_token %}
+            <div  id="comment-area">
+                <textarea name="comment" id="" placeholder="comment here ... "></textarea>
+                <input type="submit" value="submit" name="comment-form">
+            </div>
+        </form>
+    </div>
+{% endblock %}

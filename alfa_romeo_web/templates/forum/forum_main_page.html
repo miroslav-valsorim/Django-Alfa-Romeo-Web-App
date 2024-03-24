@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block extra_style %}
+{#    <link rel="stylesheet" href="{% static "/style/history_museum_categories.css" %}">#}
+{% endblock %}
+
+{% block main_content %}
+    <div style="background-color: white">
+             <h1>FORUM PAGE</h1>
+                <div >
+                {% if forums %}
+                    
+                    {% for forum in forums %}
+                        
+                        <div style="border: 1px solid black">
+                           
+                            <div >
+                                <h4><a href="{% url 'topics_from_category' slug=forum.slug %}">{{forum.title}}</a></h4>
+                                <p>Description: {{forum.description}} </p>
+                            </div>
+                            <div>
+                                <span>{{forum.num_posts}} Posts</span>
+                            </div>
+                        </div>
+    
+                    {% endfor %}
+                {% else %}
+                    <div >
+                        <h1>&nbsp;no posts yet.</h1>
+                    </div>
+                {% endif %}
+                    </div>
+            <br>
+            <a href="{% url 'create_post' %}">Open a topic</a>
+
+    </div>
+{% endblock %}

@@ -5,7 +5,7 @@ from alfa_romeo_web.cart.models import OrderItem, ShoppingCart
 
 @admin.register(OrderItem)
 class ModelNameAdmin(admin.ModelAdmin):
-    list_display = ('id', 'user', 'ordered')
+    list_display = ('id', 'item', 'user', 'quantity','ordered')
     search_fields = ('user',)
 
 
