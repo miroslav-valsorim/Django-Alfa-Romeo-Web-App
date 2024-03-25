@@ -15,8 +15,3 @@ class AddTopicForm(forms.ModelForm):
         model = Post
         fields = ["title", "content", "categories"]
 
-
-class AddCommentForm(forms.ModelForm):
-    class Meta:
-        model = Comment
-        fields = ["content"]

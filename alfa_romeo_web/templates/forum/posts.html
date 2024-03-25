@@ -3,21 +3,27 @@
 {% load static %}
 
 {% block extra_style %}
-    
+        <link rel="stylesheet" href="{% static "/style/forum_main_page.css" %}">
 {% endblock %}
 
 {% block main_content %}
-    <div style="background-color: white">
+    <div class="container">
     
-         {{ category }}
-        {% for p in post %}
-            
-            <hr>
-            <div>Topic: {{ p.title }}</div>
-            <div>Author: {{p.user.first_name}} {{ p.user.last_name }}</div>
-            <a href="{% url 'post_details' slug=p.slug %}">More</a>
+        <div class="wrapper">
+            <h2>{{ category }}</h2>
         
-        {% endfor %}
+            {% for p in post %}
+                
+                <div class="content">
+                    
+                    <p>Topic: {{ p.title }}</p>
+                    <p>Author: {{p.user.first_name}} {{ p.user.last_name }}</p>
+                    <a class="view-topic" href="{% url 'post_details' slug=p.slug %}">View Post</a>
+                
+                </div>
+                
+            {% endfor %}
+        </div>
     
     </div>
 {% endblock %}

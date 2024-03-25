@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from alfa_romeo_web.forum.models import ForumCategory, Post, Comment, Reply
+from alfa_romeo_web.forum.models import ForumCategory, Post, Comment
 
 
 @admin.register(ForumCategory)
@@ -18,6 +18,3 @@ class ModelNameAdmin(admin.ModelAdmin):
     pass
 
 
-@admin.register(Reply)
-class ModelNameAdmin(admin.ModelAdmin):
-    pass

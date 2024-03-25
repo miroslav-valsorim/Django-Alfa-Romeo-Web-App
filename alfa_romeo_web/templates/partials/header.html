@@ -73,7 +73,10 @@
                         <a href="{% url 'logout-user' %}">Log Out</a>
                         <a href="{% url 'edit-profile' pk=request.user.pk %}">Edit Profile</a>
                         <a href="{% url 'details-profile' pk=request.user.pk %}">View Profile</a>
-                        </div>
+                        {% if request.user.is_superuser %}
+                            <a href="{% url 'admin:index' %}">Admin Panel</a>
+                        {% endif %}
+                    </div>
                 </li>
             </div>
             

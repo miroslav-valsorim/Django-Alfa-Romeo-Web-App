@@ -1,5 +1,4 @@
 from django.db import models
-from django.urls import reverse
 from django.utils.text import slugify
 
 from alfa_romeo_web.accounts.models import Profile
@@ -48,29 +47,6 @@ class ForumCategory(models.Model):
         return Post.objects.filter(categories=self).latest("date")
 
 
-class Reply(models.Model):
-    MAX_CONTENT_LENGTH = 400
-
-    user = models.ForeignKey(
-        Profile,
-        on_delete=models.CASCADE,
-    )
-
-    content = models.TextField(
-        max_length=MAX_CONTENT_LENGTH,
-    )
-
-    date = models.DateTimeField(
-        auto_now_add=True,
-    )
-
-    def __str__(self):
-        return self.content[:100]
-
-    class Meta:
-        verbose_name_plural = "replies"
-
-
 class Comment(models.Model):
     MAX_CONTENT_LENGTH = 400
 
@@ -85,11 +61,6 @@ class Comment(models.Model):
 
     date = models.DateTimeField(
         auto_now_add=True,
-    )
-
-    replies = models.ManyToManyField(
-        Reply,
-        blank=True,
     )
 
     def __str__(self):
@@ -152,15 +123,9 @@ class Post(models.Model):
     def __str__(self):
         return self.title
 
-    # def get_url(self):
-    #     return reverse("post_details", kwargs={
-    #         "slug": self.slug
-    #     })
 
     @property
     def num_comments(self):
         return self.comments.count()
 
-    @property
-    def last_reply(self):
-        return self.comments.latest("date")
+

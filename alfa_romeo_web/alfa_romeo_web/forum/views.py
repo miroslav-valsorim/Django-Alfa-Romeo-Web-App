@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 
 from alfa_romeo_web.accounts.models import Profile
 from alfa_romeo_web.forum.forms import ProfileForm, AddTopicForm
-from alfa_romeo_web.forum.models import ForumCategory, Post, Comment, Reply
+from alfa_romeo_web.forum.models import ForumCategory, Post, Comment
 
 
 def require_name(view_func):
@@ -93,13 +93,6 @@ def details(request, slug):
         comment = request.POST.get("comment")
         new_comment, created = Comment.objects.get_or_create(user=author, content=comment)
         post.comments.add(new_comment.id)
-
-    if "reply-form" in request.POST:
-        reply = request.POST.get("reply")
-        comment_id = request.POST.get("comment-id")
-        comment_obj = Comment.objects.get(id=comment_id)
-        new_reply, created = Reply.objects.get_or_create(user=author, content=reply)
-        comment_obj.replies.add(new_reply.id)
 
     context = {
         "post": post,
