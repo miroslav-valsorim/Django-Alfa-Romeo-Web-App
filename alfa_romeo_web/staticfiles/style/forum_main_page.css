@@ -23,6 +23,7 @@
     margin: 10px ;
     background-color: #adadad;
     padding: 10px;
+    font-size: 18px;
 }
 
 .content h4{
@@ -58,4 +59,18 @@
     padding: 4px 8px;
     background-color: #c5c5c5;
     font-weight: bold;
+}
+
+.back-link{
+    /*position: absolute;*/
+    /*top: 0;*/
+    /*margin-top: 20px;*/
+    text-decoration: None;
+    color: black;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.content .post-topic{
+    font-size: 18px;
 }

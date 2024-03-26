@@ -2,23 +2,75 @@
     background-color: #9d9d9d;
 }
 
+.back-link{
+    position: absolute;
+    top: 0;
+    margin-top: 20px;
+    text-decoration: None;
+    color: black;
+    font-size: 18px;
+    font-weight: 600;
+}
+
 .wrapper{
-    max-width: 1000px;
+    max-width: 900px;
     margin: auto;
     padding: 10px;
+    position: relative;
+}
+
+.wrapper .profile{
+    display: flex;
+    align-items: center;
+    border: 1px solid black;
+    border-radius: 20px;
+    padding: 6px;
+}
+
+.actual-info{
+    margin-top: 5px;
 }
 
 .wrapper h3{
     text-align: center;
     margin-top: 20px;
+    font-size: 30px;
 }
 
 .wrapper p{
     margin-left: 10px;
 }
 
+.profile .user-info{
+    font-weight: bold;
+}
+
+.comment-image{
+    border-radius: 100px;
+    overflow: hidden;
+    max-width: 30px;
+    max-height: 30px;
+    margin-top: 10px;
+}
+.comment-image img{
+    max-width: 100%;
+    object-fit: cover;
+}
+
+.image{
+    border-radius: 100px;
+    overflow: hidden;
+    max-width: 100px;
+    max-height: 100px;
+}
+.image img{
+    max-width: 100%;
+    object-fit: contain;
+}
+
 .comments-ul{
     margin-left: 20px;
+    list-style: none;
 }
 
 .comments-ul li{
@@ -27,8 +79,13 @@
     padding: 4px 10px;
     border-radius: 10px;
     background-color: #adadad;
-    width: fit-content;
-    max-width: 500px;
+    max-width: 750px;
+    margin-top: 4px;
+    display: flex;
+}
+
+.comments-ul li .user-comment{
+    font-weight: bold;
 }
 
 form textarea{

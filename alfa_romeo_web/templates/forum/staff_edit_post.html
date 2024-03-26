@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block extra_style %}
+{#    <link rel="stylesheet" href="{% static "/style/forum_credentials.css" %}">#}
+{% endblock %}
+
+{% block main_content %}
+     <div class="container" style="background-color: lightgray">
+        <h1>Edit post</h1>
+        <div>
+            <form method="post" action="{% url 'edit_post' slug=object.slug %}">
+                {{ form }}
+                {% csrf_token %}
+                <button>Update</button>
+            </form>
+            
+        </div>
+     
+        
+     </div>
+{% endblock %}

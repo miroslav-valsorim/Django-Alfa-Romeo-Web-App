@@ -75,7 +75,10 @@
                         <a href="{% url 'details-profile' pk=request.user.pk %}">View Profile</a>
                         {% if request.user.is_superuser %}
                             <a href="{% url 'admin:index' %}">Admin Panel</a>
-                        {% endif %}
+                            <a href="{% url 'staff_forum' %}">Forum Staff</a>
+                        {% elif request.user.is_staff %}
+                            <a href="{% url 'staff_forum' %}">Forum Staff</a>
+                        {% endif %}    
                     </div>
                 </li>
             </div>

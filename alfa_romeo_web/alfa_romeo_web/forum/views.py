@@ -1,6 +1,9 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
+from django.urls import reverse
+from django.views import generic as views
 
+from alfa_romeo_web.accounts.mixin import CheckAdminOrStaffAccess
 from alfa_romeo_web.accounts.models import Profile
 from alfa_romeo_web.forum.forms import ProfileForm, AddTopicForm
 from alfa_romeo_web.forum.models import ForumCategory, Post, Comment
@@ -100,3 +103,38 @@ def details(request, slug):
     }
 
     return render(request, "forum/details.html", context)
+
+
+class StaffTopicsForApproval(CheckAdminOrStaffAccess, views.ListView):
+    template_name = 'forum/staff_forum_page.html'
+    queryset = Post.objects.all()
+    paginate_by = 5
+
+    def get_queryset(self):
+        queryset = Post.objects.all()
+        order_by = self.request.GET.get('order_by', 'approved')
+
+        if order_by == 'approved':
+            queryset = queryset.order_by('approved')
+        elif order_by == 'date':
+            queryset = queryset.order_by('-date')
+        elif order_by == 'closed':
+            queryset = queryset.order_by('-closed')
+
+        return queryset
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        context['order_by'] = self.request.GET.get('order_by', 'approved')
+
+        return context
+
+
+class ForumTopicEditView(CheckAdminOrStaffAccess, views.UpdateView):
+    queryset = Post.objects.all()
+    template_name = "forum/staff_edit_post.html"
+    fields = ("title", "content", "approved", "categories", "comments", "closed",)
+
+    def get_success_url(self):
+        return reverse('staff_forum')

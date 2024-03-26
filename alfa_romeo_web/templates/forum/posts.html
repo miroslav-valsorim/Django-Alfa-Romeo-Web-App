@@ -10,14 +10,18 @@
     <div class="container">
     
         <div class="wrapper">
+        
+         <a class="back-link" href="{% url 'forum_main_page' %}"> <i class="fa-solid fa-angles-left"></i> Back</a>
+                   
+                
             <h2>{{ category }}</h2>
         
             {% for p in post %}
                 
                 <div class="content">
                     
-                    <p>Topic: {{ p.title }}</p>
-                    <p>Author: {{p.user.first_name}} {{ p.user.last_name }}</p>
+                    <p class="post-topic">Topic: {{ p.title }}</p>
+                    <p class="post-topic">Author: {{p.user.first_name}} {{ p.user.last_name }}</p>
                     <a class="view-topic" href="{% url 'post_details' slug=p.slug %}">View Post</a>
                 
                 </div>

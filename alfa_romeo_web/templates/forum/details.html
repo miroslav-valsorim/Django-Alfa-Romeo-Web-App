@@ -10,25 +10,61 @@
     
     <div class="container">
         <div class="wrapper">
-            
-            <h3>Topic: {{ post.title }}</h3>
-            <hr>
-            <p>Author: {{post.user.first_name}} {{ post.user.last_name }}</p>
-            <p>Description: {{ post.content }}</p>
-            <hr>
+
+            {% for category in post.categories.all %}
+                <a class="back-link" href="{% url 'topics_from_category' slug=category.slug %}">
+                    <i class="fa-solid fa-angles-left"></i> Back
+                </a>
+            {% endfor %}
+
+            <h3>{{ post.title }}</h3>
+
+            <div class="profile">
+                <div class="profile_img">
+                        <div class="image">
+                            {% if post.user.profile_picture %}
+                                <img src=" {{ post.user.profile_picture }}" alt="img8" />
+                            {% else %}
+                                <img src="{% static 'images/no-profile-picture.jpg' %}" alt="img8"/>
+                            {% endif %}
+                        </div>
+                </div>
+                <div>
+                    <p class="user-info">Author: {{post.user.first_name}} {{ post.user.last_name }}</p>
+                    <p class="user-info">Date posted: {{ post.date }}</p>
+                    <p class="actual-info">{{ post.content }}</p>
+                </div>
+            </div>
             <ul class="comments-ul">
                 {% for comment in post.comments.all %}
-                    <li>{{ comment }}</li>
-                    <p>Author: {{ comment.user }} / Date: {{ comment.date }}</p>
+                    <li>
+                        <div class="comment-image">
+                            {% if comment.user.profile_picture %}
+                                <img src=" {{ comment.user.profile_picture }}" alt="img8" />
+                            {% else %}
+                                <img src="{% static 'images/no-profile-picture.jpg' %}" alt="img8"/>
+                            {% endif %}
+                        </div>
+                        <div>
+                            <p class="user-comment">{{ comment.user }}</p>
+                            <p class="user-comment">{{ comment.date }}</p>
+                            <p class="actual-info">{{ comment }}</p>
+                        </div>
+                    </li>
                 {% endfor %}
             </ul>
-            <form action="." method="post">
-                {% csrf_token %}
-                <div>
-                    <textarea name="comment" id="" placeholder="comment here ... "></textarea>
-                    <input type="submit" value="submit" name="comment-form">
-                </div>
-            </form>
+            {% if post.closed %}
+                <h4>TOPIC IS CLOSED</h4>
+            {% else %}
+                <form action="." method="post">
+                    {% csrf_token %}
+                    <div>
+                        <textarea name="comment" id="" placeholder="comment here ... "></textarea>
+                        <input type="submit" value="Add comment" name="comment-form">
+                    </div>
+                </form>
+            {% endif %}
+            
         </div>
     </div>
     

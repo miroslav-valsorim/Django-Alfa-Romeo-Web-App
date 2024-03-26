@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block extra_style %}
+    <link rel="stylesheet" href="{% static "/style/forum_staff_list.css" %}">
+{% endblock %}
+
+{% block main_content %}
+     <div class="container">
+     
+          
+        
+         <div class="wrapper">
+                <div class="order-by">
+                        <form action="" method="get" id="order-form">
+                            
+                                <label for="order_by">Order By:</label>
+                                <select name="order_by" id="order_by">
+                                    <optgroup label="Order By">
+                                        <option value="approved" {% if order_by == 'approved' %}selected{% endif %}>Approved</option>
+                                        <option value="date" {% if order_by == 'date' %}selected{% endif %}>Date</option>
+                                        <option value="closed" {% if order_by == 'closed' %}selected{% endif %}>Closed</option>
+                                    </optgroup>
+                                </select>
+                                <input type="submit" style="display: none;"> 
+                        </form>
+    
+                        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+                        <script>
+                            $(document).ready(function() {
+                                $('#order_by').change(function() {
+                                    $('#order-form').submit(); 
+                                });
+                            });
+                        </script>
+                </div>
+         
+                <h2>Topics</h2>
+         
+         
+                 {% for obj in object_list %}
+                    <div class="topic {% if obj.approved %}approved{% else %}not-approved{% endif %} {% if obj.closed %}closed{% endif %}">
+                        <h3>{{ obj.title }}</h3>
+                        <a href="{% url 'edit_post' slug=obj.slug %}">Edit</a>
+                    </div>
+                {% endfor %}
+         
+        
+     
+                {% if is_paginated %}
+                    <div class="paginate-wrap">
+                        <nav>
+                            <ul class="pagination">
+                            {% if page_obj.has_previous %}
+                                <li><a href="?page={{ page_obj.previous_page_number }}&order_by={{ order_by }}"><i class="fa-solid fa-angles-left"></i></a></li>
+                            {% endif %}
+                            {% for i in paginator.page_range %}
+                                {% if page_obj.number == i %}
+                                    <li class="active"><a href="?page={{ i }}&order_by={{ order_by }}">{{ i }}</a></li>
+                                {% else %}
+                                    <li><a href="?page={{ i }}&order_by={{ order_by }}">{{ i }}</a></li>
+                                {% endif %}
+                            {% endfor %}
+                            {% if page_obj.has_next %}
+                                <li><a href="?page={{ page_obj.next_page_number }}&order_by={{ order_by }}"> <i class="fa-solid fa-angles-right"></i></a></li>
+                            {% endif %}
+                        </ul>
+                        </nav>
+                    </div>
+                {% endif %}
+         </div>
+     </div>
+{% endblock %}
