@@ -20,11 +20,13 @@
                         {% for forum in forums %}
                             
                             <div class="content">
-                        
-                                <h4><a href="{% url 'topics_from_category' slug=forum.slug %}">{{forum.title}} <i class="fa-solid fa-angles-left"></i></a></h4>
-                                <p>Description: {{forum.description}} </p>
-                                <p>{{forum.num_posts}} Posts</p>
                                 
+                                <div>
+                                    <h4><a href="{% url 'topics_from_category' slug=forum.slug %}">{{forum.title}} <i class="fa-solid fa-angles-left"></i></a></h4>
+                                    <p>Description: {{forum.description}} </p>
+                                    <p>{{forum.num_posts}} Posts</p>
+                                </div>
+                            
                             </div>
         
                         {% endfor %}
@@ -36,7 +38,29 @@
                         </div>
                         
                     {% endif %}
-                    
+                
+                {% if forums.has_other_pages %}
+                    <div class="paginate-wrap">
+                            <nav>
+                                <ul class="pagination">
+                                    {% if forums.has_previous %}
+                                        <li><a href="?page={{ forums.previous_page_number }}"><i class="fa-solid fa-angles-left"></i></a></li>
+                                    {% endif %}
+                                    {% for i in forums.paginator.page_range %}
+                                        {% if forums.number == i %}
+                                            <li class="active"><a href="?page={{ i }}">{{ i }}</a></li>
+                                        {% else %}
+                                            <li><a href="?page={{ i }}">{{ i }}</a></li>
+                                        {% endif %}
+                                    {% endfor %}
+                                    {% if forums.has_next %}
+                                        <li><a href="?page={{ forums.next_page_number }}"><i class="fa-solid fa-angles-right"></i></a></li>
+                                    {% endif %}
+                                </ul>
+                            </nav>
+                    </div>
+                {% endif %}
+
                 </div>
     
     </div>

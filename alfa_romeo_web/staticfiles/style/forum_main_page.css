@@ -24,6 +24,7 @@
     background-color: #adadad;
     padding: 10px;
     font-size: 18px;
+    display: flex;
 }
 
 .content h4{
@@ -73,4 +74,44 @@
 
 .content .post-topic{
     font-size: 18px;
+}
+
+.paginate-wrap{
+    display: block;
+    margin: 10px auto;
+    background-color: rgba(255,255,255,0.5);
+    border-radius: 20px;
+    width: fit-content;
+    padding: 3px;
+}
+
+.paginate-wrap nav ul{
+    display: flex;
+}
+
+.paginate-wrap nav ul li{
+    margin: 0 10px;
+    list-style: none;
+    font-weight: 700;
+}
+
+.paginate-wrap nav ul li a{
+    color: white;
+    text-decoration: none;
+}
+
+.pagination li.active a {
+    color: red;
+}
+
+.image{
+    border-radius: 100px;
+    overflow: hidden;
+    max-width: 100px;
+    max-height: 100px;
+    margin: 0px 10px;
+}
+.image img{
+    max-width: 100%;
+    object-fit: contain;
 }

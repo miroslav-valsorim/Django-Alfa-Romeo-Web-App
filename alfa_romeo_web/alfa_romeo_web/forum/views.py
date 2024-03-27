@@ -1,4 +1,6 @@
+from django import forms
 from django.contrib.auth.decorators import login_required
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 from django.views import generic as views
@@ -41,7 +43,19 @@ def credentials_needed(request):
 @require_name
 def forum_view(request):
     forums = ForumCategory.objects.all()
-    num_posts = Post.objects.all().count()
+    approved_posts = Post.objects.filter(approved=True)
+    print(approved_posts)
+    # TODO: filtering here has to be figured out
+    num_posts = approved_posts.count()
+    paginator = Paginator(forums, 5)
+
+    page_number = request.GET.get('page')
+    try:
+        forums = paginator.page(page_number)
+    except PageNotAnInteger:
+        forums = paginator.page(1)
+    except EmptyPage:
+        forums = paginator.page(paginator.num_pages)
 
     context = {
         "forums": forums,
@@ -61,6 +75,7 @@ def create_post(request):
             post = form.save(commit=False)
             post.user = user.profile
             post.save()
+            form.save_m2m()
 
         return redirect("forum_main_page")
 
@@ -78,6 +93,17 @@ def create_post(request):
 def posts(request, slug):
     category = ForumCategory.objects.get(slug=slug)
     post = Post.objects.filter(categories=category, approved=True)
+
+    paginator = Paginator(post, 5)
+
+    page_number = request.GET.get('page')
+    try:
+        post = paginator.page(page_number)
+    except PageNotAnInteger:
+        post = paginator.page(1)
+    except EmptyPage:
+        post = paginator.page(paginator.num_pages)
+
     context = {
         'category': category,
         'post': post,
@@ -89,6 +115,20 @@ def posts(request, slug):
 @login_required
 def details(request, slug):
     post = get_object_or_404(Post, slug=slug)
+
+    comments = post.comments.all()
+    comments_per_page = 10
+
+    paginator = Paginator(comments, comments_per_page)
+
+    page_number = request.GET.get('page')
+    try:
+        comments = paginator.page(page_number)
+    except PageNotAnInteger:
+        comments = paginator.page(1)
+    except EmptyPage:
+        comments = paginator.page(paginator.num_pages)
+
     if request.user.is_authenticated:
         author = Profile.objects.get(user=request.user)
 
@@ -99,7 +139,7 @@ def details(request, slug):
 
     context = {
         "post": post,
-        "title": post.title,
+        'comments': comments,
     }
 
     return render(request, "forum/details.html", context)

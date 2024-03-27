@@ -3,13 +3,17 @@
 {% load static %}
 
 {% block extra_style %}
-{#    <link rel="stylesheet" href="{% static "/style/forum_credentials.css" %}">#}
+    <link rel="stylesheet" href="{% static "/style/forum_edit_topic.css" %}">
 {% endblock %}
 
 {% block main_content %}
-     <div class="container" style="background-color: lightgray">
-        <h1>Edit post</h1>
-        <div>
+    
+     <div class="container">
+     
+        <div class="wrapper">
+            
+            <h2>Edit post</h2>
+
             <form method="post" action="{% url 'edit_post' slug=object.slug %}">
                 {{ form }}
                 {% csrf_token %}
@@ -18,6 +22,6 @@
             
         </div>
      
-        
      </div>
+    
 {% endblock %}

@@ -36,7 +36,7 @@
                 </div>
             </div>
             <ul class="comments-ul">
-                {% for comment in post.comments.all %}
+                {% for comment in comments %}
                     <li>
                         <div class="comment-image">
                             {% if comment.user.profile_picture %}
@@ -64,6 +64,28 @@
                     </div>
                 </form>
             {% endif %}
+            
+                 {% if comments.has_other_pages %}
+                    <div class="paginate-wrap">
+                            <nav>
+                                <ul class="pagination">
+                                    {% if comments.has_previous %}
+                                        <li><a href="?page={{ comments.previous_page_number }}"><i class="fa-solid fa-angles-left"></i></a></li>
+                                    {% endif %}
+                                    {% for i in comments.paginator.page_range %}
+                                        {% if comments.number == i %}
+                                            <li class="active"><a href="?page={{ i }}">{{ i }}</a></li>
+                                        {% else %}
+                                            <li><a href="?page={{ i }}">{{ i }}</a></li>
+                                        {% endif %}
+                                    {% endfor %}
+                                    {% if comments.has_next %}
+                                        <li><a href="?page={{ comments.next_page_number }}"><i class="fa-solid fa-angles-right"></i></a></li>
+                                    {% endif %}
+                                </ul>
+                            </nav>
+                    </div>
+                {% endif %}
             
         </div>
     </div>

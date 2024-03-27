@@ -20,13 +20,44 @@
                 
                 <div class="content">
                     
-                    <p class="post-topic">Topic: {{ p.title }}</p>
-                    <p class="post-topic">Author: {{p.user.first_name}} {{ p.user.last_name }}</p>
-                    <a class="view-topic" href="{% url 'post_details' slug=p.slug %}">View Post</a>
-                
+                    <div class="image">
+                        {% if p.user.profile_picture %}
+                            <img src=" {{ p.user.profile_picture }}" alt="img8" />
+                        {% else %}
+                            <img src="{% static 'images/no-profile-picture.jpg' %}" alt="img8"/>
+                        {% endif %}
+                    </div>
+                    
+                    <div>
+                        <p class="post-topic">Topic: {{ p.title }}</p>
+                        <p class="post-topic">Author: {{p.user.first_name}} {{ p.user.last_name }}</p>
+                        <a class="view-topic" href="{% url 'post_details' slug=p.slug %}">View Post</a>
+                    </div>
                 </div>
                 
             {% endfor %}
+        
+             {% if post.has_other_pages %}
+                    <div class="paginate-wrap">
+                            <nav>
+                                <ul class="pagination">
+                                    {% if post.has_previous %}
+                                        <li><a href="?page={{ post.previous_page_number }}"><i class="fa-solid fa-angles-left"></i></a></li>
+                                    {% endif %}
+                                    {% for i in post.paginator.page_range %}
+                                        {% if post.number == i %}
+                                            <li class="active"><a href="?page={{ i }}">{{ i }}</a></li>
+                                        {% else %}
+                                            <li><a href="?page={{ i }}">{{ i }}</a></li>
+                                        {% endif %}
+                                    {% endfor %}
+                                    {% if post.has_next %}
+                                        <li><a href="?page={{ post.next_page_number }}"><i class="fa-solid fa-angles-right"></i></a></li>
+                                    {% endif %}
+                                </ul>
+                            </nav>
+                    </div>
+             {% endif %}
         </div>
     
     </div>

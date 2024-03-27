@@ -1,0 +1,82 @@
+.container{
+    background-color: #9d9d9d;
+}
+
+.wrapper{
+    max-width: 900px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+}
+
+.wrapper h2{
+    margin-top: 10px ;
+}
+
+.wrapper form{
+    display: flex;
+    flex-direction: column;
+    margin: 10px auto;
+}
+
+.wrapper form input{
+    background-color: rgba(255, 255, 255, 0.5);
+    border: none;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    padding: 10px 0px 10px 0px;
+    font-size: 16px;
+    text-align: center;
+    display: block;
+}
+
+.wrapper form textarea{
+    width: 100%;
+    height: 150px;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.5);
+    font-size: 16px;
+    resize: none;
+    margin-bottom: 10px;
+}
+
+.wrapper form option{
+    margin-bottom: 10px;
+}
+
+.wrapper form label{
+    font-weight: bold;
+    align-items: center;
+    text-align: center;
+}
+
+.wrapper form button{
+    margin: auto;
+    margin-top: 10px;
+    width: 200px;
+    padding: 15px 0;
+    text-align: center;
+    border-radius: 30px;
+    font-weight: bold;
+    border: 2px solid red;
+    background: transparent;
+    color: black;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.wrapper form button:hover{
+    background-color: red;
+}
+
+.wrapper form div{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
