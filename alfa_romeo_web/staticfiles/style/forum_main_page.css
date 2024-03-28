@@ -25,6 +25,13 @@
     padding: 10px;
     font-size: 18px;
     display: flex;
+    transition: 0.5s;
+}
+
+.content:hover{
+    background-color: #e0e0e0;
+    transform: scale(1.03);
+    box-shadow: 0 0 15px #f3efef;
 }
 
 .content h4{

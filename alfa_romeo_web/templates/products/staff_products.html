@@ -3,11 +3,12 @@
 {% load static %}
 
 {% block extra_style %}
-    <link rel="stylesheet" href="{% static "/style/forum_staff_list.css" %}">
+    <link rel="stylesheet" href="{% static "/style/product_staff_list.css" %}">
 {% endblock %}
 
 {% block main_content %}
-     <div class="container">
+
+    <div class="container">
      
           
         
@@ -18,9 +19,10 @@
                                 <label for="order_by">Order By:</label>
                                 <select name="order_by" id="order_by">
                                     <optgroup label="Order By">
-                                        <option value="approved" {% if order_by == 'approved' %}selected{% endif %}>Approved</option>
-                                        <option value="date" {% if order_by == 'date' %}selected{% endif %}>Date</option>
-                                        <option value="closed" {% if order_by == 'closed' %}selected{% endif %}>Closed</option>
+                                        <option value="is_active" {% if order_by == 'is_active' %}selected{% endif %}>Active</option>
+                                        <option value="not_active" {% if order_by == 'not_active' %}selected{% endif %}>Not Active</option>
+                                        <option value="created" {% if order_by == 'created' %}selected{% endif %}>Date</option>
+                                        <option value="category" {% if order_by == 'category' %}selected{% endif %}>Category</option>
                                     </optgroup>
                                 </select>
                                 <input type="submit" style="display: none;"> 
@@ -37,20 +39,23 @@
                 </div>
                 
                 <div class="search-field">
-                    <form method="GET" action="{% url 'staff_forum' %}">
-                        <input type="text" name="Search" placeholder="Search by topic title
-                        ..." value="{{ search_query }}">
+                    <form method="GET" action="{% url 'staff_products_list' %}">
+                        <input type="text" name="Search" placeholder="Search by product title..." value="{{ search_query }}">
                         <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                     </form>
                 </div>
          
-                <h2>Topics</h2>
+                <div class="create-product">
+                    <a href="{% url 'staff_create_product' %}">Create New Product</a>
+                </div>
+         
+                <h2>Products</h2>
          
          
                  {% for obj in object_list %}
-                    <div class="topic {% if obj.approved %}approved{% else %}not-approved{% endif %} {% if obj.closed %}closed{% endif %}">
+                    <div class="topic {% if obj.is_active %}active-product{% else %}not-active-product{% endif %}">
                         <h3>{{ obj.title }}</h3>
-                        <a href="{% url 'edit_post' slug=obj.slug %}">Edit</a>
+                        <a href="{% url 'staff_edit_product' slug=obj.slug %}">Edit</a>
                     </div>
                 {% endfor %}
          
@@ -79,4 +84,5 @@
                 {% endif %}
          </div>
      </div>
+    
 {% endblock %}

@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block extra_style %}
+        <link rel="stylesheet" href="{% static "/style/product_staff_delete.css" %}">
+{% endblock %}
+
+{% block main_content %}
+
+    
+    <div class="product-delete">
+    
+        <form method="post" action="{% url 'delete_post' slug=object.slug %}">
+            
+            <div class="delete-div">
+                
+                <h2>
+                Are you sure you want to delete this topic?
+                </h2>
+                <div class="buttons">
+                    <button>Yes</button>
+                    <a class="edit-btn" href="{% url "edit_post" slug=object.slug %}">Go Back</a>
+                </div>
+            
+            </div>
+            {% csrf_token %}
+        </form>
+    
+    </div>
+   
+
+{% endblock %}

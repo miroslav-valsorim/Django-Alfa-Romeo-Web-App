@@ -12,13 +12,13 @@
      
         <div class="wrapper">
             
-            <h2>Edit post</h2>
+            <h2>Edit product</h2>
 
-            <form method="post" action="{% url 'edit_post' slug=object.slug %}">
+            <form method="post" action="{% url 'staff_edit_product' slug=object.slug %}" enctype="multipart/form-data">
                 {{ form }}
                 {% csrf_token %}
                 <button>Update</button>
-                <a href="{% url 'delete_post' slug=object.slug %}">Delete Post</a>
+                <a href="{% url 'staff_delete_product' slug=object.slug %}">Delete Product</a>
             </form>
             
         </div>

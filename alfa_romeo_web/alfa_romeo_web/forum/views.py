@@ -1,9 +1,10 @@
-from django import forms
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
+from django.db.models import Q
 from django.shortcuts import render, redirect, get_object_or_404
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 from django.views import generic as views
+from django.contrib.auth import mixins as auth_mixins
 
 from alfa_romeo_web.accounts.mixin import CheckAdminOrStaffAccess
 from alfa_romeo_web.accounts.models import Profile
@@ -44,7 +45,7 @@ def credentials_needed(request):
 def forum_view(request):
     forums = ForumCategory.objects.all()
     approved_posts = Post.objects.filter(approved=True)
-    print(approved_posts)
+    # print(approved_posts)
     # TODO: filtering here has to be figured out
     num_posts = approved_posts.count()
     paginator = Paginator(forums, 5)
@@ -145,10 +146,10 @@ def details(request, slug):
     return render(request, "forum/details.html", context)
 
 
-class StaffTopicsForApproval(CheckAdminOrStaffAccess, views.ListView):
+class StaffTopicsForApproval(auth_mixins.LoginRequiredMixin, CheckAdminOrStaffAccess, views.ListView):
     template_name = 'forum/staff_forum_page.html'
     queryset = Post.objects.all()
-    paginate_by = 5
+    paginate_by = 8
 
     def get_queryset(self):
         queryset = Post.objects.all()
@@ -161,20 +162,34 @@ class StaffTopicsForApproval(CheckAdminOrStaffAccess, views.ListView):
         elif order_by == 'closed':
             queryset = queryset.order_by('-closed')
 
+        search_query = self.request.GET.get('Search')
+        if search_query:
+            queryset = queryset.filter(
+                Q(title__icontains=search_query) |
+                Q(content__icontains=search_query)
+            )
+
         return queryset
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
 
         context['order_by'] = self.request.GET.get('order_by', 'approved')
+        context['search_query'] = self.request.GET.get('Search', '')
 
         return context
 
 
-class ForumTopicEditView(CheckAdminOrStaffAccess, views.UpdateView):
+class StaffForumTopicEditView(auth_mixins.LoginRequiredMixin, CheckAdminOrStaffAccess, views.UpdateView):
     queryset = Post.objects.all()
     template_name = "forum/staff_edit_post.html"
     fields = ("title", "content", "approved", "categories", "comments", "closed",)
 
     def get_success_url(self):
         return reverse('staff_forum')
+
+
+class StaffTopicDeleteView(auth_mixins.LoginRequiredMixin, CheckAdminOrStaffAccess, views.DeleteView):
+    model = Post
+    template_name = "forum/staff_delete_topic.html"
+    success_url = reverse_lazy('staff_forum')

@@ -1,0 +1,70 @@
+
+.product-delete{
+    background-color: #9d9d9d;
+    display: flex;
+    flex-direction: column;
+    color: black;
+    max-height: 500px;
+    height: 500px;
+    align-items: center;
+}
+
+.product-delete form{
+    margin: auto;
+}
+
+.product-delete .delete-div h2{
+    margin: auto;
+    font-size: 30px;
+    text-align: center;
+}
+
+.delete-div{
+    margin: auto;
+}
+
+.buttons{
+    display: flex;
+    margin-top: 20px;
+}
+
+.buttons button{
+    display: block;
+    margin: auto;
+    width: 250px;
+    padding: 6px 0;
+    text-align: center;
+    border-radius: 30px;
+    font-weight: bold;
+    border: 2px solid red;
+    background-color: transparent;
+    color: black;
+    cursor: pointer;
+    text-decoration: none;
+    overflow: hidden;
+}
+
+.buttons button:hover{
+    background-color: red;
+}
+
+.buttons a{
+    display: block;
+    margin: auto;
+    width: 250px;
+    padding: 6px 0;
+    text-align: center;
+    border-radius: 30px;
+    font-weight: bold;
+    border: 2px solid red;
+    background: transparent;
+    color: black;
+    cursor: pointer;
+    text-decoration: none;
+    overflow: hidden;
+}
+
+.buttons a:hover{
+    background-color: red;
+}
+

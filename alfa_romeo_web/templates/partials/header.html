@@ -76,8 +76,12 @@
                         {% if request.user.is_superuser %}
                             <a href="{% url 'admin:index' %}">Admin Panel</a>
                             <a href="{% url 'staff_forum' %}">Forum Staff</a>
+                            <a href="{% url 'staff_products_list' %}">Products Staff</a>
+                            <a href="{% url 'staff_news' %}">News Staff</a>
                         {% elif request.user.is_staff %}
                             <a href="{% url 'staff_forum' %}">Forum Staff</a>
+                            <a href="{% url 'staff_products_list' %}">Products Staff</a>
+                            <a href="{% url 'staff_news' %}">News Staff</a>
                         {% endif %}    
                     </div>
                 </li>
