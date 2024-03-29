@@ -59,7 +59,7 @@ class StaffNewsListView(auth_mixins.LoginRequiredMixin, CheckAdminOrStaffAccess,
 class StaffNewsEditView(auth_mixins.LoginRequiredMixin, CheckAdminOrStaffAccess, views.UpdateView):
     queryset = News.objects.all()
     template_name = "news/staff_edit_news.html"
-    fields = ("created_by", "title", "img_field", "description", "is_active", "img_field", "is_active", "slug")
+    fields = ("created_by", "title", "img_field", "description", "img_field", "is_active", "slug")
 
     def get_success_url(self):
         return reverse('staff_news')
@@ -68,7 +68,7 @@ class StaffNewsEditView(auth_mixins.LoginRequiredMixin, CheckAdminOrStaffAccess,
 class StaffNewsCreateView(auth_mixins.LoginRequiredMixin, CheckAdminOrStaffAccess, views.CreateView):
     model = News
     template_name = 'news/staff_create_news.html'
-    fields = ("created_by", "title", "img_field", "description", "is_active", "img_field", "is_active", "slug")
+    fields = ("created_by", "title", "img_field", "description", "img_field", "is_active", "slug")
     success_url = reverse_lazy('staff_news')
 
 
