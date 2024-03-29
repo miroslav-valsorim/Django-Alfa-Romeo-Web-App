@@ -1,7 +1,6 @@
 /* HEADER */
 
 /* MAIN */
-/* MAIN */
 .profile-details{
     background-image: linear-gradient(rgba(0,0,0,0.75),rgba(0,0,0,0.75)), url("/static/images/background.jpg");
     background-size: cover;
@@ -24,24 +23,25 @@
 }
 
 .personal{
-    background-color: rgba(255,255,255,0.5);
-    border-radius: 20px;
-    text-align: center;
+    background-color: rgba(255,255,255,0.7);
+    border-radius: 10px;
+    text-align: left;
     color: black;
-    width: 400px;
-    max-width: 400px;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.personal .personal-info{
+    margin: 20px;
 }
 
 .personal p{
     margin-top: 10px;
-    font-size: 24px;
+    font-size: 22px;
+    font-weight: 600;
 }
-
-/*.personal a{*/
-/*    display: block;*/
-/*    text-decoration: none;*/
-/*    color: white;*/
-/*}*/
 
 .personal a{
     display: block;
@@ -61,12 +61,8 @@
     overflow: hidden;
 }
 
-.both-containers{
-    display: flex;
-    justify-content: center;
-    gap: 50px;
-    margin-top: 60px;
-;
+.personal a:hover{
+    background-color: red;
 }
 
 .image{
@@ -74,7 +70,9 @@
     overflow: hidden;
     max-width: 200px;
     max-height: 200px;
+    margin: 0 20px;
 }
+
 .image img{
     max-width: 200px;
 }

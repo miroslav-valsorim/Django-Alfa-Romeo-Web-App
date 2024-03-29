@@ -11,48 +11,56 @@
     
     <div class="profile-details">
          <h2>Profile Details</h2>
-         <div class="both-containers">
-             <div class="profile_img">
-                <div class="image">
-                    {% if object.profile_picture %}
-                        <img src="{{ object.profile_picture }}" alt="img8"/>
-                    {% else %}
-                        <img src="{% static 'images/no-profile-picture.jpg' %}" alt="img8"/>
-                    {% endif %}
-                </div>
-             </div>
+             
              <div class="personal">
-                
-                    {% if object.full_name %}
-                        <h3 class="names">{{ object.full_name }}</h3>
-                    {% endif %}
-    
-                    {% if object.date_of_birth %}
-                        <p>Birthday: {{ object.date_of_birth|date }}</p>
-                    {% endif %}
              
-                    {% if object.phone_number %}
-                        <p>Phone: {{ object.phone_number }}</p>
-                    {% endif %}
-    
-                    <p class="email">Email: {{ object.user.email }}</p>
-             
+                    <div class="profile_img">
+                        <div class="image">
+                            {% if object.profile_picture %}
+                                <img src="{{ object.profile_picture }}" alt="img8"/>
+                            {% else %}
+                                <img src="{% static 'images/no-profile-picture.jpg' %}" alt="img8"/>
+                            {% endif %}
+                        </div>
+                     </div>
+                    <div class="personal-info">
                     
-                    <a href="{% url 'edit-profile' pk=object.pk %}">
-                        Edit Profile
-                        <i class="fa-solid fa-pen"></i>
-                    </a>
-                    <a href="{% url 'password-change' pk=object.pk %}">
-                        Change Password
-                       <i class="fa-solid fa-key"></i>
-                    </a>
-                    <a href="{% url 'delete-profile' pk=object.pk %}">
-                        Delete Profile
-                        <i class="fa-solid fa-trash"></i>
-                    </a>
-
+                        {% if object.full_name %}
+                            <p>Full Name: {{ object.full_name }}</p>
+                        {% endif %}
+        
+                        {% if object.date_of_birth %}
+                            <p>Birthday: {{ object.date_of_birth|date }}</p>
+                        {% endif %}
+                 
+                        {% if object.phone_number %}
+                            <p>Phone: {{ object.phone_number }}</p>
+                        {% endif %}
+        
+                        <p class="email">Email: {{ object.user.email }}</p>
+                 
+                         {% if request.user.is_superuser %}
+                             <p>Rank: Admin</p>
+                         {% elif request.user.is_staff %}
+                             <p>Rank: Moderator</p>
+                         {% endif %}
+                        
+                        <a href="{% url 'edit-profile' pk=object.pk %}">
+                            Edit Profile
+                            <i class="fa-solid fa-pen"></i>
+                        </a>
+                        <a href="{% url 'password-change' pk=object.pk %}">
+                            Change Password
+                           <i class="fa-solid fa-key"></i>
+                        </a>
+                        <a href="{% url 'delete-profile' pk=object.pk %}">
+                            Delete Profile
+                            <i class="fa-solid fa-trash"></i>
+                        </a>
+                        
+                    </div>
              </div>
-         </div>
+
     </div>
    
 

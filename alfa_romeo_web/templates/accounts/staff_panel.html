@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block extra_style %}
+        <link rel="stylesheet" href="{% static "/style/staff_panel.css" %}">
+{% endblock %}
+
+{% block main_content %}
+    
+        <div class="container">
+            <div class="wrapper">
+                <h1>Staff Panel</h1>
+                
+                <a href="{% url 'staff_history' %}">History Staff</a>
+                <a href="{% url 'staff_event' %}">Events Staff</a>
+                <a href="{% url 'staff_news' %}">News Staff</a>
+                <a href="{% url 'staff_forum' %}">Forum Staff</a>
+                <a href="{% url 'staff_products_list' %}">Products Staff</a>
+            </div>
+        </div>
+    
+{% endblock %}

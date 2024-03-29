@@ -24,7 +24,7 @@
                 <a href="{% url 'history_categories' %}">History <i class="fa-solid fa-angles-down"></i></a>
                 <div class="dropdown-content">
                         {% for category in history_categories %}
-                            <a href="{% url 'history_details' pk=category.pk %}">{{ category.name }}</a>
+                            <a href="{% url 'history_list' %}?category={{ category.id }}">{{ category.name }}</a>
                         {% endfor %}
                 </div>
             </li>
@@ -75,15 +75,9 @@
                         <a href="{% url 'details-profile' pk=request.user.pk %}">View Profile</a>
                         {% if request.user.is_superuser %}
                             <a href="{% url 'admin:index' %}">Admin Panel</a>
-                            <a href="{% url 'staff_forum' %}">Forum Staff</a>
-                            <a href="{% url 'staff_products_list' %}">Products Staff</a>
-                            <a href="{% url 'staff_news' %}">News Staff</a>
-                            <a href="{% url 'staff_event' %}">Events Staff</a>
+                            <a href="{% url 'staff_panel' %}">Staff Panel</a>
                         {% elif request.user.is_staff %}
-                            <a href="{% url 'staff_forum' %}">Forum Staff</a>
-                            <a href="{% url 'staff_products_list' %}">Products Staff</a>
-                            <a href="{% url 'staff_news' %}">News Staff</a>
-                            <a href="{% url 'staff_event' %}">Events Staff</a>
+                            <a href="{% url 'staff_panel' %}">Staff Panel</a>
                         {% endif %}    
                     </div>
                 </li>

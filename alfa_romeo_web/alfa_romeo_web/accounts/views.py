@@ -2,9 +2,11 @@ from django.contrib.auth import views as auth_views, get_user_model, logout, log
 from django.contrib.auth import forms as auth_forms
 from django.urls import reverse_lazy, reverse
 from django.views import generic as views
-from django.shortcuts import redirect
+from django.shortcuts import redirect, render
+from django.contrib.auth import mixins as auth_mixins
+
 from alfa_romeo_web.accounts.forms import AlfaRomeoUserCreationForm
-from alfa_romeo_web.accounts.mixin import OwnerRequiredMixin
+from alfa_romeo_web.accounts.mixin import OwnerRequiredMixin, CheckAdminOrStaffAccess
 from alfa_romeo_web.accounts.models import Profile
 
 UserModel = get_user_model()
@@ -77,7 +79,7 @@ class ProfileChangePasswordView(OwnerRequiredMixin, auth_views.PasswordChangeVie
     success_url = reverse_lazy('main_page')
 
 
-class ProfileDeleteView(OwnerRequiredMixin, views.DeleteView):
+class ProfileDeleteView(views.DeleteView):
     model = UserModel
     queryset = Profile.objects.all()
     template_name = "accounts/profile_delete.html"
@@ -90,3 +92,8 @@ class ProfileDeleteView(OwnerRequiredMixin, views.DeleteView):
         user = self.get_object()
         user.delete()
         return redirect(self.get_success_url())
+
+
+class StaffPanelView(auth_mixins.LoginRequiredMixin, CheckAdminOrStaffAccess, views.View):
+    def get(self, request, *args, **kwargs):
+        return render(request, 'accounts/staff_panel.html')

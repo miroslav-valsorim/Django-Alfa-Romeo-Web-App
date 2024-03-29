@@ -59,17 +59,25 @@ class StaffNewsListView(auth_mixins.LoginRequiredMixin, CheckAdminOrStaffAccess,
 class StaffNewsEditView(auth_mixins.LoginRequiredMixin, CheckAdminOrStaffAccess, views.UpdateView):
     queryset = News.objects.all()
     template_name = "news/staff_edit_news.html"
-    fields = ("created_by", "title", "img_field", "description", "img_field", "is_active", "slug")
+    fields = ("title", "img_field", "description", "img_field", "is_active", "slug")
 
     def get_success_url(self):
         return reverse('staff_news')
+
+    def form_valid(self, form):
+        form.instance.created_by = self.request.user
+        return super().form_valid(form)
 
 
 class StaffNewsCreateView(auth_mixins.LoginRequiredMixin, CheckAdminOrStaffAccess, views.CreateView):
     model = News
     template_name = 'news/staff_create_news.html'
-    fields = ("created_by", "title", "img_field", "description", "img_field", "is_active", "slug")
+    fields = ("title", "img_field", "description", "img_field", "is_active", "slug")
     success_url = reverse_lazy('staff_news')
+
+    def form_valid(self, form):
+        form.instance.created_by = self.request.user
+        return super().form_valid(form)
 
 
 class StaffNewsDeleteView(auth_mixins.LoginRequiredMixin, CheckAdminOrStaffAccess, views.DeleteView):

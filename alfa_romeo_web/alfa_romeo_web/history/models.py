@@ -1,16 +1,26 @@
 from django.contrib.auth import get_user_model
 from django.db import models
-from django.utils.text import slugify
 
 UserModel = get_user_model()
 
 
 class HistoryCategory(models.Model):
-    name = models.CharField(max_length=50)
+    MAX_HISTORY_CATEGORY_LENGTH = 50
+
+    name = models.CharField(
+        max_length=MAX_HISTORY_CATEGORY_LENGTH,
+        blank=False,
+        null=False,
+    )
+
     img_field = models.ImageField(
         upload_to='history/',
         blank=False,
         null=False,
+    )
+
+    is_active = models.BooleanField(
+        default=True
     )
 
     @staticmethod
@@ -81,10 +91,3 @@ class History(models.Model):
     def __str__(self):
         return f"ID: {self.id} / Category: {self.category} / Header: {self.header}"
 
-    # def save(self, *args, **kwargs):
-    #     super().save(*args, **kwargs)
-    #
-    #     if not self.slug:  # slugify("My name") -> "My-name"
-    #         self.slug = slugify(f"{self.category}-{self.header}-{self.pk}")
-    #
-    #     super().save(*args, **kwargs)

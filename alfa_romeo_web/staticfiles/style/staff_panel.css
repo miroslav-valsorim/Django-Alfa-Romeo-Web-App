@@ -1,0 +1,29 @@
+.container{
+    background-color: #9d9d9d;
+}
+
+.wrapper{
+    max-width: 1000px;
+    margin: auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.wrapper a{
+    margin: 10px;
+    text-decoration: none;
+    border: solid black 1px;
+    background-color: #c5c5c5;
+    border-radius: 4px;
+    padding: 6px 10px;
+    font-weight: bold;
+    color: black;
+    text-align: center;
+    width: 200px;
+}
+
+.wrapper a:hover{
+    background-color: #ececec;
+}

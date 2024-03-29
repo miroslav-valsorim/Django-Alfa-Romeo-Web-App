@@ -69,8 +69,6 @@ The Website is done only for study purposes. Since I'm Alfa Romeo fan that's my 
 
 ![ShoppingPage](screenshots/Screenshot_Shopping_Cart.png)
 
-![ShoppingPage](screenshots/Screenshot_Shopping_Cart.png)
-
 ![CheckoutPage](screenshots/Screenshot_Checkout_One.png)
 
 ![CheckoutPage](screenshots/Screenshot_Checkout_Two.png)

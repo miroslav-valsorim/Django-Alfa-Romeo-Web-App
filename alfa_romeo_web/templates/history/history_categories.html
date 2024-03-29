@@ -12,7 +12,7 @@
 
         {% for story in object_list %}
 
-            <a href="{% url 'history_details' pk=story.pk %}">
+            <a href="{% url 'history_list' %}?category={{ story.id }}">
                 <div class="museum-category">
                     <h3>{{ story.name }}</h3>
                     <div class="museum-img-container">
@@ -22,6 +22,7 @@
             </a>
 
         {% endfor %}
+    
     </div>
 
 {% endblock %}

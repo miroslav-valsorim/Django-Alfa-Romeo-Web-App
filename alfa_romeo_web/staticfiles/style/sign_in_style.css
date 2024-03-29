@@ -13,16 +13,6 @@
     background-position-y: 70%;
     max-height: 700px;
     height: 700px;
-    /* margin-top: 40px; */
-    /* box-sizing: border-box; */
-    /* align-items: center; */
-    /* width: 100%; */
-    /* position: absolute; */
-    /* top: 50%; */
-    /* transform: translateY(-50%);
-    text-align: center; */
-    /* padding-left: 40px;
-    padding-right: 20px; */
 }
 .content h2{
     font-size: 40px;
@@ -33,6 +23,10 @@
 .forms{
     margin: auto;
     text-align: center;
+}
+
+.login-form-container{
+    width: 400px;
 }
 
 .login-form-container ::placeholder{
@@ -54,7 +48,7 @@
     font-size: 15px;
     text-align: center;
     display: block;
-    width: 300px;
+    /*width: 300px;*/
 }
 
 .login-form-container input:hover{
@@ -91,7 +85,6 @@
 }
 
 .login-form-container a{
-    /*text-decoration: none;*/
     color: white;
     font-weight: bold;
 }

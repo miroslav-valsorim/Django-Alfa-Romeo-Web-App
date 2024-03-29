@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block extra_style %}
+    <link rel="stylesheet" href="{% static "/style/forum_edit_topic.css" %}">
+{% endblock %}
+
+{% block main_content %}
+    
+     <div class="container">
+     
+        <div class="wrapper">
+            
+            <h2>Create new History</h2>
+
+            <form method="post" action="{% url 'staff_create_history' %}" enctype="multipart/form-data">
+                {{ form }}
+                {% csrf_token %}
+                <button>Create</button>
+            </form>
+            
+        </div>
+     
+     </div>
+    
+{% endblock %}

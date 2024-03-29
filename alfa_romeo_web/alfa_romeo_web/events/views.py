@@ -59,17 +59,25 @@ class StaffEventListView(auth_mixins.LoginRequiredMixin, CheckAdminOrStaffAccess
 class StaffEventEditView(auth_mixins.LoginRequiredMixin, CheckAdminOrStaffAccess, views.UpdateView):
     queryset = Event.objects.all()
     template_name = "events/staff_edit_event.html"
-    fields = ("created_by", "title", "img_field", "description", "event_date", "location", "img_field", "is_active", "slug")
+    fields = ("title", "img_field", "description", "event_date", "location", "is_active", "slug")
 
     def get_success_url(self):
         return reverse('staff_event')
+
+    def form_valid(self, form):
+        form.instance.created_by = self.request.user
+        return super().form_valid(form)
 
 
 class StaffEventCreateView(auth_mixins.LoginRequiredMixin, CheckAdminOrStaffAccess, views.CreateView):
     model = Event
     template_name = 'events/staff_create_event.html'
-    fields = ("created_by", "title", "img_field", "description", "event_date", "location", "img_field", "is_active", "slug")
+    fields = ("title", "img_field", "description", "event_date", "location", "is_active", "slug")
     success_url = reverse_lazy('staff_event')
+
+    def form_valid(self, form):
+        form.instance.created_by = self.request.user
+        return super().form_valid(form)
 
 
 class StaffEventDeleteView(auth_mixins.LoginRequiredMixin, CheckAdminOrStaffAccess, views.DeleteView):
