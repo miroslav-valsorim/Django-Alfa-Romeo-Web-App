@@ -2,7 +2,7 @@ The Website is done only for study purposes. Since I'm Alfa Romeo fan that's my 
 
 # Django-Alfa-Romeo-Web-App
 
-1.Main page:  
+1. Main page:  
 	- It has different Navigation bar for users and non users.  
 	- Few of the links have dropdown menus that come dinamicly from the models.  
 	- Depends on the users authorization, under user icon there is drop down with different functionality for normal user/ superuser/ staff.  
@@ -30,7 +30,7 @@ The Website is done only for study purposes. Since I'm Alfa Romeo fan that's my 
 
 ![MuseumPage](screenshots/Screenshot_Museum_Location.png)
 
-3.History page:  
+3. History page:  
 	- Has few categories.  
 	- All pages here are pretty much the same as the 2nd screenshot.  
 
@@ -38,7 +38,7 @@ The Website is done only for study purposes. Since I'm Alfa Romeo fan that's my 
 
 ![HistoryPage](screenshots/Screenshot_QV.png)
 
-4.Events and News page:  
+4. Events and News page:  
 	- Shows the latest added events and News.  
 	- Clicking on Each Event/News you can view more information about it.  
 
@@ -62,7 +62,7 @@ The Website is done only for study purposes. Since I'm Alfa Romeo fan that's my 
 
 ![ProductsPage](screenshots/Screenshot_Products_Product.png)
 
-6.Shopping Cart / Checkout page:  
+6. Shopping Cart / Checkout page:  
 	- The added items from Store, show up here, where you can add, remove them, displays full order details.  
 	- Checkout Pages Require Names and Adress Info.  
 	- Paymen handlet with PayPal. After successful payment you return to website where it tells you the payment was successful.  
@@ -81,7 +81,7 @@ The Website is done only for study purposes. Since I'm Alfa Romeo fan that's my 
 
 ![PaymentPage](screenshots/Screenshot_Pay_Two.png)
 
-7.Forum Page:  
+7. Forum Page:  
 	- Prety much works as a normal Forum, it has categories, you can add a new topic to each category, there are also comments, the superuser or staff should approve every post before it shows up on web page.  
 	- Forum can be accessed only by registered users, since registrations requires only Email and Password, the forum also requirest First and Last Name so you can log inside it and view the forum. Redirects you to a page where it tells you that you have to enter you Names.  
 
@@ -93,7 +93,7 @@ The Website is done only for study purposes. Since I'm Alfa Romeo fan that's my 
 
 ![ForumPage](screenshots/Screenshot_Forum_Three.png)
 
-8.TODO:  
+8. TODO:  
 	- Currently Working on adding Staff Pages to edit, create, delete all the functionality above.  
 	- Profile Templates have to be done better.  
 	- Unit testing.  
