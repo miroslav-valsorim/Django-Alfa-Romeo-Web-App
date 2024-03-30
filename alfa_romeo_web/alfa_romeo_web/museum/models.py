@@ -6,11 +6,22 @@ UserModel = get_user_model()
 
 
 class MuseumCategory(models.Model):
-    name = models.CharField(max_length=50)
+    MAX_CATEGORY_NAME_LENGTH = 50
+
+    name = models.CharField(
+        max_length=MAX_CATEGORY_NAME_LENGTH,
+        blank=False,
+        null=False,
+    )
+
     img_field = models.ImageField(
         upload_to='museum_gallery/',
         blank=False,
         null=False,
+    )
+
+    is_active = models.BooleanField(
+        default=True
     )
 
     @staticmethod

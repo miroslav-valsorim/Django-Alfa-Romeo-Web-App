@@ -44,12 +44,16 @@
     text-align: center;
     border-radius: 30px;
     font-weight: bold;
+    background-color: transparent;
     border: 2px solid red;
-    background: red;
     color: white;
     cursor: pointer;
     text-decoration: none;
     overflow: hidden;
+}
+
+.buttons button:hover{
+    background-color: red;
 }
 
 .buttons a{
@@ -66,6 +70,10 @@
     cursor: pointer;
     text-decoration: none;
     overflow: hidden;
+}
+
+.buttons a:hover{
+    background-color: red;
 }
 
 /* FOOTER */

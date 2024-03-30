@@ -21,7 +21,6 @@
                                     <optgroup label="Order By">
                                         <option value="is_active" {% if order_by == 'is_active' %}selected{% endif %}>Active</option>
                                         <option value="not_active" {% if order_by == 'not_active' %}selected{% endif %}>Not Active</option>
-                                        <option value="created" {% if order_by == 'created' %}selected{% endif %}>Date</option>
                                     </optgroup>
                                 </select>
                                 <input type="submit" style="display: none;"> 
@@ -38,23 +37,23 @@
                 </div>
                 
                 <div class="search-field">
-                    <form method="GET" action="{% url 'staff_history' %}">
-                        <input type="text" name="Search" placeholder="Search by history title..." value="{{ search_query }}">
+                    <form method="GET" action="{% url 'staff_history_categories' %}">
+                        <input type="text" name="Search" placeholder="Search by history category name..." value="{{ search_query }}">
                         <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                     </form>
                 </div>
          
                 <div class="create-product">
-                    <a href="{% url 'staff_create_history' %}">Create History</a>
+                    <a href="{% url 'staff_create_history_category' %}">Create History Category</a>
                 </div>
          
-                <h2>History</h2>
+                <h2>History Categories</h2>
          
          
                  {% for obj in object_list %}
                     <div class="topic {% if obj.is_active %}active-product{% else %}not-active-product{% endif %}">
-                        <h3>{{ obj.header }}</h3>
-                        <a href="{% url 'staff_edit_history' pk=obj.pk %}">Edit</a>
+                        <h3>{{ obj.name }}</h3>
+                        <a href="{% url 'staff_edit_history_category' pk=obj.pk %}">Edit</a>
                     </div>
                 {% endfor %}
          

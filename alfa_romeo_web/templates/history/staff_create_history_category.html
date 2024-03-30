@@ -12,13 +12,12 @@
      
         <div class="wrapper">
             
-            <h2>Edit History</h2>
+            <h2>Create new History Category</h2>
 
-            <form method="post" action="{% url 'staff_edit_history' pk=object.pk %}" enctype="multipart/form-data">
+            <form method="post" action="{% url 'staff_create_history_category' %}" enctype="multipart/form-data">
                 {{ form }}
                 {% csrf_token %}
-                <button>Update</button>
-                <a href="{% url 'staff_delete_history' pk=object.pk %}">Delete History</a>
+                <button>Create</button>
             </form>
             
         </div>

@@ -93,3 +93,56 @@ class StaffHistoryDeleteView(auth_mixins.LoginRequiredMixin, CheckAdminOrStaffAc
     model = History
     template_name = "history/staff_delete_history.html"
     success_url = reverse_lazy('staff_history')
+
+
+class StaffHistoryCategoryListView(auth_mixins.LoginRequiredMixin, CheckAdminOrStaffAccess, views.ListView):
+    model = HistoryCategory
+    template_name = 'history/staff_history_categories.html'
+    paginate_by = 8
+
+    def get_queryset(self):
+        queryset = HistoryCategory.objects.all()
+        order_by = self.request.GET.get('order_by', 'is_active')
+
+        if order_by == 'is_active':
+            queryset = queryset.order_by('-is_active')
+        elif order_by == 'not_active':
+            queryset = queryset.order_by('is_active')
+
+        search_query = self.request.GET.get('Search')
+        if search_query:
+            queryset = queryset.filter(
+                Q(name__icontains=search_query)
+            )
+
+        return queryset
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        context['order_by'] = self.request.GET.get('order_by', 'is_active')
+        context['search_query'] = self.request.GET.get('Search', '')
+
+        return context
+
+
+class StaffHistoryCategoryEditView(auth_mixins.LoginRequiredMixin, CheckAdminOrStaffAccess, views.UpdateView):
+    queryset = HistoryCategory.objects.all()
+    template_name = "history/staff_edit_history_category.html"
+    fields = ("name", "img_field", "is_active")
+
+    def get_success_url(self):
+        return reverse('staff_history_categories')
+
+
+class StaffHistoryCategoryCreateView(auth_mixins.LoginRequiredMixin, CheckAdminOrStaffAccess, views.CreateView):
+    model = HistoryCategory
+    template_name = 'history/staff_create_history_category.html'
+    fields = ("name", "img_field", "is_active")
+    success_url = reverse_lazy('staff_history_categories')
+
+
+class StaffHistoryCategoryDeleteView(auth_mixins.LoginRequiredMixin, CheckAdminOrStaffAccess, views.DeleteView):
+    model = HistoryCategory
+    template_name = "history/staff_delete_history_category.html"
+    success_url = reverse_lazy('staff_history_categories')

@@ -38,23 +38,23 @@
                 </div>
                 
                 <div class="search-field">
-                    <form method="GET" action="{% url 'staff_history' %}">
-                        <input type="text" name="Search" placeholder="Search by history title..." value="{{ search_query }}">
+                    <form method="GET" action="{% url 'staff_museum' %}">
+                        <input type="text" name="Search" placeholder="Search by museum title..." value="{{ search_query }}">
                         <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                     </form>
                 </div>
          
                 <div class="create-product">
-                    <a href="{% url 'staff_create_history' %}">Create History</a>
+                    <a href="{% url 'staff_create_museum_topic' %}">Create Museum Topic</a>
                 </div>
          
-                <h2>History</h2>
+                <h2>Museum Topics</h2>
          
          
                  {% for obj in object_list %}
                     <div class="topic {% if obj.is_active %}active-product{% else %}not-active-product{% endif %}">
                         <h3>{{ obj.header }}</h3>
-                        <a href="{% url 'staff_edit_history' pk=obj.pk %}">Edit</a>
+                        <a href="{% url 'staff_edit_museum_topic' pk=obj.pk %}">Edit</a>
                     </div>
                 {% endfor %}
          
