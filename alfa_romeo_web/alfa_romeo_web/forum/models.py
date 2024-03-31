@@ -22,6 +22,10 @@ class ForumCategory(models.Model):
         default="description",
     )
 
+    is_active = models.BooleanField(
+        default=True
+    )
+
     class Meta:
         verbose_name_plural = "categories"
 
@@ -32,11 +36,6 @@ class ForumCategory(models.Model):
         if not self.slug:
             self.slug = slugify(self.title)
         super(ForumCategory, self).save(*args, **kwargs)
-
-    # def get_url(self):
-    #     return reverse("forum_main_page", kwargs={
-    #         "slug": self.slug
-    #     })
 
     @property
     def num_posts(self):

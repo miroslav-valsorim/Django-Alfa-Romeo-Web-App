@@ -17,8 +17,10 @@
             <form method="post" action="{% url 'staff_edit_museum_topic' pk=object.pk %}" enctype="multipart/form-data">
                 {{ form }}
                 {% csrf_token %}
-                <button>Update</button>
-                <a href="{% url 'staff_delete_museum_topic' pk=object.pk %}">Delete Museum Topic</a>
+                <div class="buttons">
+                    <button>Update</button>
+                    <a href="{% url 'staff_delete_museum_topic' pk=object.pk %}">Delete Museum Topic</a>
+                </div>
             </form>
             
         </div>

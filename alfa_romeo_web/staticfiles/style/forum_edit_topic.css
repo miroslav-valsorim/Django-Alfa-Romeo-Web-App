@@ -55,7 +55,7 @@
     text-align: center;
 }
 
-.wrapper form button{
+.wrapper form .buttons button{
     margin: auto;
     margin-top: 10px;
     width: 200px;
@@ -71,7 +71,7 @@
     overflow: hidden;
 }
 
-.wrapper form button:hover{
+.wrapper form .buttons button:hover{
     background-color: red;
 }
 
@@ -81,7 +81,7 @@
     margin-bottom: 10px;
 }
 
-.wrapper form a{
+.wrapper form .buttons a{
     margin: auto;
     margin-top: 10px;
     width: 200px;
@@ -98,6 +98,6 @@
     text-decoration: none;
 }
 
-.wrapper form a:hover{
+.wrapper form .buttons a:hover{
     background-color: red;
 }

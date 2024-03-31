@@ -42,7 +42,7 @@ class ListProductsView(views.ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        categories = Category.get_all_categories()
+        categories = Category.get_all_categories().filter(is_active=True)
 
         # Exclude the category "tickets"
         categories = [category for category in categories if category.name != "Tickets"]
@@ -141,3 +141,55 @@ class StaffProductDeleteView(auth_mixins.LoginRequiredMixin, CheckAdminOrStaffAc
     template_name = "products/staff_delete_product.html"
     success_url = reverse_lazy('staff_products_list')
 
+
+class StaffProductCategoryListView(auth_mixins.LoginRequiredMixin, CheckAdminOrStaffAccess, views.ListView):
+    model = Category
+    template_name = 'products/staff_product_categories.html'
+    paginate_by = 8
+
+    def get_queryset(self):
+        queryset = Category.objects.all()
+        order_by = self.request.GET.get('order_by', 'is_active')
+
+        if order_by == 'is_active':
+            queryset = queryset.order_by('-is_active')
+        elif order_by == 'not_active':
+            queryset = queryset.order_by('is_active')
+
+        search_query = self.request.GET.get('Search')
+        if search_query:
+            queryset = queryset.filter(
+                Q(name__icontains=search_query)
+            )
+
+        return queryset
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        context['order_by'] = self.request.GET.get('order_by', 'is_active')
+        context['search_query'] = self.request.GET.get('Search', '')
+
+        return context
+
+
+class StaffProductCategoryEditView(auth_mixins.LoginRequiredMixin, CheckAdminOrStaffAccess, views.UpdateView):
+    queryset = Category.objects.all()
+    template_name = "products/staff_edit_product_category.html"
+    fields = ("name", "is_active")
+
+    def get_success_url(self):
+        return reverse('staff_product_categories')
+
+
+class StaffProductCategoryCreateView(auth_mixins.LoginRequiredMixin, CheckAdminOrStaffAccess, views.CreateView):
+    model = Category
+    template_name = 'products/staff_create_product_category.html'
+    fields = ("name", "is_active")
+    success_url = reverse_lazy('staff_product_categories')
+
+
+class StaffProductCategoryDeleteView(auth_mixins.LoginRequiredMixin, CheckAdminOrStaffAccess, views.DeleteView):
+    model = Category
+    template_name = "products/staff_delete_product_category.html"
+    success_url = reverse_lazy('staff_product_categories')

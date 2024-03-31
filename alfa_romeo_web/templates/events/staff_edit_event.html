@@ -17,8 +17,10 @@
             <form method="post" action="{% url 'staff_edit_event' slug=object.slug %}" enctype="multipart/form-data">
                 {{ form }}
                 {% csrf_token %}
-                <button>Update</button>
-                <a href="{% url 'staff_delete_event' slug=object.slug %}">Delete Event</a>
+                <div class="buttons">
+                    <button>Update</button>
+                    <a href="{% url 'staff_delete_event' slug=object.slug %}">Delete Event</a>
+                </div>
             </form>
             
         </div>

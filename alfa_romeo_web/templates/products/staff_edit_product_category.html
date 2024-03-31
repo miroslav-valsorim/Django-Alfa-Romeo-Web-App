@@ -12,14 +12,14 @@
      
         <div class="wrapper">
             
-            <h2>Edit History Category</h2>
+            <h2>Edit Product Category</h2>
 
-            <form method="post" action="{% url 'staff_edit_history_category' pk=object.pk %}" enctype="multipart/form-data">
+            <form method="post" action="{% url 'staff_edit_product_category' pk=object.pk %}" enctype="multipart/form-data">
                 {{ form }}
                 {% csrf_token %}
                 <div class="buttons">
                     <button>Update</button>
-                    <a href="{% url 'staff_delete_history_category' pk=object.pk %}">Delete History Category</a>
+                    <a href="{% url 'staff_delete_product_category' pk=object.pk %}">Delete Product Category</a>
                 </div>
             </form>
             

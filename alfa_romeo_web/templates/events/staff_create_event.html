@@ -17,7 +17,9 @@
             <form method="post" action="{% url 'staff_create_event' %}" enctype="multipart/form-data">
                 {{ form }}
                 {% csrf_token %}
-                <button>Create</button>
+                <div class="buttons">
+                    <button>Create</button>
+                </div>
             </form>
             
         </div>

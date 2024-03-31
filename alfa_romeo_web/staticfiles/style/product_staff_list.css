@@ -96,6 +96,10 @@
     font-weight: 700;
 }
 
+.search-field form input{
+    width: 300px;
+}
+
 .create-product{
     position: absolute;
     left: 50%;

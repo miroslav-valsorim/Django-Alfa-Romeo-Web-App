@@ -43,7 +43,7 @@ def credentials_needed(request):
 
 @require_name
 def forum_view(request):
-    forums = ForumCategory.objects.all()
+    forums = ForumCategory.objects.filter(is_active=True)
     approved_posts = Post.objects.filter(approved=True)
     # print(approved_posts)
     # TODO: filtering here has to be figured out
@@ -193,3 +193,56 @@ class StaffTopicDeleteView(auth_mixins.LoginRequiredMixin, CheckAdminOrStaffAcce
     model = Post
     template_name = "forum/staff_delete_topic.html"
     success_url = reverse_lazy('staff_forum')
+
+
+class StaffForumCategoryListView(auth_mixins.LoginRequiredMixin, CheckAdminOrStaffAccess, views.ListView):
+    model = ForumCategory
+    template_name = 'forum/staff_forum_categories.html'
+    paginate_by = 8
+
+    def get_queryset(self):
+        queryset = ForumCategory.objects.all()
+        order_by = self.request.GET.get('order_by', 'is_active')
+
+        if order_by == 'is_active':
+            queryset = queryset.order_by('-is_active')
+        elif order_by == 'not_active':
+            queryset = queryset.order_by('is_active')
+
+        search_query = self.request.GET.get('Search')
+        if search_query:
+            queryset = queryset.filter(
+                Q(title__icontains=search_query)
+            )
+
+        return queryset
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        context['order_by'] = self.request.GET.get('order_by', 'is_active')
+        context['search_query'] = self.request.GET.get('Search', '')
+
+        return context
+
+
+class StaffForumCategoryEditView(auth_mixins.LoginRequiredMixin, CheckAdminOrStaffAccess, views.UpdateView):
+    queryset = ForumCategory.objects.all()
+    template_name = "forum/staff_edit_forum_category.html"
+    fields = ("title", "description", "is_active", "slug")
+
+    def get_success_url(self):
+        return reverse('staff_forum_categories')
+
+
+class StaffForumCategoryCreateView(auth_mixins.LoginRequiredMixin, CheckAdminOrStaffAccess, views.CreateView):
+    model = ForumCategory
+    template_name = 'forum/staff_create_forum_category.html'
+    fields = ("title", "description", "is_active", "slug")
+    success_url = reverse_lazy('staff_forum_categories')
+
+
+class StaffForumCategoryDeleteView(auth_mixins.LoginRequiredMixin, CheckAdminOrStaffAccess, views.DeleteView):
+    model = ForumCategory
+    template_name = "forum/staff_delete_forum_category.html"
+    success_url = reverse_lazy('staff_forum_categories')

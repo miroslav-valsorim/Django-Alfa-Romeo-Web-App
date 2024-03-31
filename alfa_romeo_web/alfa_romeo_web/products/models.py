@@ -11,6 +11,10 @@ class Category(models.Model):
         null=False,
     )
 
+    is_active = models.BooleanField(
+        default=True
+    )
+
     class Meta:
         verbose_name_plural = "Categories"
 
@@ -64,9 +68,11 @@ class Products(models.Model):
     is_active = models.BooleanField(
         default=True
     )
+
     created = models.DateTimeField(
         auto_now_add=True,
     )
+
     updated = models.DateTimeField(
         auto_now=True,
     )
