@@ -1,8 +1,10 @@
+from django.core.validators import MinLengthValidator
 from django.db import models
 from django.contrib.auth import models as auth_models
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 from alfa_romeo_web.accounts.managers import AlfaRomeoUserManager
+from alfa_romeo_web.accounts.validators import validate_profile_first_last_name, validate_profile_phone_number
 
 
 class AlfaRomeoUser(auth_models.AbstractBaseUser, auth_models.PermissionsMixin):
@@ -41,16 +43,27 @@ class AlfaRomeoUser(auth_models.AbstractBaseUser, auth_models.PermissionsMixin):
 
 class Profile(models.Model):
     MAX_FIRST_NAME_LENGTH = 30
+    MIN_FIRST_NAME_LENGTH = 2
     MAX_LAST_NAME_LENGTH = 30
+    MIN_LAST_NAME_LENGTH = 2
+    MAX_PHONE_NUMBER_LENGTH = 14
 
     first_name = models.CharField(
         max_length=MAX_FIRST_NAME_LENGTH,
+        validators=(
+            validate_profile_first_last_name,
+            MinLengthValidator(MIN_FIRST_NAME_LENGTH),
+        ),
         blank=True,
         null=True,
     )
 
     last_name = models.CharField(
         max_length=MAX_LAST_NAME_LENGTH,
+        validators=(
+            validate_profile_first_last_name,
+            MinLengthValidator(MIN_LAST_NAME_LENGTH),
+        ),
         blank=True,
         null=True,
     )
@@ -61,7 +74,10 @@ class Profile(models.Model):
     )
 
     phone_number = models.CharField(
-        max_length=15,
+        max_length=14,
+        validators=(
+            validate_profile_phone_number,
+        ),
         blank=True,
         null=True,
     )

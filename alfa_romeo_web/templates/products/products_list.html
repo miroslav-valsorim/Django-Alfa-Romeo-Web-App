@@ -38,10 +38,10 @@
 
              <div class="order-by">
                     <form action="" method="get" id="order-form">
-                         <form action="" method="get" id="order-form">
                             {% if category_id %}
                                 <input type="hidden" name="category" value="{{ category_id }}">
                             {% endif %}
+                            <input type="hidden" name="Search" value="{{ search_query }}">
                             <label for="order_by">Order By:</label>
                             <select name="order_by" id="order_by">
                                 <optgroup label="Order By">

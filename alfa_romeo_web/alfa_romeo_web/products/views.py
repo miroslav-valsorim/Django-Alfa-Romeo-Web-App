@@ -23,20 +23,22 @@ class ListProductsView(views.ListView):
 
         queryset = queryset.exclude(category__name="Tickets")
 
-        if order_by == 'title':
-            queryset = queryset.order_by('title')
-        elif order_by == 'created':
-            queryset = queryset.order_by('-created')
-        elif order_by == 'price asc':
-            queryset = queryset.order_by('price')
-        elif order_by == 'price desc':
-            queryset = queryset.order_by('-price')
-
         search_query = self.request.GET.get('Search')
         if search_query:
-            queryset = queryset.filter(
+            initial_queryset = queryset.filter(
                 Q(title__icontains=search_query)
             )
+        else:
+            initial_queryset = queryset
+
+        if order_by == 'title':
+            queryset = initial_queryset.order_by('title')
+        elif order_by == 'created':
+            queryset = initial_queryset.order_by('-created')
+        elif order_by == 'price asc':
+            queryset = initial_queryset.order_by('price')
+        elif order_by == 'price desc':
+            queryset = initial_queryset.order_by('-price')
 
         return queryset
 

@@ -17,8 +17,10 @@
             <form method="post" action="{% url 'edit_post' slug=object.slug %}">
                 {{ form }}
                 {% csrf_token %}
-                <button>Update</button>
-                <a href="{% url 'delete_post' slug=object.slug %}">Delete Post</a>
+                <div class="buttons">
+                    <button>Update</button>
+                    <a href="{% url 'delete_post' slug=object.slug %}">Delete Post</a>
+                </div>
             </form>
             
         </div>

@@ -1,5 +1,6 @@
 from django.contrib.auth import views as auth_views, get_user_model, logout, login
 from django.contrib.auth import forms as auth_forms
+from django.forms import DateInput
 from django.urls import reverse_lazy, reverse
 from django.views import generic as views
 from django.shortcuts import redirect, render
@@ -61,7 +62,8 @@ class ProfileEditView(OwnerRequiredMixin, views.UpdateView):
         form.fields["last_name"].label = "Last Name"
 
         form.fields["date_of_birth"].widget.attrs["placeholder"] = "YYYY-MM-DD"
-        form.fields["date_of_birth"].widget.attrs["type"] = "date"
+        # form.fields["date_of_birth"].widget.attrs["type"] = "date"
+        form.fields["date_of_birth"].widget = DateInput(attrs={'type': 'date'})
         form.fields["date_of_birth"].label = "Birthday"
 
         form.fields["phone_number"].widget.attrs["placeholder"] = "Phone Number"

@@ -22,7 +22,6 @@ class ProfileEditView(OwnerRequiredMixin, views.UpdateView):
 
     def get_success_url(self):
         return reverse('second_step', kwargs={'pk': self.object.pk})
-        # return reverse('details-profile', kwargs={'pk': self.object.pk})
 
     def get_form(self, form_class=None):
         form = super().get_form(form_class=form_class)

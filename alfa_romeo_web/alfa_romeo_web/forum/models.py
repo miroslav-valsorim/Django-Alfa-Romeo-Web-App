@@ -39,7 +39,7 @@ class ForumCategory(models.Model):
 
     @property
     def num_posts(self):
-        return Post.objects.filter(categories=self).count()
+        return Post.objects.filter(categories=self).filter(approved=True).count()
 
     @property
     def last_post(self):
@@ -122,9 +122,6 @@ class Post(models.Model):
     def __str__(self):
         return self.title
 
-
     @property
     def num_comments(self):
         return self.comments.count()
-
-

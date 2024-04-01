@@ -8,19 +8,9 @@ from django.contrib.auth import mixins as auth_mixins
 
 from alfa_romeo_web.accounts.mixin import CheckAdminOrStaffAccess
 from alfa_romeo_web.accounts.models import Profile
+from alfa_romeo_web.forum.decorators import require_name
 from alfa_romeo_web.forum.forms import ProfileForm, AddTopicForm
 from alfa_romeo_web.forum.models import ForumCategory, Post, Comment
-
-
-def require_name(view_func):
-    def wrapper(request, *args, **kwargs):
-        user = request.user
-        if user.is_authenticated and user.profile.first_name and user.profile.last_name:
-            return view_func(request, *args, **kwargs)
-        else:
-            return redirect('user_forum_credentials')
-
-    return wrapper
 
 
 @login_required
@@ -42,12 +32,9 @@ def credentials_needed(request):
 
 
 @require_name
+@login_required
 def forum_view(request):
     forums = ForumCategory.objects.filter(is_active=True)
-    approved_posts = Post.objects.filter(approved=True)
-    # print(approved_posts)
-    # TODO: filtering here has to be figured out
-    num_posts = approved_posts.count()
     paginator = Paginator(forums, 5)
 
     page_number = request.GET.get('page')
@@ -60,12 +47,12 @@ def forum_view(request):
 
     context = {
         "forums": forums,
-        "num_posts": num_posts,
     }
 
     return render(request, 'forum/forum_main_page.html', context)
 
 
+@require_name
 @login_required
 def create_post(request):
     user = request.user
@@ -90,6 +77,7 @@ def create_post(request):
     return render(request, 'forum/create_topic.html', context)
 
 
+@require_name
 @login_required
 def posts(request, slug):
     category = ForumCategory.objects.get(slug=slug)
@@ -113,6 +101,7 @@ def posts(request, slug):
     return render(request, "forum/posts.html", context)
 
 
+@require_name
 @login_required
 def details(request, slug):
     post = get_object_or_404(Post, slug=slug)

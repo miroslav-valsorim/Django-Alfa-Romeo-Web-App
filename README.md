@@ -82,6 +82,8 @@ The Website is done only for study purposes. Since I'm Alfa Romeo fan that's my 
 7. Forum Page:  
 	- Prety much works as a normal Forum, it has categories, you can add a new topic to each category, there are also comments, the superuser or staff should approve every post before it shows up on web page.  
 	- Forum can be accessed only by registered users, since registrations requires only Email and Password, the forum also requirest First and Last Name so you can log inside it and view the forum. Redirects you to a page where it tells you that you have to enter you Names.  
+	- Posts have to be approved from Moderator or Administrator before they can be viewed.  
+	- Posts also can be closed, so people can view them, but can't add a comment.  
 
 ![ForumPage](screenshots/Screenshot_Forum_Four.png)
 
@@ -91,9 +93,27 @@ The Website is done only for study purposes. Since I'm Alfa Romeo fan that's my 
 
 ![ForumPage](screenshots/Screenshot_Forum_Three.png)
 
-8. TODO:  
-	- Currently Working on adding Staff Pages to edit, create, delete all the functionality above.  
-	- Profile Templates have to be done better.  
+8. Profile:
+	- Has edit profile, change password, delete profile functionality  
+
+![ProfilePage](screenshots/Screenshot_Profile.png)
+
+![ProfilePage](screenshots/Screenshot_Profile_One.png)
+
+9. Staff Panel:
+	- Moderators and Admin can handle almost everything through this staff panel, where they can create,edit,delete,make active or inactive events, news, products, forum posts and etc.  
+	- Moderators and Admin can also view from here the comments for every post and remove the comments that are not wanted.  
+	- Closed, active, not active topics can be viewed from here.  
+
+![StaffPage](screenshots/Screenshot_Staff.png)
+
+![StaffPage](screenshots/Screenshot_Staff_One.png)
+
+![StaffPage](screenshots/Screenshot_Staff_Two.png)
+
+![StaffPage](screenshots/Screenshot_Staff_Three.png)
+
+10. TODO:    
 	- Unit testing.  
 	- Mobile responsive design.  
 	- Make better README.  

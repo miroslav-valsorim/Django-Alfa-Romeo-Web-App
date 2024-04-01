@@ -31,6 +31,7 @@
                     <div>
                         <p class="post-topic">Topic: {{ p.title }}</p>
                         <p class="post-topic">Author: {{p.user.first_name}} {{ p.user.last_name }}</p>
+                        <p class="post-topic">Comments: {{ p.num_comments }}</p>
                         <a class="view-topic" href="{% url 'post_details' slug=p.slug %}">View Post</a>
                     </div>
                 </div>
