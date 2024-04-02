@@ -9,3 +9,5 @@ class ModelNameAdmin(admin.ModelAdmin):
     ordering = ('pk',)
     search_fields = ('header',)
     list_editable = ('is_active',)
+    list_filter = ('is_active', 'created_by',)
+    list_per_page = 20

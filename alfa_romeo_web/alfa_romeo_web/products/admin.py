@@ -6,15 +6,21 @@ from alfa_romeo_web.products.models import Category, Products
 
 @admin.register(Category)
 class ModelNameAdmin(admin.ModelAdmin):
-    list_display = ('name', 'id',)
+    list_display = ('pk', 'name', 'is_active',)
+    ordering = ('pk',)
+    list_editable = ('is_active',)
+    list_filter = ('is_active',)
 
 
 @admin.register(Products)
 class ModelNameAdmin(admin.ModelAdmin):
-    list_display = ('get_category_name', 'id', 'is_active', 'title', 'created', 'updated')
-    ordering = ('category__name',)
+    list_display = ('pk', 'get_category_name', 'is_active', 'title', 'created', 'updated')
+    list_per_page = 20
+    ordering = ('pk', 'category__name',)
     search_fields = ('title', 'category__name')
+    search_help_text = 'Search by Title, Category'
     list_editable = ('is_active',)
+    list_filter = ('is_active',)
 
     def get_queryset(self, request):
         queryset = super().get_queryset(request)

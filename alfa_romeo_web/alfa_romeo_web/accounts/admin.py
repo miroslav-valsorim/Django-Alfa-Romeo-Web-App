@@ -14,7 +14,9 @@ class UserAdmin(auth_admin.UserAdmin):
     form = AlfaRomeoChangeForm
 
     list_display = ('pk', 'email', 'is_staff', 'is_superuser', 'date_joined')
+    list_per_page = 20
     search_fields = ('email',)
+    search_help_text = 'Search by Email'
     ordering = ('pk',)
 
     fieldsets = (
@@ -38,5 +40,8 @@ class UserAdmin(auth_admin.UserAdmin):
 @admin.register(Profile)
 class ModelNameAdmin(admin.ModelAdmin):
     list_display = ('user_id', 'first_name', 'last_name', 'date_of_birth', "updated")
+    list_per_page = 20
     ordering = ('user_id',)
     search_fields = ('first_name', 'last_name',)
+    search_help_text = 'Search by First, Last name'
+

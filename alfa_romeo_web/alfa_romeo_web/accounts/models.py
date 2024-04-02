@@ -4,7 +4,8 @@ from django.contrib.auth import models as auth_models
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 from alfa_romeo_web.accounts.managers import AlfaRomeoUserManager
-from alfa_romeo_web.accounts.validators import validate_profile_first_last_name, validate_profile_phone_number
+from alfa_romeo_web.accounts.validators import validate_profile_first_last_name, validate_profile_phone_number, \
+    validate_past_date, validate_profile_picture_url
 
 
 class AlfaRomeoUser(auth_models.AbstractBaseUser, auth_models.PermissionsMixin):
@@ -71,6 +72,9 @@ class Profile(models.Model):
     date_of_birth = models.DateField(
         blank=True,
         null=True,
+        validators=(
+            validate_past_date,
+        )
     )
 
     phone_number = models.CharField(
@@ -85,6 +89,9 @@ class Profile(models.Model):
     profile_picture = models.URLField(
         blank=True,
         null=True,
+        validators=(
+            validate_profile_picture_url,
+        )
     )
 
     updated = models.DateTimeField(
