@@ -2,20 +2,39 @@ from django.db.models import Q
 from django.urls import reverse, reverse_lazy
 from django.views import generic as views
 from django.contrib.auth import mixins as auth_mixins
+from rest_framework import pagination
+from rest_framework.generics import ListAPIView
 
 from alfa_romeo_web.accounts.mixin import CheckAdminOrStaffAccess
 from alfa_romeo_web.news.models import News
+from alfa_romeo_web.news.serializers import NewsSerializer
 
 
-class ListNewsView(views.ListView):
-    model = News
+# API VIEW
+class NewsListPagination(pagination.PageNumberPagination):
+    page_size = 3
+    page_size_query_param = 'page_size'
+
+
+class ListAPINewsView(ListAPIView):
+    queryset = News.objects.filter(is_active=True).order_by('-created')
+    serializer_class = NewsSerializer
+    pagination_class = NewsListPagination
+
+
+class NewsList(views.TemplateView):
     template_name = 'news/news_listing.html'
-    paginate_by = 3
 
-    def get_queryset(self):
-        queryset = News.objects.all().filter(is_active=True).order_by('-created')
 
-        return queryset
+# class ListNewsView(views.ListView):
+#     model = News
+#     template_name = 'news/news_listing.html'
+#     paginate_by = 3
+#
+#     def get_queryset(self):
+#         queryset = News.objects.all().filter(is_active=True).order_by('-created')
+#
+#         return queryset
 
 
 class DetailNewsView(views.DetailView):

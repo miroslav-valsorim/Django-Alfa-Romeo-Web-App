@@ -1,7 +1,7 @@
 from django.urls import path, include
 
-from alfa_romeo_web.news.views import ListNewsView, DetailNewsView, StaffNewsListView, StaffNewsCreateView, \
-    StaffNewsEditView, StaffNewsDeleteView
+from alfa_romeo_web.news.views import DetailNewsView, StaffNewsListView, StaffNewsCreateView, \
+    StaffNewsEditView, StaffNewsDeleteView, NewsList
 
 urlpatterns = (
     path('staff/', include([
@@ -12,6 +12,7 @@ urlpatterns = (
 
     ])),
 
-    path('', ListNewsView.as_view(), name='news_list'),
+    path('', NewsList.as_view(), name='news_list'),
+    # path('', ListNewsView.as_view(), name='news_list'),
     path('details/<slug:slug>/', DetailNewsView.as_view(), name='news_details'),
 )

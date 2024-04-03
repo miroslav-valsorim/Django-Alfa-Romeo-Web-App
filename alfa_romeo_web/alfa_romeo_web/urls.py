@@ -16,6 +16,7 @@ urlpatterns = [
     path('museum/', include('alfa_romeo_web.museum.urls')),
     path('history/', include('alfa_romeo_web.history.urls')),
     path('events/', include('alfa_romeo_web.events.urls')),
+    path('news/api/', include('alfa_romeo_web.news.api.urls')),
     path('news/', include('alfa_romeo_web.news.urls')),
     path('products/', include('alfa_romeo_web.products.urls')),
     path('cart/', include('alfa_romeo_web.cart.urls')),

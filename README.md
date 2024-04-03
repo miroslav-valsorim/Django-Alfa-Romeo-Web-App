@@ -38,19 +38,26 @@ The Website is done only for study purposes. Since I'm Alfa Romeo fan that's my 
 
 ![HistoryPage](screenshots/Screenshot_QV.png)
 
-4. Events and News page:  
+4. Events page:  
 	- Shows the latest added events and News.  
-	- Clicking on Each Event/News you can view more information about it.  
+	- Clicking on Each Event you can view more information about it.  
 
 ![EventPage](screenshots/Screenshot_Events.png)
 
 ![EventPage](screenshots/Screenshot_Events_One.png)
 
+5. News Page (Djanog REST):  
+	- This section has been done with Django REST + API calls in JS.  
+	- Shows the latest added events and News.   
+	- Clicking on Each New you can view more information about it.  
+
+![NewsPage](screenshots/Screenshot_News_API.png)
+
 ![NewsPage](screenshots/Screenshot_News.png)
 
 ![NewsPage](screenshots/Screenshot_News_One.png)
 
-5. Tickets and Store page:  
+6. Tickets and Store page:  
 	- Has a Search Field where you can search a product by title.  
 	- Shows all Product Categories where you can select each category and also sort them by Price, Date Added.  
 	- Pagination has been used to show 8 products per page.  
@@ -62,7 +69,7 @@ The Website is done only for study purposes. Since I'm Alfa Romeo fan that's my 
 
 ![ProductsPage](screenshots/Screenshot_Products_Product.png)
 
-6. Shopping Cart / Checkout page:  
+7. Shopping Cart / Checkout page:  
 	- The added items from Store, show up here, where you can add, remove them, displays full order details.  
 	- Checkout Pages Require Names and Adress Info.  
 	- Paymen handlet with PayPal. After successful payment you return to website where it tells you the payment was successful.  
@@ -79,7 +86,7 @@ The Website is done only for study purposes. Since I'm Alfa Romeo fan that's my 
 
 ![PaymentPage](screenshots/Screenshot_Pay_Two.png)
 
-7. Forum Page:  
+8. Forum Page:  
 	- Prety much works as a normal Forum, it has categories, you can add a new topic to each category, there are also comments, the superuser or staff should approve every post before it shows up on web page.  
 	- Forum can be accessed only by registered users, since registrations requires only Email and Password, the forum also requirest First and Last Name so you can log inside it and view the forum. Redirects you to a page where it tells you that you have to enter you Names.  
 	- Posts have to be approved from Moderator or Administrator before they can be viewed.  
@@ -93,14 +100,14 @@ The Website is done only for study purposes. Since I'm Alfa Romeo fan that's my 
 
 ![ForumPage](screenshots/Screenshot_Forum_Three.png)
 
-8. Profile:
+9. Profile:
 	- Has edit profile, change password, delete profile functionality  
 
 ![ProfilePage](screenshots/Screenshot_Profile.png)
 
 ![ProfilePage](screenshots/Screenshot_Profile_One.png)
 
-9. Staff Panel:
+10. Staff Panel:
 	- Moderators and Admin can handle almost everything through this staff panel, where they can create,edit,delete,make active or inactive events, news, products, forum posts and etc.  
 	- Moderators and Admin can also view from here the comments for every post and remove the comments that are not wanted.  
 	- Closed, active, not active topics can be viewed from here.  
@@ -113,7 +120,7 @@ The Website is done only for study purposes. Since I'm Alfa Romeo fan that's my 
 
 ![StaffPage](screenshots/Screenshot_Staff_Three.png)
 
-10. TODO:    
+11. TODO:    
 	- Unit testing.  
 	- Mobile responsive design.  
 	- Make better README.  

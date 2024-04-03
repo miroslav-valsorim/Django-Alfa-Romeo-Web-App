@@ -41,6 +41,9 @@ INSTALLED_APPS = [
     #  PayPal
     'paypal.standard.ipn',
 
+    #  Django-REST
+    'rest_framework',
+
     # Our apps
     "alfa_romeo_web.accounts.apps.AccountsConfig",
     "alfa_romeo_web.main_page.apps.MainPageConfig",
