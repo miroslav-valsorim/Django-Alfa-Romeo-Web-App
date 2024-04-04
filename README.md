@@ -129,7 +129,11 @@ The Website is done only for study purposes. Since I'm Alfa Romeo fan that's my 
 
 12. Database Entity Relationship Diagram (ERD):  
 
-![DB](screenshots/Database_er.png)  
+![DB](screenshots/Screenshot_DB_One.png)  
+
+![DB](screenshots/Screenshot_DB_Two.png)  
+
+![DB](screenshots/Screenshot_DB_Three.png)  
 
 12. TODO:    
 	- Unit testing.  
