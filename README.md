@@ -1,4 +1,8 @@
-The Website is done only for study purposes. Since I'm Alfa Romeo fan that's my Softwate University Project !
+This website is a dedicated endeavor for educational purposes, serving as my Software University Project. As an avid Alfa Romeo enthusiast, I've poured my passion into this project. Please note that all images and information utilized are strictly for study purposes.  
+
+
+Bringing my vision to life after nearly two years of anticipation, this project marks not the end, but just the beginning of showcasing my capabilities. Utilizing a plethora of technologies including Python, Django, REST, API, JavaScript, and HTML&CSS, I've meticulously implemented every feature essential for a fully functional website. From a dynamic news feed to immersive events and engaging forums, culminating in a robust store page capable of handling payments, this project showcases the breadth of my expertise and dedication. It's not just a website, it's a testament to my growth and passion for web development!  
+
 
 # Django-Alfa-Romeo-Web-App
 
@@ -87,7 +91,7 @@ The Website is done only for study purposes. Since I'm Alfa Romeo fan that's my 
 ![PaymentPage](screenshots/Screenshot_Pay_Two.png)
 
 8. Forum Page:  
-	- Prety much works as a normal Forum, it has categories, you can add a new topic to each category, there are also comments, the superuser or staff should approve every post before it shows up on web page.  
+	- Prety much works as a normal Forum, it has categories, you can add a new topic to each category, there are also comments.  
 	- Forum can be accessed only by registered users, since registrations requires only Email and Password, the forum also requirest First and Last Name so you can log inside it and view the forum. Redirects you to a page where it tells you that you have to enter you Names.  
 	- Posts have to be approved from Moderator or Administrator before they can be viewed.  
 	- Posts also can be closed, so people can view them, but can't add a comment.  
@@ -121,7 +125,7 @@ The Website is done only for study purposes. Since I'm Alfa Romeo fan that's my 
 ![StaffPage](screenshots/Screenshot_Staff_Three.png)
 
 
-11. MObile Responsive Design:
+11. Mobile Responsive Design:
 
 ![MobileDesign](screenshots/photo_collage_one.png)  
 
@@ -135,7 +139,7 @@ The Website is done only for study purposes. Since I'm Alfa Romeo fan that's my 
 
 ![DB](screenshots/Screenshot_DB_Three.png)  
 
-12. TODO:    
+13. TODO:    
 	- Unit testing.  
-	- Finish the mobile responsive design.  
+	- Deploy.    
 	- Make better README.  

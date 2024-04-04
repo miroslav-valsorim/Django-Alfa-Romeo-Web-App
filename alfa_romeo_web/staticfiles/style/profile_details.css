@@ -82,8 +82,14 @@
 
 @media (max-width: 600px) {
 
+    .profile-details {
+        height: unset;
+        max-height: unset;
+    }
+
     .personal{
         flex-direction: column;
+        margin-bottom: 10px;
     }
 
     .image{

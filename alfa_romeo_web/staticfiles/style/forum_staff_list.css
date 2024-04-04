@@ -95,3 +95,31 @@
     color: white;
     font-weight: 700;
 }
+
+@media (max-width: 1100px) {
+
+    .container h2{
+        padding-top: 100px;
+    }
+
+    .order-by{
+        margin-right: 10px;
+    }
+
+    .search-field form input{
+        width: 200px;
+    }
+
+    .wrapper .search-field{
+        margin-left: 10px;
+    }
+}
+
+
+@media (max-width: 700px) {
+
+    .topic{
+        margin: 10px;
+    }
+
+}

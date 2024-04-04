@@ -74,3 +74,17 @@
 .event-location-date .date{
     margin: 0;
 }
+
+
+@media (max-width: 800px) {
+
+    .event-detail-content{
+        height: unset;
+        max-height: unset;
+    }
+
+    .image-container{
+        width: 400px;
+    }
+
+}
