@@ -1,26 +1,5 @@
 /* HEADER */
-/*@keyframes change{*/
-/*    0%*/
-/*    {*/
-/*        background-image:linear-gradient(rgba(0,0,0,0.75),rgba(0,0,0,0.75)), url("/static/images/background.jpg");*/
-/*    }*/
-/*    25%*/
-/*    {*/
-/*        background-image:linear-gradient(rgba(0,0,0,0.75),rgba(0,0,0,0.75)),  url("/static/images/goodwood-47.jpg");*/
-/*    }*/
-/*    50%*/
-/*    {*/
-/*        background-image:linear-gradient(rgba(0,0,0,0.75),rgba(0,0,0,0.75)),  url("/static/images/background.jpg");*/
-/*    }*/
-/*    75%*/
-/*    {*/
-/*        background-image:linear-gradient(rgba(0,0,0,0.75),rgba(0,0,0,0.75)),  url("/static/images/cofani-aperti-3.jpg");*/
-/*    }*/
-/*    100%*/
-/*    {*/
-/*        background-image:linear-gradient(rgba(0,0,0,0.75),rgba(0,0,0,0.75)), url("/static/images/11e7e-16699705231336-1920.webp");*/
-/*    }*/
-/*}*/
+
 /* MAIN */
 .content{
     background-image: linear-gradient(rgba(0,0,0,0.75),rgba(0,0,0,0.75)), url("/static/images/background.jpg");
@@ -34,13 +13,7 @@
     background-position-y: 70%;
     max-height: 700px;
     height: 700px;
-    /*transition: 0.7s;*/
-    /*animation: change 50s infinite ease-in-out;*/
 }
-
-/*.content:hover{*/
-/*    transform:scale(1.03);*/
-/*}*/
 
 .content h2{
     font-size: 40px;
@@ -48,7 +21,6 @@
     text-align: center;
 }
 .content p{
-    /* margin: 40px auto; */
     margin: auto;
     margin-top: 50px;
     margin-bottom: 20px;
@@ -58,13 +30,7 @@
     text-align: center;
 }
 
-/* .content .content-buttons{
-    display: inline-block;
-    
-} */
-
 .content a{
-    /* margin: auto; */
     text-decoration: none;
     width: 200px;
     padding: 15px 0;
@@ -92,29 +58,6 @@
     align-items: center;
     margin-bottom: 80px;
 }
-
-/* .content-buttons .content-buttons-twobutton{
-    position: relative;
-} */
-
-/*span{*/
-/*    background: red;*/
-/*    height: 100%;*/
-/*    width: 0;*/
-/*    border-radius: 25px;*/
-/*    position: absolute;*/
-/*    left: 0;*/
-/*    bottom: 0;*/
-/*    z-index: 0;*/
-/*    transition: 0.5s;*/
-/*}*/
-/* button:hover span{
-    width: 100%;
-}
-button:hover{
-    border: none;
-} */
-
 
 /* Main container */
 
@@ -178,10 +121,6 @@ button:hover{
     align-items: center;
     transition: 0.5s;
 }
-
-/*.event-card .image-container:hover img{*/
-/*    transform:scale(1.2);*/
-/*}*/
 
 .event-card p{
     text-align: center;
@@ -331,7 +270,6 @@ button:hover{
     color: black;
     padding: 20px 0;
     background-color: #eeeeee82;
-    /*background-color: rgba(100, 100, 100, 0.81);*/
     margin: 20px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.99);
     transition: 0.5s;
@@ -385,8 +323,6 @@ button:hover{
     color: white;
     text-decoration: none;
     align-items: center;
-    /*width: 100px;*/
-    /*border: solid 1px red;*/
     background-color: rgba(100, 100, 100, 0.81);
     border-radius: 20px;
     padding: 4px 10px;
@@ -414,3 +350,80 @@ button:hover{
 }
 
 /* FOOTER */
+
+/* Responsive design */
+
+@media (max-width: 1000px) {
+
+}
+
+@media (max-width: 850px){
+    .events-container{
+        flex-direction: column;
+    }
+
+    .news-container{
+        flex-direction: column;
+    }
+
+    .merch-container{
+        flex-direction: column;
+    }
+
+    .content h2{
+        font-size: 32px;
+    }
+
+    .content p{
+        max-width: 550px;
+    }
+
+    .content-two{
+        align-items: center;
+    }
+
+    .content-three{
+        align-items: center;
+    }
+
+    .content-four{
+        align-items: center;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+    .events-container{
+        flex-direction: column;
+    }
+
+    .news-container{
+        flex-direction: column;
+    }
+
+    .merch-container{
+        flex-direction: column;
+    }
+
+    .content p{
+        max-width: 450px;
+    }
+
+    .content-buttons{
+        flex-direction: column;
+    }
+
+    .content-two{
+        align-items: center;
+    }
+
+    .content-three{
+        align-items: center;
+    }
+
+    .content-four{
+        align-items: center;
+    }
+
+}

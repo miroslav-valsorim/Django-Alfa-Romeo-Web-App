@@ -3,7 +3,7 @@ from django.urls import reverse, reverse_lazy
 from django.views import generic as views
 from django.contrib.auth import mixins as auth_mixins
 from rest_framework import pagination
-from rest_framework.generics import ListAPIView
+from rest_framework import generics as api_views
 
 from alfa_romeo_web.accounts.mixin import CheckAdminOrStaffAccess
 from alfa_romeo_web.news.models import News
@@ -16,7 +16,7 @@ class NewsListPagination(pagination.PageNumberPagination):
     page_size_query_param = 'page_size'
 
 
-class ListAPINewsView(ListAPIView):
+class ListAPINewsView(api_views.ListAPIView):
     queryset = News.objects.filter(is_active=True).order_by('-created')
     serializer_class = NewsSerializer
     pagination_class = NewsListPagination

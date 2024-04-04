@@ -120,7 +120,14 @@ The Website is done only for study purposes. Since I'm Alfa Romeo fan that's my 
 
 ![StaffPage](screenshots/Screenshot_Staff_Three.png)
 
-11. TODO:    
+
+11. MObile Responsive Design:
+
+![MobileDesign](screenshots/photo_collage_one.png)  
+
+![MobileDesign](screenshots/photo_collage_two.png)  
+
+12. TODO:    
 	- Unit testing.  
-	- Mobile responsive design.  
+	- Finish the mobile responsive design.  
 	- Make better README.  

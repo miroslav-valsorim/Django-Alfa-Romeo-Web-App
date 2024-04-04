@@ -55,3 +55,14 @@
     overflow: hidden;
     object-fit: cover;
 }
+
+
+@media (max-width: 850px){
+    .content{
+        height: unset;
+        max-height: unset;
+        flex-direction: column;
+    }
+
+
+}

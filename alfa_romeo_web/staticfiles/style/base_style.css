@@ -12,22 +12,12 @@ body{
 
 /*  ---------- DROP DOWN MENU ------------  */
 
-  /* .dropbtn {
-    background-color: #af1e2d;
-    color: white;
-    padding: 16px;
-    font-size: 16px;
-    border: none;
-    cursor: pointer;
-  } */
-
   .dropdown {
     position: relative;
     display: inline-block;
   }
 
   .dropdown-content {
-    /* margin-top: 10px; */
     display: none;
     position: absolute;
     background-color: #af1e2d;
@@ -37,7 +27,7 @@ body{
   }
 
   .dropdown-content a {
-    /* color: black; */
+
     padding: 12px 16px;
     text-decoration: none;
     display: block;
@@ -78,14 +68,6 @@ body{
     font-size: 14px;
     text-transform: uppercase;
 }
-
-/* .btn-search{
-    all:unset;
-    color: white;
-    padding: 4px;
-    cursor: pointer;
-    margin-right: 30px;
-} */
 
 .navigation{
     margin-left: auto;
@@ -162,7 +144,6 @@ footer{
 }
 
 .links-web ul li a{
-    /*text-align: center;*/
     color: gray;
 }
 
@@ -170,4 +151,118 @@ footer{
     display: block;
     margin-left: 100px;
     margin-top: 20px;
+}
+
+/* RESPONSIVE DESIGN */
+
+@media (max-width: 1000px){
+
+    .navigation{
+        margin-right: 16px;
+    }
+
+    .footer-links{
+        gap: 20px;
+    }
+
+    .footer-logo{
+        margin-right: 20px;
+    }
+}
+
+@media (max-width: 850px){
+    .header{
+        flex-direction: column;
+    }
+
+    .header .logo-a{
+        margin-bottom: 10px;
+    }
+
+    .navigation{
+        margin: unset;
+    }
+
+    .navigation .list{
+        gap: 12px;
+        font-size: 14px;
+    }
+
+    .navigation a.hide-content {
+        display: none;
+    }
+
+    .dropdown .fa-angles-down{
+        display: none;
+        visibility: hidden;
+    }
+
+    .dropdown-content{
+        display: none;
+        visibility: hidden;
+    }
+
+    .navigation ul li::after{
+        display: none;
+        visibility: hidden;
+    }
+
+    .navigation ul li:hover::after{
+        display: none;
+        visibility: hidden;
+    }
+
+    .footer-logo{
+        margin: unset;
+    }
+
+    .footer-links{
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+    }
+
+    .footer-div ul{
+        text-align: center;
+    }
+
+    .rights-reserved{
+        margin-left: 10px;
+    }
+}
+
+@media (max-width: 600px) {
+    .navigation .list{
+        gap: 10px;
+        font-size: 12px;
+    }
+
+    .navigation{
+        margin-right: 10px;
+    }
+
+    .dropdown .fa-angles-down{
+        display: none;
+        visibility: hidden;
+    }
+
+    .dropdown-content{
+        display: none;
+        visibility: hidden;
+    }
+
+    .footer-links{
+        flex-direction: column;
+    }
+
+    .navigation ul li::after{
+        display: none;
+        visibility: hidden;
+    }
+
+    .navigation ul li:hover::after{
+        display: none;
+        visibility: hidden;
+    }
+
 }
