@@ -127,6 +127,10 @@ The Website is done only for study purposes. Since I'm Alfa Romeo fan that's my 
 
 ![MobileDesign](screenshots/photo_collage_two.png)  
 
+12. Database Entity Relationship Diagram (ERD):  
+
+![DB](screenshots/Database_er.png)  
+
 12. TODO:    
 	- Unit testing.  
 	- Finish the mobile responsive design.  
