@@ -78,3 +78,16 @@
 }
 
 /* FOOTER */
+
+
+@media (max-width: 600px) {
+
+    .personal{
+        flex-direction: column;
+    }
+
+    .image{
+        margin-top: 10px;
+    }
+
+}

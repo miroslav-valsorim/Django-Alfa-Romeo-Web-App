@@ -10,7 +10,6 @@
 }
 
 .museum-gallery{
-    /*background-color: rgb(20 20 20);*/
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap:4px;
@@ -25,8 +24,6 @@
     flex-direction: row;
     align-items: center;
     color: black;
-    /*padding: 20px;*/
-    /*background-color: rgb(69, 75, 82);*/
     background-color: rgba(255,255,255,0.5);
     margin: 20px;
     transition: 0.5s;
@@ -50,7 +47,6 @@
     text-decoration: none;
     align-items: center;
     width: 200px;
-    /*border: solid 1px red;*/
     background-color: rgba(255,255,255,0.5);
     border-radius: 20px;
     padding: 5px;
@@ -117,4 +113,31 @@
     margin-top:10px;
     text-align: center;
     font-size: 18px
+}
+
+@media (max-width: 1200px) {
+
+     .museum-gallery{
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+}
+
+
+@media (max-width: 1000px) {
+
+
+    .museum-gallery{
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+
+@media (max-width: 800px){
+
+    .museum-gallery{
+        grid-template-columns: repeat(1, 1fr);
+    }
+
 }

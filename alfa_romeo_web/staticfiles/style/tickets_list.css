@@ -8,7 +8,6 @@
     color: white;
     align-content: center;
     background-position-y: 30%;
-    /*max-height: 900px;*/
     height: 850px;
     vertical-align: middle;
 }
@@ -82,8 +81,6 @@
     color: white;
     text-decoration: none;
     align-items: center;
-    /*width: 100px;*/
-    /*border: solid 1px red;*/
     background-color: rgba(100, 100, 100, 0.81);
     border-radius: 20px;
     padding: 4px 10px;
@@ -141,4 +138,35 @@
 
 .messages li{
     font-size: 20px;
+}
+
+@media (max-width: 1200px) {
+
+     .tickets-wrapper{
+        height: unset;
+    }
+
+    .tickets-container{
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+}
+
+
+@media (max-width: 1000px) {
+
+
+    .tickets-container{
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+@media (max-width: 800px) {
+
+
+    .tickets-container{
+        grid-template-columns: repeat(1, 1fr);
+    }
+
 }

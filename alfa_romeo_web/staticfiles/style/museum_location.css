@@ -35,3 +35,30 @@
     height: 100%;
     border: none;
 }
+
+@media (max-width: 1200px) {
+
+     .location-container{
+         width: 700px;
+    }
+
+}
+
+
+@media (max-width: 1000px) {
+
+
+    .location-container{
+        width: 600px;
+    }
+
+}
+
+
+@media (max-width: 800px){
+
+    .location-container{
+        width: 450px;
+    }
+
+}

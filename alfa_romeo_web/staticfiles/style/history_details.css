@@ -49,3 +49,11 @@
     margin-top: 40px;
     padding-bottom: 40px;
 }
+
+@media (max-width: 1400px) {
+
+     .paragraphs{
+         padding: 0 10px;
+     }
+
+}

@@ -8,8 +8,6 @@
     color: white;
     align-content: center;
     background-position-y: 30%;
-    /*max-height: 900px;*/
-    /*height: 850px;*/
     vertical-align: middle;
 }
 
@@ -83,13 +81,6 @@
     font-weight: 550;
 }
 
-/* didnt work for some reason TODO */
-/*.prices-container .underlined-price {*/
-/*    text-decoration-line: line-through;*/
-/*    color: black;*/
-/*    font-weight: 550;*/
-/*}*/
-
 .links-container{
     display: flex;
     flex-direction: row;
@@ -103,8 +94,6 @@
     color: white;
     text-decoration: none;
     align-items: center;
-    /*width: 100px;*/
-    /*border: solid 1px red;*/
     background-color: rgba(100, 100, 100, 0.81);
     border-radius: 20px;
     padding: 4px 10px;
@@ -128,10 +117,6 @@
 
 .paginate-wrap{
     display: block;
-    /*position: absolute;*/
-    /*bottom: 70px;*/
-    /*left: 50%;*/
-    /*transform: translateX(-50%)*/
     margin: 10px auto;
     background-color: rgba(255,255,255,0.5);
     border-radius: 20px;
@@ -162,8 +147,6 @@
     top:0;
     margin-top: -30px;
     color: white;
-    /*margin-top: 20px;*/
-    /*margin-right: 20px;*/
     font-weight: 700;
 }
 
@@ -202,9 +185,53 @@
 .search-field button{
     border-radius: 100px;
     background-color: #80d300;
-    /*font-size: 20px;*/
 }
 
 .search-field button:hover{
     background-color: greenyellow;
+}
+
+@media (max-width: 1200px) {
+
+
+    .products-container{
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .products-categories{
+        display: flex;
+        flex-direction: column;
+    }
+
+}
+
+
+@media (max-width: 1000px) {
+
+
+    .products-container{
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+     .products-categories{
+        margin-bottom: 70px;
+    }
+
+}
+
+@media (max-width: 800px) {
+
+
+    .products-container{
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .search-field{
+        top:-65px;
+    }
+
+    .order-by {
+        margin-top: -20px;
+    }
+
 }

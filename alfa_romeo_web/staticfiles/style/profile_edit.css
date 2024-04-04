@@ -97,3 +97,25 @@
 }
 
 /* FOOTER */
+
+
+@media (max-width: 1000px) {
+    .both-containers{
+        gap: 40px;
+    }
+}
+
+
+@media (max-width: 700px) {
+
+    .both-containers{
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .profile-edit{
+        height: unset;
+        max-height: unset;
+    }
+
+}
