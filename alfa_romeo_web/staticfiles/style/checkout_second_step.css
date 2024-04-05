@@ -54,3 +54,16 @@
     background-color: #38ff00;
     transform: scale(1.1);
 }
+
+.messages{
+    margin: 0 auto;
+    text-decoration: none;
+    text-align: center;
+    padding: 10px 0;
+}
+
+.messages li{
+    font-size: 20px;
+    text-decoration: none;
+    list-style: none;
+}

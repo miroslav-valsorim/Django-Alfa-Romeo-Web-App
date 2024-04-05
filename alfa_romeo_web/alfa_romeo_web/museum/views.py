@@ -24,7 +24,7 @@ class ListMuseumView(views.ListView):
 
     def get_queryset(self):
         category_id = self.request.GET.get('category')
-        order_by = self.request.GET.get('order_by', 'year')
+        order_by = self.request.GET.get('order_by', 'year asc')
 
         if category_id:
             queryset = MuseumTopic.get_all_topics_by_categoryid(category_id).filter(is_active=True)
@@ -33,8 +33,10 @@ class ListMuseumView(views.ListView):
 
         if order_by == 'header':
             queryset = queryset.order_by('header')
-        else:
+        elif order_by == 'year asc':
             queryset = queryset.order_by('year')
+        elif order_by == 'year desc':
+            queryset = queryset.order_by('-year')
 
         return queryset
 
@@ -69,18 +71,20 @@ class StaffMuseumTopicListView(auth_mixins.LoginRequiredMixin, CheckAdminOrStaff
         queryset = MuseumTopic.objects.all()
         order_by = self.request.GET.get('order_by', 'is_active')
 
-        if order_by == 'is_active':
-            queryset = queryset.order_by('-is_active')
-        if order_by == 'not_active':
-            queryset = queryset.order_by('is_active')
-        elif order_by == 'created':
-            queryset = queryset.order_by('-created')
-
         search_query = self.request.GET.get('Search')
         if search_query:
-            queryset = queryset.filter(
-                Q(title__icontains=search_query)
+            initial_queryset = queryset.filter(
+                Q(header__icontains=search_query)
             )
+        else:
+            initial_queryset = queryset
+
+        if order_by == 'is_active':
+            queryset = initial_queryset.order_by('-is_active')
+        if order_by == 'not_active':
+            queryset = initial_queryset.order_by('is_active')
+        elif order_by == 'created':
+            queryset = initial_queryset.order_by('-created')
 
         return queryset
 
@@ -132,16 +136,18 @@ class StaffMuseumCategoryListView(auth_mixins.LoginRequiredMixin, CheckAdminOrSt
         queryset = MuseumCategory.objects.all()
         order_by = self.request.GET.get('order_by', 'is_active')
 
-        if order_by == 'is_active':
-            queryset = queryset.order_by('-is_active')
-        elif order_by == 'not_active':
-            queryset = queryset.order_by('is_active')
-
         search_query = self.request.GET.get('Search')
         if search_query:
-            queryset = queryset.filter(
+            initial_queryset = queryset.filter(
                 Q(name__icontains=search_query)
             )
+        else:
+            initial_queryset = queryset
+
+        if order_by == 'is_active':
+            queryset = initial_queryset.order_by('-is_active')
+        elif order_by == 'not_active':
+            queryset = initial_queryset.order_by('is_active')
 
         return queryset
 

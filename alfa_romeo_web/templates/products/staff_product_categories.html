@@ -15,7 +15,7 @@
          <div class="wrapper">
                 <div class="order-by">
                         <form action="" method="get" id="order-form">
-                            
+                                <input type="hidden" name="Search" value="{{ search_query }}">
                                 <label for="order_by">Order By:</label>
                                 <select name="order_by" id="order_by">
                                     <optgroup label="Order By">
@@ -37,7 +37,7 @@
                 </div>
                 
                 <div class="search-field">
-                    <form method="GET" action="{% url 'staff_museum_categories' %}">
+                    <form method="GET" action="{% url 'staff_product_categories' %}">
                         <input type="text" name="Search" placeholder="Search by product category name..." value="{{ search_query }}">
                         <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                     </form>

@@ -7,4 +7,3 @@ class CheckoutForm(forms.ModelForm):
     class Meta:
         model = ShippingAddress
         exclude = ['user',]
-

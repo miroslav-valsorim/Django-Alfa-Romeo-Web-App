@@ -7,12 +7,12 @@ UserModel = get_user_model()
 
 class ShippingAddress(models.Model):
     MAX_SHIPPING_ADDRESS_LENGTH = 150
-    MIN_SHIPPING_ADDRESS_LENGTH = 10
-    MAX_COUNTRY_LENGTH = 150
+    MIN_SHIPPING_ADDRESS_LENGTH = 5
+    MAX_COUNTRY_LENGTH = 30
     MIN_COUNTRY_LENGTH = 2
-    MAX_TOWN_LENGTH = 100
+    MAX_TOWN_LENGTH = 30
     MIN_TOWN_LENGTH = 2
-    MAX_ZIP_LENGTH = 50
+    MAX_ZIP_LENGTH = 30
     MIN_ZIP_LENGTH = 2
 
     user = models.ForeignKey(

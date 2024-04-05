@@ -51,18 +51,20 @@ class StaffNewsListView(auth_mixins.LoginRequiredMixin, CheckAdminOrStaffAccess,
         queryset = News.objects.all()
         order_by = self.request.GET.get('order_by', 'is_active')
 
-        if order_by == 'is_active':
-            queryset = queryset.order_by('-is_active')
-        if order_by == 'not_active':
-            queryset = queryset.order_by('is_active')
-        elif order_by == 'created':
-            queryset = queryset.order_by('-created')
-
         search_query = self.request.GET.get('Search')
         if search_query:
-            queryset = queryset.filter(
+            initial_queryset = queryset.filter(
                 Q(title__icontains=search_query)
             )
+        else:
+            initial_queryset = queryset
+
+        if order_by == 'is_active':
+            queryset = initial_queryset.order_by('-is_active')
+        if order_by == 'not_active':
+            queryset = initial_queryset.order_by('is_active')
+        elif order_by == 'created':
+            queryset = initial_queryset.order_by('-created')
 
         return queryset
 

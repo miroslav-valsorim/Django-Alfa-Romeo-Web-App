@@ -71,9 +71,12 @@ class CheckoutView(views.View):
 
                 return redirect('payment')
 
-            messages.warning(self.request, 'Failed Checkout')
-            return redirect(reverse('second_step'), kwargs={'pk': self.request.user.pk})
-            # return redirect("second_step")
+            messages.warning(self.request, 'Failed Checkout, some of the fields are improperly formatted')
+
+            # TODO handle form validation messages, (doesn't appear for some reason?)
+
+            return redirect(reverse('second_step', kwargs={'pk': self.request.user.pk}))
+
         except ObjectDoesNotExist:
             messages.error(self.request, "You don't have active order")
             return redirect("cart_details")

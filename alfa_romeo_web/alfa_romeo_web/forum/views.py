@@ -144,19 +144,23 @@ class StaffTopicsForApproval(auth_mixins.LoginRequiredMixin, CheckAdminOrStaffAc
         queryset = Post.objects.all()
         order_by = self.request.GET.get('order_by', 'approved')
 
-        if order_by == 'approved':
-            queryset = queryset.order_by('approved')
-        elif order_by == 'date':
-            queryset = queryset.order_by('-date')
-        elif order_by == 'closed':
-            queryset = queryset.order_by('-closed')
-
         search_query = self.request.GET.get('Search')
         if search_query:
-            queryset = queryset.filter(
+            initial_queryset = queryset.filter(
                 Q(title__icontains=search_query) |
                 Q(content__icontains=search_query)
             )
+        else:
+            initial_queryset = queryset
+
+        if order_by == 'not approved':
+            queryset = initial_queryset.order_by('approved')
+        elif order_by == 'approved':
+            queryset = initial_queryset.order_by('-approved')
+        elif order_by == 'date':
+            queryset = initial_queryset.order_by('-date')
+        elif order_by == 'closed':
+            queryset = initial_queryset.order_by('-closed')
 
         return queryset
 
@@ -193,16 +197,18 @@ class StaffForumCategoryListView(auth_mixins.LoginRequiredMixin, CheckAdminOrSta
         queryset = ForumCategory.objects.all()
         order_by = self.request.GET.get('order_by', 'is_active')
 
-        if order_by == 'is_active':
-            queryset = queryset.order_by('-is_active')
-        elif order_by == 'not_active':
-            queryset = queryset.order_by('is_active')
-
         search_query = self.request.GET.get('Search')
         if search_query:
-            queryset = queryset.filter(
+            initial_queryset = queryset.filter(
                 Q(title__icontains=search_query)
             )
+        else:
+            initial_queryset = queryset
+
+        if order_by == 'is_active':
+            queryset = initial_queryset.order_by('-is_active')
+        elif order_by == 'not_active':
+            queryset = initial_queryset.order_by('is_active')
 
         return queryset
 

@@ -144,12 +144,14 @@ STATICFILES_DIRS = (
 
 MEDIA_ROOT = BASE_DIR / 'mediafiles'
 
+
 MEDIA_URL = "/media/"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
 
 AUTH_USER_MODEL = 'accounts.AlfaRomeoUser'
 
@@ -158,6 +160,7 @@ LOGIN_REDIRECT_URL = reverse_lazy('main_page')
 LOGIN_URL = reverse_lazy('login-user')
 
 LOGOUT_REDIRECT_URL = reverse_lazy('main_page')
+
 
 PAYPAL_RECEIVER_EMAIL = os.environ.get('PAYPAL_RECEIVER_EMAIL')
 

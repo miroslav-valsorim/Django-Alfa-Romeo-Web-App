@@ -15,9 +15,11 @@
                 <div class="order-by">
                         <form action="" method="get" id="order-form">
                                 <label for="order_by">Order By:</label>
+                                <input type="hidden" name="Search" value="{{ search_query }}">
                                 <select name="order_by" id="order_by">
                                     <optgroup label="Order By">
-                                        <option value="approved" {% if order_by == 'approved' %}selected{% endif %}>Not Approved</option>
+                                        <option value="not approved" {% if order_by == 'not approved' %}selected{% endif %}>Not Approved</option>
+                                        <option value="approved" {% if order_by == 'approved' %}selected{% endif %}>Approved</option>
                                         <option value="date" {% if order_by == 'date' %}selected{% endif %}>Date</option>
                                         <option value="closed" {% if order_by == 'closed' %}selected{% endif %}>Closed</option>
                                     </optgroup>

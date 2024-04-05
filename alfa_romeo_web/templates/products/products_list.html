@@ -51,14 +51,14 @@
                                     <option value="price desc" {% if order_by == 'price' %}selected{% endif %}>Price Desc</option>
                                 </optgroup>
                             </select>
-                            <input type="submit" style="display: none;"> <!-- Hidden submit button -->
+                            <input type="submit" style="display: none;">
                     </form>
 
                     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
                     <script>
                         $(document).ready(function() {
                             $('#order_by').change(function() {
-                                $('#order-form').submit(); // Submit the form when an option is selected
+                                $('#order-form').submit();
                             });
                         });
                     </script>
