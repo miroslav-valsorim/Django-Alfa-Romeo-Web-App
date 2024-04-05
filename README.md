@@ -146,3 +146,8 @@ Bringing my vision to life after nearly two years of anticipation, this project 
 	- Unit testing.  
 	- Deploy.    
 	- Make better README.  
+
+
+## License
+
+[MIT License](LICENSE)
