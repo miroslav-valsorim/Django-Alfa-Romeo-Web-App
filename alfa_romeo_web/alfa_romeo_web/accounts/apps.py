@@ -7,3 +7,5 @@ class AccountsConfig(AppConfig):
 
     def ready(self):
         import alfa_romeo_web.accounts.signals
+        result = super().ready()
+        return result

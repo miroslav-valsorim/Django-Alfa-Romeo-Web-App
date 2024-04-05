@@ -105,7 +105,10 @@ Bringing my vision to life after nearly two years of anticipation, this project 
 ![ForumPage](screenshots/Screenshot_Forum_Three.png)
 
 9. Profile:
-	- Has edit profile, change password, delete profile functionality  
+	- Has edit profile, change password, delete profile functionality.   
+	- Register successful email.  
+
+![ProfileRegister](screenshots/Screenshot_Register.png)
 
 ![ProfilePage](screenshots/Screenshot_Profile.png)
 

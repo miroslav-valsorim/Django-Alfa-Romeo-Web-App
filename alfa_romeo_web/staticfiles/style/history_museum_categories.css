@@ -6,7 +6,6 @@
     display: flex;
     flex-direction: row;
     color: white;
-    /* align-content: center; */
     background-position-y: 70%;
     max-height: 700px;
     height: 700px;

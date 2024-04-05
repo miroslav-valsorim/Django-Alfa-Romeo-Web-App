@@ -72,7 +72,8 @@ class CheckoutView(views.View):
                 return redirect('payment')
 
             messages.warning(self.request, 'Failed Checkout')
-            return redirect("second_step")
+            return redirect(reverse('second_step'), kwargs={'pk': self.request.user.pk})
+            # return redirect("second_step")
         except ObjectDoesNotExist:
             messages.error(self.request, "You don't have active order")
             return redirect("cart_details")
