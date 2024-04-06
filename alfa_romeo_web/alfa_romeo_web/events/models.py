@@ -13,7 +13,8 @@ class Event(models.Model):
         UserModel,
         on_delete=models.CASCADE,
         related_name='event_creator',
-        default='Admin',
+        null=True,
+        blank=True,
     )
 
     title = models.CharField(

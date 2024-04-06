@@ -13,6 +13,8 @@ class News(models.Model):
         on_delete=models.CASCADE,
         related_name='news_creator',
         default='Admin',
+        null=True,
+        blank=True,
     )
 
     title = models.CharField(

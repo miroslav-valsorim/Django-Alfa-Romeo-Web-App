@@ -48,6 +48,9 @@
                 </div>
             </li>
         </div>
+        <li class="nav-item">
+            <a href="{% url 'forum_main_page' %}">Forum</a>
+        </li>
     
         {% if not user.is_authenticated %}
             
@@ -56,9 +59,9 @@
             </li>
             
         {% else %}
-            <li class="nav-item">
-                <a href="{% url 'forum_main_page' %}">Forum</a>
-            </li>
+{#            <li class="nav-item">#}
+{#                <a href="{% url 'forum_main_page' %}">Forum</a>#}
+{#            </li>#}
             <li class="nav-item">
                 <a href="{% url 'cart_details' %}">
                     <i class="fa-solid fa-cart-shopping"> {{ request.user | cart_item_count }}</i>

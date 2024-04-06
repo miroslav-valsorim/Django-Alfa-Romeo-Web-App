@@ -42,6 +42,8 @@ class MuseumTopic(models.Model):
         UserModel,
         on_delete=models.CASCADE,
         related_name='topic_creator',
+        null=True,
+        blank=True,
     )
     header = models.CharField(
         max_length=MAX_HEADER_LENGTH,
@@ -108,3 +110,4 @@ class MuseumTopic(models.Model):
             self.slug = slugify(f"{self.category}-{self.header}-{self.pk}")
 
         super().save(*args, **kwargs)
+

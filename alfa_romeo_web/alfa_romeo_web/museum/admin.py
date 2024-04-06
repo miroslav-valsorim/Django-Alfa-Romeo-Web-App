@@ -31,3 +31,8 @@ class ModelNameAdmin(admin.ModelAdmin):
 
     get_category_name.short_description = 'Category Name'
     get_category_name.admin_order_field = 'category__name'
+
+    def save_model(self, request, obj, form, change):
+        if not obj.created_by:
+            obj.created_by = request.user
+        super().save_model(request, obj, form, change)

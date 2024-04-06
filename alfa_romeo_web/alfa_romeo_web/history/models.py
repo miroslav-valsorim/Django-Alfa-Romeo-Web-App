@@ -41,7 +41,10 @@ class History(models.Model):
         UserModel,
         on_delete=models.CASCADE,
         related_name='history_creator',
+        null=True,
+        blank=True,
     )
+
     header = models.CharField(
         max_length=MAX_HEADER_LENGTH,
         blank=False,
