@@ -151,10 +151,10 @@ Bringing my vision to life after nearly two years of anticipation, this project 
 ## Run this project locally
 
 1. Clone repo: https://github.com/miroslav-valsorim/Django-Alfa-Romeo-Web-App.git  
-2. Install requirements.txt: pip install -r requirements.txt  
+2. Install requirements.txt: `pip install -r requirements.txt`  
 3. DB:  
-	- You can use the already done DB in folder sqlite3_pycharm (in case that the db in project folder is not available) with superuser miro@abv.bg pass: miro  
-	- Or you can migrate and make new DW:  python manage.py migrate and create superuser python manage.py createsuperuser  
+	- You can use the already done DB in folder sqlite3_pycharm (in case that the db in project folder is not available) with `superuser miro@abv.bg` `pass: miro`    
+	- Or you can migrate and make new DW:  `python manage.py migrate` and create superuser `python manage.py createsuperuser`  
 
 ## License
 
