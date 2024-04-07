@@ -59,16 +59,14 @@
             </li>
             
         {% else %}
-{#            <li class="nav-item">#}
-{#                <a href="{% url 'forum_main_page' %}">Forum</a>#}
-{#            </li>#}
+            
             <li class="nav-item">
                 <a href="{% url 'cart_details' %}">
                     <i class="fa-solid fa-cart-shopping"> {{ request.user | cart_item_count }}</i>
                 </a>
             </li>
              <div class="dropdown">
-                <li class="nav-item">
+                <li class="nav-item" style="padding:0 10px">
                     <a href="{% url 'details-profile' pk=request.user.pk %}">
                         <i class="fa-solid fa-user"></i>
                     </a>

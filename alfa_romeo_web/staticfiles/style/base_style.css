@@ -12,38 +12,38 @@ body{
 
 /*  ---------- DROP DOWN MENU ------------  */
 
-  .dropdown {
-    position: relative;
-    display: inline-block;
-  }
+.dropdown {
+position: relative;
+display: inline-block;
+}
 
-  .dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #af1e2d;
-    min-width: 150px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-  }
+.dropdown-content {
+display: none;
+position: absolute;
+background-color: #af1e2d;
+min-width: 150px;
+box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+z-index: 1;
+}
 
-  .dropdown-content a {
+.dropdown-content a {
 
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-  }
+padding: 12px 16px;
+text-decoration: none;
+display: block;
+}
 
-  .dropdown-content a:hover {
-    background-color: #e40101
-  }
+.dropdown-content a:hover {
+background-color: #e40101
+}
 
-  .dropdown:hover .dropdown-content {
-    display: block;
-  }
+.dropdown:hover .dropdown-content {
+display: block;
+}
 
-  .dropdown:hover .dropbtn {
-    background-color: #af1e2d;
-  }
+.dropdown:hover .dropbtn {
+background-color: #af1e2d;
+}
 
 /* ------------------------   */
 
