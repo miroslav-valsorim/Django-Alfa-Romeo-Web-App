@@ -18,7 +18,7 @@
                     <div class="image-container">
                         <img src="{{ event.img_field.url }}" alt="{{ event.title }} img">
                     </div>
-                    <p>{{ event.description|slice:":300" }}...</p>
+                    <p>{{ event.description|slice:":250" }}...</p>
                     <a href="{% url 'event_details' slug=event.slug %}">Full Information</a>
                 </div>
             {% endfor %}

@@ -7,7 +7,10 @@
 {% endblock %}
 
 {% block main_content %}
+        <button onclick="topFunction()" class="up-btn" id="up-btn"><i class="fa-solid fa-circle-up"></i></button>
+
         <div class="content">
+            <div class="background"></div>
             <h2>Welcome to Alfa Romeo Museum</h2>
             <p>The Museo Alfa Romeo tells the legendary story of the brand, via a project and an 
                 installation designed to reflect its: historical presence, beauty and speed,
@@ -32,7 +35,7 @@
                         <div class="image-container">
                             <img src="{{event.img_field.url}}" alt="{{ event.title}}">
                         </div>
-                        <p>{{ event.description|slice:":300" }}</p>
+                        <p>{{ event.description|slice:":250" }}</p>
                         <a href="{% url 'event_details' slug=event.slug %}">Full information</a>
                     </div>
                 {% endfor %}
@@ -48,7 +51,7 @@
                     <div class="image-container">
                         <img src="{{news.img_field.url}}" alt="alfa romeo track">
                     </div>
-                         <p>{{ news.description|slice:":300" }}</p>
+                         <p>{{ news.description|slice:":250" }}</p>
                     <a href="{% url 'news_details' slug=news.slug %}">Read Article </a>
                 </div>
                 {% endfor %}
@@ -87,5 +90,6 @@
                     </div>
                 {% endfor %}
             </section>
+            <script src="{% static 'js/main_page/main_page.js' %}"></script>
         </section>
 {% endblock %}

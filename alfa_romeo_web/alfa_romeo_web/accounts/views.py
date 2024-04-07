@@ -38,13 +38,13 @@ def logout_view(request):
     return redirect('main_page')
 
 
-class ProfileDetailsView(OwnerRequiredMixin, views.DetailView):
+class ProfileDetailsView(auth_mixins.LoginRequiredMixin, OwnerRequiredMixin, views.DetailView):
     queryset = (Profile.objects.prefetch_related('user').all())
     template_name = "accounts/profile_details.html"
     fields = ("first_name", "last_name", "date_of_birth", 'phone_number', "profile_picture")
 
 
-class ProfileEditView(OwnerRequiredMixin, views.UpdateView):
+class ProfileEditView(auth_mixins.LoginRequiredMixin, OwnerRequiredMixin, views.UpdateView):
     queryset = Profile.objects.all()
     template_name = "accounts/profile_edit.html"
     fields = ("first_name", "last_name", "date_of_birth", 'phone_number', "profile_picture")
@@ -75,13 +75,13 @@ class ProfileEditView(OwnerRequiredMixin, views.UpdateView):
         return form
 
 
-class ProfileChangePasswordView(OwnerRequiredMixin, auth_views.PasswordChangeView):
+class ProfileChangePasswordView(auth_mixins.LoginRequiredMixin, OwnerRequiredMixin, auth_views.PasswordChangeView):
     form_class = auth_forms.PasswordChangeForm
     template_name = "accounts/password_change.html"
     success_url = reverse_lazy('main_page')
 
 
-class ProfileDeleteView(views.DeleteView):
+class ProfileDeleteView(auth_mixins.LoginRequiredMixin, OwnerRequiredMixin, views.DeleteView):
     model = UserModel
     queryset = Profile.objects.all()
     template_name = "accounts/profile_delete.html"

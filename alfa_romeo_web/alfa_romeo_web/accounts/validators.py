@@ -13,7 +13,7 @@ def validate_profile_first_last_name(name):
 
 
 def validate_profile_phone_number(phone_number):
-    if not phone_number.isdigit():
+    if not phone_number[1:].isdigit():
         raise ValidationError(
             _('Phone number should contain only numbers.')
         )

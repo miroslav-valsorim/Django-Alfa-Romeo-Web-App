@@ -26,7 +26,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '0.0.0.0', '127.0.0.1', '192.168.1.6']
+ALLOWED_HOSTS = ['localhost', '0.0.0.0', '127.0.0.1']
 
 # Application definition
 
@@ -144,14 +144,12 @@ STATICFILES_DIRS = (
 
 MEDIA_ROOT = BASE_DIR / 'mediafiles'
 
-
 MEDIA_URL = "/media/"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
 
 AUTH_USER_MODEL = 'accounts.AlfaRomeoUser'
 
@@ -161,17 +159,15 @@ LOGIN_URL = reverse_lazy('login-user')
 
 LOGOUT_REDIRECT_URL = reverse_lazy('main_page')
 
-
 PAYPAL_RECEIVER_EMAIL = os.environ.get('PAYPAL_RECEIVER_EMAIL')
 
 PAYPAL_TEST = True
-
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = os.environ.get('EMAIL_HOST')
 EMAIL_PORT = os.environ.get('EMAIL_PORT')
 # EMAIL_USE_TLS throw errors for some reason if we makemigrations/migrate with the environ.get
 # in such a case just replace the boolean with .... EMAIL_USE_TLS = True
-EMAIL_USE_TLS = bool(int(os.environ.get('EMAIL_USE_TLS')))
+EMAIL_USE_TLS = True  # bool(int(os.environ.get('EMAIL_USE_TLS')))
 EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')

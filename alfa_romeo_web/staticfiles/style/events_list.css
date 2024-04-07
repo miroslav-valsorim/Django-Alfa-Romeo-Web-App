@@ -130,3 +130,16 @@
     }
 
 }
+
+@media (max-width: 600px) {
+    .image-container{
+        max-width: 350px;
+        height: unset;
+    }
+
+    .event-card {
+        max-width: 350px;
+        height: unset;
+    }
+
+}

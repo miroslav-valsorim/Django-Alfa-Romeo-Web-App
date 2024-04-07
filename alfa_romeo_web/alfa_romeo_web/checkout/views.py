@@ -6,6 +6,9 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 from django.views import generic as views
+from django.contrib.auth import mixins as auth_mixins
+from django.contrib.auth.decorators import login_required
+
 from paypal.standard.forms import PayPalPaymentsForm
 
 from alfa_romeo_web.accounts.mixin import OwnerRequiredMixin
@@ -15,7 +18,7 @@ from alfa_romeo_web.checkout.forms import CheckoutForm
 from alfa_romeo_web.checkout.models import ShippingAddress
 
 
-class ProfileEditView(OwnerRequiredMixin, views.UpdateView):
+class ProfileEditView(auth_mixins.LoginRequiredMixin, OwnerRequiredMixin, views.UpdateView):
     queryset = Profile.objects.all()
     template_name = "checkout/checkout_user.html"
     fields = ("first_name", "last_name", 'phone_number')
@@ -38,7 +41,7 @@ class ProfileEditView(OwnerRequiredMixin, views.UpdateView):
         return form
 
 
-class CheckoutView(views.View):
+class CheckoutView(auth_mixins.LoginRequiredMixin, OwnerRequiredMixin, views.View):
     def get(self, *args, **kwargs):
         form = CheckoutForm()
         context = {
@@ -82,7 +85,7 @@ class CheckoutView(views.View):
             return redirect("cart_details")
 
 
-class PaymentView(views.TemplateView):
+class PaymentView(auth_mixins.LoginRequiredMixin, views.TemplateView):
     template_name = 'checkout/payment.html'
 
     def get_context_data(self, **kwargs):
@@ -108,6 +111,7 @@ class PaymentView(views.TemplateView):
         return context
 
 
+@login_required
 def paypal_payment_successful(request, shopping_cart_id):
     # in case the success payment work properly there is more things to be set
     # info here https://django-paypal.readthedocs.io/en/stable/standard/ipn.html
@@ -138,6 +142,7 @@ def paypal_payment_successful(request, shopping_cart_id):
     return render(request, 'checkout/payment-success.html', context)
 
 
+@login_required
 def paypal_payment_failed(request, shopping_cart_id):
     cart_id = ShoppingCart.objects.get(id=shopping_cart_id)
 

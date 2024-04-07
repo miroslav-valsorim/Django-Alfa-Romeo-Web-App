@@ -1,6 +1,6 @@
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth import mixins as auth_mixins
 from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
@@ -139,7 +139,7 @@ def add_single_item_to_cart(request, slug):
     return redirect("cart_details")
 
 
-class ShoppingCartSummary(LoginRequiredMixin, views.View):
+class ShoppingCartSummary(auth_mixins.LoginRequiredMixin, views.View):
     def get(self, *args, **kwargs):
         try:
             order = ShoppingCart.objects.get(user=self.request.user, ordered=False)

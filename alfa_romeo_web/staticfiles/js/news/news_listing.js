@@ -24,8 +24,8 @@ document.addEventListener('DOMContentLoaded', function () {
                         imgElement.src = info.img_field;
                         imgElement.alt = info.title + ' image';
                     }
-                    let description = info.description.slice(0, 300);
-                    if (info.description.length > 300) {
+                    let description = info.description.slice(0, 250);
+                    if (info.description.length > 250) {
                         description += '...';
                     }
                     createElement('p', newDiv, description);

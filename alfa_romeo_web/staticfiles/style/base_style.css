@@ -266,3 +266,18 @@ footer{
     }
 
 }
+
+@media (max-width: 460px){
+    .navigation{
+        margin: 0 20px;
+    }
+
+    .navigation .list{
+        flex-direction: column;
+    }
+
+    .header{
+        position: unset;
+        align-items: unset;
+    }
+}

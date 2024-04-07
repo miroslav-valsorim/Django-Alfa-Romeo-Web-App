@@ -11,8 +11,8 @@
     color: white;
     align-content: center;
     background-position-y: 70%;
-    max-height: 700px;
-    height: 700px;
+    /*max-height: 700px;*/
+    /*height: 700px;*/
     vertical-align: middle;
 }
 .profile-edit h2{
@@ -54,6 +54,7 @@
 .edit-form-container button{
     margin: auto;
     margin-top: 10px;
+    margin-bottom: 10px;
     width: 200px;
     padding: 15px 0;
     text-align: center;

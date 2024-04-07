@@ -9,8 +9,8 @@
     color: white;
     align-content: center;
     background-position-y: 70%;
-    max-height: 900px;
-    height: 800px;
+    /*max-height: 900px;*/
+    /*height: 800px;*/
     vertical-align: middle;
 }
 
@@ -75,6 +75,17 @@
     margin: 0;
 }
 
+
+@media (max-width: 1000px){
+    .event-location-date{
+        margin: 10px 30px;
+        flex-direction: column;
+    }
+
+    .event-card p{
+        margin: 0 30px;
+    }
+}
 
 @media (max-width: 800px) {
 

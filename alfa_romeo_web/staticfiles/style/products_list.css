@@ -228,10 +228,12 @@
 
     .search-field{
         top:-65px;
+        left: 20px;
     }
 
     .order-by {
         margin-top: -20px;
+        left: 10px;
     }
 
 }

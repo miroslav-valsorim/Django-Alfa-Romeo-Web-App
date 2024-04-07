@@ -131,3 +131,16 @@
     }
 
 }
+
+@media (max-width: 600px) {
+    .image-container{
+        max-width: 350px;
+        height: unset;
+    }
+
+    .news-card {
+        max-width: 350px;
+        height: unset;
+    }
+
+}
