@@ -197,7 +197,7 @@ PAYPAL_RECEIVER_EMAIL = os.environ.get('PAYPAL_RECEIVER_EMAIL')
 PAYPAL_TEST = True
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = os.environ.get('EMAIL_HOST')
+EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = os.environ.get('EMAIL_PORT')
 # EMAIL_USE_TLS throw errors for some reason if we makemigrations/migrate with the environ.get
 # in such a case just replace the boolean with .... EMAIL_USE_TLS = True
