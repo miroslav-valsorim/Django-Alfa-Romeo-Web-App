@@ -84,9 +84,26 @@ th {
     color:white;
 }
 th, td {
-    width:150px;
+    width: 150px;
+    max-width:150px;
     text-align:center;
     border:1px solid black;
     padding:5px;
     font-size: 16px;
+}
+
+
+@media (max-width: 800px) {
+    .add-remove{
+        display: flex;
+        flex-direction: column;
+        border: none;
+    }
+}
+
+@media (max-width: 500px) {
+
+    th, td{
+        width: unset;
+    }
 }

@@ -173,6 +173,7 @@ footer{
 @media (max-width: 850px){
     .header{
         flex-direction: column;
+        position: unset;
     }
 
     .header .logo-a{
@@ -267,17 +268,51 @@ footer{
 
 }
 
-@media (max-width: 460px){
+@media (max-width: 490px){
     .navigation{
         margin: 0 20px;
     }
 
     .navigation .list{
-        flex-direction: column;
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        margin-top: 10px;
     }
 
     .header{
         position: unset;
-        align-items: unset;
+        align-items: center;
+        flex-direction: row;
+    }
+
+    .content p{
+        max-width: 400px;
+        font-size: 18px;
+    }
+
+    .content h2{
+        font-size: 26px;
+    }
+
+}
+
+@media (max-width: 410px){
+    .navigation{
+        margin: 0 10px;
+    }
+
+    .navigation .list{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        margin-top: 10px;
+    }
+
+     .content p{
+        max-width: 360px;
+        font-size: 16px;
+    }
+
+    .content h2{
+        font-size: 22px;
     }
 }

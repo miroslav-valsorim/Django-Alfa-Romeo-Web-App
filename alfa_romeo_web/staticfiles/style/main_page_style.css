@@ -495,4 +495,50 @@
         align-items: center;
     }
 
+    .up-btn{
+        right: 1px;
+        font-size: 30px;
+    }
+
 }
+
+@media (max-width: 450px) {
+
+    .event-card{
+        width: 300px;
+    }
+
+    .news-card{
+        width: 300px;
+    }
+
+    .merch-card{
+        width: 300px;
+    }
+
+    .content p{
+        max-width: 380px;
+    }
+
+}
+
+@media (max-width: 385px) {
+
+    .event-card{
+        width: 250px;
+    }
+
+    .news-card{
+        width: 250px;
+    }
+
+    .merch-card{
+        width: 250px;
+    }
+
+    .content p{
+        max-width: 310px;
+    }
+
+}
+

@@ -43,7 +43,7 @@
                                 </td>
                                 <td>{{ order_item.item.title }}</td>
                                 <td>{{ order_item.item.price }} $</td>
-                                <td>
+                                <td class="add-remove">
                                     <a class="links" href="{% url 'remove_single_item_from_cart' slug=order_item.item.slug %}"> <i class="fa-solid fa-minus"></i> </a>
                                     {{ order_item.quantity }}
                                     <a class="links" href="{% url 'add_single_item_to_cart' slug=order_item.item.slug %}"> <i class="fa-solid fa-plus"></i> </a>

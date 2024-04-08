@@ -99,3 +99,27 @@
     }
 
 }
+
+@media (max-width: 600px) {
+    .event-card h2{
+        padding-top: 50px;
+    }
+}
+
+@media (max-width: 500px) {
+    .image-container{
+        width: 350px;
+        max-width: 350px;
+    }
+
+    .event-card h2{
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 380px) {
+    .image-container{
+        width: 300px;
+        max-width: 300px;
+    }
+}
