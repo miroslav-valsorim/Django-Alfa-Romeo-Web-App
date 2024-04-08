@@ -67,3 +67,14 @@
     text-decoration: none;
     list-style: none;
 }
+
+@media (max-width: 600px) {
+    .form-container{
+        width: unset;
+    }
+
+    .form-container input{
+        max-width: 350px;
+        width: 300px;
+    }
+}

@@ -150,3 +150,33 @@
     }
 
 }
+
+@media (max-width: 600px) {
+    .order-by{
+        position: unset;
+        margin-top: unset;
+        margin-left: 10px;
+        padding-top: 10px;
+    }
+
+    .wrapper .search-field{
+        position: unset;
+    }
+
+    .wrapper{
+        position: unset;
+    }
+
+    .container h2{
+        padding-top: 30px;
+    }
+
+    .create-product{
+        top: 20px;
+        width: 300px;
+        position: unset;
+        transform: unset;
+        margin: unset;
+        margin-top: 20px;
+    }
+}

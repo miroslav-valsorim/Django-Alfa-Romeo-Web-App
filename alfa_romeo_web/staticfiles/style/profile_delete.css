@@ -77,3 +77,18 @@
 }
 
 /* FOOTER */
+
+@media (max-width: 600px) {
+    .buttons{
+        flex-direction: column;
+    }
+
+    .buttons button{
+        margin-bottom: 30px;
+    }
+
+    .profile-delete .delete-div h2{
+        max-width: 400px;
+        font-size: 22px;
+    }
+}

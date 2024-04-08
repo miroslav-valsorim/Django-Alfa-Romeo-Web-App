@@ -451,6 +451,27 @@
 
 
 @media (max-width: 600px) {
+    .content{
+        max-height: unset;
+        height: unset;
+    }
+
+    .content h2{
+        margin-top: 30px;
+    }
+
+    .content a{
+        margin: 5px 10px;
+    }
+
+    .content p{
+        margin-top: 20px;
+    }
+
+    .content-buttons{
+        margin-bottom: 5px;
+    }
+
     .events-container{
         flex-direction: column;
     }
@@ -496,7 +517,7 @@
     }
 
     .up-btn{
-        right: 1px;
+        right: -10px;
         font-size: 30px;
     }
 

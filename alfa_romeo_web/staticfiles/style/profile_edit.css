@@ -120,3 +120,21 @@
     }
 
 }
+
+@media (max-width: 600px) {
+    .edit-form-container input{
+        display: flex;
+        margin: auto;
+        align-items: center;
+        max-width: 400px;
+        width: 300px;
+    }
+
+    .both-containers{
+        margin-top: 10px;
+    }
+
+    .profile-edit h2{
+        margin-top: 10px;
+    }
+}

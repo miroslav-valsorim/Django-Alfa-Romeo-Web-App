@@ -98,3 +98,13 @@
 .messages li{
     font-size: 20px;
 }
+
+@media (max-width: 600px) {
+    .image-container{
+        width: unset;
+    }
+
+    .wrapper{
+        flex-direction: column;
+    }
+}

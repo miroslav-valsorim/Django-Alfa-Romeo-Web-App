@@ -92,6 +92,14 @@
         margin-bottom: 10px;
     }
 
+    .personal-info p{
+        font-size: 18px;
+    }
+
+    .profile-details h2{
+        margin-top: 10px;
+    }
+
     .image{
         margin-top: 10px;
     }

@@ -73,3 +73,15 @@
     }
 
 }
+
+@media (max-width: 600px) {
+
+    .image-container{
+        max-width: 350px;
+    }
+
+    .museum-topic-details h2{
+        padding-top: 50px;
+    }
+
+}

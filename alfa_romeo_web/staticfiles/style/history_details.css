@@ -56,4 +56,37 @@
          padding: 0 10px;
      }
 
+    .image-container{
+        height: unset;
+    }
+
+}
+
+@media (max-width: 650px) {
+    .description-photo{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .image-container{
+     max-width: 450px;
+     width: 450px;
+     height: unset;
+     float: unset;
+    }
+
+    .history-details h2{
+        padding-top: 50px;
+    }
+
+}
+
+@media (max-width: 500px) {
+
+     .image-container{
+         max-width: 350px;
+         width: 350px;
+     }
+
 }
