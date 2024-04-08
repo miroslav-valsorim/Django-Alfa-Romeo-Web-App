@@ -21,8 +21,10 @@ document.addEventListener('DOMContentLoaded', function () {
                         console.log('Image field:', info.img_field);
                         let imgDiv = createElement('div', newDiv, '', ['image-container']);
                         let imgElement = createElement('img', imgDiv, '', ['news-image']);
-                        imgElement.src = info.img_field;
-                        imgElement.alt = info.title + ' image';
+                        // imgElement.src = info.img_field;
+                        // imgElement.alt = info.title + ' image';
+                         imgElement.src = `https://res.cloudinary.com/dmet0llla/${info.img_field}`;
+                         imgElement.alt = info.title + ' image';
                     }
                     let description = info.description.slice(0, 250);
                     if (info.description.length > 250) {

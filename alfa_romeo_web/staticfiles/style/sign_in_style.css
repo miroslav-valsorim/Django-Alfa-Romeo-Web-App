@@ -90,3 +90,10 @@
 }
 
 /* FOOTER */
+
+@media (max-width: 600px) {
+    .login-form-container{
+        width: 300px;
+        max-width: 400px;
+    }
+}
