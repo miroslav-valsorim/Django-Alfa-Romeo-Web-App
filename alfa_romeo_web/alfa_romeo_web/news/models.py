@@ -1,3 +1,4 @@
+from cloudinary.models import CloudinaryField
 from django.contrib.auth import get_user_model
 from django.db import models
 from django.utils.text import slugify
@@ -23,8 +24,14 @@ class News(models.Model):
             null=False,
         )
 
-    img_field = models.ImageField(
-        upload_to='news/',
+    # img_field = models.ImageField(
+    #     upload_to='news/',
+    #     blank=False,
+    #     null=False,
+    # )
+
+    img_field = CloudinaryField(
+        'image',
         blank=False,
         null=False,
     )

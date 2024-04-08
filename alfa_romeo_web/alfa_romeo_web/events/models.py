@@ -2,6 +2,8 @@ from django.contrib.auth import get_user_model
 from django.db import models
 from django.utils.text import slugify
 
+from cloudinary.models import CloudinaryField
+
 UserModel = get_user_model()
 
 
@@ -23,8 +25,14 @@ class Event(models.Model):
             null=False,
         )
 
-    img_field = models.ImageField(
-        upload_to='events/',
+    # img_field = models.ImageField(
+    #     upload_to='events/',
+    #     blank=False,
+    #     null=False,
+    # )
+
+    img_field = CloudinaryField(
+        'image',
         blank=False,
         null=False,
     )

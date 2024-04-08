@@ -1,3 +1,4 @@
+from cloudinary.models import CloudinaryField
 from django.contrib.auth import get_user_model
 from django.db import models
 
@@ -13,8 +14,14 @@ class HistoryCategory(models.Model):
         null=False,
     )
 
-    img_field = models.ImageField(
-        upload_to='history/',
+    # img_field = models.ImageField(
+    #     upload_to='history/',
+    #     blank=False,
+    #     null=False,
+    # )
+
+    img_field = CloudinaryField(
+        'image',
         blank=False,
         null=False,
     )
@@ -50,8 +57,13 @@ class History(models.Model):
         blank=False,
         null=False,
     )
-    img_field = models.ImageField(
-        upload_to='museum_gallery/',
+    # img_field = models.ImageField(
+    #     upload_to='museum_gallery/',
+    #     blank=True,
+    #     null=True,
+    # )
+    img_field = CloudinaryField(
+        'image',
         blank=True,
         null=True,
     )

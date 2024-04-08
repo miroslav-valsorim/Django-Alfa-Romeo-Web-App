@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils.text import slugify
+from cloudinary.models import CloudinaryField
 
 
 class Category(models.Model):
@@ -59,8 +60,13 @@ class Products(models.Model):
         null=True,
     )
 
-    image = models.ImageField(
-        upload_to='products/',
+    # image = models.ImageField(
+    #     upload_to='products/',
+    #     blank=True,
+    #     null=True,
+    # )
+    image = CloudinaryField(
+        'image',
         blank=True,
         null=True,
     )

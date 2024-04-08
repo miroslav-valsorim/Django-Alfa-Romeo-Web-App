@@ -2,6 +2,8 @@ from django.contrib.auth import get_user_model
 from django.db import models
 from django.utils.text import slugify
 
+from cloudinary.models import CloudinaryField
+
 UserModel = get_user_model()
 
 
@@ -14,8 +16,14 @@ class MuseumCategory(models.Model):
         null=False,
     )
 
-    img_field = models.ImageField(
-        upload_to='museum_gallery/',
+    # img_field = models.ImageField(
+    #     upload_to='museum_gallery/',
+    #     blank=False,
+    #     null=False,
+    # )
+
+    img_field = CloudinaryField(
+        'image',
         blank=False,
         null=False,
     )
@@ -50,8 +58,13 @@ class MuseumTopic(models.Model):
         blank=False,
         null=False,
     )
-    img_field = models.ImageField(
-        upload_to='museum_gallery/',
+    # img_field = models.ImageField(
+    #     upload_to='museum_gallery/',
+    #     blank=True,
+    #     null=True,
+    # )
+    img_field = CloudinaryField(
+        'image',
         blank=True,
         null=True,
     )
