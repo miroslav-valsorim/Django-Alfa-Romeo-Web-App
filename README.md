@@ -1,10 +1,17 @@
-This website is a dedicated endeavor for educational purposes, serving as my Software University Project. As an avid Alfa Romeo enthusiast, I've poured my passion into this project. Please note that all images and information utilized are strictly for study purposes.  
+# Django-Alfa-Romeo-Web-App  
+
+Now live at: https://djangoalfaromeowebapp.onrender.com/
+
+
+## Introduction  
+
+This website is a dedicated endeavor for educational purposes, serving as my Software University Project. As an avid Alfa Romeo enthusiast, I've poured my passion into this project. PLEASE NOTE THAT ALL IMAGES AND INFORMATION UTILIZED ARE STRICTLY FOR STUDY PURPOSES.   
 
 
 Bringing my vision to life after nearly two years of anticipation, this project marks not the end, but just the beginning of showcasing my capabilities. Utilizing a plethora of technologies including Python, Django, REST, API, JavaScript, DOM, and HTML&CSS, I've meticulously implemented every feature essential for a fully functional website. From a dynamic news feed to immersive events and engaging forums, culminating in a robust store page capable of handling payments, this project showcases the breadth of my expertise and dedication. It's not just a website, it's a testament to my growth and passion for web development!  
 
 
-# Django-Alfa-Romeo-Web-App
+## Features  
 
 1. Main page:  
 	- It has different Navigation bar for users and non users.  
@@ -140,13 +147,16 @@ Bringing my vision to life after nearly two years of anticipation, this project 
 
 ![DB](screenshots/Screenshot_DB_Two.png)  
 
-![DB](screenshots/Screenshot_DB_Three.png)  
+![DB](screenshots/Screenshot_DB_Three.png)   
 
-13. TODO:    
-	- Unit testing.  
-	- Deploy.    
-	- Make better README.  
+## Technologies  
 
+1. Python  
+2. Django, Django REST  
+3. API  
+4. JS  
+5. HTML&CSS  
+6. DOM  
 
 ## Run this project locally
 
