@@ -12,8 +12,17 @@
         <div class="content">
             <form class="forms" action="{% url 'register-user' %}" method="post">
                 <div class="login-form-container">
-                    {{ form.as_p }}
+{#                    {{ form.as_p }}#}
                     {% csrf_token %}
+                    {% for field in form %}
+                      <p>
+                        {{ field.label_tag }}<br>
+                        {{ field }}
+                        {% for error in field.errors %}
+                          <p >{{ error }}</p>
+                        {% endfor %}
+                      </p>
+                    {% endfor %}
                     <button type="submit">Register</button>
                      <p>Have an account ?
                         <a href="{% url 'login-user' %}">Login here</a>
