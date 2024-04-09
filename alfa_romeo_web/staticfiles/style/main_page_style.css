@@ -403,6 +403,19 @@
 /* FOOTER */
 
 /* Responsive design */
+@media (max-width: 1500px) {
+    .merch-card{
+        width: 350px;
+    }
+
+    .news-card{
+        width: 350px;
+    }
+
+    .event-card{
+        width: 350px;
+    }
+}
 
 @media (max-width: 1000px) {
     .content{
@@ -517,7 +530,7 @@
     }
 
     .up-btn{
-        right: -16px;
+        right: -20px;
         font-size: 30px;
     }
 

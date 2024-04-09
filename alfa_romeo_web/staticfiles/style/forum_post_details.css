@@ -140,3 +140,9 @@ form input{
 .pagination li.active a {
     color: red;
 }
+
+@media (max-width: 800px) {
+    .wrapper h3{
+        margin-top: 40px;
+    }
+}

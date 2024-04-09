@@ -107,7 +107,7 @@
 }
 
 /*  RESPONSIVE */
-@media (max-width: 1000px) {
+@media (max-width: 1400px) {
     .news-content{
         height: unset;
         max-height: unset;
@@ -120,7 +120,7 @@
 }
 
 
-@media (max-width: 850px){
+@media (max-width: 900px){
     .news-content{
         height: unset;
         max-height: unset;
