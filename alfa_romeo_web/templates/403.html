@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block extra_style %}
+        <link rel="stylesheet" href="{% static "/style/main_page_style.css" %}">
+{% endblock %}
+
+{% block main_content %}
+        <div class="content">
+            <h2> 403 Forbidden! You do not have permissions for this page !</h2>
+        </div>
+{% endblock %}

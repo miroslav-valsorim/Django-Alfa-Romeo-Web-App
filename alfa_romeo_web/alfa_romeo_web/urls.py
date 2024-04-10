@@ -6,6 +6,7 @@ from django.urls import path, include, re_path
 from django.conf import settings
 from django.conf.urls.static import static
 from django.views.static import serve
+from django.conf.urls import handler403
 
 urlpatterns = [
     # Admin
@@ -36,3 +37,5 @@ else:
         re_path(r'^media/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT}),
         re_path(r'^static/(?P<path>.*)$', serve, {'document_root': settings.STATIC_ROOT}),
     ]
+
+handler403 = 'alfa_romeo_web.main_page.views.custom_403'

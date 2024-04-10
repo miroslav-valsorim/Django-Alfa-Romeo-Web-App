@@ -1,3 +1,4 @@
+from django.shortcuts import render
 from django.views import generic as views
 
 from alfa_romeo_web.events.models import Event
@@ -17,3 +18,7 @@ class MainListView(views.ListView):
         context['news_list'] = News.objects.all().filter(is_active=True).order_by('-created')[:3]
         context['products_list'] = Products.objects.all().filter(is_active=True).exclude(category__name='Tickets').order_by('-created')[:3]
         return context
+
+
+def custom_403(request, exception):
+    return render(request, '403.html')
