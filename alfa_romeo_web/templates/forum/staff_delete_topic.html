@@ -15,16 +15,17 @@
             
             <div class="delete-div">
                 
-                <h2>
-                Are you sure you want to delete this topic?
-                </h2>
+                <h2>Are you sure you want to delete this topic?</h2>
+                
                 <div class="buttons">
                     <button>Yes</button>
                     <a class="edit-btn" href="{% url "edit_post" slug=object.slug %}">Go Back</a>
                 </div>
             
             </div>
+            
             {% csrf_token %}
+            
         </form>
     
     </div>

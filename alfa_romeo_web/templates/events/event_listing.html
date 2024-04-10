@@ -13,15 +13,24 @@
         <div class="event-cards-container">
             
             {% for event in object_list %}
+                
                 <div class="event-card">
+                
                     <h2>{{ event.title }}</h2>
+                    
                     <div class="image-container">
+                        
                         <img src="{{ event.img_field.url }}" alt="{{ event.title }} img">
+                        
                     </div>
+                    
                     <p>{{ event.description|slice:":250" }}...</p>
                     <a href="{% url 'event_details' slug=event.slug %}">Full Information</a>
+                
                 </div>
+                
             {% endfor %}
+        
         </div>
     
                 {% if is_paginated %}

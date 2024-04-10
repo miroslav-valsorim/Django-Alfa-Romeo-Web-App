@@ -103,6 +103,9 @@ WSGI_APPLICATION = 'alfa_romeo_web.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
+# if facing and issue with test or prod db, remove the if, else statements
+# and push the DB code one tab to the left
+# issue might appear if you want to makemigrations or migrate
 if DEBUG:
     DATABASES = {
         'default': {
@@ -111,6 +114,7 @@ if DEBUG:
         }
     }
 else:
+    # for some reason it doesn't take env variable, so using it locally, it has to be hardcoded
     DATABASES = {
         'default': dj_database_url.config(
             default=os.getenv("DATABASE_URL", None),
@@ -118,11 +122,11 @@ else:
         )
     }
 
-
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
 
 if DEBUG:
+    # if DEBUG=True, no password validators
     AUTH_PASSWORD_VALIDATORS = ()
 else:
     AUTH_PASSWORD_VALIDATORS = [
@@ -161,14 +165,13 @@ if DEBUG:
         BASE_DIR / 'staticfiles',
     )
 else:
-    STATIC_URL = 'static/'
-
     # STATICFILES_DIRS = [os.path.join(BASE_DIR, 'staticfiles')]
+
+    STATIC_URL = 'static/'
 
     STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
     STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
-
 
 # Media files
 
@@ -180,7 +183,6 @@ else:
     MEDIA_ROOT = os.path.join(BASE_DIR, 'mediafiles')
 
     MEDIA_URL = '/media/'
-
 
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 

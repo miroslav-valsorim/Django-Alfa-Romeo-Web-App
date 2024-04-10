@@ -1,53 +1,78 @@
 {% load static %}
 {% load cart_template_tags %}
 
-
 <a href="{% url "main_page" %}" class="logo-a">
     <img src="{% static 'images/header_logo.png' %}" alt="Logo" class="logo">
 </a>
 
 <nav class="navigation">
+
     <ul class="list" role="list">
        
         <div class="dropdown">
+        
             <li class="nav-item">
+            
                 <a href="{% url "museum_categories" %}">Museum <i class="fa-solid fa-angles-down"></i></a>
+            
                 <div class="dropdown-content">
+                
                     {% for category in museum_categories %}
                         <a href="{% url 'museum_listing' %}?category={{ category.id }}">{{ category.name }}</a>
                     {% endfor %}
+                
                 </div>
+            
             </li>
+        
         </div>
+    
         <div class="dropdown">
+        
             <li class="nav-item">
+            
                 <a href="{% url 'history_categories' %}">History <i class="fa-solid fa-angles-down"></i></a>
+            
                 <div class="dropdown-content">
                         {% for category in history_categories %}
                             <a href="{% url 'history_list' %}?category={{ category.id }}">{{ category.name }}</a>
                         {% endfor %}
                 </div>
+            
             </li>
+        
         </div>
+    
         <li class="nav-item">
             <a href="{% url 'events_list' %}">Events</a>
         </li>
+    
          <li class="nav-item">
             <a href="{% url 'news_list' %}">News</a>
         </li>
+    
         <li class="nav-item">
             <a href="{% url 'tickets_list' %}">Tickets</a>
         </li>
+    
         <div class="dropdown">
+        
             <li class="nav-item">
+            
                 <a href="{% url 'products_list' %}">Store <i class="fa-solid fa-angles-down"></i></a>
+            
                 <div class="dropdown-content">
+                
                     {% for category in product_categories %}
                         <a href="{% url 'products_list' %}?category={{ category.id }}">{{category.name}}</a>
                     {% endfor %}
+                
                 </div>
+            
             </li>
+        
         </div>
+    
         <li class="nav-item">
             <a href="{% url 'forum_main_page' %}">Forum</a>
         </li>
@@ -65,26 +90,36 @@
                     <i class="fa-solid fa-cart-shopping"> {{ request.user | cart_item_count }}</i>
                 </a>
             </li>
+            
              <div class="dropdown">
+             
                 <li class="nav-item" style="padding:0 10px">
+                
                     <a href="{% url 'details-profile' pk=request.user.pk %}">
                         <i class="fa-solid fa-user"></i>
                     </a>
+                
                     <div class="dropdown-content">
+                    
                         <a href="{% url 'logout-user' %}">Log Out</a>
                         <a href="{% url 'edit-profile' pk=request.user.pk %}">Edit Profile</a>
                         <a href="{% url 'details-profile' pk=request.user.pk %}">View Profile</a>
+                    
                         {% if request.user.is_superuser %}
                             <a href="{% url 'admin:index' %}">Admin Panel</a>
                             <a href="{% url 'staff_panel' %}">Staff Panel</a>
                         {% elif request.user.is_staff %}
                             <a href="{% url 'staff_panel' %}">Staff Panel</a>
-                        {% endif %}    
+                        {% endif %} 
+                    
                     </div>
+                
                 </li>
+             
             </div>
             
         {% endif %}
 
     </ul>
+
 </nav>

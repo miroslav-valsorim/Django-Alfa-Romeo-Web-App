@@ -15,11 +15,14 @@
             <h2>Create new News</h2>
 
             <form method="post" action="{% url 'staff_create_news' %}" enctype="multipart/form-data">
+                
                 {{ form }}
+                
                 <div class="buttons">
                     {% csrf_token %}
                     <button>Create</button>
                 </div>
+                
             </form>
             
         </div>

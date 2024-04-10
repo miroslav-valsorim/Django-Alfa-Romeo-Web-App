@@ -15,6 +15,7 @@
             <h2>Edit product</h2>
 
             <form method="post" action="{% url 'staff_edit_product' slug=object.slug %}" enctype="multipart/form-data">
+                
                 {{ form }}
                 {% csrf_token %}
                 

@@ -9,8 +9,10 @@
 {% block main_content %}
     
     <div class="container">
-             <h1>FORUM</h1>
-                <div class="wrapper" >
+    
+        <h1>FORUM</h1>
+    
+        <div class="wrapper" >
                 
                 <a class="open-topic" href="{% url 'create_post' %}">Create new topic</a>
                 
@@ -40,8 +42,10 @@
                     {% endif %}
                 
                 {% if forums.has_other_pages %}
+                    
                     <div class="paginate-wrap">
                             <nav>
+                            
                                 <ul class="pagination">
                                     {% if forums.has_previous %}
                                         <li><a href="?page={{ forums.previous_page_number }}"><i class="fa-solid fa-angles-left"></i></a></li>
@@ -57,11 +61,13 @@
                                         <li><a href="?page={{ forums.next_page_number }}"><i class="fa-solid fa-angles-right"></i></a></li>
                                     {% endif %}
                                 </ul>
+                            
                             </nav>
                     </div>
+                    
                 {% endif %}
 
-                </div>
+        </div>
     
     </div>
     

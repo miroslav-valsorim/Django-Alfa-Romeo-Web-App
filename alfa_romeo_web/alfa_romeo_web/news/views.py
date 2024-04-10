@@ -25,7 +25,7 @@ class ListAPINewsView(api_views.ListAPIView):
 class NewsList(views.TemplateView):
     template_name = 'news/news_listing.html'
 
-
+# using this view instead of API one
 # class ListNewsView(views.ListView):
 #     model = News
 #     template_name = 'news/news_listing.html'

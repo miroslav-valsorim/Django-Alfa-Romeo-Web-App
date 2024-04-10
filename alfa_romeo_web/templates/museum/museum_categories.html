@@ -13,15 +13,20 @@
         {% for category in object_list %}
             
             <a href="{% url 'museum_listing' %}?category={{ category.id }}">
+            
                 <div class="museum-category">
+                    
                     <h3>{{ category.name }}</h3>
                     <div class="museum-img-container">
                         <img src="{{ category.img_field.url }}" alt="{{ category.name }} img">
                     </div>
+                    
                 </div>
+            
             </a>
 
         {% endfor %}
+    
     </div>
 
 {% endblock %}

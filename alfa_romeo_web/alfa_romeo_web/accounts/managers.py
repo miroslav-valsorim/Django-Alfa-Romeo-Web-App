@@ -1,7 +1,6 @@
 from django.contrib import auth
 from django.contrib.auth import models as auth_models
 from django.contrib.auth.hashers import make_password
-# from django.contrib.auth.base_user import BaseUserManager
 
 
 class AlfaRomeoUserManager(auth_models.BaseUserManager):

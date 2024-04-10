@@ -15,11 +15,12 @@
             <h2>Create new Product Category</h2>
 
             <form method="post" action="{% url 'staff_create_product_category' %}" enctype="multipart/form-data">
+                
                 {{ form }}
-                <div class="buttons">
-                    {% csrf_token %}
-                    <button>Create</button>
-                </div>
+                {% csrf_token %}
+                
+                <div class="buttons"><button>Create</button></div>
+                
             </form>
             
         </div>

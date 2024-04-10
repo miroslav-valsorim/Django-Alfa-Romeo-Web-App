@@ -15,12 +15,16 @@
             
            
                 <div class="news-card">
+                    
                     <a href="{% url 'news_list' %}"><i class="fa-solid fa-angles-left"></i> Back</a>
                     <h2>{{ object.title }}</h2>
+                    
                     <div class="image-container">
                         <img src="{{ object.img_field.url }}" alt="{{ object.title }} img">
                     </div>
+                    
                     <p>{{ object.description | linebreaks }}</p>
+                    
                 </div>
 
         </div>

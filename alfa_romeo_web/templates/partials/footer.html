@@ -1,11 +1,13 @@
 {% load static %}
 
 <div class="footer-links">
+
     <div class="footer-logo">
         <a href="{% url 'main_page' %}">
             <img src="{% static 'images/Alfa-romeo-quadrifoglio-logo.png' %}" alt="">
         </a>
     </div>
+
     <div class="contacts footer-div">
         <h2>Contacts:</h2>
          <ul>
@@ -26,11 +28,7 @@
                            <i class="fa-brands fa-linkedin"></i>
                        </a>
                    </li>
-{#                   <li>#}
-{#                       <a href="">#}
-{#                           <i class="fa-brands fa-square-facebook"></i>#}
-{#                       </a>#}
-{#                   </li>#}
+
                    <li>
                        <a href="https://github.com/miroslav-valsorim/Django-Alfa-Romeo-Web-App">
                            <i class="fa-brands fa-square-github"></i>
@@ -40,7 +38,9 @@
            </div>
         </ul>
     </div>
+
     <div class="about-museum footer-div">
+    
         <h2>Museum:</h2>
          <ul>
              {% for category in museum_categories %}
@@ -49,18 +49,29 @@
                  </li>
              {% endfor %}
         </ul>
+    
     </div>
+
      <div class="merch footer-div">
+     
         <h2>Store:</h2>
+     
          <ul>
+         
             {% for category in product_categories %}
+                
                  <li>
                      <a href="{% url 'products_list' %}?category={{ category.id }}">{{ category.name }}</a>
                  </li>
+                
              {% endfor %}
+         
         </ul>
+     
     </div>
+
 </div>
+
 <p class="rights-reserved">
    © Alfa Romeo Web, All Right Reserved. By Miroslav Hristov
 </p>

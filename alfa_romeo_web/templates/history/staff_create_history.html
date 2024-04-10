@@ -15,11 +15,11 @@
             <h2>Create new History</h2>
 
             <form method="post" action="{% url 'staff_create_history' %}" enctype="multipart/form-data">
+                
                 {{ form }}
                 {% csrf_token %}
-                <div class="buttons">
-                    <button>Create</button>
-                </div>
+                <div class="buttons"><button>Create</button></div>
+                
             </form>
             
         </div>

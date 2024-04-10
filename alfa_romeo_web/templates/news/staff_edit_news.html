@@ -15,12 +15,15 @@
             <h2>Edit News</h2>
 
             <form method="post" action="{% url 'staff_edit_news' slug=object.slug %}" enctype="multipart/form-data">
+                
                 {{ form }}
                 {% csrf_token %}
+                
                 <div class="buttons">
                     <button>Update</button>
                     <a href="{% url 'staff_delete_news' slug=object.slug %}">Delete News</a>
                 </div>
+                
             </form>
             
         </div>

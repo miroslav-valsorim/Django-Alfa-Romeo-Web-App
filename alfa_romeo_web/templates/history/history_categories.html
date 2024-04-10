@@ -13,12 +13,17 @@
         {% for story in object_list %}
 
             <a href="{% url 'history_list' %}?category={{ story.id }}">
+            
                 <div class="museum-category">
+                    
                     <h3>{{ story.name }}</h3>
+                    
                     <div class="museum-img-container">
                         <img src="{{ story.img_field.url }}" alt="{{ story.name }} img">
                     </div>
+                    
                 </div>
+            
             </a>
 
         {% endfor %}

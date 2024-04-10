@@ -7,14 +7,17 @@
 {% endblock %}
 
 {% block main_content %}
-
     
         <div class="content">
+        
             <form class="forms" action="{% url 'register-user' %}" method="post">
+            
                 <div class="login-form-container">
-{#                    {{ form.as_p }}#}
+                
                     {% csrf_token %}
+                
                     {% for field in form %}
+                        
                       <p>
                         {{ field.label_tag }}<br>
                         {{ field }}
@@ -22,29 +25,18 @@
                           <p >{{ error }}</p>
                         {% endfor %}
                       </p>
+                        
                     {% endfor %}
+                
                     <button type="submit">Register</button>
                      <p>Have an account ?
                         <a href="{% url 'login-user' %}">Login here</a>
                     </p>
-                </div>
                 
-{#                <div class="login-form-container form-container">#}
-{#                    <label for="fname"><b>First Name</b></label>#}
-{#                    <input type="text" placeholder="Enter First Name" name="fname" required>#}
-{##}
-{#                    <label for="lname"><b>Last Name</b></label>#}
-{#                    <input type="password" placeholder="Enter Last Name" name="lname" required>#}
-{##}
-{#                    <label for="email"><b>Email</b></label>#}
-{#                    <input type="email" placeholder="Enter Email" name="email" required>#}
-{##}
-{#                    <label for="psw"><b>Password</b></label>#}
-{#                    <input type="password" placeholder="Enter Password" name="psw" required>#}
-{#                #}
-{#                    <button type="submit">Register</button>#}
-{#                  </div>#}
+                </div>
+            
             </form>
+        
         </div>
 
 {% endblock %}

@@ -1,7 +1,7 @@
 from django import forms
 
 from alfa_romeo_web.accounts.models import Profile
-from alfa_romeo_web.forum.models import Post, Comment
+from alfa_romeo_web.forum.models import Post
 
 
 class ProfileForm(forms.ModelForm):

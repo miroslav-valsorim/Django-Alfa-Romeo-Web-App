@@ -9,63 +9,86 @@
 {% block main_content %}
     
     <div class="container">
+    
         <div class="wrapper">
 
             {% for category in post.categories.all %}
+                
                 <a class="back-link" href="{% url 'topics_from_category' slug=category.slug %}">
                     <i class="fa-solid fa-angles-left"></i> Back
                 </a>
+                
             {% endfor %}
 
             <h3>{{ post.title }}</h3>
 
             <div class="profile">
+            
                 <div class="profile_img">
+                
                         <div class="image">
+                        
                             {% if post.user.profile_picture %}
                                 <img src=" {{ post.user.profile_picture }}" alt="img8" />
                             {% else %}
                                 <img src="{% static 'images/no-profile-picture.jpg' %}" alt="img8"/>
                             {% endif %}
+                        
                         </div>
+                
                 </div>
+            
                 <div>
+                    
                     <p class="user-info">Author: {{post.user.first_name}} {{ post.user.last_name }}</p>
                     <p class="user-info">Date posted: {{ post.date }}</p>
                     <p class="actual-info">{{ post.content }}</p>
+                    
                 </div>
+            
             </div>
-            <ul class="comments-ul">
-                {% for comment in comments %}
-                    <li>
-                        <div class="comment-image">
-                            {% if comment.user.profile_picture %}
-                                <img src=" {{ comment.user.profile_picture }}" alt="img8" />
-                            {% else %}
-                                <img src="{% static 'images/no-profile-picture.jpg' %}" alt="img8"/>
-                            {% endif %}
-                        </div>
-                        <div>
-                            <p class="user-comment">{{ comment.user }}</p>
-                            <p class="user-comment">{{ comment.date }}</p>
-                            <p class="actual-info">{{ comment }}</p>
-                        </div>
-                    </li>
-                {% endfor %}
-            </ul>
+        
+                <ul class="comments-ul">
+                
+                    {% for comment in comments %}
+                        
+                        <li>
+                            <div class="comment-image">
+                                {% if comment.user.profile_picture %}
+                                    <img src=" {{ comment.user.profile_picture }}" alt="img8" />
+                                {% else %}
+                                    <img src="{% static 'images/no-profile-picture.jpg' %}" alt="img8"/>
+                                {% endif %}
+                            </div>
+                            <div>
+                                <p class="user-comment">{{ comment.user }}</p>
+                                <p class="user-comment">{{ comment.date }}</p>
+                                <p class="actual-info">{{ comment }}</p>
+                            </div>
+                        </li>
+                        
+                    {% endfor %}
+                
+                </ul>
+        
             {% if post.closed %}
                 <h4>TOPIC IS CLOSED</h4>
             {% else %}
+                
                 <form action="." method="post">
+                
                     {% csrf_token %}
                     <div>
                         <textarea name="comment" id="" placeholder="comment here ... "></textarea>
                         <input type="submit" value="Add comment" name="comment-form">
                     </div>
+                
                 </form>
+                
             {% endif %}
             
                  {% if comments.has_other_pages %}
+                     
                     <div class="paginate-wrap">
                             <nav>
                                 <ul class="pagination">
@@ -85,9 +108,11 @@
                                 </ul>
                             </nav>
                     </div>
+                     
                 {% endif %}
             
         </div>
+    
     </div>
     
 {% endblock %}

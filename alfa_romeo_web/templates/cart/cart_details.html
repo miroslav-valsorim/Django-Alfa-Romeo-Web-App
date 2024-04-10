@@ -11,14 +11,17 @@
     <div class="container">
         
             {% if messages %}
+                
                 <ul class="messages">
                     {% for message in messages %}
                     <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
                     {% endfor %}
                 </ul>
+                
             {% endif %}
  
             <div class="table-container">
+            
                 <h2>Order Summary</h2>
                 <table class="table">
                     <thead>
@@ -77,15 +80,18 @@
                 </table>
             
                 <div class="links-container">
+                
                     {% if object.items.all %}
                         <a class="bottom-links" href='{% url 'products_list' %}'>Continue shopping</a>
                         <a class="bottom-links" href="{% url 'first_step' pk=request.user.pk %}">Proceed to checkout</a>
                     {% else %}
                         <a class="bottom-links" href='{% url 'products_list' %}'>Continue shopping</a>
                     {% endif %}
+                
                 </div>
         
             </div>
+    
     </div>
 
 {% endblock %}

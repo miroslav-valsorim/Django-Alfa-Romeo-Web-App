@@ -7,10 +7,13 @@
 {% endblock %}
 
 {% block main_content %}
+    
         <button onclick="topFunction()" class="up-btn" id="up-btn"><i class="fa-solid fa-circle-up"></i></button>
 
         <div class="content">
+        
             <div class="background"></div>
+            
             <h2>Welcome to Alfa Romeo Museum</h2>
             <p>The Museo Alfa Romeo tells the legendary story of the brand, via a project and an 
                 installation designed to reflect its: historical presence, beauty and speed,
@@ -19,53 +22,77 @@
                  curious facts with the help of videos, images and interactive access points, 
                  in a crescendo of emotions.
             </p>
+            
             <div class="content-buttons">
                 <a class="content-buttons-two" href="{% url "tickets_list" %}">TICKETS</a>
                 <a class="content-buttons-two" href="{% url 'museum_categories' %}">MORE INFORMATION</a>
             </div>
+        
         </div>
+    
         <section class="content-two">
+        
             <h3>LATEST EVENTS ADDED FOR 2024</h3>
         
             <section class="events-container">
             
                 {% for event in event_list %}
+                    
                     <div class="event-card">
+                    
                         <h3>{{ event.title }}</h3>
                         <div class="image-container">
                             <img src="{{event.img_field.url}}" alt="{{ event.title}}">
                         </div>
                         <p>{{ event.description|slice:":250" }}</p>
                         <a href="{% url 'event_details' slug=event.slug %}">Full information</a>
+                    
                     </div>
+                    
                 {% endfor %}
 
             </section>
+        
         </section>
+    
         <section class="content-three">
+        
             <h3>LATEST NEWS</h3>
+        
             <section class="news-container">
+            
                 {% for news in news_list %}
+                    
                      <div class="news-card">
-                    <h3>{{ news.title}}</h3>
-                    <div class="image-container">
-                        <img src="{{news.img_field.url}}" alt="alfa romeo track">
+                        <h3>{{ news.title}}</h3>
+                        <div class="image-container">
+                            <img src="{{news.img_field.url}}" alt="alfa romeo track">
+                        </div>
+                             <p>{{ news.description|slice:":250" }}</p>
+                        <a href="{% url 'news_details' slug=news.slug %}">Read Article </a>
                     </div>
-                         <p>{{ news.description|slice:":250" }}</p>
-                    <a href="{% url 'news_details' slug=news.slug %}">Read Article </a>
-                </div>
+                    
                 {% endfor %}
+            
             </section>
+        
         </section>
+    
         <section class="content-four">
+        
             <h3>ALFA ROMEO STORE</h3>
+        
             <section class="merch-container">
+            
                 {% for product in products_list %}
+                    
                     <div class="merch-card">
                         <h3>{{ product.title }}</h3>
+                    
                         <div class="image-container">
                             <img src="{{ product.image.url }}" alt="alfa romeo track">
                         </div>
+                    
                         <div class="prices-container">
                         
                                  {% if product.discount_price %}
@@ -76,20 +103,31 @@
                                      <p class="normal-price">Price: {{ product.price }} $</p>
                                 {% endif %}
                         </div>
+                    
                         {% if user.is_authenticated %}
+                            
                             <div class="links-container">
                                 <a class="details" href="{% url "product_details" slug=product.slug %}">Details</a>
                                 <a class="add-to-cart" href="{% url "add_to_cart" slug=product.slug %}">ADD TO CART <i class="fa-solid fa-cart-shopping"></i></a>
                             </div>
+                            
                         {% else %}
+                            
                             <div class="links-container">
                                 <a class="details" href="{% url "product_details" slug=product.slug %}">Details</a>
                                 <a class="signin" href="{% url 'login-user' %}">Sign in to purchase</a>
                             </div>
+                            
                         {% endif %}
+                    
                     </div>
+                    
                 {% endfor %}
+            
             </section>
+        
             <script src="{% static 'js/main_page/main_page.js' %}"></script>
+        
         </section>
+    
 {% endblock %}

@@ -9,8 +9,11 @@
 {% block main_content %}
     
         <div class="content">
+        
             <form class="forms" action="{% url "login-user" %}?next={{ next }}" method="post">
+                
                 <div class="login-form-container">
+                    
                     {{ form.as_p }}
                 
                     <button type="submit">Log in</button>
@@ -20,7 +23,9 @@
                     
                     {% csrf_token %}
                 </div>
+                
             </form>
+        
         </div>
     
 {% endblock %}

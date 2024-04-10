@@ -8,23 +8,32 @@
 
 {% block main_content %}
     
-    <div class="event-detail-content" 
+    <div class="event-detail-content"
          style="background-image: linear-gradient(rgba(0,0,0,0.75),rgba(0,0,0,0.75)), url({{ object.img_field.url }});">
     
         <div class="event-detail-container">
             
            
                 <div class="event-card">
+                    
                     <a href="{% url 'events_list' %}"><i class="fa-solid fa-angles-left"></i> Back</a>
                     <h2>{{ object.title }}</h2>
+                    
                     <div class="image-container">
+                        
                         <img src="{{ object.img_field.url }}" alt="{{ object.title }} img">
+                        
                     </div>
+                    
                     <div class="event-location-date">
+                        
                         <p class="date">Date: {{ event.event_date }}</p>
                         <p class="location">Location: {{ event.location }}</p>
+                        
                     </div>
+                    
                     <p>{{ object.description | linebreaks }}</p>
+                    
                 </div>
 
         </div>

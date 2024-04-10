@@ -5,12 +5,6 @@ from django.shortcuts import redirect
 
 class OwnerRequiredMixin(AccessMixin):
 
-    # def dispatch(self, request, *args, **kwargs):
-    #     data = super().dispatch(request, *args, **kwargs)
-    #
-    #     if request.user.pk != kwargs.get('pk', None):
-    #         return self.handle_no_permission()
-    #     return data
     def dispatch(self, request, *args, **kwargs):
         if hasattr(self, 'get_object'):
             obj = self.get_object()

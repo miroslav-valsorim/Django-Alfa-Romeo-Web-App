@@ -7,6 +7,7 @@
 {% endblock %}
 
 {% block main_content %}
+    
     <div class="container">
     
         <div class="wrapper">
@@ -34,11 +35,13 @@
                         <p class="post-topic">Comments: {{ p.num_comments }}</p>
                         <a class="view-topic" href="{% url 'post_details' slug=p.slug %}">View Post</a>
                     </div>
+                
                 </div>
                 
             {% endfor %}
         
              {% if post.has_other_pages %}
+                 
                     <div class="paginate-wrap">
                             <nav>
                                 <ul class="pagination">
@@ -58,8 +61,11 @@
                                 </ul>
                             </nav>
                     </div>
+                 
              {% endif %}
+        
         </div>
     
     </div>
+    
 {% endblock %}

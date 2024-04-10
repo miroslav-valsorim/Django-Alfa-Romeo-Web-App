@@ -9,16 +9,21 @@
 {% block main_content %}
     
     <div class="wrapper">
+    
         <div class="museum-topic-details">
+            
             <a href="{{ request.META.HTTP_REFERER }}"><i class="fa-solid fa-angles-left"></i> Back</a>
             <h2>{{ object.header }}</h2>
+            
             <div class="image-container">
                 <img src="{{ object.img_field.url }}" alt="{{ object.header }} img">
             </div>
+            
             <h3>Year: {{ object.year }}</h3>
             <p>{{ object.description | linebreaks }}</p>
+            
         </div>
+    
     </div>
-
 
 {% endblock %}

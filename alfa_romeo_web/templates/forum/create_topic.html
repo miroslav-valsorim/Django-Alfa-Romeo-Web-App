@@ -9,9 +9,13 @@
 {% block main_content %}
     
     <div class="container">
+    
         <div class="wrapper">
+        
             <h2>Create new topic</h2>
+        
              <form method="post" action="{% url 'create_post' %}">
+             
                 {% csrf_token %}
                  <label for="id_title">Title:</label>
                 {{ form.title }}
@@ -19,13 +23,20 @@
                 {{ form.content }}
                 <label for="id_categories">Category:</label>
                 <select name="categories" id="id_categories">
+                
                     {% for category in form.categories %}
+                        
                         <option value="{{ category.value }}">{{ category }}</option>
+                        
                     {% endfor %}
+                
                 </select>
                 <button type="submit">Submit</button>
+             
             </form>
+        
         </div>
+    
     </div>
     
 {% endblock %}

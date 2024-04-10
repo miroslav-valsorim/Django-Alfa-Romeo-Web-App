@@ -3,8 +3,11 @@
 {% load static %}
 
 {% block extra_style %}
+    
     {% for item in object_list %}
+        
         {% if item.category_name %}
+            
             {% if item.category_name == 'Gallery' %}
                 <link rel="stylesheet" href="{% static '/style/museum_gallery.css' %}">
             {% elif item.category_name == 'History and Founders' %}
@@ -14,22 +17,27 @@
             {% elif item.category_name == 'Location' %}
                 <link rel="stylesheet" href="{% static '/style/museum_location.css' %}">
             {% endif %}
+            
         {% endif %}
+        
     {% endfor %}
 
 {% endblock %}
 
 {% block main_content %}
+    
     <div class="wrapper">
 
         <div class="museum-gallery">
 
              <div class="order-by">
-                <form action="" method="get" id="order-form">
+             
                  <form action="" method="get" id="order-form">
+                 
                     {% if category_id %}
                         <input type="hidden" name="category" value="{{ category_id }}">
                     {% endif %}
+                 
                     <label for="order_by">Order By:</label>
                     <select name="order_by" id="order_by">
                         <optgroup label="Order By">
@@ -38,14 +46,15 @@
                             <option value="header" {% if order_by == 'header' %}selected{% endif %}>Header</option>
                         </optgroup>
                     </select>
-                    <input type="submit" style="display: none;"> <!-- Hidden submit button -->
+                    <input type="submit" style="display: none;"> 
+                 
                 </form>
 
                 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
                 <script>
                     $(document).ready(function() {
                         $('#order_by').change(function() {
-                            $('#order-form').submit(); // Submit the form when an option is selected
+                            $('#order-form').submit();
                         });
                     });
                 </script>
@@ -54,17 +63,21 @@
             {% for item in object_list %}
 
                     <div class="museum-item-container">
+                    
                         {% if item.header %}
                             <h2>{{ item.header }}</h2>
                         {% endif %}
 
                         {% if item.img_field %}
+                            
                             <div class="museum-image-container">
                                 <img src="{{ item.img_field.url }}" alt="{{ item.header }} img">
                             </div>
+                            
                         {% endif %}
 
                     {% if item.category_name %}
+                        
                         {% if item.category_name == 'Location' %}
                             <div class="location-container">
                                 <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d22346.81151380027!2d9.055956750016168!3d45.563370872039144!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x478694eac5e6e8ff%3A0x9933cefffaadcca4!2sEx+Stabilimento+Alfa+Romeo!5e0!3m2!1sit!2sit!4v1429621191727" title="Alfa Romeo location" aria-label="Alfa Romeo location" ></iframe>
@@ -77,6 +90,7 @@
                             <p class="car-year">Year: {{ item.year }}</p>
                             <a class="card-a" href="{% url 'museum_topic_detail' slug=item.slug %}">Full Review</a>
                         {% endif %}
+                        
                     {% endif %}
 
                     </div>
@@ -84,8 +98,11 @@
             {% endfor %}
 
             {% if is_paginated %}
+                
                 <div class="paginate-wrap">
+                
                     <nav>
+                    
                         <ul class="pagination">
                             {% if page_obj.has_previous %}
                                 <li><a href="?{% if category_id %}category={{ category_id }}&{% endif %}page={{ page_obj.previous_page_number }}&order_by={{ order_by }}"><i class="fa-solid fa-angles-left"></i></a></li>
@@ -101,11 +118,15 @@
                                 <li><a href="?{% if category_id %}category={{ category_id }}&{% endif %}page={{ page_obj.next_page_number }}&order_by={{ order_by }}"> <i class="fa-solid fa-angles-right"></i></a></li>
                             {% endif %}
                         </ul>
+                    
                     </nav>
+                
                 </div>
+                
             {% endif %}
 
         </div>
+    
     </div>
 
 {% endblock %}

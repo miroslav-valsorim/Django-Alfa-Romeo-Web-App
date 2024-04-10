@@ -62,7 +62,6 @@ class ProfileEditView(auth_mixins.LoginRequiredMixin, OwnerRequiredMixin, views.
         form.fields["last_name"].label = "Last Name"
 
         form.fields["date_of_birth"].widget.attrs["placeholder"] = "YYYY-MM-DD"
-        # form.fields["date_of_birth"].widget.attrs["type"] = "date"
         form.fields["date_of_birth"].widget = DateInput(attrs={'type': 'date'})
         form.fields["date_of_birth"].label = "Birthday"
 

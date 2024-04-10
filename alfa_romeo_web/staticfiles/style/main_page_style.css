@@ -1,20 +1,6 @@
 /* HEADER */
 
 /* MAIN */
-/*.content{*/
-/*    background-image: linear-gradient(rgba(0,0,0,0.75),rgba(0,0,0,0.75)), url("/static/images/background.jpg");*/
-/*    background-size: cover;*/
-/*    background-repeat: no-repeat;*/
-/*    background-position: center;*/
-/*    display: flex;*/
-/*    flex-direction: column;*/
-/*    color: white;*/
-/*    align-content: center;*/
-/*    background-position-y: 70%;*/
-/*    max-height: 700px;*/
-/*    height: 700px;*/
-/*    transition: opacity 1s ease, background-image 1s ease;*/
-/*}*/
 
 .content{
     position: relative;
@@ -129,8 +115,6 @@
     color: black;
     padding: 20px 0;
     background-color: rgba(255,255,255,0.4);
-    /*background-color: rgb(69, 75, 82);*/
-    /*border-radius: 20px;*/
     margin: 20px;
     transition: 0.5s;
     box-shadow: 0 0 15px #9d9d9d;
@@ -220,7 +204,6 @@
     color: black;
     padding: 20px 0;
     background-color: rgba(0, 0, 0, 0.66);
-    /*background-color: rgba(100, 100, 100, 0.81);*/
     margin: 20px;
     transition: 0.5s;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.99);

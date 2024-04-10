@@ -9,16 +9,25 @@
 {% block main_content %}
 
         <div class="profile-edit">
+        
          <h2>Client Info</h2>
+            
          <div class="both-containers">
+             
              <div class="edit-form-container">
+                 
                  <form action="{% url 'first_step' pk=object.pk %}" method="post">
+                     
                      {{ form.as_p }}
                      {% csrf_token %}
                      <button>Proceed to Checkout</button>
+                     
                  </form>
+                 
              </div>
+             
          </div>
+        
     </div>
         
 {% endblock %}

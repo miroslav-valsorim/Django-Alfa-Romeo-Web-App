@@ -7,7 +7,6 @@
 {% endblock %}
 
 {% block main_content %}
-
     
     <div class="product-delete">
     
@@ -15,16 +14,17 @@
             
             <div class="delete-div">
                 
-                <h2>
-                Are you sure you want to delete this forum category?
-                </h2>
+                <h2>Are you sure you want to delete this forum category?</h2>
+                
                 <div class="buttons">
                     <button>Yes</button>
                     <a class="edit-btn" href="{% url "staff_edit_forum_category" pk=object.pk %}">Go Back</a>
                 </div>
             
             </div>
+            
             {% csrf_token %}
+            
         </form>
     
     </div>

@@ -11,11 +11,13 @@
 <div class="products-wrapper">
     
     {% if messages %}
+        
         <ul class="messages">
             {% for message in messages %}
             <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
             {% endfor %}
         </ul>
+        
     {% endif %}
 
      <div class="products-categories">
@@ -27,6 +29,7 @@
             {% endfor %}
 
      </div>
+
     <div class="products-container">
     
             <div class="search-field">
@@ -37,7 +40,9 @@
             </div>
 
              <div class="order-by">
+             
                     <form action="" method="get" id="order-form">
+                    
                             {% if category_id %}
                                 <input type="hidden" name="category" value="{{ category_id }}">
                             {% endif %}
@@ -52,6 +57,7 @@
                                 </optgroup>
                             </select>
                             <input type="submit" style="display: none;">
+                    
                     </form>
 
                     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -62,11 +68,13 @@
                             });
                         });
                     </script>
+             
             </div>
 
             {% for item in object_list %}
 
                 <div class="product-card">
+                
                     <h2>{{ item.title }}</h2>
 
                     {% if item.image %}
@@ -100,28 +108,35 @@
                 </div>
 
             {% endfor %}
+    
     </div>
 
                 {% if is_paginated %}
+                    
                     <div class="paginate-wrap">
+                    
                         <nav>
+                        
                             <ul class="pagination">
-                            {% if page_obj.has_previous %}
-                                <li><a href="?{% if category_id %}category={{ category_id }}&{% endif %}page={{ page_obj.previous_page_number }}&order_by={{ order_by }}"><i class="fa-solid fa-angles-left"></i></a></li>
-                            {% endif %}
-                            {% for i in paginator.page_range %}
-                                {% if page_obj.number == i %}
-                                    <li class="active"><a href="?{% if category_id %}category={{ category_id }}&{% endif %}page={{ i }}&order_by={{ order_by }}">{{ i }}</a></li>
-                                {% else %}
-                                    <li><a href="?{% if category_id %}category={{ category_id }}&{% endif %}page={{ i }}&order_by={{ order_by }}">{{ i }}</a></li>
+                                {% if page_obj.has_previous %}
+                                    <li><a href="?{% if category_id %}category={{ category_id }}&{% endif %}page={{ page_obj.previous_page_number }}&order_by={{ order_by }}"><i class="fa-solid fa-angles-left"></i></a></li>
                                 {% endif %}
-                            {% endfor %}
-                            {% if page_obj.has_next %}
-                                <li><a href="?{% if category_id %}category={{ category_id }}&{% endif %}page={{ page_obj.next_page_number }}&order_by={{ order_by }}"> <i class="fa-solid fa-angles-right"></i></a></li>
-                            {% endif %}
-                        </ul>
+                                {% for i in paginator.page_range %}
+                                    {% if page_obj.number == i %}
+                                        <li class="active"><a href="?{% if category_id %}category={{ category_id }}&{% endif %}page={{ i }}&order_by={{ order_by }}">{{ i }}</a></li>
+                                    {% else %}
+                                        <li><a href="?{% if category_id %}category={{ category_id }}&{% endif %}page={{ i }}&order_by={{ order_by }}">{{ i }}</a></li>
+                                    {% endif %}
+                                {% endfor %}
+                                {% if page_obj.has_next %}
+                                    <li><a href="?{% if category_id %}category={{ category_id }}&{% endif %}page={{ page_obj.next_page_number }}&order_by={{ order_by }}"> <i class="fa-solid fa-angles-right"></i></a></li>
+                                {% endif %}
+                            </ul>
+                        
                         </nav>
+                    
                     </div>
+                    
                 {% endif %}
 
 </div>
