@@ -83,7 +83,8 @@ Bringing my vision to life after nearly two years of anticipation, this project 
 7. Shopping Cart / Checkout page:  
 	- The added items from Store, show up here, where you can add, remove them, displays full order details.  
 	- Checkout Pages Require Names and Adress Info.  
-	- Paymen handlet with PayPal. After successful payment you return to website where it tells you the payment was successful.  
+	- Paymen handled with PayPal. After successful payment you return to website where it tells you the payment was successful.  
+	- TODO: Hanlde better successful and unsuccessful payments. (more info shared on checkout view)  
 
 ![ShoppingPage](screenshots/Screenshot_Shopping_Cart.png)
 
@@ -99,8 +100,8 @@ Bringing my vision to life after nearly two years of anticipation, this project 
 
 8. Forum Page:  
 	- Prety much works as a normal Forum, it has categories, you can add a new topic to each category, there are also comments.  
-	- Forum can be accessed only by registered users, since registrations requires only Email and Password, the forum also requirest First and Last Name so you can log inside it and view the forum. Redirects you to a page where it tells you that you have to enter you Names.  
-	- Posts have to be approved from Moderator or Administrator before they can be viewed.  
+	- Forum can be accessed only by registered users, since registrations requires only Email and Password, the forum also requirest First and Last Name so you can log inside it and view the forum. Redirects you to a page where you have to enter you Names.  
+	- Posts have to be approved from Moderator or Administrator before they can be viewed in the staff or admin panel.  
 	- Posts also can be closed, so people can view them, but can't add a comment.  
 
 ![ForumPage](screenshots/Screenshot_Forum_Four.png)
@@ -125,6 +126,7 @@ Bringing my vision to life after nearly two years of anticipation, this project 
 	- Moderators and Admin can handle almost everything through this staff panel, where they can create,edit,delete,make active or inactive events, news, products, forum posts and etc.  
 	- Moderators and Admin can also view from here the comments for every post and remove the comments that are not wanted.  
 	- Closed, active, not active topics can be viewed from here.  
+	- Approval for forum topics can happen through here.  
 
 ![StaffPage](screenshots/Screenshot_Staff.png)
 
@@ -149,7 +151,7 @@ Bringing my vision to life after nearly two years of anticipation, this project 
 
 ![DB](screenshots/Screenshot_DB_Three.png)   
 
-## Technologies  
+## Tech Stack Used
 
 1. Python  
 2. Django, Django REST  
@@ -160,11 +162,29 @@ Bringing my vision to life after nearly two years of anticipation, this project 
 
 ## Run this project locally
 
-1. Clone repo: https://github.com/miroslav-valsorim/Django-Alfa-Romeo-Web-App.git  
+1. Clone repo: `https://github.com/miroslav-valsorim/Django-Alfa-Romeo-Web-App.git `   
 2. Install requirements.txt: `pip install -r requirements.txt`  
 3. DB:  
-	- You can use the already done DB in folder sqlite3_pycharm (in case that the db in project folder is not available) with `superuser: miro@abv.bg` `pass: miro`    
-	- Or you can migrate and make new DB:  `python manage.py migrate` and create superuser `python manage.py createsuperuser`  
+	3.1. First choice:  
+		- You can use the already done DB in folder sqlite3_pycharm with `superuser: miro@abv.bg` `pass: miro`.   
+		- In this case you have to use the imageField in all the models. Which means you have to comment out the CloudinaryField and uncoment Image field. Screenshot bellow. Both should be replaced.  
+
+![Models](screenshots/Screenshot_models.png)  
+ 
+		- Also just in case you have to delete the last migrations from all the models that have used Cloudinary image fields.  
+
+![Migrations](screenshot/Screenshot_migration.png)  
+
+	3.2. Second choice:  
+		- If you don't want to use Cloudinary, follow the steps two and three from 3.1.  
+		- If you want to use Cloudinary you can continue to next step (in this case you can use the already done db in the project in the alfa_romeo_web folder, with the same credentials from step 3.1).  
+		- Migrate and make new DB:  `python manage.py migrate` and create superuser `python manage.py createsuperuser`.  
+
+	- If some issued with the DB, remove the If-else statement and push the sqlite3 (or whatever DB you want to use) DB one tab to the left.  
+
+![Database](screenshots/Screenshot_db.png)  
+
+	- Set ALLOWED_HOSTS.  
 
 ## License
 
