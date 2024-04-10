@@ -1,0 +1,26 @@
+
+
+SECRET_KEY=' '
+
+DEBUG=True/False
+
+ALLOWED_HOSTS="localhost 127.0.0.1 djangoalfaromeowebapp.onrender.com"
+
+
+EMAIL_PORT=587
+
+EMAIL_HOST_USER='gmail@gmail.com'
+
+EMAIL_HOST_PASSWORD='password'
+
+
+PAYPAL_RECEIVER_EMAIL='gmail@gmail.com'
+
+PAYPAL_TEST=True
+
+
+CLOUDINARY_NAME='name'
+
+CLOUDINARY_API_KEY='apikey'
+
+CLOUDINARY_API_SECRET='apisecret'
