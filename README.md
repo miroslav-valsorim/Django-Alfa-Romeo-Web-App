@@ -166,25 +166,25 @@ Bringing my vision to life after nearly two years of anticipation, this project 
 2. Install requirements.txt: `pip install -r requirements.txt`  
 3. DB:  
 	3.1. First choice:  
-		- You can use the already done DB in folder sqlite3_pycharm with `superuser: miro@abv.bg` `pass: miro`.   
-		- In this case you have to use the imageField in all the models. Which means you have to comment out the CloudinaryField and uncoment Image field. Screenshot bellow. Both should be replaced.  
+		3.1.1. You can use the already done DB in folder sqlite3_pycharm with `superuser: miro@abv.bg` `pass: miro`.   
+		3.1.2. In this case you have to use the imageField in all the models. Which means you have to comment out the CloudinaryField and uncoment Image field. Screenshot bellow. Both should be replaced.  
 
 ![Models](screenshots/Screenshot_models.png)  
  
-		- Also just in case you have to delete the last migrations from all the models that have used Cloudinary image fields.  
+		3.1.3. Also just in case you have to delete the last migrations from all the models that have used Cloudinary image fields.  
 
 ![Migrations](screenshots/Screenshot_migration.png)  
 
 	3.2. Second choice:  
-		- If you don't want to use Cloudinary, follow the steps two and three from 3.1.  
-		- If you want to use Cloudinary you can continue to next step (in this case you can use the already done db in the project in the alfa_romeo_web folder, with the same credentials from step 3.1).  
-		- Migrate and make new DB:  `python manage.py migrate` and create superuser `python manage.py createsuperuser`.  
+		3.2.1. If you don't want to use Cloudinary, follow the steps two and three from 3.1.  
+		3.2.2. If you want to use Cloudinary you can continue to next step (in this case you can use the already done db in the project in the alfa_romeo_web folder, with the same credentials from step 3.1).  
+		3.2.3. Migrate and make new DB:  `python manage.py migrate` and create superuser `python manage.py createsuperuser`.  
 
-	- If some issued with the DB, remove the If-else statement and push the sqlite3 (or whatever DB you want to use) DB one tab to the left.  
+	3.3. If some issued with the DB, remove the If-else statement and push the sqlite3 (or whatever DB you want to use) DB one tab to the left.  
 
 ![Database](screenshots/Screenshot_db.png)  
 
-	- Set ALLOWED_HOSTS.  
+	3.4. Set ALLOWED_HOSTS.  
 
 ## License
 
