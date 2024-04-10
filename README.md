@@ -173,7 +173,7 @@ Bringing my vision to life after nearly two years of anticipation, this project 
  
 		- Also just in case you have to delete the last migrations from all the models that have used Cloudinary image fields.  
 
-![Migrations](screenshot/Screenshot_migration.png)  
+![Migrations](screenshots/Screenshot_migration.png)  
 
 	3.2. Second choice:  
 		- If you don't want to use Cloudinary, follow the steps two and three from 3.1.  
