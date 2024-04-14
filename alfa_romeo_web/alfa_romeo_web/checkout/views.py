@@ -76,9 +76,9 @@ class CheckoutView(auth_mixins.LoginRequiredMixin, OwnerRequiredMixin, views.Vie
 
             messages.warning(self.request, 'Failed Checkout, some of the fields are improperly formatted')
 
-            # TODO handle form validation messages, (doesn't appear for some reason?)
-
-            return redirect(reverse('second_step', kwargs={'pk': self.request.user.pk}))
+            # return redirect(reverse('second_step', kwargs={'pk': self.request.user.pk}))
+            context = {'form': form}
+            return render(self.request, 'checkout/checkout_user_two.html', context)
 
         except ObjectDoesNotExist:
             messages.error(self.request, "You don't have active order")

@@ -2,6 +2,8 @@ from django.contrib.auth import get_user_model
 from django.core.validators import MinLengthValidator
 from django.db import models
 
+from alfa_romeo_web.checkout.validators import validate_no_digits
+
 UserModel = get_user_model()
 
 
@@ -42,6 +44,7 @@ class ShippingAddress(models.Model):
         max_length=MAX_COUNTRY_LENGTH,
         validators=(
             MinLengthValidator(MIN_COUNTRY_LENGTH),
+            validate_no_digits,
         ),
         blank=False,
         null=False,
@@ -51,6 +54,7 @@ class ShippingAddress(models.Model):
         max_length=MAX_TOWN_LENGTH,
         validators=(
             MinLengthValidator(MIN_TOWN_LENGTH),
+            validate_no_digits,
         ),
         blank=False,
         null=False,

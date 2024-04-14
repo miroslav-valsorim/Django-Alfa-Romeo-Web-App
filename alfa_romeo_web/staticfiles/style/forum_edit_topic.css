@@ -98,6 +98,10 @@
     text-decoration: none;
 }
 
+form div{
+    max-width: 450px;
+    overflow: scroll;
+}
 .wrapper form .buttons a:hover{
     background-color: red;
 }

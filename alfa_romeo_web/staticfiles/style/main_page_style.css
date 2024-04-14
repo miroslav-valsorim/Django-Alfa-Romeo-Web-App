@@ -517,6 +517,11 @@
         font-size: 30px;
     }
 
+    .links-container{
+        align-items: center;
+
+    }
+
 }
 
 @media (max-width: 450px) {

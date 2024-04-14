@@ -55,6 +55,8 @@ background-color: #af1e2d;
     position: sticky;
     top: 0px;
     z-index: 1;
+
+    justify-content: space-between;
 }
 
 .navigation .nav-item a{
@@ -92,6 +94,9 @@ background-color: #af1e2d;
     width: 100%;
 }
 
+.last-nav-item{
+    padding:0 10px;
+}
 
 /* FOOTER */
 
@@ -151,6 +156,13 @@ footer{
     display: block;
     margin-left: 100px;
     margin-top: 20px;
+}
+
+
+
+
+.drop-btn{
+    display: none;
 }
 
 /* RESPONSIVE DESIGN */
@@ -264,6 +276,72 @@ footer{
     .navigation ul li:hover::after{
         display: none;
         visibility: hidden;
+    }
+
+    .header{
+        flex-direction: row;
+    }
+
+    .dropdown-wrapper {
+        float: left;
+        overflow: hidden;
+        margin-right: 30px;
+    }
+
+    .dropdown-wrapper .drop-btn {
+        font-size: 16px;
+        border: none;
+        outline: none;
+        color: white;
+        padding: 14px 16px;
+        background-color: inherit;
+    }
+
+
+    .dropdown-content-mobile {
+        display: none;
+        position: absolute;
+        background-color: #af1e2d;
+        min-width: 160px;
+        box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+        z-index: 1;
+        margin-right: 50px;
+        right: -50px;
+    }
+
+    .dropdown-content-mobile a {
+        float: none;
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        text-align: left;
+    }
+
+    .dropdown-content-mobile a:hover {
+        background-color: red;
+    }
+
+    .drop-btn{
+        display: unset;
+    }
+
+    .drop-btn i{
+        font-size: 20px;
+    }
+
+    .drop-btn:hover{
+        background-color: red;
+        cursor: pointer;
+    }
+
+    .navigation .list{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .last-nav-item{
+        padding: unset;
     }
 
 }

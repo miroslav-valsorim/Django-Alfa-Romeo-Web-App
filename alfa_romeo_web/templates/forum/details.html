@@ -63,7 +63,7 @@
                             <div>
                                 <p class="user-comment">{{ comment.user }}</p>
                                 <p class="user-comment">{{ comment.date }}</p>
-                                <p class="actual-info">{{ comment }}</p>
+                                <p class="actual-info">{{ comment.content }}</p>
                             </div>
                         </li>
                         
@@ -80,7 +80,7 @@
                     {% csrf_token %}
                     <div>
                         <textarea name="comment" id="" placeholder="comment here ... "></textarea>
-                        <input type="submit" value="Add comment" name="comment-form">
+                        <input type="submit" value="submit" name="comment-form">
                     </div>
                 
                 </form>
