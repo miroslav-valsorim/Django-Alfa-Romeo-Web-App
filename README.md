@@ -195,7 +195,13 @@ Bringing my vision to life after nearly two years of anticipation, this project 
     3. If some issue with the DB, remove the If-else statement and push the sqlite3 (or whatever DB you want to use) DB one tab to the left.  
         ![Database](screenshots/Screenshot_db.png)  
 
-    4. Set ALLOWED_HOSTS.
+4. Set ALLOWED_HOSTS.  
+
+5. Check envExample.txt in alfa_romeo_web/envs/...  
+
+## Project defence and certificate
+
+![Certificate](screenshots/Django_Advanced_February_2024_Certificate.jpeg)   
 
 ## License
 
