@@ -33,7 +33,7 @@
 
 .wrapper h3{
     text-align: center;
-    margin-top: 20px;
+    margin-top: 30px;
     font-size: 30px;
 }
 
@@ -144,5 +144,16 @@ form input{
 @media (max-width: 800px) {
     .wrapper h3{
         margin-top: 40px;
+    }
+}
+
+@media (max-width: 500px) {
+
+    .comment-section{
+        max-width: 300px;
+    }
+
+    .comment-image{
+        width: 100%;
     }
 }

@@ -331,7 +331,7 @@ footer{
     }
 
     .drop-btn:hover{
-        background-color: red;
+        /*background-color: red;*/
         cursor: pointer;
     }
 
