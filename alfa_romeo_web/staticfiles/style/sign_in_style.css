@@ -33,6 +33,10 @@
     color: black;
 }
 
+.login-form-container p br{
+    display: none;
+}
+
 .form-container{
     display: flex;
     flex-direction: column;
