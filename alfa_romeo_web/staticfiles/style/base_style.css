@@ -351,11 +351,11 @@ footer{
         margin: 0 20px;
     }
 
-    .navigation .list{
-        display: grid;
-        grid-template-columns: repeat(5, 1fr);
-        margin-top: 10px;
-    }
+    /*.navigation .list{*/
+    /*    display: grid;*/
+    /*    grid-template-columns: repeat(5, 1fr);*/
+    /*    margin-top: 10px;*/
+    /*}*/
 
     .header{
         position: unset;
@@ -378,12 +378,12 @@ footer{
     .navigation{
         margin: 0 10px;
     }
-
-    .navigation .list{
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        margin-top: 10px;
-    }
+    
+    /*.navigation .list{*/
+    /*    display: grid;*/
+    /*    grid-template-columns: repeat(3, 1fr);*/
+    /*    margin-top: 10px;*/
+    /*}*/
 
      .content p{
         max-width: 360px;

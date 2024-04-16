@@ -105,3 +105,15 @@ form div{
 .wrapper form .buttons a:hover{
     background-color: red;
 }
+
+@media (max-width: 600px) {
+    form div{
+        max-width: 400px;
+    }
+}
+
+@media (max-width: 500px) {
+    form div{
+        max-width: 300px;
+    }
+}
