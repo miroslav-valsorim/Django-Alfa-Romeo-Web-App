@@ -3,8 +3,11 @@ import uuid
 from django.conf import settings
 from django.contrib import messages
 from django.core.exceptions import ObjectDoesNotExist
+from django.core.mail import send_mail
 from django.shortcuts import render, redirect, get_object_or_404
+from django.template.loader import render_to_string
 from django.urls import reverse
+from django.utils.html import strip_tags
 from django.views import generic as views
 from django.contrib.auth import mixins as auth_mixins
 from django.contrib.auth.decorators import login_required
@@ -134,6 +137,19 @@ def paypal_payment_successful(request, shopping_cart_id):
     order_items.update(ordered=True)
     for item in order_items:
         item.save()
+
+    email_content = render_to_string('email/successful_order.html', {
+        'user': request.user,
+        'order_items': order_items,
+    })
+
+    send_mail(
+        subject='Order was successfully done!',
+        message=strip_tags(email_content),
+        html_message=email_content,
+        from_email=settings.EMAIL_HOST_USER,
+        recipient_list=(request.user.email,),
+    )
 
     context = {
         'cart_id': cart_id.id,
