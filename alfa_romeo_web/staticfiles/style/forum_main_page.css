@@ -114,8 +114,12 @@
     max-width: 100px;
     max-height: 100px;
     margin: 0px 10px;
+    height: 100px;
+    width: 100px;
 }
 .image img{
     max-width: 100%;
     object-fit: contain;
+    height: 100px;
+    width: 100px;
 }
