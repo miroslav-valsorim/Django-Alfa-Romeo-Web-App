@@ -26,6 +26,7 @@
     font-size: 18px;
     display: flex;
     transition: 0.5s;
+    align-items: center;
 }
 
 .content:hover{
@@ -122,4 +123,11 @@
     object-fit: cover;
     height: 100px;
     width: 100px;
+}
+
+@media (max-width: 500px) {
+    .image {
+        max-width: 60px;
+        max-height: 60px;
+    }
 }
