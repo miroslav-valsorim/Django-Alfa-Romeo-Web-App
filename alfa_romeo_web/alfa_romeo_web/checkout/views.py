@@ -34,12 +34,15 @@ class ProfileEditView(auth_mixins.LoginRequiredMixin, OwnerRequiredMixin, views.
 
         form.fields["first_name"].widget.attrs["placeholder"] = "First Name"
         form.fields["first_name"].label = "First Name"
+        form.fields["first_name"].required = True
 
         form.fields["last_name"].widget.attrs["placeholder"] = "Last Name"
         form.fields["last_name"].label = "Last Name"
+        form.fields["last_name"].required = True
 
         form.fields["phone_number"].widget.attrs["placeholder"] = "Phone Number"
         form.fields["phone_number"].label = "Phone Number"
+        form.fields["phone_number"].required = True
 
         return form
 

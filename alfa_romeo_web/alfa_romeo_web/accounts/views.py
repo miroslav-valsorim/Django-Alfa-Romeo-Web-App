@@ -6,7 +6,7 @@ from django.views import generic as views
 from django.shortcuts import redirect, render
 from django.contrib.auth import mixins as auth_mixins
 
-from alfa_romeo_web.accounts.forms import AlfaRomeoUserCreationForm
+from alfa_romeo_web.accounts.forms import AlfaRomeoUserCreationForm, CustomAuthenticationForm
 from alfa_romeo_web.accounts.mixin import OwnerRequiredMixin, CheckAdminOrStaffAccess
 from alfa_romeo_web.accounts.models import Profile
 
@@ -16,6 +16,7 @@ UserModel = get_user_model()
 class LoginUserView(auth_views.LoginView):
     template_name = 'accounts/sign_in_user.html'
     redirect_authenticated_user = True
+    authentication_form = CustomAuthenticationForm
 
 
 class RegisterUserView(views.CreateView):
@@ -78,6 +79,23 @@ class ProfileChangePasswordView(auth_mixins.LoginRequiredMixin, OwnerRequiredMix
     form_class = auth_forms.PasswordChangeForm
     template_name = "accounts/password_change.html"
     success_url = reverse_lazy('main_page')
+
+    def get_form(self, form_class=None):
+        form = super().get_form(form_class=form_class)
+
+        form.fields["old_password"].widget.attrs["placeholder"] = "Old Password"
+        form.fields["old_password"].label = "Old Password"
+        form.fields["old_password"].required = True
+
+        form.fields["new_password1"].widget.attrs["placeholder"] = "New Password"
+        form.fields["new_password1"].label = "New Password"
+        form.fields["new_password1"].required = True
+
+        form.fields["new_password2"].widget.attrs["placeholder"] = "Confirm New Password"
+        form.fields["new_password2"].label = "Confirm New Password"
+        form.fields["new_password2"].required = True
+
+        return form
 
 
 class ProfileDeleteView(auth_mixins.LoginRequiredMixin, OwnerRequiredMixin, views.DeleteView):

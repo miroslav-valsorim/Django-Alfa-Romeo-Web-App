@@ -21,7 +21,7 @@
 }
 
 .form-container input{
-    background-color: rgba(100, 100, 100, 0.81);
+    background-color: #eee;
     border: none;
     border-radius: 10px;
     margin: auto;
