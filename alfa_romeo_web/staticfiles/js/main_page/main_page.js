@@ -1,7 +1,7 @@
 
 // Top of page button >>
 let upButton = document.getElementById("up-btn");
-
+upButton.style.display = "none";
 
 window.onscroll = function() {scrollFunction()};
 
