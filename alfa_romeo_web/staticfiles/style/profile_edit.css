@@ -60,7 +60,7 @@
     font-weight: bold;
     border: 2px solid red;
     background: transparent;
-    color: #fff;
+    color: black;
     cursor: pointer;
     position: relative;
     overflow: hidden;
@@ -140,9 +140,22 @@ form{
 
     .both-containers{
         margin-top: 10px;
+        max-width: 500px;
     }
 
     .profile-edit h2{
         margin-top: 10px;
+    }
+}
+
+@media (max-width: 500px) {
+    .both-containers{
+        max-width: 400px;
+    }
+}
+
+@media (max-width: 450px) {
+    .both-containers{
+        max-width: 350px;
     }
 }
