@@ -170,3 +170,14 @@
     }
 
 }
+
+@media (max-width: 500px) {
+    .links-container .add-to-cart{
+        font-size: 0;
+    }
+
+    .links-container .add-to-cart .fa-solid{
+        font-size: 20px;
+        padding: 0 10px;
+    }
+}

@@ -147,6 +147,12 @@ form input{
 }
 
 @media (max-width: 800px) {
+    .wrapper .profile{
+        align-items: unset;
+    }
+}
+
+@media (max-width: 800px) {
     .wrapper h3{
         margin-top: 40px;
     }
