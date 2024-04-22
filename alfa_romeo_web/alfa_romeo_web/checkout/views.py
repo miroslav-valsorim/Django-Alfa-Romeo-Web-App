@@ -121,6 +121,7 @@ class PaymentView(auth_mixins.LoginRequiredMixin, views.TemplateView):
 def paypal_payment_successful(request, shopping_cart_id):
     # in case the success payment work properly there is more things to be set
     # info here https://django-paypal.readthedocs.io/en/stable/standard/ipn.html
+    # info here https://django-paypal.readthedocs.io/en/v0.2.7/standard/ipn.html
     # signals should be made + installing  https://ngrok.com/
     # more info here https://www.youtube.com/watch?v=Ftz3DG9Sq50&ab_channel=ZackPlauch%C3%A9
     # if request.method == "POST":
