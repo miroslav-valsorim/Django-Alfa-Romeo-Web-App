@@ -20,44 +20,43 @@
         
     {% endif %}
 
-     <div class="products-categories">
+    <div class="products-categories">
+        <a href="{% url 'products_list' %}?{% if search_query %}Search={{ search_query }}&{% endif %}" {% if not category_id %}class="active"{% endif %}>All Products</a>
+        {% for category in categories %}
+            <a style="margin-left: 10px" href="{% url 'products_list' %}?category={{ category.id }}&{% if search_query %}Search={{ search_query }}&{% endif %}" {% if category_id == category.id %}class="active"{% endif %}>{{category.name}}</a>
+        {% endfor %}
+    </div>
 
-            <a href="{% url 'products_list' %}" >All Products</a>
-
-            {% for category in categories %}
-                <a style="margin-left: 10px" href="{% url 'products_list' %}?category={{ category.id }}">{{category.name}}</a>
-            {% endfor %}
-
-     </div>
 
     <div class="products-container">
     
             <div class="search-field">
                 <form method="GET" action="{% url 'products_list' %}">
                     <input type="text" name="Search" placeholder="Search product by title..." value="{{ search_query }}">
+                    {% if category_id %}
+                        <input type="hidden" name="category" value="{{ category_id }}">
+                    {% endif %}
                     <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                 </form>
             </div>
 
              <div class="order-by">
              
-                    <form action="" method="get" id="order-form">
-                    
-                            {% if category_id %}
-                                <input type="hidden" name="category" value="{{ category_id }}">
-                            {% endif %}
-                            <input type="hidden" name="Search" value="{{ search_query }}">
-                            <label for="order_by">Order By:</label>
-                            <select name="order_by" id="order_by">
-                                <optgroup label="Order By">
-                                    <option value="title" {% if order_by == 'title' %}selected{% endif %}>Title</option>
-                                    <option value="created" {% if order_by == 'created' %}selected{% endif %}>Newest</option>
-                                    <option value="price asc" {% if order_by == 'price' %}selected{% endif %}>Price Asc</option>
-                                    <option value="price desc" {% if order_by == 'price' %}selected{% endif %}>Price Desc</option>
-                                </optgroup>
-                            </select>
-                            <input type="submit" style="display: none;">
-                    
+                     <form action="" method="get" id="order-form">
+                        {% if category_id %}
+                            <input type="hidden" name="category" value="{{ category_id }}">
+                        {% endif %}
+                        <input type="hidden" name="Search" value="{{ search_query }}">
+                        <label for="order_by">Order By:</label>
+                        <select name="order_by" id="order_by">
+                            <optgroup label="Order By">
+                                <option value="title" {% if order_by == 'title' %}selected{% endif %}>Title</option>
+                                <option value="created" {% if order_by == 'created' %}selected{% endif %}>Newest</option>
+                                <option value="price asc" {% if order_by == 'price' %}selected{% endif %}>Price Asc</option>
+                                <option value="price desc" {% if order_by == 'price' %}selected{% endif %}>Price Desc</option>
+                            </optgroup>
+                        </select>
+                        <input type="submit" style="display: none;">
                     </form>
 
                     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -70,74 +69,71 @@
                     </script>
              
             </div>
-
-            {% for item in object_list %}
-
-                <div class="product-card">
-                
-                    <h2>{{ item.title }}</h2>
-
-                    {% if item.image %}
-                        <div class="image-container">
-                            <img src="{{ item.image.url }}" alt="{{ item.title }} img">
-                        </div>
-                    {% endif %}
-
-                    <div class="prices-container">
-                        {% if item.discount_price %}
-                  {#    TODO: this style should be done in css but didnt work, #}
-                            <p style="text-decoration-line: line-through;" class="underline-price">Price: {{ item.price }} $</p>
-                            <p style="color: red" class="discount-price">{{ item.discount_price }} $</p>
-                        {% else %}
-                             <p class="normal-price">Price: {{ item.price }} $</p>
+            {% if object_list %}
+                {% for item in object_list %}
+    
+                    <div class="product-card">
+                    
+                        <h2>{{ item.title }}</h2>
+    
+                        {% if item.image %}
+                            <div class="image-container">
+                                <img src="{{ item.image.url }}" alt="{{ item.title }} img">
+                            </div>
                         {% endif %}
+    
+                        <div class="prices-container">
+                            {% if item.discount_price %}
+                      {#    TODO: this style should be done in css but didnt work, #}
+                                <p style="text-decoration-line: line-through;" class="underline-price">Price: {{ item.price }} $</p>
+                                <p style="color: red" class="discount-price">{{ item.discount_price }} $</p>
+                            {% else %}
+                                 <p class="normal-price">Price: {{ item.price }} $</p>
+                            {% endif %}
+                        </div>
+    
+                         {% if user.is_authenticated %}
+                            <div class="links-container">
+                                <a href="{% url "product_details" slug=item.slug %}">Details</a>
+                                <a class="add-to-cart" href="{% url "add_to_cart" slug=item.slug %}">ADD TO CART <i class="fa-solid fa-cart-shopping"></i></a>
+                            </div>
+                        {% else %}
+                             <div class="links-container">
+                                <a href="{% url "product_details" slug=item.slug %}">Details</a>
+                                <a href="{% url 'login-user' %}">Sign in to purchase</a>
+                            </div>
+                        {% endif %}
+    
                     </div>
-
-                     {% if user.is_authenticated %}
-                        <div class="links-container">
-                            <a href="{% url "product_details" slug=item.slug %}">Details</a>
-                            <a class="add-to-cart" href="{% url "add_to_cart" slug=item.slug %}">ADD TO CART <i class="fa-solid fa-cart-shopping"></i></a>
-                        </div>
-                    {% else %}
-                         <div class="links-container">
-                            <a href="{% url "product_details" slug=item.slug %}">Details</a>
-                            <a href="{% url 'login-user' %}">Sign in to purchase</a>
-                        </div>
-                    {% endif %}
-
-                </div>
-
-            {% endfor %}
+    
+                {% endfor %}
+            {% else %}
+                    <p class="no-match">There are no matches to your search.</p>
+            {% endif %}
     
     </div>
 
-                {% if is_paginated %}
-                    
-                    <div class="paginate-wrap">
-                    
-                        <nav>
-                        
-                            <ul class="pagination">
-                                {% if page_obj.has_previous %}
-                                    <li><a href="?{% if category_id %}category={{ category_id }}&{% endif %}page={{ page_obj.previous_page_number }}&order_by={{ order_by }}"><i class="fa-solid fa-angles-left"></i></a></li>
+            {% if is_paginated %}
+                <div class="paginate-wrap">
+                    <nav>
+                        <ul class="pagination">
+                            {% if page_obj.has_previous %}
+                                <li><a href="?{% if category_id %}category={{ category_id }}&{% endif %}{% if search_query %}Search={{ search_query }}&{% endif %}page={{ page_obj.previous_page_number }}&order_by={{ order_by }}"><i class="fa-solid fa-angles-left"></i></a></li>
+                            {% endif %}
+                            {% for i in paginator.page_range %}
+                                {% if page_obj.number == i %}
+                                    <li class="active"><a href="?{% if category_id %}category={{ category_id }}&{% endif %}{% if search_query %}Search={{ search_query }}&{% endif %}page={{ i }}&order_by={{ order_by }}">{{ i }}</a></li>
+                                {% else %}
+                                    <li><a href="?{% if category_id %}category={{ category_id }}&{% endif %}{% if search_query %}Search={{ search_query }}&{% endif %}page={{ i }}&order_by={{ order_by }}">{{ i }}</a></li>
                                 {% endif %}
-                                {% for i in paginator.page_range %}
-                                    {% if page_obj.number == i %}
-                                        <li class="active"><a href="?{% if category_id %}category={{ category_id }}&{% endif %}page={{ i }}&order_by={{ order_by }}">{{ i }}</a></li>
-                                    {% else %}
-                                        <li><a href="?{% if category_id %}category={{ category_id }}&{% endif %}page={{ i }}&order_by={{ order_by }}">{{ i }}</a></li>
-                                    {% endif %}
-                                {% endfor %}
-                                {% if page_obj.has_next %}
-                                    <li><a href="?{% if category_id %}category={{ category_id }}&{% endif %}page={{ page_obj.next_page_number }}&order_by={{ order_by }}"> <i class="fa-solid fa-angles-right"></i></a></li>
-                                {% endif %}
-                            </ul>
-                        
-                        </nav>
-                    
-                    </div>
-                    
-                {% endif %}
+                            {% endfor %}
+                            {% if page_obj.has_next %}
+                                <li><a href="?{% if category_id %}category={{ category_id }}&{% endif %}{% if search_query %}Search={{ search_query }}&{% endif %}page={{ page_obj.next_page_number }}&order_by={{ order_by }}"> <i class="fa-solid fa-angles-right"></i></a></li>
+                            {% endif %}
+                        </ul>
+                    </nav>
+                </div>
+            {% endif %}
 
 </div>
 
