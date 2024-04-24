@@ -84,6 +84,7 @@ Bringing my vision to life after nearly two years of anticipation, this project 
 	- The added items from Store, show up here, where you can add, remove them, displays full order details.  
 	- Checkout Pages Require Names and Adress Info.  
 	- Paymen handled with PayPal. After successful payment you return to website where it tells you the payment was successful.  
+	- Recieve email on successful order.  
 	- TODO: Hanlde better successful and unsuccessful payments. (more info shared on checkout view)  
 
 ![ShoppingPage](screenshots/Screenshot_Shopping_Cart.png)
@@ -97,6 +98,8 @@ Bringing my vision to life after nearly two years of anticipation, this project 
 ![PaymentPage](screenshots/Screenshot_Pay.png)
 
 ![PaymentPage](screenshots/Screenshot_Pay_Two.png)
+
+![PaymentPage](screenshots/Screenshot_successful_order_email.png)  
 
 8. Forum Page:  
 	- Prety much works as a normal Forum, it has categories, you can add a new topic to each category, there are also comments.  
