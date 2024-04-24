@@ -16,9 +16,14 @@ class MainListView(views.ListView):
         # limit the items up to 3 or 4 on the main page and show the newest (latest added)
         context['event_list'] = Event.objects.all().filter(is_active=True).order_by('-created')[:3]
         context['news_list'] = News.objects.all().filter(is_active=True).order_by('-created')[:3]
-        context['products_list'] = Products.objects.all().filter(is_active=True).exclude(category__name='Tickets').order_by('-created')[:3]
+        context['products_list'] = Products.objects.all().filter(is_active=True).exclude(
+            category__name='Tickets').order_by('-created')[:3]
         return context
 
 
 def custom_403(request, exception):
     return render(request, '403.html')
+
+
+def custom_500(request):
+    return render(request, '500.html', status=500)

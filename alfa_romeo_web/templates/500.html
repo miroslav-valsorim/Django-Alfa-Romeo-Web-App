@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block extra_style %}
+        <link rel="stylesheet" href="{% static "/style/main_page_style.css" %}">
+{% endblock %}
+
+{% block main_content %}
+    
+        <div class="content">
+        
+            <div class="background"></div>
+
+            <h2>Server Error 500! Something went wrong on our server. We are working to fix it. Please try again later.</h2>
+        
+        </div>
+    
+{% endblock %}

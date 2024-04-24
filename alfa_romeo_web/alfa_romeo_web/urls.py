@@ -6,7 +6,7 @@ from django.urls import path, include, re_path
 from django.conf import settings
 from django.conf.urls.static import static
 from django.views.static import serve
-from django.conf.urls import handler403
+from django.conf.urls import handler403, handler500
 
 urlpatterns = [
     # Admin
@@ -39,3 +39,4 @@ else:
     ]
 
 handler403 = 'alfa_romeo_web.main_page.views.custom_403'
+handler500 = 'alfa_romeo_web.main_page.views.custom_500'
