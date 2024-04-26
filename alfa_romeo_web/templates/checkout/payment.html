@@ -13,13 +13,25 @@
             <h2>Checkout</h2>
         
             <div class="final-payment">
-            
+
+                <h3>User Information</h3>
+                <p>Name: {{ request.user.profile.full_name }}</p>
+                <p>Email: {{ request.user.email }}</p>
+                <p>Phone Number: {{ request.user.profile.phone_number }}</p>
+                <hr>
+                <h3>Shipping Information</h3>
+                <p>Address: {{ order.shipping_address.shipping_address }}</p>
+                <p>Address 2: {{ order.shipping_address.shipping_address_two }}</p>
+                <p>Country: {{ order.shipping_address.country }}</p>
+                <p>Town: {{ order.shipping_address.town }}</p>
+                <p>Zip: {{ order.shipping_address.zip }}</p>
+                <hr>
                 <h3>Products ordered</h3>
-            
+
                 {% for item in order.items.all %}
                     <li>{{ item.quantity }} x {{ item.item.title }} - {{ item.get_total_item_price }}$</li>
                 {% endfor %}
-            
+                <hr>
                 <p class="final-price">TOTAL PAYMENT: {{ order.get_total }} $</p>
     
                 <button>{{paypal.render}}</button>
