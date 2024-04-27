@@ -118,12 +118,15 @@ Bringing my vision to life after nearly two years of anticipation, this project 
 9. Profile:
 	- Has edit profile, change password, delete profile functionality.   
 	- Register successful email.  
+	- Check completed orders.  
 
 ![ProfileRegister](screenshots/Screenshot_Register.png)
 
 ![ProfilePage](screenshots/Screenshot_Profile.png)
 
 ![ProfilePage](screenshots/Screenshot_Profile_One.png)
+
+![ProfilePage](screenshots/Screenshot_completed_orders.png)
 
 10. Staff Panel:
 	- Moderators and Admin can handle almost everything through this staff panel, where they can create,edit,delete,make active or inactive events, news, products, forum posts and etc.  

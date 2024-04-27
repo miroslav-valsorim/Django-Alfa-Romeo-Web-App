@@ -49,24 +49,26 @@
                              <p>Rank: Moderator</p>
                          {% endif %}
                         
-                        <a href="{% url 'edit-profile' pk=object.pk %}">Edit Profile<i class="fa-solid fa-pen"></i></a>
+                        <a href="{% url 'edit-profile' pk=object.pk %}">Edit Profile <i class="fa-solid fa-pen"></i></a>
                     
-                        <a href="{% url 'password-change' pk=object.pk %}">Change Password<i class="fa-solid fa-key"></i></a>
+                        <a href="{% url 'password-change' pk=object.pk %}">Change Password <i class="fa-solid fa-key"></i></a>
                     
-                        <a href="{% url 'logout-user' %}">Log Out<i class="fa-solid fa-right-from-bracket"></i></a>
+                        <a href="{% url 'logout-user' %}">Log Out <i class="fa-solid fa-right-from-bracket"></i></a>
                     
                         {% if request.user.is_superuser %}
                             
-                            <a href="{% url 'admin:index' %}">Admin Panel<i class="fa-solid fa-lock"></i></a>
-                            <a href="{% url 'staff_panel' %}">Staff Panel<i class="fa-solid fa-lock"></i></a>
+                            <a href="{% url 'admin:index' %}">Admin Panel <i class="fa-solid fa-lock"></i></a>
+                            <a href="{% url 'staff_panel' %}">Staff Panel <i class="fa-solid fa-lock"></i></a>
                             
                         {% elif request.user.is_staff %}
                             
-                            <a href="{% url 'staff_panel' %}">Staff Panel<i class="fa-solid fa-lock"></i></a>
+                            <a href="{% url 'staff_panel' %}">Staff Panel <i class="fa-solid fa-lock"></i></a>
                             
                         {% endif %}    
                     
-                        <a href="{% url 'delete-profile' pk=object.pk %}">Delete Profile<i class="fa-solid fa-trash"></i></a>
+                        <a href="{% url 'delete-profile' pk=object.pk %}">Delete Profile <i class="fa-solid fa-trash"></i></a>
+                    
+                        <a href="{% url 'orders-profile' pk=object.pk %}">Completed Orders <i class="fa-solid fa-check"></i></a>
                         
                     </div>
              </div>

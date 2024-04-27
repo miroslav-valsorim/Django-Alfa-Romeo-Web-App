@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block extra_style %}
+        <link rel="stylesheet" href="{% static "/style/profile_orders.css" %}">
+{% endblock %}
+
+{% block main_content %}
+    
+        <div class="content">
+        
+            <h2>Your completed orders</h2>
+        
+            <div class="completed-orders">
+                {% if object_list %}
+                    {% for list in object_list %}
+                        
+                        <div class="single-order">
+                        
+                            <h3>Order &#8470: {{ forloop.counter }}</h3>
+                            <p>{{ list.ordered_date }}</p>
+                            <br>
+                            <p>Shipping Address 1: {{ list.shipping_address.shipping_address }}</p>
+                            <p>Shipping Address 2: {{ list.shipping_address.shipping_address_two }}</p>
+                            <p>Country: {{ list.shipping_address.country }}</p>
+                            <p>Town: {{ list.shipping_address.town }}</p>
+                            <p>Zip: {{ list.shipping_address.zip }}</p>
+                            <br>
+                            <h3>Items Ordered:</h3>
+                        
+                        {% for item in list.items.all %}
+                            
+                            <div>
+                               <p>{{ item.item }} x {{ item.quantity }} Price: {{ item.item.price }}$ - Total: {{ item.get_total_item_price }}$</p> 
+                            </div>
+                            
+                        {% endfor %}
+                            <br>
+                            <h4>FINAL PRICE: {{ list.get_total }}$</h4> 
+                     
+                       </div>
+                        
+                    {% endfor %}
+                    
+                {% else %}
+                    <h3 class="no-orders">There are no orders yet</h3>
+                {% endif %}
+            
+            </div>
+        
+            {% if is_paginated %}
+                <div class="paginate-wrap">
+                    <nav>
+                        <ul class="pagination">
+                            {% if page_obj.has_previous %}
+                                <li><a href="?page={{ page_obj.previous_page_number }}"><i class="fa-solid fa-angles-left"></i></a></li>
+                            {% endif %}
+                            {% for i in paginator.page_range %}
+                                {% if page_obj.number == i %}
+                                    <li class="active"><a href="?page={{ i }}">{{ i }}</a></li>
+                                {% else %}
+                                    <li><a href="?page={{ i }}">{{ i }}</a></li>
+                                {% endif %}
+                            {% endfor %}
+                            {% if page_obj.has_next %}
+                                <li><a href="?page={{ page_obj.next_page_number }}"> <i class="fa-solid fa-angles-right"></i></a></li>
+                            {% endif %}
+                        </ul>
+                    </nav>
+                </div>
+            {% endif %}
+        
+        </div>
+    
+{% endblock %}

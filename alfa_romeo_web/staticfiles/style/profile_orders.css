@@ -1,0 +1,55 @@
+.content{
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+}
+
+.content h2{
+    text-align: center;
+    margin-bottom: 20px;
+    padding-top: 20px;
+}
+
+.completed-orders{
+    max-width: 400px;
+    margin: auto;
+    text-align: center;
+}
+
+.no-orders{
+    padding-bottom: 20px;
+}
+
+.single-order{
+    background-color: #adadad;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+br{
+    color: white;
+}
+
+.paginate-wrap{
+    display: block;
+    margin: 10px auto;
+}
+
+.paginate-wrap nav ul{
+    display: flex;
+}
+
+.paginate-wrap nav ul li{
+    margin: 0 10px;
+    list-style: none;
+    font-weight: 700;
+}
+
+.paginate-wrap nav ul li a{
+    color: black;
+    text-decoration: none;
+}
+
+.pagination li.active a {
+    color: red;
+}

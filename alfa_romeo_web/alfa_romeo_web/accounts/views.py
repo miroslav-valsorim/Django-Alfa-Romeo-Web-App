@@ -9,6 +9,8 @@ from django.contrib.auth import mixins as auth_mixins
 from alfa_romeo_web.accounts.forms import AlfaRomeoUserCreationForm, CustomAuthenticationForm
 from alfa_romeo_web.accounts.mixin import OwnerRequiredMixin, CheckAdminOrStaffAccess
 from alfa_romeo_web.accounts.models import Profile
+from alfa_romeo_web.cart.models import ShoppingCart
+from alfa_romeo_web.checkout.models import ShippingAddress
 
 UserModel = get_user_model()
 
@@ -111,6 +113,22 @@ class ProfileDeleteView(auth_mixins.LoginRequiredMixin, OwnerRequiredMixin, view
         user = self.get_object()
         user.delete()
         return redirect(self.get_success_url())
+
+
+class ProfileOrdersView(auth_mixins.LoginRequiredMixin, OwnerRequiredMixin, views.ListView):
+    model = ShoppingCart
+    template_name = "accounts/profile_orders.html"
+    paginate_by = 2
+
+    def get_queryset(self):
+        queryset = ShoppingCart.objects.filter(user=self.request.user, ordered=True).order_by('-ordered_date')
+        return queryset
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        shipping = ShippingAddress.objects.filter(user=self.request.user)
+        context['shipping'] = shipping
+        return context
 
 
 class StaffPanelView(auth_mixins.LoginRequiredMixin, CheckAdminOrStaffAccess, views.View):
