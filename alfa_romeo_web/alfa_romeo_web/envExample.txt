@@ -1,4 +1,4 @@
-
+!!! .env has to be in the same level as settings.py
 
 SECRET_KEY=' '
 
