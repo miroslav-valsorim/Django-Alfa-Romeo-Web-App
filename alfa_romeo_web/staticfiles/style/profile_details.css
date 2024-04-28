@@ -65,6 +65,10 @@
     background-color: red;
 }
 
+.profile-links{
+    margin:0 10px;
+}
+
 .image{
     border-radius: 100px;
     overflow: hidden;
@@ -81,6 +85,21 @@
 }
 
 /* FOOTER */
+@media (max-width: 900px) {
+     .personal{
+        flex-direction: column;
+        margin-bottom: 10px;
+    }
+
+    .profile-details {
+        height: unset;
+        max-height: unset;
+    }
+
+    .profile-img{
+        margin-top: 10px;
+    }
+}
 
 
 @media (max-width: 600px) {

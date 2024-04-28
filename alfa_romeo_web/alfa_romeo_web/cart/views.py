@@ -2,10 +2,13 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import mixins as auth_mixins
 from django.core.exceptions import ObjectDoesNotExist
+from django.db.models import Q
 from django.shortcuts import render, get_object_or_404, redirect
+from django.urls import reverse
 from django.utils import timezone
 from django.views import generic as views
 
+from alfa_romeo_web.accounts.mixin import CheckAdminOrStaffAccess
 from alfa_romeo_web.cart.models import ShoppingCart, OrderItem
 from alfa_romeo_web.products.models import Products
 
@@ -150,3 +153,37 @@ class ShoppingCartSummary(auth_mixins.LoginRequiredMixin, views.View):
             messages.error(self.request, "You dont have an active order")
             return render(self.request, "cart/cart_details.html")
 
+
+class StaffOrdersListView(auth_mixins.LoginRequiredMixin, CheckAdminOrStaffAccess, views.ListView):
+    model = ShoppingCart
+    template_name = 'cart/staff_orders_list.html'
+    paginate_by = 8
+
+    def get_queryset(self):
+        queryset = ShoppingCart.objects.filter(ordered=True)
+        order_by = self.request.GET.get('order_by', '-ordered_date')
+
+        search_query = self.request.GET.get('Search')
+        if search_query:
+            initial_queryset = queryset.filter(
+                Q(title__icontains=search_query)
+            )
+        else:
+            initial_queryset = queryset
+        #
+        # if order_by == 'is_active':
+        #     queryset = initial_queryset .order_by('-is_active')
+        # if order_by == 'not_active':
+        #     queryset = initial_queryset .order_by('is_active')
+        if order_by == 'ordered_date':
+            queryset = initial_queryset .order_by('-ordered_date')
+
+        return queryset
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        context['order_by'] = self.request.GET.get('order_by', '-ordered_date')
+        context['search_query'] = self.request.GET.get('Search', '')
+
+        return context
