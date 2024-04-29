@@ -122,6 +122,18 @@
     color: black;
 }
 
+.pending-order{
+    background-color: rgb(255 44 0 / 30%);
+}
+
+.sent-order{
+    background-color: rgba(0, 81, 255, 0.3);
+}
+
+.completed-order{
+    background-color: rgb(42 255 0 / 30%);
+}
+
 @media (max-width: 1100px) {
     .create-product{
         margin-top: 60px;

@@ -170,12 +170,14 @@ class StaffOrdersListView(auth_mixins.LoginRequiredMixin, CheckAdminOrStaffAcces
             )
         else:
             initial_queryset = queryset
-        #
-        # if order_by == 'is_active':
-        #     queryset = initial_queryset .order_by('-is_active')
-        # if order_by == 'not_active':
-        #     queryset = initial_queryset .order_by('is_active')
-        if order_by == 'ordered_date':
+
+        if order_by == 'pending':
+            queryset = initial_queryset.filter(status='pending')
+        elif order_by == 'sent':
+            queryset = initial_queryset.filter(status='sent')
+        elif order_by == 'completed':
+            queryset = initial_queryset.filter(status='completed')
+        elif order_by == 'ordered_date':
             queryset = initial_queryset .order_by('-ordered_date')
 
         return queryset
@@ -187,3 +189,15 @@ class StaffOrdersListView(auth_mixins.LoginRequiredMixin, CheckAdminOrStaffAcces
         context['search_query'] = self.request.GET.get('Search', '')
 
         return context
+
+
+class StaffOrderEditView(auth_mixins.LoginRequiredMixin, CheckAdminOrStaffAccess, views.UpdateView):
+    queryset = ShoppingCart.objects.filter(ordered=True)
+    template_name = "cart/staff_edit_order.html"
+    fields = ("user", 'items', 'shipping_address', 'status')
+
+    def get_success_url(self):
+        return reverse('staff_orders')
+
+
+

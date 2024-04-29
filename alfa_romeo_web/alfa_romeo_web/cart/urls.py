@@ -1,11 +1,13 @@
 from django.urls import path, include
 
 from alfa_romeo_web.cart.views import add_to_cart, remove_from_cart, ShoppingCartSummary, remove_single_item_from_cart, \
-    add_single_item_to_cart, StaffOrdersListView
+    add_single_item_to_cart, StaffOrdersListView, StaffOrderEditView
 
 urlpatterns = (
     path('staff/', include([
         path('', StaffOrdersListView.as_view(), name='staff_orders'),
+        path('edit_order/<int:pk>/', StaffOrderEditView.as_view(), name='staff_edit_order'),
+
     ])),
 
 

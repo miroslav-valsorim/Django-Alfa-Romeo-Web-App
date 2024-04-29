@@ -49,6 +49,18 @@ class OrderItem(models.Model):
 
 
 class ShoppingCart(models.Model):
+    PENDING = 'pending'
+    SENT = 'sent'
+    COMPLETED = 'completed'
+
+    STATUS_CHOICES = [
+        (PENDING, 'Pending'),
+        (SENT, 'Sent'),
+        (COMPLETED, 'Completed'),
+    ]
+
+    MAX_CHOICES_LENGTH = max(len(choice[0]) for choice in STATUS_CHOICES) + 1
+
     user = models.ForeignKey(
         UserModel,
         on_delete=models.CASCADE,
@@ -73,6 +85,12 @@ class ShoppingCart(models.Model):
         on_delete=models.SET_NULL,
         null=True,
         blank=True,
+    )
+
+    status = models.CharField(
+        max_length=MAX_CHOICES_LENGTH,
+        choices=STATUS_CHOICES,
+        default=PENDING,
     )
 
     def __str__(self):

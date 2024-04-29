@@ -20,10 +20,10 @@
                                 <label for="order_by">Order By:</label>
                                 <select name="order_by" id="order_by">
                                     <optgroup label="Order By">
-{#                                        <option value="is_active" {% if order_by == 'is_active' %}selected{% endif %}>Active</option>#}
-{#                                        <option value="not_active" {% if order_by == 'not_active' %}selected{% endif %}>Not Active</option>#}
+                                        <option value="pending" {% if order_by == 'pending' %}selected{% endif %}>Pending</option>
+                                        <option value="sent" {% if order_by == 'sent' %}selected{% endif %}>Sent</option>
+                                        <option value="completed" {% if order_by == 'completed' %}selected{% endif %}>Completed</option>
                                         <option value="ordered_date" {% if order_by == 'ordered_date' %}selected{% endif %}>Date</option>
-{#                                        <option value="category" {% if order_by == 'category' %}selected{% endif %}>Category</option>#}
                                     </optgroup>
                                 </select>
                                 <input type="submit" style="display: none;"> 
@@ -44,23 +44,27 @@
                 <div class="search-field">
                     
                     <form method="GET" action="{% url 'staff_orders' %}">
-                        <input type="text" name="Search" placeholder="Search by email..." value="{{ search_query }}">
+                        <input type="text" name="Search" placeholder="Search by user email..." value="{{ search_query }}">
                         <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                     </form>
                     
                 </div>
-         
-{#                <div class="create-product">#}
-{#                    <a href="{% url 'staff_create_product' %}">Create New Product</a>#}
-{#                </div>#}
-         
-                <h2>Products</h2>
+
+                <h2>Orders</h2>
          
                  {% for obj in object_list %}
-                     
-                    <div class="topic {% if obj.is_active %}active-product{% else %}not-active-product{% endif %}">
+
+                     {% if obj.status == 'pending' %}
+                        <div class="topic pending-order">
+                     {% elif obj.status == 'sent' %}
+                        <div class="topic sent-order">
+                     {% elif obj.status == 'completed' %}
+                        <div class="topic completed-order">
+                     {% else %}
+                        <div class="topic">
+                     {% endif %}
                         <h3>{{ obj.user }}</h3>
-{#                        <a href="{% url 'staff_edit_product' slug=obj.slug %}">Edit</a>#}
+                        <a href="{% url 'staff_edit_order' pk=obj.pk %}">Edit</a>
                     </div>
                      
                 {% endfor %}

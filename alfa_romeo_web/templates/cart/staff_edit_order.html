@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block extra_style %}
+    <link rel="stylesheet" href="{% static "/style/forum_edit_topic.css" %}">
+{% endblock %}
+
+{% block main_content %}
+    
+     <div class="container">
+     
+        <div class="wrapper">
+            
+            <h2>Edit Event</h2>
+
+            <form method="post" action="{% url 'staff_edit_order' pk=object.pk %}" enctype="multipart/form-data">
+                
+                {{ form }}
+                {% csrf_token %}
+                
+                <div class="buttons">
+                    
+                    <button>Update</button>
+{#                    <a href="{% url 'staff_delete_event' slug=object.slug %}">Delete Event</a>#}
+{#                    #}
+                </div>
+                
+            </form>
+            
+        </div>
+     
+     </div>
+    
+{% endblock %}

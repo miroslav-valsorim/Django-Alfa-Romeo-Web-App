@@ -13,7 +13,7 @@ class ModelNameAdmin(admin.ModelAdmin):
 
 @admin.register(ShoppingCart)
 class ModelNameAdmin(admin.ModelAdmin):
-    list_display = ('id', 'user', 'ordered')
+    list_display = ('id', 'user', 'ordered', 'status')
     search_fields = ('user',)
     search_help_text = 'Search by User'
     list_per_page = 20

@@ -20,6 +20,10 @@
                         
                             <h3>Order &#8470: {{ forloop.counter }}</h3>
                             <p>{{ list.ordered_date }}</p>
+                            <p>Order Status: <span style="font-weight: bold; {% if list.status == 'sent' %} 
+                                color: blue; {% elif list.status == 'completed' %} 
+                                color: green; {% else %} 
+                                color: red; {% endif %}">{{ list.status }}</span></p>
                             <br>
                             <p>Shipping Address 1: {{ list.shipping_address.shipping_address }}</p>
                             <p>Shipping Address 2: {{ list.shipping_address.shipping_address_two }}</p>
