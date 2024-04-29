@@ -171,14 +171,17 @@ class StaffOrdersListView(auth_mixins.LoginRequiredMixin, CheckAdminOrStaffAcces
         else:
             initial_queryset = queryset
 
-        if order_by == 'pending':
-            queryset = initial_queryset.filter(status='pending')
-        elif order_by == 'sent':
-            queryset = initial_queryset.filter(status='sent')
-        elif order_by == 'completed':
-            queryset = initial_queryset.filter(status='completed')
+        if order_by == 'status':
+            queryset = initial_queryset.order_by('status')
         elif order_by == 'ordered_date':
-            queryset = initial_queryset .order_by('-ordered_date')
+            queryset = initial_queryset.order_by('-ordered_date')
+
+        # elif order_by == 'pending':
+        #     queryset = initial_queryset.filter(status='pending')
+        # elif order_by == 'sent':
+        #     queryset = initial_queryset.filter(status='sent')
+        # elif order_by == 'completed':
+        #     queryset = initial_queryset.filter(status='completed')
 
         return queryset
 

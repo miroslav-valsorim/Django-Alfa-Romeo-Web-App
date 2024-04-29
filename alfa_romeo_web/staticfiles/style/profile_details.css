@@ -86,6 +86,22 @@
 
 /* FOOTER */
 @media (max-width: 900px) {
+    .phone-number{
+       margin-top: 10px;
+        font-size: 22px;
+        font-weight: 600;
+        width: unset;
+        padding: unset;
+        text-align: unset;
+        border-radius: unset;
+        border: unset;
+        background: unset;
+        color: unset;
+        cursor: unset;
+        text-decoration: none;
+        overflow: hidden;
+    }
+
      .personal{
         flex-direction: column;
         margin-bottom: 10px;

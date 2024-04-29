@@ -20,10 +20,10 @@
                                 <label for="order_by">Order By:</label>
                                 <select name="order_by" id="order_by">
                                     <optgroup label="Order By">
-                                        <option value="pending" {% if order_by == 'pending' %}selected{% endif %}>Pending</option>
-                                        <option value="sent" {% if order_by == 'sent' %}selected{% endif %}>Sent</option>
-                                        <option value="completed" {% if order_by == 'completed' %}selected{% endif %}>Completed</option>
+                                        <option value="status" {% if order_by == 'status' %}selected{% endif %}>Status</option>
                                         <option value="ordered_date" {% if order_by == 'ordered_date' %}selected{% endif %}>Date</option>
+{#                                        <option value="sent" {% if order_by == 'sent' %}selected{% endif %}>Sent</option>#}
+{#                                        <option value="completed" {% if order_by == 'completed' %}selected{% endif %}>Completed</option>#}
                                     </optgroup>
                                 </select>
                                 <input type="submit" style="display: none;"> 
