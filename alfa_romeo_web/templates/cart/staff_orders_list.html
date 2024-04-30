@@ -63,7 +63,7 @@
                      {% else %}
                         <div class="topic">
                      {% endif %}
-                        <h3>{{ obj.user }}</h3>
+                        <h3>{{ obj.user }} PK:{{ obj.pk }}</h3>
                         <a href="{% url 'staff_edit_order' pk=obj.pk %}">Edit</a>
                     </div>
                      

@@ -12,8 +12,31 @@
      
         <div class="wrapper">
             
-            <h2>Edit Event</h2>
-
+            <h2>Order State</h2>
+            
+            {% if shipping_address %}
+                <br>
+                <h4>Client</h4>
+                <p>Full Name: {{ shipping_address.user.profile.first_name }} {{ shipping_address.user.profile.last_name }}</p>
+                <p>Email: {{ shipping_address.user.email }}</p>
+                <p>Phone Number: {{ shipping_address.user.profile.phone_number }}</p>
+                
+                <br>
+                <h4>Shipping Info</h4>
+                <p>Shipping Address: {{ shipping_address.shipping_address }}</p>
+                <p>Shipping Address 2: {{ shipping_address.shipping_address_two }}</p>
+                <p>Country: {{ shipping_address.country }}</p>
+                <p>Town: {{ shipping_address.town }}</p>
+                <p>Zip: {{ shipping_address.zip }}</p>
+            {% endif %}
+        
+            <br>
+            <h4>Products</h4>
+            {% for item in order.items.all %}
+                <p>{{ item.item }} x {{ item.quantity }} Price: {{ item.item.price }}$ - Total: {{ item.get_total_item_price }}$</p>
+            {% endfor %}
+            
+            <br>
             <form method="post" action="{% url 'staff_edit_order' pk=object.pk %}" enctype="multipart/form-data">
                 
                 {{ form }}
@@ -27,7 +50,7 @@
                 </div>
                 
             </form>
-            
+
         </div>
      
      </div>

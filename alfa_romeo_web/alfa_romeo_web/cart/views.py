@@ -10,6 +10,7 @@ from django.views import generic as views
 
 from alfa_romeo_web.accounts.mixin import CheckAdminOrStaffAccess
 from alfa_romeo_web.cart.models import ShoppingCart, OrderItem
+from alfa_romeo_web.checkout.models import ShippingAddress
 from alfa_romeo_web.products.models import Products
 
 
@@ -197,10 +198,17 @@ class StaffOrdersListView(auth_mixins.LoginRequiredMixin, CheckAdminOrStaffAcces
 class StaffOrderEditView(auth_mixins.LoginRequiredMixin, CheckAdminOrStaffAccess, views.UpdateView):
     queryset = ShoppingCart.objects.filter(ordered=True)
     template_name = "cart/staff_edit_order.html"
-    fields = ("user", 'items', 'shipping_address', 'status')
+    fields = ('status',)
 
     def get_success_url(self):
         return reverse('staff_orders')
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
 
+        context['order'] = self.object
+        shipping_address = ShippingAddress.objects.filter(user=self.request.user).first()
 
+        context['shipping_address'] = shipping_address
+
+        return context

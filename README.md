@@ -133,6 +133,7 @@ Bringing my vision to life after nearly two years of anticipation, this project 
 	- Moderators and Admin can also view from here the comments for every post and remove the comments that are not wanted.  
 	- Closed, active, not active topics can be viewed from here.  
 	- Approval for forum topics can happen through here.  
+	- Check orders done, their status, update order status, prepare orders for shipping, etc.   
 
 ![StaffPage](screenshots/Screenshot_Staff.png)
 
@@ -141,6 +142,10 @@ Bringing my vision to life after nearly two years of anticipation, this project 
 ![StaffPage](screenshots/Screenshot_Staff_Two.png)
 
 ![StaffPage](screenshots/Screenshot_Staff_Three.png)
+
+![StaffPage](screenshots/Screenshot_staff_orders.png)
+
+![StaffPage](screenshots/Screenshot_staff_orders_two.png)
 
 
 11. Mobile Responsive Design:
