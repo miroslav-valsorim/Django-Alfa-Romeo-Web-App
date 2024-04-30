@@ -113,9 +113,18 @@ Bringing my vision to life after nearly two years of anticipation, this project 
 
 ![ForumPage](screenshots/Screenshot_Forum_Two.png)
 
-![ForumPage](screenshots/Screenshot_Forum_Three.png)
+![ForumPage](screenshots/Screenshot_Forum_Three.png)  
 
-9. Profile:
+9. Sign in:  
+	- Register, Log in, Reset Password.  
+
+![ProfileRegister](screenshots/Screenshot_Sign_in.png)  
+
+![ProfileRegister](screenshots/Screenshot_Register_Form.png)  
+
+![ProfileRegister](screenshots/Screenshot_Reset_Password.png)  
+
+10. Profile:
 	- Has edit profile, change password, delete profile functionality.   
 	- Register successful email.  
 	- Check completed orders.  
@@ -129,7 +138,7 @@ Bringing my vision to life after nearly two years of anticipation, this project 
 
 ![ProfilePage](screenshots/Screenshot_completed_orders.png)
 
-10. Staff Panel:
+11. Staff Panel:  
 	- Moderators and Admin can handle almost everything through this staff panel, where they can create,edit,delete,make active or inactive events, news, products, forum posts and etc.  
 	- Moderators and Admin can also view from here the comments for every post and remove the comments that are not wanted.  
 	- Closed, active, not active topics can be viewed from here.  
@@ -149,13 +158,13 @@ Bringing my vision to life after nearly two years of anticipation, this project 
 ![StaffPage](screenshots/Screenshot_staff_orders_two.png)
 
 
-11. Mobile Responsive Design:
+12. Mobile Responsive Design:
 
 ![MobileDesign](screenshots/photo_collage_one.png)  
 
 ![MobileDesign](screenshots/photo_collage_two.png)  
 
-12. Database Entity Relationship Diagram (ERD):  
+13. Database Entity Relationship Diagram (ERD):  
 
 ![DB](screenshots/Screenshot_DB_One.png)  
 
