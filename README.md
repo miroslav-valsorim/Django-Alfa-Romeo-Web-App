@@ -119,6 +119,7 @@ Bringing my vision to life after nearly two years of anticipation, this project 
 	- Has edit profile, change password, delete profile functionality.   
 	- Register successful email.  
 	- Check completed orders.  
+	- Admin and Moderators have extra 2 links for Admin and Staff Panel.  
 
 ![ProfileRegister](screenshots/Screenshot_Register.png)
 
