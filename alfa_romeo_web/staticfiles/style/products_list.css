@@ -201,6 +201,12 @@
     grid-row: 1;
 }
 
+.out-of-stock{
+    margin-right: 10px;
+    color: black;
+    font-weight: bold;
+}
+
 @media (max-width: 1200px) {
 
 

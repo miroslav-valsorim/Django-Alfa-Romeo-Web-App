@@ -83,6 +83,7 @@
                         {% endif %}
     
                         <div class="prices-container">
+                        
                             {% if item.discount_price %}
                       {#    TODO: this style should be done in css but didnt work, #}
                                 <p style="text-decoration-line: line-through;" class="underline-price">Price: {{ item.price }} $</p>
@@ -90,17 +91,25 @@
                             {% else %}
                                  <p class="normal-price">Price: {{ item.price }} $</p>
                             {% endif %}
+                            
                         </div>
-    
-                         {% if user.is_authenticated %}
+                    
+                        {% if item.quantity > 0 %}
+                             {% if user.is_authenticated %}
+                                <div class="links-container">
+                                    <a href="{% url "product_details" slug=item.slug %}">Details</a>
+                                    <a class="add-to-cart" href="{% url "add_to_cart" slug=item.slug %}">ADD TO CART <i class="fa-solid fa-cart-shopping"></i></a>
+                                </div>
+                            {% else %}
+                                 <div class="links-container">
+                                    <a href="{% url "product_details" slug=item.slug %}">Details</a>
+                                    <a href="{% url 'login-user' %}">Sign in to purchase</a>
+                                </div>
+                            {% endif %}
+                        {% else %}
                             <div class="links-container">
                                 <a href="{% url "product_details" slug=item.slug %}">Details</a>
-                                <a class="add-to-cart" href="{% url "add_to_cart" slug=item.slug %}">ADD TO CART <i class="fa-solid fa-cart-shopping"></i></a>
-                            </div>
-                        {% else %}
-                             <div class="links-container">
-                                <a href="{% url "product_details" slug=item.slug %}">Details</a>
-                                <a href="{% url 'login-user' %}">Sign in to purchase</a>
+                                <p class="out-of-stock">Out of stock</p>
                             </div>
                         {% endif %}
     

@@ -37,6 +37,12 @@ class Products(models.Model):
         null=False,
         )
 
+    quantity = models.IntegerField(
+        default=0,
+        blank=False,
+        null=False,
+    )
+
     price = models.IntegerField(
         default=0,
         blank=False,

@@ -18,6 +18,10 @@ from alfa_romeo_web.products.models import Products
 def add_to_cart(request, slug):
     item = get_object_or_404(Products, slug=slug)
 
+    if item.quantity <= 0:
+        messages.error(request, "This item is out of stock.")
+        return redirect("product_details", slug=slug)
+
     order_item, created = OrderItem.objects.get_or_create(
         item=item,
         user=request.user,
@@ -33,10 +37,14 @@ def add_to_cart(request, slug):
         if order.items.filter(item__slug=item.slug).exists():
             order_item.quantity += 1
             order_item.save()
+            item.quantity -= 1  # Reduce available quantity when added to cart
+            item.save()
             messages.info(request, "This item quantity was updated")
 
         else:
             order.items.add(order_item)
+            item.quantity -= 1  # Reduce available quantity when added to cart
+            item.save()
             messages.info(request, "This item was added to your cart")
     else:
         ordered_date = timezone.now()
@@ -45,6 +53,8 @@ def add_to_cart(request, slug):
             ordered_date=ordered_date,
         )
         order.items.add(order_item)
+        item.quantity -= 1  # Reduce available quantity when added to cart
+        item.save()
         messages.info(request, "This item was added to your cart")
 
     # return redirect("product_details", slug=slug)
@@ -62,18 +72,23 @@ def remove_from_cart(request, slug):
     if order_qs.exists():
         order = order_qs[0]
         if order.items.filter(item__slug=item.slug).exists():
-            order_item = OrderItem.objects.filter(
+            order_items = OrderItem.objects.filter(
                 item=item,
                 user=request.user,
                 ordered=False,
-            )[0]
-            order.items.remove(order_item)
-            order_item.delete()
+            )
+            total_quantity_removed = 0
+            for order_item in order_items:
+                total_quantity_removed += order_item.quantity
+                order.items.remove(order_item)
+                order_item.delete()
+            item.quantity += total_quantity_removed  # Increase available quantity
+            item.save()
             messages.info(request, "This item was removed from your cart")
         else:
             messages.info(request, "This item was not in your cart")
     else:
-        messages.info(request, "You dont have active order")
+        messages.info(request, "You don't have an active order")
 
     return redirect("cart_details")
 
@@ -96,8 +111,12 @@ def remove_single_item_from_cart(request, slug):
             if order_item.quantity > 1:
                 order_item.quantity -= 1
                 order_item.save()
+                item.quantity += 1  # Increase available quantity when a single item is removed from cart
+                item.save()
             else:
                 order.items.remove(order_item)
+                item.quantity += 1  # Increase available quantity when a single item is removed from cart
+                item.save()
             messages.info(request, "This item quantity was updated.")
             return redirect("cart_details")
         else:
@@ -111,6 +130,11 @@ def remove_single_item_from_cart(request, slug):
 @login_required
 def add_single_item_to_cart(request, slug):
     item = get_object_or_404(Products, slug=slug)
+
+    if item.quantity <= 0:
+        messages.error(request, "This item is out of stock.")
+        return redirect("product_details", slug=slug)
+
     order_item, created = OrderItem.objects.get_or_create(
         item=item,
         user=request.user,
@@ -125,11 +149,15 @@ def add_single_item_to_cart(request, slug):
         if order.items.filter(item__slug=item.slug).exists():
             order_item.quantity += 1
             order_item.save()
+            item.quantity -= 1  # Reduce available quantity when a single item is added to cart
+            item.save()
             messages.info(request, "This item quantity was updated")
 
         else:
             messages.info(request, "This item was added to your cart")
             order.items.add(order_item)
+            item.quantity -= 1  # Reduce available quantity when a single item is added to cart
+            item.save()
     else:
         ordered_date = timezone.now()
         order = ShoppingCart.objects.create(
@@ -137,6 +165,8 @@ def add_single_item_to_cart(request, slug):
             ordered_date=ordered_date,
         )
         order.items.add(order_item)
+        item.quantity -= 1  # Reduce available quantity when a single item is added to cart
+        item.save()
         messages.info(request, "This item was added to your cart")
 
     return redirect("cart_details")

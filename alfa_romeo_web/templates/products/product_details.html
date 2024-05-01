@@ -53,11 +53,15 @@
                                      <p class="normal-price">Price: {{ object.price }} $</p>
                                 {% endif %}
                           </div>
-                     
-                            {% if user.is_authenticated %}
-                                <a class="add-to-cart" href="{% url "add_to_cart" slug=object.slug %}">ADD TO CART <i class="fa-solid fa-cart-shopping"></i></a>
+                            {% if object.quantity > 0 %}
+
+                                {% if user.is_authenticated %}
+                                    <a class="add-to-cart" href="{% url "add_to_cart" slug=object.slug %}">ADD TO CART <i class="fa-solid fa-cart-shopping"></i></a>
+                                {% else %}
+                                    <a class="signin" href="{% url 'login-user' %}">Sign in to purchase</a>
+                                {% endif %}
                             {% else %}
-                                <a class="signin" href="{% url 'login-user' %}">Sign in to purchase</a>
+                                <p class="out-of-stock">Out of Stock</p>
                             {% endif %}
                      </div>
             
