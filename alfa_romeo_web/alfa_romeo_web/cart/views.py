@@ -237,7 +237,7 @@ class StaffOrderEditView(auth_mixins.LoginRequiredMixin, CheckAdminOrStaffAccess
         context = super().get_context_data(**kwargs)
 
         context['order'] = self.object
-        shipping_address = ShippingAddress.objects.filter(user=self.request.user).first()
+        shipping_address = get_object_or_404(ShippingAddress,  shoppingcart=self.object)
 
         context['shipping_address'] = shipping_address
 
