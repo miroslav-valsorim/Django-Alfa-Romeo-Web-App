@@ -103,21 +103,30 @@
                                      <p class="normal-price">Price: {{ product.price }} $</p>
                                 {% endif %}
                         </div>
-                    
-                        {% if user.is_authenticated %}
+                        
+                        {% if product.quantity > 0 %}
                             
-                            <div class="links-container">
-                                <a class="details" href="{% url "product_details" slug=product.slug %}">Details</a>
-                                <a class="add-to-cart" href="{% url "add_to_cart" slug=product.slug %}">ADD TO CART <i class="fa-solid fa-cart-shopping"></i></a>
-                            </div>
+                            {% if user.is_authenticated %}
+                                
+                                <div class="links-container">
+                                    <a class="details" href="{% url "product_details" slug=product.slug %}">Details</a>
+                                    <a class="add-to-cart" href="{% url "add_to_cart" slug=product.slug %}">ADD TO CART <i class="fa-solid fa-cart-shopping"></i></a>
+                                </div>
+                                
+                            {% else %}
+                                
+                                <div class="links-container">
+                                    <a class="details" href="{% url "product_details" slug=product.slug %}">Details</a>
+                                    <a class="signin" href="{% url 'login-user' %}">Sign in to purchase</a>
+                                </div>
+                                
+                            {% endif %}
                             
                         {% else %}
-                            
-                            <div class="links-container">
-                                <a class="details" href="{% url "product_details" slug=product.slug %}">Details</a>
-                                <a class="signin" href="{% url 'login-user' %}">Sign in to purchase</a>
-                            </div>
-                            
+                                <div class="links-container">
+                                    <a class="details" href="{% url "product_details" slug=product.slug %}">Details</a>
+                                    <p class="out-of-stock">Out of stock</p>
+                                </div>
                         {% endif %}
                     
                     </div>

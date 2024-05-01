@@ -331,6 +331,12 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
+}
+
+.out-of-stock{
+    margin-right: 15px;
+    font-weight: bold;
 }
 
 .links-container a{
