@@ -20,9 +20,10 @@
                 <p>Full Name: {{ shipping_address.user.profile.first_name }} {{ shipping_address.user.profile.last_name }}</p>
                 <p>Email: {{ shipping_address.user.email }}</p>
                 <p>Phone Number: {{ shipping_address.user.profile.phone_number }}</p>
-                
+ 
                 <br>
                 <h4>Shipping Info</h4>
+                <p>Shipping Address PK: {{ shipping_address.pk }}</p>
                 <p>Shipping Address: {{ shipping_address.shipping_address }}</p>
                 <p>Shipping Address 2: {{ shipping_address.shipping_address_two }}</p>
                 <p>Country: {{ shipping_address.country }}</p>

@@ -25,6 +25,7 @@
                                 color: green; {% else %} 
                                 color: red; {% endif %}">{{ list.status }}</span></p>
                             <br>
+                            <p>Shipping Address ID: {{ list.shipping_address.pk }}</p>
                             <p>Shipping Address 1: {{ list.shipping_address.shipping_address }}</p>
                             <p>Shipping Address 2: {{ list.shipping_address.shipping_address_two }}</p>
                             <p>Country: {{ list.shipping_address.country }}</p>
