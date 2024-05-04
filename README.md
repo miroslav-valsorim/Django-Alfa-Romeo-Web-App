@@ -70,7 +70,8 @@ Bringing my vision to life after nearly two years of anticipation, this project 
 
 6. Tickets and Store page:  
 	- Has a Search Field where you can search a product by title.  
-	- Shows all Product Categories where you can select each category and also sort them by Price, Date Added.  
+	- Shows all Product Categories where you can select each category and also sort them by Name, Price ASC, Price DESC, Date Added.  
+	- Track if items are in stock or out of stock.  
 	- Pagination has been used to show 8 products per page.  
 	- Only logged user have access to add products to their cart, others have to sign in.  
 
@@ -81,8 +82,9 @@ Bringing my vision to life after nearly two years of anticipation, this project 
 ![ProductsPage](screenshots/Screenshot_Products_Product.png)
 
 7. Shopping Cart / Checkout page:  
-	- The added items from Store, show up here, where you can add, remove them, displays full order details.  
-	- Checkout Pages Require Names and Adress Info.  
+	- The added items from Store, show up here, where you can add, remove them, displays full order details. 
+	- Keeping track of producst quantity.   
+	- Checkout pages require First, Last names, phone number and adress info.  
 	- Paymen handled with PayPal. After successful payment you return to website where it tells you the payment was successful.  
 	- Recieve email on successful order.  
 	- TODO: Hanlde better successful and unsuccessful payments. (more info shared on checkout view)  
@@ -103,8 +105,8 @@ Bringing my vision to life after nearly two years of anticipation, this project 
 
 8. Forum Page:  
 	- Prety much works as a normal Forum, it has categories, you can add a new topic to each category, there are also comments.  
-	- Forum can be accessed only by registered users, since registrations requires only Email and Password, the forum also requirest First and Last Name so you can log inside it and view the forum. Redirects you to a page where you have to enter you Names.  
-	- Posts have to be approved from Moderator or Administrator before they can be viewed in the staff or admin panel.  
+	- Forum can be accessed only by registered users, since registrations requires only Email and Password, the forum also requirest First and Last Name so you can log inside it and view the forum.The purpose of this is to not share emails directly in the forum and keep the users just with their names/ nicknames for privacy. Redirects you to a page where you have to enter you names if you haven't entered them yet.  
+	- Posts have to be approved from Moderator or Administrator before they can be viewed. This approval happens in the staff or admin panel.  
 	- Posts also can be closed, so people can view them, but can't add a comment.  
 
 ![ForumPage](screenshots/Screenshot_Forum_Four.png)
@@ -139,7 +141,7 @@ Bringing my vision to life after nearly two years of anticipation, this project 
 ![ProfilePage](screenshots/Screenshot_completed_orders.png)
 
 11. Staff Panel:  
-	- Moderators and Admin can handle almost everything through this staff panel, where they can create,edit,delete,make active or inactive events, news, products, forum posts and etc.  
+	- Moderators and Admin can handle almost everything through this staff panel, where they can create,edit,delete,make active or inactive events, news, products, forum posts, orders and etc.  
 	- Moderators and Admin can also view from here the comments for every post and remove the comments that are not wanted.  
 	- Closed, active, not active topics can be viewed from here.  
 	- Approval for forum topics can happen through here.  
