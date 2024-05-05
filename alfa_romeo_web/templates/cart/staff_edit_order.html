@@ -29,6 +29,8 @@
                 <p>Country: {{ shipping_address.country }}</p>
                 <p>Town: {{ shipping_address.town }}</p>
                 <p>Zip: {{ shipping_address.zip }}</p>
+                <a href="{% url 'staff_edit_address' pk=shipping_address.pk %}">Edit Shipping Address</a>
+
             {% endif %}
         
             <br>
@@ -46,8 +48,7 @@
                 <div class="buttons">
                     
                     <button>Update</button>
-{#                    <a href="{% url 'staff_delete_event' slug=object.slug %}">Delete Event</a>#}
-{#                    #}
+
                 </div>
                 
             </form>

@@ -4,6 +4,7 @@ from django.conf import settings
 from django.contrib import messages
 from django.core.exceptions import ObjectDoesNotExist
 from django.core.mail import send_mail
+from django.db.models import Q
 from django.shortcuts import render, redirect, get_object_or_404
 from django.template.loader import render_to_string
 from django.urls import reverse
@@ -14,7 +15,7 @@ from django.contrib.auth.decorators import login_required
 
 from paypal.standard.forms import PayPalPaymentsForm
 
-from alfa_romeo_web.accounts.mixin import OwnerRequiredMixin
+from alfa_romeo_web.accounts.mixin import OwnerRequiredMixin, CheckAdminOrStaffAccess
 from alfa_romeo_web.accounts.models import Profile
 from alfa_romeo_web.cart.models import ShoppingCart
 from alfa_romeo_web.checkout.forms import CheckoutForm
@@ -171,3 +172,43 @@ def paypal_payment_failed(request, shopping_cart_id):
     }
 
     return render(request, 'checkout/payment-failed.html', context)
+
+
+class StaffAddressListView(auth_mixins.LoginRequiredMixin, CheckAdminOrStaffAccess, views.ListView):
+    model = ShippingAddress
+    template_name = 'checkout/staff_address_list.html'
+    paginate_by = 8
+
+    def get_queryset(self):
+        queryset = ShippingAddress.objects.all()
+        order_by = self.request.GET.get('order_by', 'is_active')
+
+        search_query = self.request.GET.get('Search')
+        if search_query:
+            initial_queryset = queryset.filter(
+                Q(user=search_query)
+            )
+        else:
+            initial_queryset = queryset
+
+        if order_by == 'user':
+            queryset = initial_queryset.order_by('user')
+
+        return queryset
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        context['order_by'] = self.request.GET.get('order_by', 'user')
+        context['search_query'] = self.request.GET.get('Search', '')
+
+        return context
+
+
+class StaffAddressEditView(auth_mixins.LoginRequiredMixin, CheckAdminOrStaffAccess, views.UpdateView):
+    queryset = ShippingAddress.objects.all()
+    template_name = "checkout/staff_edit_address.html"
+    fields = ("user", "shipping_address", "shipping_address_two", "country", "town", "zip")
+
+    def get_success_url(self):
+        return reverse('staff_address_list')
