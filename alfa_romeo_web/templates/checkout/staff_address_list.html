@@ -53,7 +53,7 @@
          
                 {% for obj in object_list %}
                     
-                    <div class="topic {% if obj.is_active %}active-product{% else %}not-active-product{% endif %}">
+                    <div class="topic">
                     
                         <h3>{{ obj.user }}</h3>
                         <a href="{% url 'staff_edit_address' pk=obj.pk %}">Edit</a>

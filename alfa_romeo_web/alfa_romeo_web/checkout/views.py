@@ -186,8 +186,11 @@ class StaffAddressListView(auth_mixins.LoginRequiredMixin, CheckAdminOrStaffAcce
         search_query = self.request.GET.get('Search')
         if search_query:
             initial_queryset = queryset.filter(
-                Q(user=search_query)
+                Q(user__email__icontains=search_query)
             )
+            # print(search_query)
+            # print(initial_queryset)
+            # print(queryset.query)
         else:
             initial_queryset = queryset
 
