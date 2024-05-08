@@ -1,6 +1,6 @@
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth import mixins as auth_mixins
+from django.contrib.auth import mixins as auth_mixins, get_user_model
 from django.core.exceptions import ObjectDoesNotExist
 from django.db.models import Q
 from django.shortcuts import render, get_object_or_404, redirect
@@ -13,6 +13,7 @@ from alfa_romeo_web.cart.models import ShoppingCart, OrderItem
 from alfa_romeo_web.checkout.models import ShippingAddress
 from alfa_romeo_web.products.models import Products
 
+UserModel = get_user_model()
 
 @login_required
 def add_to_cart(request, slug):
@@ -192,12 +193,12 @@ class StaffOrdersListView(auth_mixins.LoginRequiredMixin, CheckAdminOrStaffAcces
 
     def get_queryset(self):
         queryset = ShoppingCart.objects.filter(ordered=True)
-        order_by = self.request.GET.get('order_by', '-ordered_date')
+        order_by = self.request.GET.get('order_by', 'ordered_date')
 
         search_query = self.request.GET.get('Search')
         if search_query:
             initial_queryset = queryset.filter(
-                Q(title__icontains=search_query)
+                Q(user__email__icontains=search_query)
             )
         else:
             initial_queryset = queryset
@@ -206,13 +207,6 @@ class StaffOrdersListView(auth_mixins.LoginRequiredMixin, CheckAdminOrStaffAcces
             queryset = initial_queryset.order_by('status')
         elif order_by == 'ordered_date':
             queryset = initial_queryset.order_by('-ordered_date')
-
-        # elif order_by == 'pending':
-        #     queryset = initial_queryset.filter(status='pending')
-        # elif order_by == 'sent':
-        #     queryset = initial_queryset.filter(status='sent')
-        # elif order_by == 'completed':
-        #     queryset = initial_queryset.filter(status='completed')
 
         return queryset
 

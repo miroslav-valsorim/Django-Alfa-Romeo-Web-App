@@ -181,16 +181,13 @@ class StaffAddressListView(auth_mixins.LoginRequiredMixin, CheckAdminOrStaffAcce
 
     def get_queryset(self):
         queryset = ShippingAddress.objects.all()
-        order_by = self.request.GET.get('order_by', 'is_active')
+        order_by = self.request.GET.get('order_by', 'user')
 
         search_query = self.request.GET.get('Search')
         if search_query:
             initial_queryset = queryset.filter(
                 Q(user__email__icontains=search_query)
             )
-            # print(search_query)
-            # print(initial_queryset)
-            # print(queryset.query)
         else:
             initial_queryset = queryset
 

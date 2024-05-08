@@ -42,12 +42,10 @@
                 </div>
                 
                 <div class="search-field">
-                    
                     <form method="GET" action="{% url 'staff_orders' %}">
                         <input type="text" name="Search" placeholder="Search by user email..." value="{{ search_query }}">
                         <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                     </form>
-                    
                 </div>
 
                 <h2>Orders</h2>
@@ -63,7 +61,7 @@
                      {% else %}
                         <div class="topic">
                      {% endif %}
-                        <h3>{{ obj.user }} PK:{{ obj.pk }}</h3>
+                        <h3>{{ obj.user }} ID:{{ obj.pk }}</h3>
                         <a href="{% url 'staff_edit_order' pk=obj.pk %}">Edit</a>
                     </div>
                      
