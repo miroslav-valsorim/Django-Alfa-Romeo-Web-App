@@ -43,7 +43,7 @@
     font-weight: 600;
 }
 
-.personal a{
+.personal .links{
     display: block;
     margin: auto;
     margin-top: 10px;
