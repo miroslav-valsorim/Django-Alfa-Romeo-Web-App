@@ -31,11 +31,11 @@ class Event(models.Model):
     #     null=False,
     # )
 
-    img_field = CloudinaryField(
-        'image',
-        blank=False,
-        null=False,
-    )
+    # img_field = CloudinaryField(
+    #     'image',
+    #     blank=False,
+    #     null=False,
+    # )
 
     description = models.TextField(
         blank=False,
@@ -81,3 +81,20 @@ class Event(models.Model):
             self.slug = slugify(f"{self.title}-{self.pk}")
 
         super().save(*args, **kwargs)
+
+
+class EventImage(models.Model):
+    event = models.ForeignKey(
+        Event,
+        on_delete=models.CASCADE,
+        related_name='images'
+    )
+
+    image = CloudinaryField(
+        'image',
+        blank=False,
+        null=False,
+    )
+
+    def __str__(self):
+        return f"Image for {self.event.title}"

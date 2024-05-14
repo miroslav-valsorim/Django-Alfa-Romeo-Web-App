@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from alfa_romeo_web.events.models import Event
+from alfa_romeo_web.events.models import Event, EventImage
 
 
 @admin.register(Event)
@@ -17,3 +17,8 @@ class ModelNameAdmin(admin.ModelAdmin):
             obj.created_by = request.user
         super().save_model(request, obj, form, change)
 
+
+@admin.register(EventImage)
+class ModelImageAdmin(admin.ModelAdmin):
+    list_display = ('event', 'image',)
+    ordering = ('event', 'image',)

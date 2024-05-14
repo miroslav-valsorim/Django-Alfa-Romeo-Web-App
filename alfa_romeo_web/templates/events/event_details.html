@@ -20,9 +20,9 @@
                     <h2>{{ object.title }}</h2>
                     
                     <div class="image-container">
-                        
-                        <img src="{{ object.img_field.url }}" alt="{{ object.title }} img">
-                        
+                        {% for image in object.images.all %}
+                            <img src="{{ image.image.url }}" alt="{{ object.title }} img">
+                        {% endfor %}
                     </div>
                     
                     <div class="event-location-date">

@@ -20,7 +20,11 @@
                     
                     <div class="image-container">
                         
-                        <img src="{{ event.img_field.url }}" alt="{{ event.title }} img">
+                        {% if event.images.first %}
+                            <img src="{{ event.images.first.image.url }}" alt="{{ event.title }} img">
+                        {% else %}
+                            <!-- Placeholder image or no image message -->
+                        {% endif %}
                         
                     </div>
                     
