@@ -20,17 +20,21 @@
 .event-card{
     background-color: rgba(255,255,255,0.5);
     position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .event-card a{
-    position: absolute;
-    top: 0;
-    margin-top: 20px;
-    margin-left: 20px;
+    /*position: absolute;*/
+    /*top: 0;*/
+    margin-top: 10px;
+    margin-left: 10px;
     text-decoration: None;
     color: black;
     font-size: 18px;
     font-weight: 600;
+    align-self: start;
 }
 
 .event-card h2{
@@ -48,6 +52,19 @@
 
 .image-container img{
     width: 100%;
+}
+
+.all-event-images{
+    max-width: 900px;
+    display: flex;
+    flex-direction: row;
+    margin: 15px;
+    gap: 10px;
+}
+
+.one-image{
+    width: 300px;
+    cursor: pointer;
 }
 
 .event-location-date{
@@ -74,6 +91,12 @@
 }
 
 
+@media (max-width: 1100px){
+    .all-event-images{
+        width: 800px;
+    }
+}
+
 @media (max-width: 1000px){
     .event-location-date{
         margin: 10px 30px;
@@ -82,6 +105,14 @@
 
     .event-card p{
         margin: 0 30px;
+    }
+
+
+}
+
+@media (max-width: 850px){
+    .all-event-images{
+        width: 600px;
     }
 }
 
@@ -96,6 +127,12 @@
         width: 400px;
     }
 
+}
+
+@media (max-width: 650px){
+    .all-event-images{
+        width: 400px;
+    }
 }
 
 @media (max-width: 600px) {
@@ -115,9 +152,19 @@
     }
 }
 
+@media (max-width: 450px){
+    .all-event-images{
+        width: 350px;
+    }
+}
+
 @media (max-width: 380px) {
     .image-container{
         width: 300px;
         max-width: 300px;
+    }
+
+    .all-event-images{
+        width: 280px;
     }
 }

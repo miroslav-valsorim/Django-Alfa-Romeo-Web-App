@@ -18,12 +18,41 @@
                     
                     <a href="{% url 'events_list' %}"><i class="fa-solid fa-angles-left"></i> Back</a>
                     <h2>{{ object.title }}</h2>
-                    
+{#                    #}
+{#                    <div class="image-container">#}
+{#                    #}
+{#                         {% if object.images.first %}#}
+{#                            <img src="{{ event.images.first.image.url }}" alt="{{ event.title }} img">#}
+{#                        {% endif %}#}
+{##}
+{#                    </div>#}
+{#                    #}
+{#                    {% if object.images.count > 1 %}#}
+{#                        <div class="all-event-images">#}
+{#                        #}
+{#                            {% for image in object.images.all %}#}
+{#                                <div class="one-image">#}
+{#                                    <img src="{{ image.image.url }}" alt="{{ object.title }} img">#}
+{#                                </div>#}
+{#                            {% endfor %}#}
+{#                            #}
+{#                        </div>#}
+{#                    {% endif %}#}
                     <div class="image-container">
+                        {% if object.images.first %}
+                            <img id="main-image" src="{{ object.images.first.image.url }}" alt="{{ object.title }} img">
+                        {% endif %}
+                    </div>
+                    
+                    {% if object.images.count > 1 %}
+                    <div class="all-event-images">
                         {% for image in object.images.all %}
-                            <img src="{{ image.image.url }}" alt="{{ object.title }} img">
+                        <div class="one-image">
+                            <img class="thumbnail" src="{{ image.image.url }}" alt="{{ object.title }} img">
+                        </div>
                         {% endfor %}
                     </div>
+                    {% endif %}
                     
                     <div class="event-location-date">
                         
@@ -39,5 +68,23 @@
         </div>
     
     </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get all thumbnail images
+            var thumbnails = document.querySelectorAll('.thumbnail');
+        
+            // Add click event listener to each thumbnail
+            thumbnails.forEach(function(thumbnail) {
+                thumbnail.addEventListener('click', function() {
+                    // Get the src attribute of the clicked thumbnail
+                    var src = this.getAttribute('src');
+        
+                    // Set the src attribute of the main image to the clicked thumbnail's src
+                    document.getElementById('main-image').setAttribute('src', src);
+                });
+            });
+        });
+    </script>
 
 {% endblock %}
