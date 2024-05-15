@@ -14,12 +14,23 @@
             
             <h2>Create new Event</h2>
 
+{#            <form method="post" action="{% url 'staff_create_event' %}" enctype="multipart/form-data">#}
+{##}
+{#                {{ form }}#}
+{#                {% csrf_token %}#}
+{#                <div class="buttons"><button>Create</button></div>#}
+{##}
+{#            </form>#}
             <form method="post" action="{% url 'staff_create_event' %}" enctype="multipart/form-data">
-
-                {{ form }}
                 {% csrf_token %}
+                {{ form.as_p }}
+                <hr>
+                <h3>Upload Images</h3>
+                {{ image_formset.management_form }}
+                {% for form in image_formset %}
+                    {{ form.as_p }}
+                {% endfor %}
                 <div class="buttons"><button>Create</button></div>
-
             </form>
             
         </div>

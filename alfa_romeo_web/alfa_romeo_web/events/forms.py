@@ -1,8 +1,16 @@
 from django import forms
 from .models import Event, EventImage
+from multiupload.fields import MultiFileField
 
 
 class EventForm(forms.ModelForm):
+    images = MultiFileField(
+        min_num=1,
+        max_num=10,
+        max_file_size=1024 * 1024 * 5,  # 5MB
+        required=False
+    )
+
     class Meta:
         model = Event
         fields = ("title", "description", "event_date", "location", "is_active", "slug")
