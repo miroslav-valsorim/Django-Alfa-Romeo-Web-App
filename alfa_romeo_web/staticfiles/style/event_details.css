@@ -135,11 +135,11 @@
     }
 }
 
-@media (max-width: 600px) {
-    .event-card h2{
-        padding-top: 50px;
-    }
-}
+/*@media (max-width: 600px) {*/
+/*    .event-card h2{*/
+/*        padding-top: 50px;*/
+/*    }*/
+/*}*/
 
 @media (max-width: 500px) {
     .image-container{
