@@ -18,10 +18,12 @@
 .wrapper form{
     display: flex;
     flex-direction: column;
+    align-items: center;
     margin: 10px auto;
 }
 
 .wrapper form input{
+    width: 500px;
     background-color: rgba(255, 255, 255, 0.5);
     border: none;
     border-radius: 10px;
@@ -33,7 +35,7 @@
 }
 
 .wrapper form textarea{
-    width: 100%;
+    width: 500px;
     height: 150px;
     padding: 12px 20px;
     box-sizing: border-box;
@@ -43,6 +45,11 @@
     font-size: 16px;
     resize: none;
     margin-bottom: 10px;
+}
+
+.wrapper form p{
+    display: flex;
+    flex-direction: column;
 }
 
 .wrapper form option{
@@ -102,18 +109,39 @@ form div{
     max-width: 450px;
     /*overflow: scroll;*/
 }
+
+.images-uploaded{
+    max-width: 200px;
+}
+
 .wrapper form .buttons a:hover{
     background-color: red;
 }
 
 @media (max-width: 600px) {
-    form div{
-        max-width: 400px;
+    /*form div{*/
+    /*    max-width: 400px;*/
+    /*}*/
+
+    .wrapper form textarea{
+        max-width: 450px;
+    }
+
+    .wrapper form input{
+        max-width: 450px;
     }
 }
 
 @media (max-width: 500px) {
-    form div{
+    /*form div{*/
+    /*    max-width: 300px;*/
+    /*}*/
+
+    .wrapper form textarea{
+        max-width: 300px;
+    }
+
+    .wrapper form input{
         max-width: 300px;
     }
 }

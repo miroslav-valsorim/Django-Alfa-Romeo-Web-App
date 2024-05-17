@@ -25,3 +25,9 @@ class EventImageForm(forms.ModelForm):
     class Meta:
         model = EventImage
         fields = ('image',)
+
+
+class EditEventForm(forms.ModelForm):
+    class Meta:
+        model = Event
+        fields = ("title", "description", "event_date", "location", "is_active", "slug")

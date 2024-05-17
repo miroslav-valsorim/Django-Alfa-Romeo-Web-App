@@ -27,26 +27,36 @@
 {#                </div>#}
 {#                #}
 {#            </form>#}
-            <form method="post" enctype="multipart/form-data">
+        
+            <form method="post" action="{% url 'staff_edit_event' slug=object.slug %}" enctype="multipart/form-data">
+            
                 {% csrf_token %}
                 {{ form.as_p }}
+            
                 <hr>
+            
                 <h3>Existing Images</h3>
                 {% for image in existing_images %}
-                    <img src="{{ image.image.url }}" alt="{{ image }}">
+                    <div class="images-uploaded">
+                        <img src="{{ image.image.url }}" alt="{{ image }}">
+                    </div>
                 {% endfor %}
+            
                 <hr>
+            
                 <h3>Upload New Images</h3>
+            
                 {{ image_formset.management_form }}
+            
                 {% for form in image_formset %}
                     {{ form.as_p }}
                 {% endfor %}
+            
                 <div class="buttons">
-
                     <button>Update</button>
                     <a href="{% url 'staff_delete_event' slug=object.slug %}">Delete Event</a>
-
                 </div>
+            
             </form>
             
         </div>

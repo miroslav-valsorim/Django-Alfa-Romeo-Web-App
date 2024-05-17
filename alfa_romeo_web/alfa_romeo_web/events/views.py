@@ -6,7 +6,7 @@ from django.contrib.auth import mixins as auth_mixins
 from django.forms import inlineformset_factory
 
 from alfa_romeo_web.accounts.mixin import CheckAdminOrStaffAccess
-from alfa_romeo_web.events.forms import EventForm, EventImageForm
+from alfa_romeo_web.events.forms import EventForm, EventImageForm, EditEventForm
 from alfa_romeo_web.events.models import Event, EventImage
 
 
@@ -64,7 +64,7 @@ class StaffEventListView(auth_mixins.LoginRequiredMixin, CheckAdminOrStaffAccess
 class StaffEventEditView(auth_mixins.LoginRequiredMixin, CheckAdminOrStaffAccess, views.UpdateView):
     queryset = Event.objects.all()
     template_name = "events/staff_edit_event.html"
-    form_class = EventForm  # Use your main event form
+    form_class = EditEventForm
 
     def get_context_data(self, **kwargs):
         data = super().get_context_data(**kwargs)
@@ -74,7 +74,6 @@ class StaffEventEditView(auth_mixins.LoginRequiredMixin, CheckAdminOrStaffAccess
         else:
             data['image_formset'] = EventImageFormSet(instance=self.object)
 
-        # data['existing_images'] = self.object.images.all()
         existing_images = self.object.images.all()
         max_num = 5  # Max number of images allowed
 
