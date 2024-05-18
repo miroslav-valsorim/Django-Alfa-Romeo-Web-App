@@ -140,6 +140,12 @@
     font-size: 20px;
 }
 
+.out-of-stock{
+    margin-right: 10px;
+    color: black;
+    font-weight: bold;
+}
+
 @media (max-width: 1200px) {
 
      .tickets-wrapper{

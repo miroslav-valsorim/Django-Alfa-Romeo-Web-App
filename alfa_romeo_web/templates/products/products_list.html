@@ -76,9 +76,13 @@
                     
                         <h2>{{ item.title }}</h2>
     
-                        {% if item.image %}
+                        {% if item.images.first %}
                             <div class="image-container">
-                                <img src="{{ item.image.url }}" alt="{{ item.title }} img">
+                                <img src="{{ item.images.first.image.url }}" alt="{{ item.title }} img">
+                            </div>
+                        {% else %}
+                            <div class="image-container">
+                                <img src="{% static 'images/No-Image-Placeholder.svg.png' %}" alt="{{ item.title }} img">
                             </div>
                         {% endif %}
     

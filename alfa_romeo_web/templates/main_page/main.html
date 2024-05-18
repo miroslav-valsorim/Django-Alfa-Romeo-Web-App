@@ -41,14 +41,15 @@
                     <div class="event-card">
                     
                         <h3>{{ event.title }}</h3>
+                    
                         <div class="image-container">
-{#                            <img src="{{event.img_field.url}}" alt="{{ event.title}}">#}
                               {% if event.images.first %}
                                   <img src="{{ event.images.first.image.url }}" alt="{{ event.title }} img">
                               {% else %}
-                                  <!-- Placeholder image or no image message -->
+                                  <img src="{% static 'images/No-Image-Placeholder.svg.png' %}" alt="{{ event.title }} img">
                               {% endif %}
                         </div>
+                    
                         <p>{{ event.description|slice:":250" }}</p>
                         <a href="{% url 'event_details' slug=event.slug %}">Full information</a>
                     
@@ -93,10 +94,16 @@
                     
                     <div class="merch-card">
                         <h3>{{ product.title }}</h3>
-                    
-                        <div class="image-container">
-                            <img src="{{ product.image.url }}" alt="alfa romeo track">
-                        </div>
+                        
+                        {% if product.images.first %}
+                            <div class="image-container">
+                                <img src="{{ product.images.first.image.url }}" alt="alfa romeo track">
+                            </div>
+                        {% else %}
+                            <div class="image-container">
+                                <img src="{% static 'images/No-Image-Placeholder.svg.png' %}" alt="{{ product.title }} img">
+                            </div>
+                        {% endif %}
                     
                         <div class="prices-container">
                         

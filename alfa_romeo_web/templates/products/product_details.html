@@ -25,20 +25,41 @@
          <h2>{{ object.title }}</h2>
             
             <div class="wrapper">
-            
-                    {% if object.image %}
+                    
+                    <div class="images">
+                        {% if object.images.first %}
                         
                         <div class="image-container">
-                            <img src="{{ object.image.url }}" alt="{{ object.title}} img">
+                            <img id="main-image" src="{{ object.images.first.image.url }}" alt="{{ object.title}} img">
                         </div>
+                        
+                    {% elif object.category_name %}
+                        {# TODO: Handle tickets image #}
+                        
+                        {% if object.category_name == 'Tickets' %}
+                             <div class="image-container">
+                                <img src="{% static 'images/line-icon-for-tickets-vector.jpg' %}" alt="{{ item.title }} img">
+                            </div>
+                        {% endif %}
                         
                     {% else %}
                         
                         <div class="image-container">
-                            <img src="{% static 'images/line-icon-for-tickets-vector.jpg' %}" alt="{{ object.title}} img">
+                            <img src="{% static 'images/No-Image-Placeholder.svg.png' %}" alt="{{ object.title}} img">
                         </div>
                         
                     {% endif %}
+            
+                        {% if object.images.count > 1 %}
+                            <div class="all-product-images">
+                                {% for image in object.images.all %}
+                                <div class="one-image">
+                                    <img class="thumbnail" src="{{ image.image.url }}" alt="{{ object.title }} img">
+                                </div>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
             
                      <div class="info">
                      
@@ -70,5 +91,23 @@
      </div>
 
 </div>
+    
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Get all thumbnail images
+        var thumbnails = document.querySelectorAll('.thumbnail');
+    
+        // Add click event listener to each thumbnail
+        thumbnails.forEach(function(thumbnail) {
+            thumbnail.addEventListener('click', function() {
+                // Get the src attribute of the clicked thumbnail
+                var src = this.getAttribute('src');
+    
+                // Set the src attribute of the main image to the clicked thumbnail's src
+                document.getElementById('main-image').setAttribute('src', src);
+            });
+        });
+    });
+</script>
 
 {% endblock %}

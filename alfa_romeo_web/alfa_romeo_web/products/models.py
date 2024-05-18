@@ -35,7 +35,7 @@ class Products(models.Model):
         max_length=MAX_TITLE_LENGTH,
         blank=False,
         null=False,
-        )
+    )
 
     quantity = models.IntegerField(
         default=0,
@@ -58,7 +58,7 @@ class Products(models.Model):
     category = models.ForeignKey(
         Category,
         on_delete=models.CASCADE,
-        )
+    )
 
     description = models.CharField(
         max_length=MAX_DESCRIPTION_LENGTH,
@@ -71,11 +71,12 @@ class Products(models.Model):
     #     blank=True,
     #     null=True,
     # )
-    image = CloudinaryField(
-        'image',
-        blank=True,
-        null=True,
-    )
+
+    # image = CloudinaryField(
+    #     'image',
+    #     blank=True,
+    #     null=True,
+    # )
 
     is_active = models.BooleanField(
         default=True
@@ -123,3 +124,20 @@ class Products(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class ProductImage(models.Model):
+    product = models.ForeignKey(
+        Products,
+        on_delete=models.CASCADE,
+        related_name='images'
+    )
+
+    image = CloudinaryField(
+        'image',
+        blank=False,
+        null=False,
+    )
+
+    def __str__(self):
+        return f"Image for {self.product.title}"

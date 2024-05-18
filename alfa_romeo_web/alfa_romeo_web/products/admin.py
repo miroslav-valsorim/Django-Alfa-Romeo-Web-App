@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.db.models import F
 
-from alfa_romeo_web.products.models import Category, Products
+from alfa_romeo_web.products.models import Category, Products, ProductImage
 
 
 @admin.register(Category)
@@ -32,3 +32,9 @@ class ModelNameAdmin(admin.ModelAdmin):
 
     get_category_name.short_description = 'Category Name'
     get_category_name.admin_order_field = 'category__name'
+
+
+@admin.register(ProductImage)
+class ModelImageAdmin(admin.ModelAdmin):
+    list_display = ('product', 'image', )
+    ordering = ('product', 'image',)

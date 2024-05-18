@@ -127,7 +127,7 @@ class ProductsStaffListView(auth_mixins.LoginRequiredMixin, CheckAdminOrStaffAcc
 class StaffProductEditView(auth_mixins.LoginRequiredMixin, CheckAdminOrStaffAccess, views.UpdateView):
     queryset = Products.objects.all()
     template_name = "products/staff_edit_product.html"
-    fields = ("title", "price", "discount_price", "quantity", "category", "description", "image", "is_active", "slug")
+    fields = ("title", "price", "discount_price", "quantity", "category", "description", "is_active", "slug")
 
     def get_success_url(self):
         return reverse('staff_products_list')
@@ -136,7 +136,7 @@ class StaffProductEditView(auth_mixins.LoginRequiredMixin, CheckAdminOrStaffAcce
 class StaffProductCreateView(auth_mixins.LoginRequiredMixin, CheckAdminOrStaffAccess, views.CreateView):
     model = Products
     template_name = 'products/staff_create_product.html'
-    fields = ("title", "price", "discount_price", "quantity", "category", "description", "image", "is_active", "slug")
+    fields = ("title", "price", "discount_price", "quantity", "category", "description", "is_active", "slug")
     success_url = reverse_lazy('staff_products_list')
 
 

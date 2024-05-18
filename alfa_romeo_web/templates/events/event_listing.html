@@ -23,7 +23,7 @@
                         {% if event.images.first %}
                             <img src="{{ event.images.first.image.url }}" alt="{{ event.title }} img">
                         {% else %}
-                            <!-- Placeholder image or no image message -->
+                            <img src="{% static 'images/No-Image-Placeholder.svg.png' %}" alt="{{ event.title}} img">
                         {% endif %}
                         
                     </div>
