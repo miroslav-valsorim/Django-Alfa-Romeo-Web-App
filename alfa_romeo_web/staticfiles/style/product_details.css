@@ -33,6 +33,10 @@
     height: 300px;
     overflow: hidden;
     margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .image-container img{
@@ -155,6 +159,7 @@
 
     .info{
         align-items: center;
+        text-align: center;
     }
 }
 

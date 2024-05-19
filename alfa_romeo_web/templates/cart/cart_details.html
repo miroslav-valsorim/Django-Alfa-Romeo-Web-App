@@ -40,8 +40,14 @@
                             <tr>
                                 <th scope="row">{{ forloop.counter }}</th>
                                 <td>
-                                    {% if order_item.item.image %}
-                                        <div class="image-container"><img src="{{ order_item.get_image }}" alt="{{ object.title}} img"> </div>
+                                    {% if order_item.item.images.first.image %}
+                                        <div class="image-container">
+                                            <img src="{{ order_item.item.images.first.image.url }}" alt="{{ object.title}} img"> 
+                                        </div>
+                                    {% else %}
+                                        <div class="image-container">
+                                            <img src="{% static 'images/No-Image-Placeholder.svg.png' %}" alt="{{ object.title}} img">
+                                        </div>
                                     {% endif %}
                                 </td>
                                 <td>{{ order_item.item.title }}</td>

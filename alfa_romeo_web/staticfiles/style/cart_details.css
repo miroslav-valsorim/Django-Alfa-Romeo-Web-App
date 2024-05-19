@@ -8,7 +8,13 @@
 
 .image-container{
     max-width: 100px;
+    max-height: 100px;
     margin: auto;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .image-container img{

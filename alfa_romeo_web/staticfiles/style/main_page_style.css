@@ -126,17 +126,24 @@
 
 .event-card .image-container{
     max-width: 400px;
-    max-height: 250px;
+    height: 220px;
+    max-height: 220px;
     overflow: hidden;
     margin-top: 30px;
     margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
+
 .event-card .image-container img{
     background-size: cover;
     width: 100%;
-    height: auto;
+    height: 100%;
     align-items: center;
     transition: 0.5s;
+    object-fit: cover;
 }
 
 .event-card p{
@@ -211,19 +218,25 @@
 }
 
 .news-card .image-container{
-   max-width: 400px;
-    max-height: 250px;
+    max-width: 400px;
+    height: 220px;
+    max-height: 220px;
     overflow: hidden;
     margin-top: 30px;
     margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .news-card .image-container img{
     background-size: cover;
     width: 100%;
-    height: auto;
+    height: 100%;
     align-items: center;
     transition: 0.5s;
+    object-fit: cover;
 }
 
 .news-card p{
@@ -303,18 +316,24 @@
 
 .merch-card .image-container{
     max-width: 400px;
-    max-height: 300px;
+    height: 340px;
+    max-height: 340px;
     overflow: hidden;
     margin-top: 30px;
     margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .merch-card .image-container img{
     background-size: cover;
     width: 100%;
-    height: auto;
+    height: 100%;
     align-items: center;
     transition: 0.5s;
+    object-fit: cover;
 }
 
 .prices-container{
