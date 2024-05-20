@@ -30,7 +30,7 @@ class Category(models.Model):
 
 class Products(models.Model):
     MAX_TITLE_LENGTH = 100
-    MAX_DESCRIPTION_LENGTH = 250
+    MAX_DESCRIPTION_LENGTH = 600
 
     title = models.CharField(
         max_length=MAX_TITLE_LENGTH,
