@@ -14,6 +14,7 @@
 }
 
 .detail-container h2{
+    text-shadow: 4px 4px 4px black;
     text-align: center;
     font-size: 30px;
     padding-top: 10px;
@@ -94,7 +95,14 @@
     color: black;
 }
 
+.prices-container p{
+    font-weight: 600;
+}
+
 .wrapper p{
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #0000006e;
     margin-top: 10px;
     font-size: 20px;
 }
@@ -123,6 +131,9 @@
 }
 
 .all-product-images{
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #0000006e;
     max-width: 900px;
     display: flex;
     flex-direction: row;

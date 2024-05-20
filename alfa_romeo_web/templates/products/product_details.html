@@ -69,7 +69,7 @@
                                 {% if object.discount_price %}
                           {#    TODO: this style should be done in css but didnt work, #}
                                     <p style="text-decoration-line: line-through;" class="underline-price">Price: {{object.price }} $</p>
-                                    <p style="color: red" class="discount-price">{{ object.discount_price }} $</p>
+                                    <p style="color: red" class="discount-price">Discount price: {{ object.discount_price }} $</p>
                                 {% else %}
                                      <p class="normal-price">Price: {{ object.price }} $</p>
                                 {% endif %}
