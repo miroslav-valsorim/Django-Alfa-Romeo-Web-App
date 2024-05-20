@@ -1,4 +1,5 @@
 from django.contrib.auth import get_user_model
+from django.core.exceptions import ValidationError
 from django.db import models
 from django.utils.text import slugify
 
@@ -84,6 +85,8 @@ class Event(models.Model):
 
 
 class EventImage(models.Model):
+    MAX_NUMBER_IMAGES = 5
+
     event = models.ForeignKey(
         Event,
         on_delete=models.CASCADE,
@@ -95,6 +98,11 @@ class EventImage(models.Model):
         blank=False,
         null=False,
     )
+
+    # def save(self, *args, **kwargs):
+    #     if self.event.images.count() >= self.MAX_NUMBER_IMAGES:
+    #         raise ValidationError(f"Cannot add more than {self.MAX_NUMBER_IMAGES} images to a single event.")
+    #     super().save(*args, **kwargs)
 
     def __str__(self):
         return f"Image for {self.event.title}"

@@ -1,4 +1,6 @@
 from django import forms
+from django.core.exceptions import ValidationError
+
 from .models import Event, EventImage
 from multiupload.fields import MultiFileField
 
@@ -6,7 +8,7 @@ from multiupload.fields import MultiFileField
 class EventForm(forms.ModelForm):
     images = MultiFileField(
         min_num=1,
-        max_num=10,
+        max_num=5,
         max_file_size=1024 * 1024 * 5,  # 5MB
         required=False
     )
@@ -25,6 +27,15 @@ class EventImageForm(forms.ModelForm):
     class Meta:
         model = EventImage
         fields = ('image',)
+
+    def clean_image(self):
+        image = self.cleaned_data.get('image')
+        event = self.cleaned_data.get('event')
+
+        if event and event.images.count() > 5:
+            raise ValidationError("Cannot add more than 5 images to event.")
+
+        return image
 
 
 class EditEventForm(forms.ModelForm):

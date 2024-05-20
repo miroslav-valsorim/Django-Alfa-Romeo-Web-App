@@ -24,8 +24,10 @@
             <form method="post" action="{% url 'staff_create_event' %}" enctype="multipart/form-data">
                 {% csrf_token %}
                 {{ form.as_p }}
+            
                 <hr>
                 <h3>Upload Images</h3>
+            
                 {{ image_formset.management_form }}
                 {% for form in image_formset %}
                     {{ form.as_p }}

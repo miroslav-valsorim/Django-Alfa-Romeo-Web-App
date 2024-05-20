@@ -127,34 +127,6 @@ class StaffEventEditView(auth_mixins.LoginRequiredMixin, CheckAdminOrStaffAccess
 #         form.instance.created_by = self.request.user
 #         return super().form_valid(form)
 
-# class StaffEventCreateView(auth_mixins.LoginRequiredMixin, CheckAdminOrStaffAccess, views.CreateView):
-#     model = Event
-#     template_name = 'events/staff_create_event.html'
-#     form_class = EventForm  # Use your main event form
-#
-#     def get_context_data(self, **kwargs):
-#         data = super().get_context_data(**kwargs)
-#         EventImageFormSet = inlineformset_factory(Event, EventImage, form=EventImageForm, extra=5, can_delete=True)
-#
-#         if self.request.POST:
-#             data['image_formset'] = EventImageFormSet(self.request.POST, self.request.FILES)
-#         else:
-#             data['image_formset'] = EventImageFormSet()
-#         return data
-#
-#     def form_valid(self, form):
-#         context = self.get_context_data()
-#         image_formset = context['image_formset']
-#         if image_formset.is_valid():
-#             self.object = form.save()
-#             image_formset.instance = self.object
-#             image_formset.save()
-#             return HttpResponseRedirect(self.get_success_url())
-#         else:
-#             return self.render_to_response(self.get_context_data(form=form))
-#
-#     def get_success_url(self):
-#         return reverse_lazy('staff_event')
 
 class StaffEventCreateView(auth_mixins.LoginRequiredMixin, CheckAdminOrStaffAccess, views.CreateView):
     model = Event

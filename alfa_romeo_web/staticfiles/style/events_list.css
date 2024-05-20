@@ -69,11 +69,16 @@
 }
 
 .image-container{
-    width: 400px;
-    height: 250px;
+    max-width: 400px;
+    height: 220px;
+    max-height: 220px;
     overflow: hidden;
-    margin: auto;
-    margin-top: 20px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .image-container img{

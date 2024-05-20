@@ -16,8 +16,27 @@
 
             <form method="post" action="{% url 'staff_edit_product' slug=object.slug %}" enctype="multipart/form-data">
                 
-                {{ form }}
                 {% csrf_token %}
+                {{ form.as_p }}
+                
+                <hr>
+            
+                <h3>Existing Images</h3>
+                {% for image in existing_images %}
+                    <div class="images-uploaded">
+                        <img src="{{ image.image.url }}" alt="{{ image }}">
+                    </div>
+                {% endfor %}
+            
+                <hr>
+            
+                <h3>Upload New Images</h3>
+            
+                {{ image_formset.management_form }}
+            
+                {% for form in image_formset %}
+                    {{ form.as_p }}
+                {% endfor %}
                 
                 <div class="buttons">
                     <button>Update</button>
