@@ -107,12 +107,12 @@
 }
 
 .links-container .add-to-cart{
-    background-color: #80d300;
+    background-color: greenyellow;
     color: black;
 }
 
 .links-container .add-to-cart:hover{
-    background-color: greenyellow;
+    background-color: #ffdd00;
 }
 
 .paginate-wrap{
