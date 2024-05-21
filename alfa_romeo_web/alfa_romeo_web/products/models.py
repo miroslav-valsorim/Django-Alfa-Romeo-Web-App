@@ -61,8 +61,8 @@ class Products(models.Model):
         on_delete=models.CASCADE,
     )
 
-    description = models.CharField(
-        max_length=MAX_DESCRIPTION_LENGTH,
+    description = models.TextField(
+        # max_length=MAX_DESCRIPTION_LENGTH,
         blank=True,
         null=True,
     )

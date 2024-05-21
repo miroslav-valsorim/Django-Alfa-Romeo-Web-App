@@ -62,8 +62,10 @@
                     </div>
             
                      <div class="info">
-                     
-                        <p>{{ object.description }}</p> 
+                        
+                     <div class="description">
+                         <p>{{ object.description | linebreaks }}</p>
+                     </div>
                          
                           <div class="prices-container">
                                 {% if object.discount_price %}
