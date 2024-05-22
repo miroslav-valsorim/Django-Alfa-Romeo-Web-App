@@ -39,6 +39,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-color: white;
 }
 
 .image-container img{
@@ -54,9 +55,9 @@
 .info{
     display: flex;
     flex-direction: column;
-    /*text-align: right;*/
     margin: 20px;
     color: white;
+    align-items: end;
 }
 
 .description p:not(:first-child):not(:last-child){
@@ -75,6 +76,7 @@
 }
 
 .add-to-cart{
+    max-width: 200px;
     display: block;
     text-align: center;
     color: black;
@@ -142,6 +144,9 @@
 
 .out-of-stock{
     font-weight: bold;
+    border-radius: 10px;
+    background-color: #0000006e;
+    margin-top: 10px;
 }
 
 .images{
@@ -167,6 +172,7 @@
     max-width: 80px;
     max-height: 80px;
     cursor: pointer;
+    background-color: white;
 }
 
 .one-image img{
@@ -179,6 +185,15 @@
 .one-image img:hover{
     transform: scale(1.05);
     box-shadow: 0 0 15px #1a1a1a
+}
+
+.underline-price{
+    text-decoration-line: line-through;
+    margin-right: 5px ;
+}
+
+.discount-price{
+    color: red;
 }
 
 

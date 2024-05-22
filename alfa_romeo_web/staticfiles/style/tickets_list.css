@@ -146,6 +146,15 @@
     font-weight: bold;
 }
 
+.underline-price{
+    text-decoration-line: line-through;
+    margin-right: 5px ;
+}
+
+.discount-price{
+    color: red;
+}
+
 @media (max-width: 1200px) {
 
      .tickets-wrapper{

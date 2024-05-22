@@ -27,38 +27,53 @@
             <div class="wrapper">
                     
                     <div class="images">
+
                         {% if object.images.first %}
-                        
-                        <div class="image-container">
-                            <img id="main-image" src="{{ object.images.first.image.url }}" alt="{{ object.title}} img">
-                        </div>
-                        
-                    {% elif object.category_name %}
-                        {# TODO: Handle tickets image #}
-                        
-                        {% if object.category_name == 'Tickets' %}
-                             <div class="image-container">
-                                <img src="{% static 'images/line-icon-for-tickets-vector.jpg' %}" alt="{{ item.title }} img">
+                
+                            <div class="image-container">
+                                <img id="main-image" src="{{ object.images.first.image.url }}" alt="{{ object.title }} img">
                             </div>
+                        
+                        {% elif object.category.name %}
+                            
+                            {% if object.category.name == 'Tickets' %}
+                                
+                                <div class="image-container">
+                                    <img src="{% static 'images/line-icon-for-tickets-vector.jpg' %}" alt="{{ object.title }} img">
+                                </div>
+                                
+                            {% else %}
+                                
+                                <div class="image-container">
+                                    <img src="{% static 'images/No-Image-Placeholder.svg.png' %}" alt="{{ object.title }} img">
+                                </div>
+                                
+                            {% endif %}
+                            
+                        {% else %}
+                            
+                            <div class="image-container">
+                                <img src="{% static 'images/No-Image-Placeholder.svg.png' %}" alt="{{ object.title }} img">
+                            </div>
+                            
                         {% endif %}
-                        
-                    {% else %}
-                        
-                        <div class="image-container">
-                            <img src="{% static 'images/No-Image-Placeholder.svg.png' %}" alt="{{ object.title}} img">
-                        </div>
-                        
-                    {% endif %}
             
                         {% if object.images.count > 1 %}
+                            
                             <div class="all-product-images">
+                            
                                 {% for image in object.images.all %}
-                                <div class="one-image">
-                                    <img class="thumbnail" src="{{ image.image.url }}" alt="{{ object.title }} img">
-                                </div>
+                                    
+                                    <div class="one-image">
+                                        <img class="thumbnail" src="{{ image.image.url }}" alt="{{ object.title }} img">
+                                    </div>
+                                    
                                 {% endfor %}
+                            
                             </div>
+                            
                         {% endif %}
+                    
                     </div>
             
                      <div class="info">
@@ -68,14 +83,18 @@
                      </div>
                          
                           <div class="prices-container">
-                                {% if object.discount_price %}
-                          {#    TODO: this style should be done in css but didnt work, #}
-                                    <p style="text-decoration-line: line-through;" class="underline-price">Price: {{object.price }} $</p>
-                                    <p style="color: red" class="discount-price">Discount price: {{ object.discount_price }} $</p>
+
+                                 {% if object.discount_price %}
+                                     <p>Price: 
+                                         <span class="underline-price">{{ object.price }} $</span> 
+                                         <span class="discount-price">{{ object.discount_price }} $</span>
+                                     </p>
                                 {% else %}
                                      <p class="normal-price">Price: {{ object.price }} $</p>
                                 {% endif %}
+                          
                           </div>
+                     
                             {% if object.quantity > 0 %}
 
                                 {% if user.is_authenticated %}
@@ -83,9 +102,13 @@
                                 {% else %}
                                     <a class="signin" href="{% url 'login-user' %}">Sign in to purchase</a>
                                 {% endif %}
+                                
                             {% else %}
+                                
                                 <p class="out-of-stock">Out of Stock</p>
+                                
                             {% endif %}
+                     
                      </div>
             
             </div>

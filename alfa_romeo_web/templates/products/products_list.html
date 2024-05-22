@@ -88,13 +88,18 @@
     
                         <div class="prices-container">
                         
-                            {% if item.discount_price %}
-                      {#    TODO: this style should be done in css but didnt work, #}
-                                <p style="text-decoration-line: line-through;" class="underline-price">Price: {{ item.price }} $</p>
-                                <p style="color: red" class="discount-price">{{ item.discount_price }} $</p>
-                            {% else %}
-                                 <p class="normal-price">Price: {{ item.price }} $</p>
-                            {% endif %}
+                            <div class="prices-container">
+
+                                 {% if item.discount_price %}
+                                     <p>Price: 
+                                         <span class="underline-price">{{ item.price }} $</span> 
+                                         <span class="discount-price">{{ item.discount_price }} $</span>
+                                     </p>
+                                {% else %}
+                                     <p class="normal-price">Price: {{ item.price }} $</p>
+                                {% endif %}
+                          
+                            </div>
                             
                         </div>
                     

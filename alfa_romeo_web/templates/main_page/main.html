@@ -51,6 +51,7 @@
                         </div>
                     
                         <p>{{ event.description|slice:":250" }}</p>
+                    
                         <a href="{% url 'event_details' slug=event.slug %}">Full information</a>
                     
                     </div>
@@ -70,12 +71,20 @@
                 {% for news in news_list %}
                     
                      <div class="news-card">
-                        <h3>{{ news.title}}</h3>
-                        <div class="image-container">
-                            <img src="{{news.img_field.url}}" alt="alfa romeo track">
-                        </div>
-                             <p>{{ news.description|slice:":250" }}</p>
-                        <a href="{% url 'news_details' slug=news.slug %}">Read Article </a>
+                     
+                         <h3>{{ news.title}}</h3>
+                         
+                         <div class="image-container">
+                            {% if news.img_field.url %}
+                                <img src="{{news.img_field.url}}" alt="alfa romeo track">
+                            {% else %}
+                                <img src="{% static 'images/No-Image-Placeholder.svg.png' %}" alt="{{ news.title }} img">
+                            {% endif %}
+                         </div>
+                         
+                         <p>{{ news.description|slice:":250" }}</p>
+                     
+                         <a href="{% url 'news_details' slug=news.slug %}">Read Article </a>
                     </div>
                     
                 {% endfor %}
@@ -93,27 +102,30 @@
                 {% for product in products_list %}
                     
                     <div class="merch-card">
+                    
                         <h3>{{ product.title }}</h3>
+                    
+                        <div class="image-container">
                         
-                        {% if product.images.first %}
-                            <div class="image-container">
+                            {% if product.images.first %}
                                 <img src="{{ product.images.first.image.url }}" alt="alfa romeo track">
-                            </div>
-                        {% else %}
-                            <div class="image-container">
+                            {% else %}
                                 <img src="{% static 'images/No-Image-Placeholder.svg.png' %}" alt="{{ product.title }} img">
-                            </div>
-                        {% endif %}
+                            {% endif %}
+                        
+                        </div>
                     
                         <div class="prices-container">
-                        
-                                 {% if product.discount_price %}
-                          {#    TODO: this style should be done in css but didnt work, #}
-                                    <p style="text-decoration-line: line-through;" class="underline-price">Price: {{ product.price }} $</p>
-                                    <p style="color: red" class="discount-price">{{ product.discount_price }} $</p>
-                                {% else %}
-                                     <p class="normal-price">Price: {{ product.price }} $</p>
-                                {% endif %}
+
+                            {% if product.discount_price %}
+                                 <p>Price: 
+                                     <span class="underline-price">{{ product.price }} $</span> 
+                                     <span class="discount-price">{{ product.discount_price }} $</span>
+                                 </p>
+                            {% else %}
+                                 <p class="normal-price">Price: {{ product.price }} $</p>
+                            {% endif %}
+                          
                         </div>
                         
                         {% if product.quantity > 0 %}

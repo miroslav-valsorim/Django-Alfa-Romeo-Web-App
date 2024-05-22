@@ -135,6 +135,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-color: white;
 }
 
 .event-card .image-container img{
@@ -228,6 +229,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-color: white;
 }
 
 .news-card .image-container img{
@@ -325,6 +327,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-color: white;
 }
 
 .merch-card .image-container img{
@@ -354,7 +357,7 @@
 }
 
 .out-of-stock{
-    margin-right: 15px;
+    margin-right: 30px;
     font-weight: bold;
 }
 
@@ -406,6 +409,15 @@
 
 .up-btn:hover {
     color:red;
+}
+
+.underline-price{
+    text-decoration-line: line-through;
+    margin-right: 5px ;
+}
+
+.discount-price{
+    color: red;
 }
 
 /* FOOTER */
