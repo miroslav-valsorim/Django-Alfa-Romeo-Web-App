@@ -31,6 +31,8 @@ class Category(models.Model):
 class Products(models.Model):
     MAX_TITLE_LENGTH = 100
     MAX_DESCRIPTION_LENGTH = 600
+    MAX_PRICE_DIGITS = 10
+    MAX_DISCOUNT_PRICE_DIGITS = 10
 
     title = models.CharField(
         max_length=MAX_TITLE_LENGTH,
@@ -44,14 +46,30 @@ class Products(models.Model):
         null=False,
     )
 
-    price = models.IntegerField(
+    # price = models.IntegerField(
+    #     default=0,
+    #     blank=False,
+    #     null=False,
+    # )
+    #
+    # discount_price = models.IntegerField(
+    #     default=0,
+    #     blank=True,
+    #     null=True,
+    # )
+
+    price = models.DecimalField(
+        max_digits=MAX_PRICE_DIGITS,
         default=0,
+        decimal_places=2,
         blank=False,
         null=False,
     )
 
-    discount_price = models.IntegerField(
+    discount_price = models.DecimalField(
+        max_digits=MAX_DISCOUNT_PRICE_DIGITS,
         default=0,
+        decimal_places=2,
         blank=True,
         null=True,
     )

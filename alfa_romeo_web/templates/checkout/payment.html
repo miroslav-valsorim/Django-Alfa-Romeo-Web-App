@@ -29,7 +29,11 @@
                 <h3>Products ordered</h3>
 
                 {% for item in order.items.all %}
-                    <li>{{ item.quantity }} x {{ item.item.title }} - {{ item.get_total_item_price }}$</li>
+                    {% if item.item.discount_price == 0 %}
+                        <li>{{ item.quantity }} x {{ item.item.title }} - {{ item.get_total_item_price }}$</li>
+                    {% else %}
+                        <li>{{ item.quantity }} x {{ item.item.title }} - {{ item.get_total_item_price }}$</li>
+                    {% endif %}
                 {% endfor %}
                 <hr>
                 <p class="final-price">TOTAL PAYMENT: {{ order.get_total }} $</p>
