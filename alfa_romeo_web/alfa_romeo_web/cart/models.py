@@ -30,11 +30,14 @@ class OrderItem(models.Model):
     def __str__(self):
         return f"{self.quantity} of {self.item.title}"
 
-    def get_image(self):
-        return self.item.image.url
+    # def get_image(self):
+    #     return self.item.images.image.url
 
     def get_total_item_price(self):
-        return self.quantity * self.item.price
+        if self.item.discount_price == 0:
+            return self.quantity * self.item.price
+        else:
+            return self.quantity * self.item.discount_price
 
     def get_total_discount_item_price(self):
         return self.quantity * self.item.discount_price
