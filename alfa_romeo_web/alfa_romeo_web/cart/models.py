@@ -39,11 +39,14 @@ class OrderItem(models.Model):
         else:
             return self.quantity * self.item.discount_price
 
+    def get_total_item_price_without_discount(self):
+        return self.quantity * self.item.price
+
     def get_total_discount_item_price(self):
         return self.quantity * self.item.discount_price
 
     def get_amount_saved(self):
-        return self.get_total_item_price() - self.get_total_discount_item_price()
+        return self.get_total_item_price_without_discount() - self.get_total_discount_item_price()
 
     def get_final_price(self):
         if self.item.discount_price:
