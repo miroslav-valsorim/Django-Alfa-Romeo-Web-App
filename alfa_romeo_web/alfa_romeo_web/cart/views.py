@@ -15,6 +15,7 @@ from alfa_romeo_web.products.models import Products
 
 UserModel = get_user_model()
 
+
 @login_required
 def add_to_cart(request, slug):
     item = get_object_or_404(Products, slug=slug)
@@ -177,13 +178,27 @@ class ShoppingCartSummary(auth_mixins.LoginRequiredMixin, views.View):
     def get(self, *args, **kwargs):
         try:
             order = ShoppingCart.objects.get(user=self.request.user, ordered=False)
+            order_items = order.items.all().order_by('id')
             context = {
-                "object": order
+                "object": order,
+                "order_items": order_items
             }
             return render(self.request, "cart/cart_details.html", context)
         except ObjectDoesNotExist:
-            messages.error(self.request, "You dont have an active order")
+            messages.error(self.request, "You don't have an active order")
             return render(self.request, "cart/cart_details.html")
+
+#     def get(self, *args, **kwargs):
+#         try:
+#             order = ShoppingCart.objects.get(user=self.request.user, ordered=False)
+#             context = {
+#                 "object": order
+#             }
+#             return render(self.request, "cart/cart_details.html", context)
+#         except ObjectDoesNotExist:
+#             messages.error(self.request, "You dont have an active order")
+#             return render(self.request, "cart/cart_details.html")
+
 
 
 class StaffOrdersListView(auth_mixins.LoginRequiredMixin, CheckAdminOrStaffAccess, views.ListView):
@@ -231,7 +246,7 @@ class StaffOrderEditView(auth_mixins.LoginRequiredMixin, CheckAdminOrStaffAccess
         context = super().get_context_data(**kwargs)
 
         context['order'] = self.object
-        shipping_address = get_object_or_404(ShippingAddress,  shoppingcart=self.object)
+        shipping_address = get_object_or_404(ShippingAddress, shoppingcart=self.object)
 
         context['shipping_address'] = shipping_address
 
