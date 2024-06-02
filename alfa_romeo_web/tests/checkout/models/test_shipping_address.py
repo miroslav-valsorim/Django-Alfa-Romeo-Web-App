@@ -25,7 +25,7 @@ class ShippingAddressTestCase(TestCase):
     def test_invalid_shipping_address_length(self):
         shipping_address = ShippingAddress(
             user=self.user,
-            shipping_address='street',
+            shipping_address='str',
             shipping_address_two='street address',
             country='Bulgaria',
             town='Sofia',
@@ -35,8 +35,7 @@ class ShippingAddressTestCase(TestCase):
         with self.assertRaises(ValidationError) as context:
             shipping_address.full_clean()
 
-        self.assertEqual("['Ensure this value has at least 10 characters (it has 6).']",
+        self.assertEqual("['Ensure this value has at least 5 characters (it has 3).']",
                          str(context.exception.error_dict['shipping_address'][0]))
 
         print(str(context.exception))
-
