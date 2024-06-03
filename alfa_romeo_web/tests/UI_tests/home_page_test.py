@@ -82,3 +82,51 @@ def test_register_user(page: Page) -> None:
     expect(page).to_have_url(website_URL)
 
     delete_user(page)
+
+
+def test_museum_page(page: Page) -> None:
+    page.goto(website_URL)
+    museum_link = page.locator('a[href="/museum/categories/"]:has-text("Museum")')
+    museum_link.click()
+
+    expect(page).to_have_url(website_URL + 'museum/categories/')
+
+
+def test_history_page(page: Page) -> None:
+    page.goto(website_URL)
+    museum_link = page.locator('a[href="/history/categories/"]:has-text("History")')
+    museum_link.click()
+
+    expect(page).to_have_url(website_URL + 'history/categories/')
+
+
+def test_events_page(page: Page) -> None:
+    page.goto(website_URL)
+    museum_link = page.locator('a[href="/events/"]:has-text("Events")')
+    museum_link.click()
+
+    expect(page).to_have_url(website_URL + 'events/')
+
+
+def test_news_page(page: Page) -> None:
+    page.goto(website_URL)
+    museum_link = page.locator('a[href="/news/"]:has-text("News")')
+    museum_link.click()
+
+    expect(page).to_have_url(website_URL + 'news/')
+
+
+def test_tickets_page(page: Page) -> None:
+    page.goto(website_URL)
+    museum_link = page.locator('a[href="/products/tickets/"]:has-text("Tickets")')
+    museum_link.click()
+
+    expect(page).to_have_url(website_URL + 'products/tickets/')
+
+
+def test_products_page(page: Page) -> None:
+    page.goto(website_URL)
+    museum_link = page.locator('a[href="/products/"]:has-text("Store")')
+    museum_link.click()
+
+    expect(page).to_have_url(website_URL + 'products/')
