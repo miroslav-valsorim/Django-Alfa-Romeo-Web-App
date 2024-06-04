@@ -34,7 +34,7 @@ jobs:
 
     - name: Run Django Project
       run: |
-        python alfar_romeo_web/manage.py runserver 127.0.0.1:8000
+        python alfa_romeo_web/manage.py runserver 127.0.0.1:8000
 
     - name: Run Unit Tests
       run: |
