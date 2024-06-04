@@ -24,11 +24,11 @@ jobs:
     - name: Install Dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install -r requirements.txt
+        pip install -r alfa_romeo_web/requirements.txt
     - name: Run Unit Tests
       run: |
         python manage.py test
     - name: Run UI Tests
       run: |
-        python -m pytest tests/UI_tests
+        python -m pytest alfa_romeo_web/tests/UI_tests
         
