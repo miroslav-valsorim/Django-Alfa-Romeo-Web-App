@@ -118,7 +118,7 @@ def test_news_page(page: Page) -> None:
 
 def test_tickets_page(page: Page) -> None:
     page.goto(website_URL)
-    museum_link = page.locator('a[href="/products/tickets/"]:has-text("Tickets")')
+    museum_link = page.locator('a[href="/products/tickets/"]:has-text("Tickets")').first
     museum_link.click()
 
     expect(page).to_have_url(website_URL + 'products/tickets/')
