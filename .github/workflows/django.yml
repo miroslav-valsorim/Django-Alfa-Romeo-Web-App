@@ -27,7 +27,7 @@ jobs:
         pip install -r alfa_romeo_web/requirements.txt
     - name: Run Unit Tests
       run: |
-        python manage.py test
+        python alfa_romeo_web/manage.py test
     - name: Run UI Tests
       run: |
         python -m pytest alfa_romeo_web/tests/UI_tests
