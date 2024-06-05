@@ -63,13 +63,13 @@ jobs:
 
     - name: Run Unit Tests
       run: |
-        python alfa_romeo_web/manage.py test
+        python alfa_romeo_web/manage.py test &
       env:
         DATABASE_URL: ${{ secrets.DATABASE_URL }}
 
     - name: Run UI Tests
       run: |
-        python -m pytest alfa_romeo_web/tests/UI_tests
+        python -m pytest alfa_romeo_web/tests/UI_tests &
       env:
         DATABASE_URL: ${{ secrets.DATABASE_URL }}
 
