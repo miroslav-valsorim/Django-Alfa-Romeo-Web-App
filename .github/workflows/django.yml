@@ -18,7 +18,7 @@ jobs:
         env:
           POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
           POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
-          POSTGRES_DB: django_data_base_postgre
+          POSTGRES_DB: django_test_DB
 
     strategy:
       max-parallel: 4
@@ -41,7 +41,7 @@ jobs:
     - name: Set up Database
       run: |
         sudo apt-get install -y postgresql-client
-        psql -h localhost -U ${{ secrets.POSTGRES_USER }} -d postgres -c "SELECT 'CREATE DATABASE django_data_base_postgre' WHERE NOT EXISTS (SELECT FROM pg_database WHERE datname = 'django_data_base_postgre')\gexec"
+        psql -h localhost -U ${{ secrets.POSTGRES_USER }} -d postgres -c "SELECT 'CREATE DATABASE django_test_DB' WHERE NOT EXISTS (SELECT FROM pg_database WHERE datname = 'django_test_DB')\gexec"
       env:
         PGPASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
 
@@ -49,7 +49,7 @@ jobs:
       run: |
         python alfa_romeo_web/manage.py migrate
       env:
-        DATABASE_URL: postgres://${{ secrets.POSTGRES_USER }}:${{ secrets.POSTGRES_PASSWORD }}@localhost:5432/django_data_base_postgre
+        DATABASE_URL: postgres://${{ secrets.POSTGRES_USER }}:${{ secrets.POSTGRES_PASSWORD }}@localhost:5432/django_test_DB
 
     - name: Install Playwright browsers
       run: |
@@ -59,16 +59,16 @@ jobs:
       run: |
         python alfa_romeo_web/manage.py runserver 127.0.0.1:8000
       env:
-        DATABASE_URL: postgres://${{ secrets.POSTGRES_USER }}:${{ secrets.POSTGRES_PASSWORD }}@localhost:5432/django_data_base_postgre
+        DATABASE_URL: postgres://${{ secrets.POSTGRES_USER }}:${{ secrets.POSTGRES_PASSWORD }}@localhost:5432/django_test_DB
 
     - name: Run Unit Tests
       run: |
         python alfa_romeo_web/manage.py test
       env:
-        DATABASE_URL: postgres://${{ secrets.POSTGRES_USER }}:${{ secrets.POSTGRES_PASSWORD }}@localhost:5432/django_data_base_postgre
+        DATABASE_URL: postgres://${{ secrets.POSTGRES_USER }}:${{ secrets.POSTGRES_PASSWORD }}@localhost:5432/django_test_DB
 
     - name: Run UI Tests
       run: |
         python -m pytest alfa_romeo_web/tests/UI_tests
       env:
-        DATABASE_URL: postgres://${{ secrets.POSTGRES_USER }}:${{ secrets.POSTGRES_PASSWORD }}@localhost:5432/django_data_base_postgre
+        DATABASE_URL: postgres://${{ secrets.POSTGRES_USER }}:${{ secrets.POSTGRES_PASSWORD }}@localhost:5432/django_test_DB
