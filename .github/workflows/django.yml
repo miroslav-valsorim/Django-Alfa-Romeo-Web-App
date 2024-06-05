@@ -10,10 +10,20 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:13
+        ports:
+          - 5432:5432
+        env:
+          POSTGRES_USER: django
+          POSTGRES_PASSWORD: django
+          POSTGRES_DB: django_test
+
     strategy:
       max-parallel: 4
       matrix:
-        python-version: [3.10.x, ]
+        python-version: [3.10.x]
 
     steps:
     - uses: actions/checkout@v4
@@ -28,6 +38,19 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r alfa_romeo_web/requirements.txt
 
+    - name: Set up Database
+      run: |
+        sudo apt-get install -y postgresql-client
+        psql -h localhost -U django -d postgres -c "CREATE DATABASE django_test;"
+      env:
+        PGPASSWORD: django
+
+    - name: Run Django Migrations
+      run: |
+        python alfa_romeo_web/manage.py migrate
+      env:
+        DATABASE_URL: postgres://django:django@localhost:5432/django_test
+
     - name: Install Playwright browsers
       run: |
         playwright install
@@ -35,12 +58,17 @@ jobs:
     - name: Run Django Project
       run: |
         python alfa_romeo_web/manage.py runserver 127.0.0.1:8000
+      env:
+        DATABASE_URL: postgres://django:django@localhost:5432/django_test
 
     - name: Run Unit Tests
       run: |
         python alfa_romeo_web/manage.py test
+      env:
+        DATABASE_URL: postgres://django:django@localhost:5432/django_test
 
     - name: Run UI Tests
       run: |
         python -m pytest alfa_romeo_web/tests/UI_tests
-        
+      env:
+        DATABASE_URL: postgres://django:django@localhost:5432/django_test
