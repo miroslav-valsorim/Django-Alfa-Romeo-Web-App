@@ -88,6 +88,10 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r alfa_romeo_web/requirements.txt
 
+    - name: Install Playwright browsers
+      run: |
+        playwright install
+
     - name: Run UI Tests
       run: |
         python -m pytest alfa_romeo_web/tests/UI_tests
