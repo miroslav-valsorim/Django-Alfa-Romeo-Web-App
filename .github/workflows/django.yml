@@ -5,9 +5,8 @@ on:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
-
 jobs:
-  build:
+  Build & Test:
     runs-on: ubuntu-latest
     services:
       postgres:
@@ -18,6 +17,11 @@ jobs:
           POSTGRES_USER: django
           POSTGRES_PASSWORD: django
           POSTGRES_DB: django_test_DB
+
+    # strategy:
+    #   max-parallel: 4
+    #   matrix:   // allows you to define multiple configurations that you want to test. Each configuration will create a separate job, and they will be run in parallel if possible.
+    #     python-version: [3.10.x]   // EXAMPLE: python-version: [3.9.x, 3.10.x, 3.11.x]  //  os: [ubuntu-latest, windows-latest, macos-latest]
 
     steps:
     - uses: actions/checkout@v4
@@ -31,83 +35,36 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install -r alfa_romeo_web/requirements.txt
-
-    - name: Wait for PostgreSQL
-      run: |
-        until pg_isready -h localhost -U django; do
-          echo "Waiting for PostgreSQL to be ready..."
-          sleep 1
-        done
-      env:
-        PGPASSWORD: django
-
     - name: Set up Database
       run: |
         sudo apt-get install -y postgresql-client
         psql -h localhost -U django -d postgres -c "CREATE DATABASE django_test_DB;"
       env:
         PGPASSWORD: django
-
     - name: Run Django Migrations
       run: |
         python alfa_romeo_web/manage.py migrate
       env:
         DATABASE_URL: postgres://django:django@localhost:5432/django_test_DB
-
     - name: Install Playwright browsers
       run: |
         playwright install
 
-  tests:
-    runs-on: ubuntu-latest
-    needs: build
-    services:
-      postgres:
-        image: postgres:13
-        ports:
-          - 5432:5432
-        env:
-          POSTGRES_USER: django
-          POSTGRES_PASSWORD: django
-          POSTGRES_DB: django_test_DB
-
-    steps:
-    - uses: actions/checkout@v4
-
-    - name: Set up Python 3.10.x
-      uses: actions/setup-python@v3
-      with:
-        python-version: 3.10.x
-
-    - name: Install Dependencies
+    - name: Run Django Project
       run: |
-        python -m pip install --upgrade pip
-        pip install -r alfa_romeo_web/requirements.txt
-
-    - name: Wait for PostgreSQL
-      run: |
-        until pg_isready -h localhost -U django; do
-          echo "Waiting for PostgreSQL to be ready..."
-          sleep 1
-        done
+        python alfa_romeo_web/manage.py runserver 127.0.0.1:8000 &
       env:
-        PGPASSWORD: django
-
-    - name: Run Django Migrations
-      run: |
-        python alfa_romeo_web/manage.py migrate
-      env:
-        DATABASE_URL: postgres://django:django@localhost:5432/django_test_DB
+        DATABASE_URL: ${{ secrets.DATABASE_URL }}
 
     - name: Run Unit Tests
       run: |
         cd alfa_romeo_web
-        python manage.py test
+        python manage.py test &
       env:
-        DATABASE_URL: postgres://django:django@localhost:5432/django_test_DB
+        DATABASE_URL: ${{ secrets.DATABASE_URL }}
 
     - name: Run UI Tests
       run: |
-        python -m pytest alfa_romeo_web/tests/UI_tests
+        python -m pytest alfa_romeo_web/tests/UI_tests &
       env:
-        DATABASE_URL: postgres://django:django@localhost:5432/django_test_DB
+        DATABASE_URL: ${{ secrets.DATABASE_URL }}
