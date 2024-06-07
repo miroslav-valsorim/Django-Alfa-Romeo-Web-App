@@ -54,17 +54,17 @@ jobs:
       run: |
         python alfa_romeo_web/manage.py runserver 127.0.0.1:8000 &
       env:
-        DATABASE_URL: ${{ secrets.DATABASE_URL }}
+        DATABASE_URL: postgres://django:django@localhost:5432/django_test_DB
 
     - name: Run Unit Tests
       run: |
         cd alfa_romeo_web
         python manage.py test &
       env:
-        DATABASE_URL: ${{ secrets.DATABASE_URL }}
+        DATABASE_URL: postgres://django:django@localhost:5432/django_test_DB
 
     - name: Run UI Tests
       run: |
         python -m pytest alfa_romeo_web/tests/UI_tests &
       env:
-        DATABASE_URL: ${{ secrets.DATABASE_URL }}
+        DATABASE_URL: postgres://django:django@localhost:5432/django_test_DB
