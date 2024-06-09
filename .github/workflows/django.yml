@@ -61,13 +61,13 @@ jobs:
     - name: Run Unit Tests
       run: |
         cd alfa_romeo_web
-        python manage.py test &
+        python manage.py test
       env:
         DATABASE_URL: postgres://django:django@localhost:5432/django_test_DB
 
     - name: Run UI Tests
       run: |
-        python -m pytest alfa_romeo_web/tests/UI_tests &
+        python -m pytest alfa_romeo_web/tests/UI_tests
       env:
         DATABASE_URL: postgres://django:django@localhost:5432/django_test_DB
 
