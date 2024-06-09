@@ -58,6 +58,10 @@ jobs:
       env:
         DATABASE_URL: postgres://django:django@localhost:5432/django_test_DB
 
+    - name: Wait for Server to be Ready
+      run: |
+        timeout 60s bash -c 'until curl -s http://127.0.0.1:8000; do sleep 5; done'
+
     - name: Run Unit Tests
       run: |
         cd alfa_romeo_web
