@@ -52,7 +52,8 @@ jobs:
     - name: Install Playwright browsers
       run: |
         playwright install
-        python -m playwright install --with-deps
+        playwright install-deps
+        # python -m playwright install --with-deps
 
     - name: Run Django Project
       run: |
@@ -74,7 +75,7 @@ jobs:
 
     - name: Run UI Tests
       run: |
-        python -m pytest alfa_romeo_web/tests/UI_tests &  # this test should be fixed !
+        python -m pytest alfa_romeo_web/tests/UI_tests  # this test should be fixed !
       env:
         SECRET_KEY: ${{ secrets.SECRET_KEY }}
         DATABASE_URL: postgres://django:django@localhost:5432/django_test_DB
