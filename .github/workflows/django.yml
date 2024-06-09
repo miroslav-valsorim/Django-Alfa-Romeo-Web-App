@@ -48,9 +48,11 @@ jobs:
         python alfa_romeo_web/manage.py migrate
       env:
         DATABASE_URL: postgres://django:django@localhost:5432/django_test_DB
+
     - name: Install Playwright browsers
       run: |
         playwright install
+        python -m playwright install --with-deps
 
     - name: Run Django Project
       run: |
