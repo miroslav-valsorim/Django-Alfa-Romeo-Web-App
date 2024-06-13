@@ -61,6 +61,9 @@ jobs:
       env:
         DATABASE_URL: postgres://django:django@localhost:5432/django_test_DB
 
+    - name: Wait 10 sec for server to be ready
+      run: sleep 10 
+
     - name: Run Unit Tests
       run: |
         cd alfa_romeo_web
@@ -69,9 +72,11 @@ jobs:
         SECRET_KEY: ${{ secrets.SECRET_KEY }}
         DATABASE_URL: postgres://django:django@localhost:5432/django_test_DB
 
+    
+
     - name: Run UI Tests
       run: |
-        python -m pytest alfa_romeo_web/tests/UI_tests &  # this test should be fixed ! For now it just runs localy !
+        python -m pytest alfa_romeo_web/tests/UI_tests   # this test should be fixed ! For now it just runs localy !
       env:
         SECRET_KEY: ${{ secrets.SECRET_KEY }}
         DATABASE_URL: postgres://django:django@localhost:5432/django_test_DB
