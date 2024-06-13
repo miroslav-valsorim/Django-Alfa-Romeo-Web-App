@@ -9,7 +9,9 @@ on:
 
 jobs:
   build-test:
+
     runs-on: ubuntu-latest
+
     services:
       postgres:
         image: postgres:13
@@ -64,6 +66,9 @@ jobs:
     - name: Wait 10 sec for server to be ready
       run: sleep 10 
 
+    - name: Check server status
+      run: curl -I http://localhost:8000/
+
     - name: Run Unit Tests
       run: |
         cd alfa_romeo_web
@@ -71,8 +76,6 @@ jobs:
       env:
         SECRET_KEY: ${{ secrets.SECRET_KEY }}
         DATABASE_URL: postgres://django:django@localhost:5432/django_test_DB
-
-    
 
     - name: Run UI Tests
       run: |
