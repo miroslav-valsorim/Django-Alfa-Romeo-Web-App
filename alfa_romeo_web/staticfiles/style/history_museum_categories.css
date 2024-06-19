@@ -3,18 +3,22 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
+    background-position-y: 70%;
+}
+
+.wrapper{
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     color: white;
-    background-position-y: 70%;
     max-height: 700px;
     height: 700px;
     align-items: center;
     margin: auto;
     justify-content: center;
+    max-width: 1400px;
 }
 
-.content a{
+.wrapper a{
     cursor: pointer;
     text-decoration: none;
     color: black;
@@ -62,21 +66,24 @@
         margin: 5px;
     }
 
-    .content{
+    .wrapper{
         grid-template-columns: repeat(3, 1fr);
+        max-width: 1000px;
+        padding: 40px 0;
     }
 }
 
 @media (max-width: 1000px){
 
-    .content{
+    .wrapper{
         height: unset;
         max-height: unset;
         flex-direction: column;
     }
 
-    .content{
+    .wrapper{
         grid-template-columns: repeat(2, 1fr);
+        max-width: 650px;
     }
 
 }
@@ -100,7 +107,19 @@
         max-width: 200px;
     }
 
-    .content{
+    .wrapper{
+        max-width: 500px;
+    }
+
+    .wrapper a{
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 470px){
+
+    .wrapper{
         grid-template-columns: repeat(1, 1fr);
     }
+
 }
