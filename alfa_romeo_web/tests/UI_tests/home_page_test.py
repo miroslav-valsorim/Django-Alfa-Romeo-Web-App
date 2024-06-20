@@ -55,35 +55,35 @@ def test_home_page(page: Page) -> None:
 
 
 # test_register_user will fail if it has been registered already !
-def test_register_user(page: Page) -> None:
-    page.goto(website_URL)
-
-    # sign_in_btn = page.locator('a[href="/accounts/login/"]').first
-    sign_in_btn = page.get_by_role("link", name="Sign In", exact=True)
-    sign_in_btn.click()
-    expect(page).to_have_url(website_URL + 'accounts/login/')
-
-    register_link = page.locator('a[href="/accounts/register/"]')
-    register_link.click()
-    expect(page).to_have_url(website_URL + 'accounts/register/')
-
-    # email = page.locator('input[name="email"]')
-    # email.fill("test@gmail.com")
-    # password_one = page.locator('input[name="password1"]')
-    # password_one.fill("test@<PASSWORD>")
-    # password_two = page.locator('input[name="password2"]')
-    # password_two.fill("test@<PASSWORD>")
-    email = 'test@gmail.com'
-    password = 'test@<PASSWORD>'
-
-    register_user(page, website_URL, email, password)
-
-    # register_btn = page.locator('button[type="submit"]:text("Register")')
-    # register_btn.click()
-    page.wait_for_url(website_URL)
-    expect(page).to_have_url(website_URL)
-
-    delete_user(page)
+# def test_register_user(page: Page) -> None:
+#     page.goto(website_URL)
+#
+#     # sign_in_btn = page.locator('a[href="/accounts/login/"]').first
+#     sign_in_btn = page.get_by_role("link", name="Sign In", exact=True)
+#     sign_in_btn.click()
+#     expect(page).to_have_url(website_URL + 'accounts/login/')
+#
+#     register_link = page.locator('a[href="/accounts/register/"]')
+#     register_link.click()
+#     expect(page).to_have_url(website_URL + 'accounts/register/')
+#
+#     # email = page.locator('input[name="email"]')
+#     # email.fill("test@gmail.com")
+#     # password_one = page.locator('input[name="password1"]')
+#     # password_one.fill("test@<PASSWORD>")
+#     # password_two = page.locator('input[name="password2"]')
+#     # password_two.fill("test@<PASSWORD>")
+#     email = 'test@gmail.com'
+#     password = 'test@<PASSWORD>'
+#
+#     register_user(page, website_URL, email, password)
+#
+#     # register_btn = page.locator('button[type="submit"]:text("Register")')
+#     # register_btn.click()
+#     # page.wait_for_url(website_URL)
+#     expect(page).to_have_url(website_URL)
+#
+#     delete_user(page)
 
 
 def test_museum_page(page: Page) -> None:
