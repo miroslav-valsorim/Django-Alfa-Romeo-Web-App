@@ -53,6 +53,9 @@ jobs:
       env:
         DATABASE_URL: postgres://django:django@localhost:5432/django_test_DB
 
+    - name: Wait 30 sec for server to be ready
+      run: sleep 30 
+
     - name: Collect Static Files
       run : |
         cd alfa_romeo_web
