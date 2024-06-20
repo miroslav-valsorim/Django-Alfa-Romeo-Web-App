@@ -71,7 +71,8 @@ jobs:
 
     - name: Run Django Project
       run: |
-        python alfa_romeo_web/manage.py runserver 127.0.0.1:8000 &
+        touch server.log
+        python alfa_romeo_web/manage.py runserver 127.0.0.1:8000 > server.log 2>&1 &
       env:
         DATABASE_URL: postgres://django:django@localhost:5432/django_test_DB
 
