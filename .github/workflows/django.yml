@@ -53,6 +53,11 @@ jobs:
       env:
         DATABASE_URL: postgres://django:django@localhost:5432/django_test_DB
 
+    - name: Collect Static Files
+      run : |
+        cd alfa_romeo_web
+        python manage.py collectstatic
+
     - name: Install Playwright browsers
       run: |
         playwright install
