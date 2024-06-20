@@ -81,6 +81,9 @@ jobs:
     - name: Check server status
       run: curl -I -v http://localhost:8000/
 
+    - name: Display Server Logs
+      run: cat server.log
+
     - name: Run Unit Tests
       run: |
         cd alfa_romeo_web
