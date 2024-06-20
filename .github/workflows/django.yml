@@ -53,8 +53,8 @@ jobs:
       env:
         DATABASE_URL: postgres://django:django@localhost:5432/django_test_DB
 
-    - name: Wait 30 sec for server to be ready
-      run: sleep 30 
+    - name: Wait 10 sec for server to be ready
+      run: sleep 10 
 
     - name: Collect Static Files
       run : |
@@ -74,10 +74,12 @@ jobs:
         touch server.log
         python alfa_romeo_web/manage.py runserver 127.0.0.1:8000 > server.log 2>&1 &
       env:
+        SECRET_KEY: ${{ secrets.SECRET_KEY }}
+        ALLOWED_HOSTS: localhost
         DATABASE_URL: postgres://django:django@localhost:5432/django_test_DB
 
-    - name: Wait 30 sec for server to be ready
-      run: sleep 30 
+    - name: Wait 10 sec for server to be ready
+      run: sleep 10 
 
     - name: Check server status
       run: curl -I -v http://localhost:8000/
