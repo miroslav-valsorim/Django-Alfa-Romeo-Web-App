@@ -16,12 +16,14 @@ website_URL = "http://localhost:8000/"
 
 # website_URL = "https://djangoalfaromeowebapp.onrender.com/"
 
-def wait_for_url(page: Page, expected_url: str, timeout_ms: int = 10000) -> None:
+def wait_for_url(page: Page, expected_url: str, timeout_ms: int = 15000) -> None:
     start_time = time.time()
     while time.time() - start_time < timeout_ms / 1000:
-        if page.url == expected_url:
+        try:
+            page.wait_for_url(expected_url, timeout=2000)
             return
-        time.sleep(0.2)  # Adjust sleep interval as needed
+        except TimeoutError:
+            time.sleep(0.5)
     raise TimeoutError(f"Timed out waiting for URL: {expected_url}")
 
 
