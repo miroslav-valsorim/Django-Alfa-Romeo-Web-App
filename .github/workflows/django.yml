@@ -79,7 +79,7 @@ jobs:
       run: sleep 30 
 
     - name: Check server status
-      run: curl -I http://localhost:8000/
+      run: curl -I -v http://localhost:8000/
 
     - name: Run Unit Tests
       run: |
