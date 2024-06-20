@@ -7,6 +7,7 @@
 # python -m pytest tests/UI_tests --headed  // To run all the tests + (--headed) opens the browser
 
 import re
+import time
 
 from playwright.sync_api import Page, expect
 
@@ -14,6 +15,15 @@ website_URL = "http://localhost:8000/"
 
 
 # website_URL = "https://djangoalfaromeowebapp.onrender.com/"
+
+def wait_for_url(page: Page, expected_url: str, timeout_ms: int = 10000) -> None:
+    start_time = time.time()
+    while time.time() - start_time < timeout_ms / 1000:
+        if page.url == expected_url:
+            return
+        time.sleep(0.2)  # Adjust sleep interval as needed
+    raise TimeoutError(f"Timed out waiting for URL: {expected_url}")
+
 
 def register_user(page: Page, website_URL: str, email: str, password: str) -> None:
     page.goto(website_URL + 'accounts/register/')
@@ -78,6 +88,7 @@ def test_register_user(page: Page) -> None:
 
     # register_btn = page.locator('button[type="submit"]:text("Register")')
     # register_btn.click()
+    wait_for_url(page, website_URL)
 
     expect(page).to_have_url(website_URL)
 
