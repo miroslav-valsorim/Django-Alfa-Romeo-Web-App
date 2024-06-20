@@ -59,7 +59,7 @@ jobs:
     - name: Collect Static Files
       run : |
         cd alfa_romeo_web
-        python manage.py collectstatic
+        python manage.py collectstatic --noinput
 
     - name: Install Playwright browsers
       run: |
