@@ -84,6 +84,50 @@ def test_home_page(page: Page) -> None:
 #     expect(page).to_have_url(website_URL)
 #
 #     delete_user(page)
+def test_register_user(page: Page) -> None:
+    page.goto(website_URL)
+    print(f"Navigated to {website_URL}")
+
+    sign_in_btn = page.get_by_role("link", name="Sign In", exact=True)
+    sign_in_btn.click()
+    expect(page).to_have_url(website_URL + 'accounts/login/')
+    print("Navigated to login page")
+
+    register_link = page.locator('a[href="/accounts/register/"]')
+    register_link.click()
+    expect(page).to_have_url(website_URL + 'accounts/register/')
+    print("Navigated to register page")
+
+    email = 'test@gmail.com'
+    password = 'test@<PASSWORD>'
+
+    register_user(page, website_URL, email, password)
+    print("Attempted user registration")
+
+    # Debugging step: Check if there are any visible error messages
+    error_messages = page.locator('.error-message')
+    if error_messages.count() > 0:
+        print(f"Error messages found: {error_messages.all_text_contents()}")
+
+    # Debugging step: Check the current URL to ensure redirection is happening correctly
+    current_url = page.url
+    print(f"Current URL after registration attempt: {current_url}")
+
+    # Confirm what the expected URL should be after successful registration
+    expected_url = website_URL
+    try:
+        expect(page).to_have_url(expected_url, timeout=60000)  # Increase timeout if necessary
+        print("Navigation to expected URL successful")
+    except Exception as e:
+        print(f"Navigation to expected URL failed: {e}")
+        page.screenshot(path='screenshot.png')
+        raise
+
+    delete_user(page)
+    print("Deleted test user")
+
+    # Additional delay to ensure all operations are complete before test ends
+    time.sleep(2)
 
 
 def test_museum_page(page: Page) -> None:
