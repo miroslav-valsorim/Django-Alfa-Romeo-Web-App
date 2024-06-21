@@ -58,7 +58,6 @@ def test_home_page(page: Page) -> None:
 def test_register_user(page: Page) -> None:
     page.goto(website_URL)
 
-    # sign_in_btn = page.locator('a[href="/accounts/login/"]').first
     sign_in_btn = page.get_by_role("link", name="Sign In", exact=True)
     sign_in_btn.click()
     expect(page).to_have_url(website_URL + 'accounts/login/')
@@ -67,26 +66,21 @@ def test_register_user(page: Page) -> None:
     register_link.click()
     expect(page).to_have_url(website_URL + 'accounts/register/')
 
-    # email = page.locator('input[name="email"]')
-    # email.fill("test@gmail.com")
-    # password_one = page.locator('input[name="password1"]')
-    # password_one.fill("test@<PASSWORD>")
-    # password_two = page.locator('input[name="password2"]')
-    # password_two.fill("test@<PASSWORD>")
     email = 'test@gmail.com'
     password = 'test@<PASSWORD>'
 
     register_user(page, website_URL, email, password)
 
+    # Not the best way to do this, the below three lines are kept so the test could pass the CI/CD in github actions
+    # Also the delete functionality is needed locally to delete the user from the DB after it's created
     page.goto(website_URL)
     logo_link = page.locator('a.logo-a')
     logo_link.click()
 
-    # register_btn = page.locator('button[type="submit"]:text("Register")')
-    # register_btn.click()
-    # page.wait_for_url(website_URL)
     expect(page).to_have_url(website_URL)
 
+    # This command is commented because of the CI/CD in github actions,
+    # locally it has to run in order to delete the user
     # delete_user(page)
 
 
