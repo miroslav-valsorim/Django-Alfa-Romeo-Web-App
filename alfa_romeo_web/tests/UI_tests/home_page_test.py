@@ -87,7 +87,7 @@ def test_register_user(page: Page) -> None:
     # page.wait_for_url(website_URL)
     expect(page).to_have_url(website_URL)
 
-    delete_user(page)
+    # delete_user(page)
 
 
 def test_museum_page(page: Page) -> None:
