@@ -1,26 +1,31 @@
 !!! .env has to be in the same level as settings.py
 
 SECRET_KEY=' '
-
 DEBUG=True/False
-
 ALLOWED_HOSTS="localhost 127.0.0.1 djangoalfaromeowebapp.onrender.com"
 
 
+DATABASE_URL = dbUrlForProd
+
+EMAIL_BACKEND='mail'
 EMAIL_PORT=587
-
 EMAIL_HOST_USER='gmail@gmail.com'
-
 EMAIL_HOST_PASSWORD='password'
 
 
 PAYPAL_RECEIVER_EMAIL='gmail@gmail.com'
-
 PAYPAL_TEST=True
 
 
 CLOUDINARY_NAME='name'
-
 CLOUDINARY_API_KEY='apikey'
-
 CLOUDINARY_API_SECRET='apisecret'
+
+
+# For docker
+SQL_ENGINE=django.db.backends.postgresql
+SQL_DATABASE=hello_django_dev
+SQL_USER=hello_django
+SQL_PASSWORD=hello_django
+SQL_HOST=db
+SQL_PORT=5432
