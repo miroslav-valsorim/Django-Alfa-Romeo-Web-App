@@ -92,23 +92,23 @@ WSGI_APPLICATION = 'alfa_romeo_web.wsgi.application'
 
 if DEBUG:
     # Django default DB that I use wile DEBUG=True
-    # DATABASES = {
-    #     'default': {
-    #         'ENGINE': 'django.db.backends.sqlite3',
-    #         'NAME': BASE_DIR / 'db.sqlite3',
-    #     }
-    # }
-    # THE DB FOR DOCKER WHILE DEBUG=True
     DATABASES = {
         'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': os.getenv("SQL_DATABASE", "hello_django_dev"),
-            'USER': os.getenv("SQL_USER", "hello_django"),
-            'PASSWORD': os.getenv("SQL_PASSWORD", "hello_django"),
-            'HOST': os.getenv("SQL_HOST", "alfa-romeo-db"), # IMPORTRANT!! set db host to be the same as the docker-compose db service naming
-            'PORT': os.getenv("SQL_PORT", "5432"),
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
         }
     }
+    # THE DB FOR DOCKER WHILE DEBUG=True
+    # DATABASES = {
+    #     'default': {
+    #         'ENGINE': 'django.db.backends.postgresql',
+    #         'NAME': os.getenv("SQL_DATABASE", "hello_django_dev"),
+    #         'USER': os.getenv("SQL_USER", "hello_django"),
+    #         'PASSWORD': os.getenv("SQL_PASSWORD", "hello_django"),
+    #         'HOST': os.getenv("SQL_HOST", "alfa-romeo-db"), # IMPORTRANT!! set db host to be the same as the docker-compose db service naming
+    #         'PORT': os.getenv("SQL_PORT", "5432"),
+    #     }
+    # }
 else:
     # THIS DB IS SET FOR DOCKER WHILE DEBUG=FALSE !!!!!
     # DATABASES = {

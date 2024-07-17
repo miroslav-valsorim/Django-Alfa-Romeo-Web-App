@@ -8,7 +8,7 @@ Now live at: https://djangoalfaromeowebapp.onrender.com/
 This website is a dedicated endeavor for educational purposes, serving as my Software University Project. As an avid Alfa Romeo enthusiast, I've poured my passion into this project. PLEASE NOTE THAT ALL IMAGES AND INFORMATION UTILIZED ARE STRICTLY FOR STUDY PURPOSES.   
 
 
-Bringing my vision to life after nearly two years of anticipation, this project marks not the end, but just the beginning of showcasing my capabilities. Utilizing a plethora of technologies and methodologies including Python, Django, REST, API, JavaScript, DOM, HTML&CSS, Testing, Automation with CI/CD. I've meticulously implemented every feature essential for a fully functional website. From a dynamic news feed to immersive events and engaging forums, culminating in a robust store page capable of handling payments, this project showcases the breadth of my expertise and dedication. It's not just a website, it's a testament to my growth and passion for web development!  
+Bringing my vision to life after nearly two years of anticipation, this project marks not the end, but just the beginning of showcasing my capabilities. Utilizing a plethora of technologies and methodologies including Python, Django, REST, API, JavaScript, DOM, HTML&CSS, Testing, Automation with CI/CD, Dockerizing the application. I've meticulously implemented every feature essential for a fully functional website. From a dynamic news feed to immersive events and engaging forums, culminating in a robust store page capable of handling payments, this project showcases the breadth of my expertise and dedication. It's not just a website, it's a testament to my growth and passion for web development!  
 
 
 ## Features  
@@ -177,6 +177,45 @@ Bringing my vision to life after nearly two years of anticipation, this project 
 14. Unit and UI tests  
 
 [![Alfa Romeo Django Web App CI/CD](https://github.com/miroslav-valsorim/Django-Alfa-Romeo-Web-App/actions/workflows/django.yml/badge.svg)](https://github.com/miroslav-valsorim/Django-Alfa-Romeo-Web-App/actions/workflows/django.yml)
+
+15. Docker :  
+
+![Docker](screenshots/Screenshot_Docker.png)   
+
+![Docker](screenshots/Screenshot_Docker_One.png)  
+
+![Docker](screenshots/Screenshot_Docker_Two.png)   
+
+	- Check settings.py DB settings comments
+	- Check Dockerfile
+	- Chekc Docker-Compose.yml
+	- Check entrypoint.sh
+	- Build docker-compose.yml locally   
+		```
+		docker-compose build
+		```  
+	- Run docker-compose.yml (Run the server and db)  
+		```
+		docker-compose up -d
+		```   
+	- Create superuser so you can add/create/delete and work with the DB
+		```
+		docker exec -it CONTAINER_ID python manage.py createsuperuser 
+		```   
+	- Source that helped me a lot dockerizing my application ( with few changes here and there)
+		```
+		https://testdriven.io/blog/dockerizing-django-with-postgres-gunicorn-and-nginx/
+		```
+	- After connection check DB with those commands  
+		```
+		docker exec -it [postgre_container_id] /bin/bash
+		psql -U hello_django -d hello_django_dev
+		/dt
+		```
+![Docker](screenshots/4.png)   
+
+![Docker](screenshots/5.png)   
+
 
 ## Tech Stack Used
 
