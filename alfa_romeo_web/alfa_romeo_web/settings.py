@@ -231,3 +231,5 @@ LOGGING = {
         'level': 'DEBUG',
     },
 }
+
+CRF_TRUSTED_ORIGINS = os.getenv('CRF_TRUSTED_ORIGINS', '').split(' ')
