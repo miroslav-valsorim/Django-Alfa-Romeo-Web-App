@@ -86,6 +86,10 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'alfa_romeo_web.wsgi.application'
 
+# CONNECTION STRING FOR AZURE
+connection_string = os.environ['AZURE_POSTGRESQL_CONNECTIONSTRING']
+conn_str_params = {pair.split('=')[0]: pair.split('=')[1] for pair in connection_string.split(' ')}
+
 # if facing and issue with test or prod db, remove the if, else statements
 # and push the DB code one tab to the left
 # problem could be the .env
@@ -121,13 +125,26 @@ else:
     #         'PORT': os.getenv("SQL_PORT", "5432"),
     #     }
     # }
+
     # IM USING THIS FOR A PROD DB WHEN DEBUG=False !!!!
+    # DATABASES = {
+    #     'default': dj_database_url.config(
+    #         default=os.getenv("DATABASE_URL", None),
+    #         conn_max_age=600,
+    #     )
+    # }
+
+    # FOR AZURE DB SET UP
     DATABASES = {
-        'default': dj_database_url.config(
-            default=os.getenv("DATABASE_URL", None),
-            conn_max_age=600,
-        )
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': conn_str_params['dbname'],
+            'HOST': conn_str_params['host'],
+            'USER': conn_str_params['user'],
+            'PASSWORD': conn_str_params['password'],
+        }
     }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
