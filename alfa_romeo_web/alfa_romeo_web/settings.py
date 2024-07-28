@@ -127,23 +127,23 @@ else:
     # }
 
     # IM USING THIS FOR A PROD DB WHEN DEBUG=False !!!!
-    # DATABASES = {
-    #     'default': dj_database_url.config(
-    #         default=os.getenv("DATABASE_URL", None),
-    #         conn_max_age=600,
-    #     )
-    # }
+    DATABASES = {
+        'default': dj_database_url.config(
+            default=os.getenv("DATABASE_URL", None),
+            conn_max_age=600,
+        )
+    }
 
     # FOR AZURE DB SET UP
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': conn_str_params['dbname'],
-            'HOST': conn_str_params['host'],
-            'USER': conn_str_params['user'],
-            'PASSWORD': conn_str_params['password'],
-        }
-    }
+    # DATABASES = {
+    #     'default': {
+    #         'ENGINE': 'django.db.backends.postgresql',
+    #         'NAME': conn_str_params['dbname'],
+    #         'HOST': conn_str_params['host'],
+    #         'USER': conn_str_params['user'],
+    #         'PASSWORD': conn_str_params['password'],
+    #     }
+    # }
 
 
 # Password validation

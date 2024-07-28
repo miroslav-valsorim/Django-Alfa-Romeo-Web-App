@@ -1,4 +1,3 @@
-cd alfa_romeo_web || exit
 
 python manage.py makemigrations
 
@@ -12,4 +11,4 @@ python manage.py collectstatic --noinput
 
 sleep 20
 
-gunicorn --bind=0.0.0.0 --timetout 600 alfa_romeo_web.wsgi
+gunicorn --bind=0.0.0.0 alfa_romeo_web.wsgi
