@@ -87,8 +87,8 @@ TEMPLATES = [
 WSGI_APPLICATION = 'alfa_romeo_web.wsgi.application'
 
 # CONNECTION STRING FOR AZURE
-connection_string = os.environ['AZURE_POSTGRESQL_CONNECTIONSTRING']
-conn_str_params = {pair.split('=')[0]: pair.split('=')[1] for pair in connection_string.split(' ')}
+# connection_string = os.environ['AZURE_POSTGRESQL_CONNECTIONSTRING']
+# conn_str_params = {pair.split('=')[0]: pair.split('=')[1] for pair in connection_string.split(' ')}
 
 # if facing and issue with test or prod db, remove the if, else statements
 # and push the DB code one tab to the left
