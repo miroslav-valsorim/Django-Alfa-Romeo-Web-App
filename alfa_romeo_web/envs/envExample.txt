@@ -7,7 +7,9 @@ ALLOWED_HOSTS="localhost 127.0.0.1 djangoalfaromeowebapp.onrender.com"
 
 DATABASE_URL = dbUrlForProd
 
-CRF_TRUSTED_ORIGINS='https://alfaromeoweb.net/'
+WEBSITE_HOSTNAME='alfaromeoweb.net'
+
+CSRF_TRUSTED_ORIGINS='https://alfaromeoweb.net/'
 
 EMAIL_BACKEND='mail'
 EMAIL_PORT=587
