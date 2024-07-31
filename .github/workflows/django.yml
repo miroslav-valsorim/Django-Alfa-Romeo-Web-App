@@ -83,6 +83,7 @@ jobs:
         SECRET_KEY: ${{ secrets.SECRET_KEY }}
         ALLOWED_HOSTS: localhost
         DATABASE_URL: postgres://django:django@localhost:5432/django_test_DB
+        WEBSITE_HOSTNAME: localhost
 
     - name: Sleep 10 sec for server to be ready
       run: sleep 10 
