@@ -2,13 +2,14 @@
 
 Now live at: https://djangoalfaromeowebapp.onrender.com/
 
+Azure link: https://alfaromeo.azurewebsites.net/ (not live)
 
 ## Introduction  
 
 This website is a dedicated endeavor for educational purposes, serving as my Software University Project. As an avid Alfa Romeo enthusiast, I've poured my passion into this project. PLEASE NOTE THAT ALL IMAGES AND INFORMATION UTILIZED ARE STRICTLY FOR STUDY PURPOSES.   
 
 
-Bringing my vision to life after nearly two years of anticipation, this project marks not the end, but just the beginning of showcasing my capabilities. Utilizing a plethora of technologies and methodologies including Python, Django, REST, API, JavaScript, DOM, HTML&CSS, Testing, Automation with CI/CD, Dockerizing the application. I've meticulously implemented every feature essential for a fully functional website. From a dynamic news feed to immersive events and engaging forums, culminating in a robust store page capable of handling payments, this project showcases the breadth of my expertise and dedication. It's not just a website, it's a testament to my growth and passion for web development!  
+Bringing my vision to life after nearly two years of anticipation, this project marks not the end, but just the beginning of showcasing my capabilities. Utilizing a plethora of technologies and methodologies including Python, Django, REST, API, JavaScript, DOM, HTML&CSS, Testing, Automation with CI/CD, Dockerizing the application. Deployed to both Azure and Render. I've meticulously implemented every feature essential for a fully functional website. From a dynamic news feed to immersive events and engaging forums, culminating in a robust store page capable of handling payments, this project showcases the breadth of my expertise and dedication. It's not just a website, it's a testament to my growth and passion for web development!  
 
 
 ## Features  
@@ -216,6 +217,12 @@ Bringing my vision to life after nearly two years of anticipation, this project 
 
 ![Docker](screenshots/5.png)   
 
+16. Azure :
+
+	- More information about deploying to Azure [here](https://github.com/miroslav-valsorim/Django-Alfa-Romeo-Web-App/tree/main/azure_deployment/README.md)
+
+![Azure](screenshots/9.png)
+
 
 ## Tech Stack Used
 
@@ -226,6 +233,8 @@ Bringing my vision to life after nearly two years of anticipation, this project 
 5. HTML&CSS  
 6. DOM  
 7. Github Actions (CI/CD)
+8. Docker
+9. Cloud (Azure, Render)
 
 ## Run this project locally
 
