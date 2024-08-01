@@ -8,11 +8,24 @@ on:
   push:
     branches:
       - main
+  pull_request:
+    branches: [ "main" ]
   workflow_dispatch:
 
 jobs:
-  build:
+  build-test:
+
     runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:13
+        ports:
+          - 5432:5432
+        env:
+          POSTGRES_USER: django
+          POSTGRES_PASSWORD: django
+          POSTGRES_DB: django_test_DB
 
     steps:
       - uses: actions/checkout@v4
@@ -32,7 +45,68 @@ jobs:
           cd alfa_romeo_web
           pip install -r requirements.txt
         
-      # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
+      - name: Set up Database
+        run: |
+          sudo apt-get install -y postgresql-client
+          psql -h localhost -U django -d postgres -c "CREATE DATABASE django_test_DB;"
+        env:
+          PGPASSWORD: django
+
+      - name: Sleep 10 sec
+        run: sleep 10 
+  
+      - name: Run Django Migrations
+        run: |
+          python alfa_romeo_web/manage.py migrate
+        env:
+          DATABASE_URL: postgres://django:django@localhost:5432/django_test_DB
+  
+      - name: Collect Static Files
+        run : |
+          cd alfa_romeo_web
+          python manage.py collectstatic --noinput
+        env:
+          DATABASE_URL: postgres://django:django@localhost:5432/django_test_DB
+  
+      - name: Install Playwright browsers
+        run: |
+          playwright install
+          # playwright install-deps
+          # python -m playwright install --with-deps
+  
+      - name: Run Django Project and Create Log
+        run: |
+          touch server.log
+          python alfa_romeo_web/manage.py runserver 127.0.0.1:8000 > server.log 2>&1 &
+        env:
+          SECRET_KEY: ${{ secrets.SECRET_KEY }}
+          ALLOWED_HOSTS: localhost
+          DATABASE_URL: postgres://django:django@localhost:5432/django_test_DB
+          WEBSITE_HOSTNAME: localhost:8000
+  
+      - name: Sleep 10 sec for server to be ready
+        run: sleep 10 
+  
+      - name: Check server status
+        run: curl -I -v http://localhost:8000/
+  
+      - name: Display Server Logs
+        run: cat server.log
+  
+      - name: Run Unit Tests
+        run: |
+          cd alfa_romeo_web
+          python manage.py test
+        env:
+          SECRET_KEY: ${{ secrets.SECRET_KEY }}
+          DATABASE_URL: postgres://django:django@localhost:5432/django_test_DB
+  
+      - name: Run UI Tests
+        run: |
+          python -m pytest alfa_romeo_web/tests/UI_tests
+        env:
+          SECRET_KEY: ${{ secrets.SECRET_KEY }}
+          DATABASE_URL: postgres://django:django@localhost:5432/django_test_DB
 
       - name: Zip artifact for deployment
         run: zip release.zip ./* -r
@@ -45,9 +119,9 @@ jobs:
             release.zip
             !venv/
 
-  deploy:
+  deploy-azure:
     runs-on: ubuntu-latest
-    needs: build
+    needs: build-test
     environment:
       name: 'Production'
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
