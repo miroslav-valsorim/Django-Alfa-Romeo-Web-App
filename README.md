@@ -1,8 +1,8 @@
 # Django-Alfa-Romeo-Web-App  
 
-Now live at: https://djangoalfaromeowebapp.onrender.com/
+Rednder link: https://djangoalfaromeowebapp.onrender.com/
 
-Azure link: https://alfaromeo.azurewebsites.net/ (not live)
+Azure link: https://alfaromeo.azurewebsites.net/
 
 ## Introduction  
 
