@@ -223,6 +223,10 @@ Bringing my vision to life after nearly two years of anticipation, this project 
 
 ![Azure](screenshots/9.png)
 
+17. Render :
+
+	- More information about deploying to Render [here](https://github.com/miroslav-valsorim/Django-Alfa-Romeo-Web-App/tree/main/render_deployment/README.md)
+
 
 ## Tech Stack Used
 
