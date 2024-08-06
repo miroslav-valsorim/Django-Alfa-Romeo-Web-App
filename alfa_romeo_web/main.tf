@@ -9,8 +9,7 @@ terraform {
 
 provider "azurerm" {
   skip_provider_registration = true
-  features {
-  }
+  features {}
 }
 
 resource "azurerm_resource_group" "arg" {
@@ -47,19 +46,16 @@ resource "azurerm_subnet" "webapp_subnet" {
   resource_group_name  = azurerm_resource_group.arg.name
   virtual_network_name = azurerm_virtual_network.avn.name
   address_prefixes     = ["10.0.3.0/24"]
-}
 
-resource "azurerm_private_dns_zone" "apdz" {
-  name                = "alfaexample.postgres.database.azure.com"
-  resource_group_name = azurerm_resource_group.arg.name
-}
-
-resource "azurerm_private_dns_zone_virtual_network_link" "apdzvnl" {
-  name                  = "exampleVnetZone.com"
-  private_dns_zone_name = azurerm_private_dns_zone.apdz.name
-  virtual_network_id    = azurerm_virtual_network.avn.id
-  resource_group_name   = azurerm_resource_group.arg.name
-  depends_on            = [azurerm_subnet.as]
+  delegation {
+    name = "webappdelegation"
+    service_delegation {
+      name = "Microsoft.Web/serverFarms"
+      actions = [
+        "Microsoft.Network/virtualNetworks/subnets/join/action",
+      ]
+    }
+  }
 }
 
 resource "azurerm_private_dns_zone" "redis_dns_zone" {
@@ -72,7 +68,7 @@ resource "azurerm_private_dns_zone_virtual_network_link" "redis_dns_zone_vnl" {
   private_dns_zone_name = azurerm_private_dns_zone.redis_dns_zone.name
   virtual_network_id    = azurerm_virtual_network.avn.id
   resource_group_name   = azurerm_resource_group.arg.name
-  depends_on            = [azurerm_subnet.as]
+  depends_on            = [azurerm_subnet.webapp_subnet]
 }
 
 resource "azurerm_private_dns_zone" "postgres_dns_zone" {
@@ -85,28 +81,9 @@ resource "azurerm_private_dns_zone_virtual_network_link" "postgres_dns_zone_vnl"
   private_dns_zone_name = azurerm_private_dns_zone.postgres_dns_zone.name
   virtual_network_id    = azurerm_virtual_network.avn.id
   resource_group_name   = azurerm_resource_group.arg.name
-  depends_on            = [azurerm_subnet.as]
+  depends_on            = [azurerm_subnet.webapp_subnet]
 }
 
-# resource "azurerm_postgresql_server" "aps" {
-#   name                = "postgresql-server-unique-name"
-#   location            = azurerm_resource_group.arg.location
-#   resource_group_name = azurerm_resource_group.arg.name
-
-#   sku_name = "B_Gen5_1"
-
-#   #   storage_mb                   = 5120
-#   #   backup_retention_days        = 7
-#   geo_redundant_backup_enabled = false
-#   #   auto_grow_enabled            = true
-
-#   administrator_login          = ""
-#   administrator_login_password = ""
-#   version                      = "11"
-#   ssl_enforcement_enabled      = true
-
-#   depends_on = [azurerm_resource_group.arg]
-# }
 resource "azurerm_postgresql_flexible_server" "apfs" {
   name                          = "postgreserver-unique-alfa"
   resource_group_name           = azurerm_resource_group.arg.name
@@ -118,10 +95,10 @@ resource "azurerm_postgresql_flexible_server" "apfs" {
   sku_name                      = "GP_Standard_D4s_v3"
   zone                          = "1"
   delegated_subnet_id           = azurerm_subnet.as.id
-  private_dns_zone_id           = azurerm_private_dns_zone.apdz.id
+  private_dns_zone_id           = azurerm_private_dns_zone.postgres_dns_zone.id
   public_network_access_enabled = false
 
-  depends_on = [azurerm_private_dns_zone_virtual_network_link.apdzvnl]
+  #   depends_on = [azurerm_private_dns_zone_virtual_network_link.apdzvnl]
 }
 
 resource "azurerm_postgresql_flexible_server_database" "apfsd" {
@@ -137,14 +114,6 @@ resource "azurerm_postgresql_flexible_server_firewall_rule" "apfr" {
   start_ip_address = "0.0.0.0"
   end_ip_address   = "0.0.0.0"
 }
-
-# resource "azurerm_postgresql_database" "apd" {
-#   name                = "exampledb"
-#   resource_group_name = azurerm_resource_group.arg.name
-#   server_name         = azurerm_postgresql_server.aps.name
-#   charset             = "UTF8"
-#   collation           = "English_United States.1252"
-# }
 
 resource "azurerm_service_plan" "asp" {
   name                = "DjangoServicePlan"
@@ -186,6 +155,13 @@ resource "azurerm_linux_web_app" "alwa" {
     "SCM_DO_BUILD_DURING_DEPLOYMENT" = "1"
     "SECRET_KEY"                     = ""
   }
+}
+
+resource "azurerm_app_service_virtual_network_swift_connection" "vnet_integration" {
+  app_service_id = azurerm_linux_web_app.alwa.id
+  subnet_id      = azurerm_subnet.webapp_subnet.id
+
+  depends_on = [azurerm_linux_web_app.alwa]
 }
 
 resource "azurerm_app_service_source_control" "source_control" {
