@@ -1,8 +1,9 @@
 
 services:
   alfa-romeo-web:
-#    build: .
-    image: miroslavvalsorim/alfawebapp:latest
+    build: .
+    # the image below isn't fully working due to some missing settings (on purpose)
+    # image: miroslavvalsorim/alfawebapp:latest
     command: python manage.py runserver 0.0.0.0:8000
     volumes:
       - ./alfa_romeo_web/:/usr/src/app/
