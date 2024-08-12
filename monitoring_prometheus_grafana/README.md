@@ -12,7 +12,7 @@
 
 4. Add it to the MIDDLEWARE  
 
-![Middleware](screenshots/middleware.png.png)
+![Middleware](screenshots/middleware.png)
 
 5. Add it to the main project urlpatterns  
 
