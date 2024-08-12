@@ -27,6 +27,9 @@ urlpatterns = [
 
     # PayPal URL
     path('', include('paypal.standard.ipn.urls')),
+
+    # Monitoring
+    path('', include('django_prometheus.urls')),
 ]
 
 if settings.DEBUG:

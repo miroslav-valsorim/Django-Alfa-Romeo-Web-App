@@ -7,6 +7,7 @@ dj-database-url==2.1.0
 Django==5.0.3
 django-multiupload==0.6.1
 django-paypal==2.0
+django-prometheus==2.3.1
 djangorestframework==3.15.1
 exceptiongroup==1.2.1
 greenlet==3.0.3
@@ -17,6 +18,7 @@ packaging==24.0
 pillow==10.2.0
 playwright==1.44.0
 pluggy==1.5.0
+prometheus_client==0.20.0
 psycopg2==2.9.9
 psycopg2-binary==2.9.9
 pyee==11.1.0

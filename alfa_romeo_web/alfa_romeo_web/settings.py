@@ -47,9 +47,15 @@ INSTALLED_APPS = [
     "alfa_romeo_web.cart.apps.CartConfig",
     "alfa_romeo_web.checkout.apps.CheckoutConfig",
     "alfa_romeo_web.forum.apps.ForumConfig",
+
+    # Monitoring
+    "django_prometheus",
 ]
 
 MIDDLEWARE = [
+    # Monitoring
+    "django_prometheus.middleware.PrometheusBeforeMiddleware",
+
     'django.middleware.security.SecurityMiddleware',
 
     #  Whitenoise to serve static in prod
@@ -61,6 +67,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    # Monitoring
+    "django_prometheus.middleware.PrometheusAfterMiddleware"
 ]
 
 ROOT_URLCONF = 'alfa_romeo_web.urls'
