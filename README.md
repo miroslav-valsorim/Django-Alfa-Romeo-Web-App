@@ -233,7 +233,7 @@ Bringing my vision to life after nearly two years of anticipation, this project 
 
 19. Monitoring the application with Prometheus and Grafana:  
 
-	- More information about the monitoring [here](https://github.com/miroslav-valsorim/monitoring_prometheus_grafana)
+	- More information about the monitoring [here](https://github.com/miroslav-valsorim/Django-Alfa-Romeo-Web-App/tree/main/monitoring_prometheus_grafana)
 
 ![Grafana](screenshots/Grafana.png)
 
