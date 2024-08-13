@@ -187,6 +187,7 @@ Bringing my vision to life after nearly two years of anticipation, this project 
 
 ![Docker](screenshots/Screenshot_Docker_Two.png)   
 
+	- DockerHub image also available for direct usage image name miroslavvalsorim/alfawebapp, IMPORTANT! 70% from the variables are not set on purpose, so some functionality won't be workin, but once you add the to the linux machine, they will work!  
 	- Check settings.py DB settings comments
 	- Check Dockerfile
 	- Chekc Docker-Compose.yml
