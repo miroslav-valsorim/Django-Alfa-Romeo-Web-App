@@ -2,7 +2,7 @@
 
 Rednder link: https://djangoalfaromeowebapp.onrender.com/ (expired)
 
-Azure link: https://alfaromeo.azurewebsites.net/
+Azure link: https://alfaromeo.azurewebsites.net/ (expired)
 
 ## Introduction  
 
