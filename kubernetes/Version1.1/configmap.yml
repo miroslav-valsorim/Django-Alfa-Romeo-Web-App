@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: alfa-romeo-env-config
+data:
+  POSTGRES_USER: "hello_django"
+  POSTGRES_PASSWORD: "hello_django"
+  POSTGRES_DB: "hello_django_dev"

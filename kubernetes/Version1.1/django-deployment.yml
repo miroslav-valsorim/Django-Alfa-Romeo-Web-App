@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: alfa-romeo-web
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: alfa-romeo-web
+  template:
+    metadata:
+      labels:
+        app: alfa-romeo-web
+    spec:
+    # initContainers: This container runs before the main container (alfa-romeo-web). 
+    # It performs migrations and collects static files before the main Django application is started.
+    # Main Container: The main container starts the Django server after the init container finishes.
+      initContainers:
+      - name: init-migrate-collectstatic
+        image: miroslavvalsorim/alfawebapp:latest
+        command: ["sh", "-c", "python manage.py migrate && python manage.py collectstatic --noinput"]
+        volumeMounts:
+        - name: webapp-code
+          mountPath: /usr/src/app/
+        envFrom:
+        - configMapRef:
+            name: alfa-romeo-env-config
+
+      containers:
+      - name: alfa-romeo-web
+        image: miroslavvalsorim/alfawebapp:latest
+        ports:
+        - containerPort: 8000
+        volumeMounts:
+        - name: webapp-code
+          mountPath: /usr/src/app/
+        envFrom:
+        - configMapRef:
+            name: alfa-romeo-env-config
+        command: ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+      volumes:
+      - name: webapp-code
+        persistentVolumeClaim:
+          claimName: webapp-pvc
+
