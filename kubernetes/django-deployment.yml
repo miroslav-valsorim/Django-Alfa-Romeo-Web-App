@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: alfa-romeo-web
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: alfa-romeo-web
+  template:
+    metadata:
+      labels:
+        app: alfa-romeo-web
+    spec:
+      containers:
+      - name: django-web
+        image: miroslavvalsorim/alfawebapp:latest
+        command: ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+        envFrom:
+        - configMapRef:
+            name: alfa-romeo-env-config
+        volumeMounts:
+        - name: webapp-code
+          mountPath: /usr/src/app/
+      volumes:
+      - name: webapp-code
+        persistentVolumeClaim:
+          claimName: webapp-pvc
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: alfa-romeo-web
+spec:
+  selector:
+    app: alfa-romeo-web
+  ports:
+    - protocol: TCP
+      port: 8000
+      targetPort: 8000
