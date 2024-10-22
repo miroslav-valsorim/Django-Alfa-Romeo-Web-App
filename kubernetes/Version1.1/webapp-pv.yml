@@ -9,4 +9,7 @@ spec:
     - ReadWriteOnce
   hostPath:
     path: /mnt/data/webapp
-  storageClassName: manual
+    # This is a Kubernetes volume type that mounts a directory from the host node's filesystem 
+    # into the container. In this case, the path /mnt/data/webapp on the Kubernetes node
+    # (the machine where the pod is scheduled) will be mounted into the container.
+  storageClassName: manual  # check storage classes (kubectl get storageclasses)

@@ -9,3 +9,6 @@ spec:
     requests:
       storage: 1Gi
   storageClassName: manual
+  # volumeName: postgres-pv
+  # volumeName will exactly tell which pv the pvc to bind to, since im not using it, the kubernetes
+  # handles this for me automatically 

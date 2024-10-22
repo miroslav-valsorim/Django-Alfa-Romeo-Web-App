@@ -9,7 +9,7 @@ Azure link: https://alfaromeo.azurewebsites.net/ (expired)
 This website is a dedicated endeavor for educational purposes, serving as my Software University Project. As an avid Alfa Romeo enthusiast, I've poured my passion into this project. PLEASE NOTE THAT ALL IMAGES AND INFORMATION UTILIZED ARE STRICTLY FOR STUDY PURPOSES.   
 
 
-Bringing my vision to life after nearly two years of anticipation, this project marks not the end, but just the beginning of showcasing my capabilities. Utilizing a plethora of technologies and methodologies including Python, Django, REST, API, JavaScript, DOM, HTML&CSS, Testing, Automation with CI/CD, Dockerizing the application. Applying Infrastructure as a Code via Terraform. Deployed to both Azure and Render. Monitoring the tool with Prometheus and Grafana. I've meticulously implemented every feature essential for a fully functional website. From a dynamic news feed to immersive events and engaging forums, culminating in a robust store page capable of handling payments, this project showcases the breadth of my expertise and dedication. It's not just a website, it's a testament to my growth and passion for web development!  
+Bringing my vision to life after nearly two years of anticipation, this project marks not the end, but just the beginning of showcasing my capabilities. Utilizing a plethora of technologies and methodologies including Python, Django, REST, API, JavaScript, DOM, HTML&CSS, Testing, Automation with CI/CD, Dockerizing the application. Applying Infrastructure as a Code via Terraform. Deployed to both Azure and Render. Monitoring the tool with Prometheus and Grafana. Built manifest to run through Kubernetes I've meticulously implemented every feature essential for a fully functional website. From a dynamic news feed to immersive events and engaging forums, culminating in a robust store page capable of handling payments, this project showcases the breadth of my expertise and dedication. It's not just a website, it's a testament to my growth and passion for web development!  
 
 
 ## Features  
@@ -238,6 +238,10 @@ Bringing my vision to life after nearly two years of anticipation, this project 
 
 ![Grafana](screenshots/Grafana.png)
 
+20. Kubernetes 
+
+	- More information about Kubernetes [here](https://github.com/miroslav-valsorim/Django-Alfa-Romeo-Web-App/tree/main/kubernetes)
+
 ## Tech Stack Used
 
 1. Python  
@@ -252,6 +256,7 @@ Bringing my vision to life after nearly two years of anticipation, this project 
 10. Terraform (IaaC)
 11. Prometheus
 12. Grafana
+13. Kubernetes
 
 ## Run this project locally
 
