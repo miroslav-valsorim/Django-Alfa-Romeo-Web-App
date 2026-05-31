@@ -12,6 +12,9 @@ urlpatterns = [
     # Admin
     path('admin/', admin.site.urls),
 
+    # Health checks
+    path('health/', include('alfa_romeo_web.health_check.urls')),
+
     # Our URLs
     path('', include('alfa_romeo_web.main_page.urls')),
     path('accounts/', include('alfa_romeo_web.accounts.urls')),

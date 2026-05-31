@@ -5,10 +5,8 @@
 | Pod | Probe type | What it checks |
 |---|---|---|
 | PostgreSQL | `exec pg_isready` | DB is accepting connections on the right user/db |
-| Django | `tcpSocket :8000` | Gunicorn port is open (process is alive) |
-
-Django uses a TCP socket check — not an HTTP endpoint. The `/health/` app was removed
-to keep the deployment simple. A TCP check is sufficient to detect a crashed Gunicorn process.
+| Django liveness | `httpGet /health/live/` | Gunicorn is alive and responding |
+| Django readiness | `httpGet /health/ready/` | Gunicorn is alive AND database is reachable |
 
 ## Probe timings (django-deployment.yml)
 

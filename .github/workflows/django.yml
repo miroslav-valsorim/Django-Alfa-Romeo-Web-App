@@ -113,14 +113,14 @@ jobs:
         SECRET_KEY: ${{ secrets.SECRET_KEY }}
         DATABASE_URL: postgres://django:django@localhost:5432/django_test_DB
 
-  deploy:
-    runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main' # will deploy only if the pipeline is executed from main branch
-    needs: build-test
-    steps:
-        - uses: actions/checkout@v4
-        - uses: JorgeLNJunior/render-deploy@v1.4.4
-          with:
-            service_id: ${{ secrets.MY_RENDER_SERVICE_ID }}
-            api_key: ${{ secrets.MY_RENDER_API_KEY }}
-            wait_deploy: true 
+  # deploy:
+  #   runs-on: ubuntu-latest
+  #   if: github.ref == 'refs/heads/main' # will deploy only if the pipeline is executed from main branch
+  #   needs: build-test
+  #   steps:
+  #       - uses: actions/checkout@v4
+  #       - uses: JorgeLNJunior/render-deploy@v1.4.4
+  #         with:
+  #           service_id: ${{ secrets.MY_RENDER_SERVICE_ID }}
+  #           api_key: ${{ secrets.MY_RENDER_API_KEY }}
+  #           wait_deploy: true 

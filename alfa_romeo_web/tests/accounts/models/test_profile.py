@@ -1,5 +1,8 @@
+from datetime import timedelta
+
 from django.core.exceptions import ValidationError
 from django.test import TestCase
+from django.utils import timezone
 
 from alfa_romeo_web.accounts.models import Profile, AlfaRomeoUser
 
@@ -135,7 +138,8 @@ class TestProfile(TestCase):
     # Test Date of Birth
 
     def test_create__when_date_of_birth_is_future__expect_to_raise(self):
-        profile = self.create_profile(self.VALID_PROFILE_DATA, date_of_birth='2024-12-12')
+        future_date = (timezone.now() + timedelta(days=365)).strftime('%Y-%m-%d')
+        profile = self.create_profile(self.VALID_PROFILE_DATA, date_of_birth=future_date)
         print(profile.date_of_birth)
         with self.assertRaises(ValidationError) as context:
             profile.full_clean()

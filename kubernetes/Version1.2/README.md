@@ -30,7 +30,7 @@ Django + PostgreSQL on Minikube with persistent storage, Gunicorn, HPA, Ingress,
 | **PostgreSQL resources** | No limits | 256Mi–512Mi RAM, 250m–500m CPU |
 | **Django replicas** | 1 | 2 + RollingUpdate strategy |
 | **Django server** | `python manage.py runserver` | Gunicorn (4 workers, sync, max-requests 1000) |
-| **Django health checks** | None | TCP socket on port 8000 (liveness + readiness) |
+| **Django health checks** | None | `httpGet /health/live/` (liveness) + `httpGet /health/ready/` (checks DB) |
 | **Django resources** | No limits | 256Mi–512Mi RAM, 250m–500m CPU |
 | **Django security context** | None | `runAsUser: 1000`, capabilities dropped |
 | **Service type** | ClusterIP port 8000 | LoadBalancer port 80→8000 + session affinity |
@@ -49,7 +49,8 @@ Django + PostgreSQL on Minikube with persistent storage, Gunicorn, HPA, Ingress,
 | Pod | Type | What it checks |
 |---|---|---|
 | PostgreSQL | `exec pg_isready` | Postgres is accepting connections on the right DB and user |
-| Django | `tcpSocket :8000` | Gunicorn port is open (process is alive) |
+| Django liveness | `httpGet /health/live/` | Gunicorn is alive and responding |
+| Django readiness | `httpGet /health/ready/` | Gunicorn is alive AND database is reachable |
 
 ---
 

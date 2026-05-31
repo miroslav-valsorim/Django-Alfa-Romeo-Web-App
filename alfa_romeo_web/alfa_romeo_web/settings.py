@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     "alfa_romeo_web.cart.apps.CartConfig",
     "alfa_romeo_web.checkout.apps.CheckoutConfig",
     "alfa_romeo_web.forum.apps.ForumConfig",
+    "alfa_romeo_web.health_check.apps.HealthCheckConfig",
 
     # Monitoring
     "django_prometheus",
