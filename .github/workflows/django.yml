@@ -60,14 +60,18 @@ jobs:
       run: |
         python alfa_romeo_web/manage.py migrate
       env:
+        SECRET_KEY: ${{ secrets.SECRET_KEY }}
         DATABASE_URL: postgres://django:django@localhost:5432/django_test_DB
+        DEBUG: "False"
 
     - name: Collect Static Files
       run : |
         cd alfa_romeo_web
         python manage.py collectstatic --noinput
       env:
+        SECRET_KEY: ${{ secrets.SECRET_KEY }}
         DATABASE_URL: postgres://django:django@localhost:5432/django_test_DB
+        DEBUG: "False"
 
     - name: Install Playwright browsers
       run: |

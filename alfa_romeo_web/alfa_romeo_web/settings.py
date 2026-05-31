@@ -120,11 +120,10 @@ if DEBUG and not IS_KUBERNETES:
         }
     }
 else:
-    # Support for Kubernetes/Docker environment variables
-    db_engine = os.getenv("DATABASE_ENGINE", "django.db.backends.postgresql")
+    db_engine = os.getenv("DATABASE_ENGINE", "")
 
     if db_engine == "django.db.backends.postgresql":
-        # PostgreSQL configuration (for Kubernetes, Docker, and production)
+        # Kubernetes / Docker: explicit individual env vars from ConfigMap + Secret
         DATABASES = {
             'default': {
                 'ENGINE': db_engine,
@@ -140,7 +139,7 @@ else:
             }
         }
     else:
-        # Fallback to DATABASE_URL format (for Render, etc.)
+        # CI / Render / any environment that provides a DATABASE_URL connection string
         DATABASES = {
             'default': dj_database_url.config(
                 default=os.getenv("DATABASE_URL", None),
