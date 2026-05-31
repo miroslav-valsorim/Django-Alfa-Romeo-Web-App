@@ -129,3 +129,6 @@ dmypy.json
 
 
 postgresql/
+
+# Kubernetes secrets 
+kubernetes/Version1.2/secret.yml

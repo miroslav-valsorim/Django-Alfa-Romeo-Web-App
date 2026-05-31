@@ -103,56 +103,50 @@ WSGI_APPLICATION = 'alfa_romeo_web.wsgi.application'
 # and push the DB code one tab to the left
 # problem could be the .env
 
-if DEBUG:
-    # Django default DB that I use wile DEBUG=True
+# Kubernetes injects KUBERNETES_SERVICE_HOST automatically into every pod.
+# Use it to detect whether we are running inside a cluster.
+IS_KUBERNETES = bool(os.getenv('KUBERNETES_SERVICE_HOST'))
+
+# Database
+# - Local dev (DEBUG=True, not in k8s): SQLite, zero config needed
+# - Kubernetes (any DEBUG value): PostgreSQL via env vars from ConfigMap/Secret
+# - Production non-k8s (Render, etc.): DATABASE_URL connection string
+if DEBUG and not IS_KUBERNETES:
+    # Django default DB that I use while DEBUG=True locally
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
             'NAME': BASE_DIR / 'db.sqlite3',
         }
     }
-    # THE DB FOR DOCKER WHILE DEBUG=True
-    # DATABASES = {
-    #     'default': {
-    #         'ENGINE': 'django.db.backends.postgresql',
-    #         'NAME': os.getenv("SQL_DATABASE", "hello_django_dev"),
-    #         'USER': os.getenv("SQL_USER", "hello_django"),
-    #         'PASSWORD': os.getenv("SQL_PASSWORD", "hello_django"),
-    #         'HOST': os.getenv("SQL_HOST", "alfa-romeo-db"), # IMPORTRANT!! set db host to be the same as the docker-compose db service naming
-    #         'PORT': os.getenv("SQL_PORT", "5432"),
-    #     }
-    # }
 else:
-    # THIS DB IS SET FOR DOCKER WHILE DEBUG=FALSE !!!!!
-    # DATABASES = {
-    #     'default': {
-    #         'ENGINE': 'django.db.backends.postgresql',
-    #         'NAME': os.getenv("SQL_DATABASE", "hello_django_dev"),
-    #         'USER': os.getenv("SQL_USER", "hello_django"),
-    #         'PASSWORD': os.getenv("SQL_PASSWORD", "hello_django"),
-    #         'HOST': os.getenv("SQL_HOST", "alfa-romeo-db"),# IMPORTRANT!! set db host to be the same as the docker-compose db service naming
-    #         'PORT': os.getenv("SQL_PORT", "5432"),
-    #     }
-    # }
+    # Support for Kubernetes/Docker environment variables
+    db_engine = os.getenv("DATABASE_ENGINE", "django.db.backends.postgresql")
 
-    # IM USING THIS FOR A PROD DB WHEN DEBUG=False !!!!
-    DATABASES = {
-        'default': dj_database_url.config(
-            default=os.getenv("DATABASE_URL", None),
-            conn_max_age=600,
-        )
-    }
-
-    # FOR AZURE DB SET UP
-    # DATABASES = {
-    #     'default': {
-    #         'ENGINE': 'django.db.backends.postgresql',
-    #         'NAME': conn_str_params['dbname'],
-    #         'HOST': conn_str_params['host'],
-    #         'USER': conn_str_params['user'],
-    #         'PASSWORD': conn_str_params['password'],
-    #     }
-    # }
+    if db_engine == "django.db.backends.postgresql":
+        # PostgreSQL configuration (for Kubernetes, Docker, and production)
+        DATABASES = {
+            'default': {
+                'ENGINE': db_engine,
+                'NAME': os.getenv("DATABASE_NAME", "alfa_romeo_db"),
+                'USER': os.getenv("DATABASE_USER", "hello_django"),
+                'PASSWORD': os.getenv("DATABASE_PASSWORD", "hello_django"),
+                'HOST': os.getenv("DATABASE_HOST", "localhost"),
+                'PORT': os.getenv("DATABASE_PORT", "5432"),
+                'CONN_MAX_AGE': 600,
+                'OPTIONS': {
+                    'sslmode': os.getenv("DATABASE_SSL_MODE", "prefer"),
+                }
+            }
+        }
+    else:
+        # Fallback to DATABASE_URL format (for Render, etc.)
+        DATABASES = {
+            'default': dj_database_url.config(
+                default=os.getenv("DATABASE_URL", None),
+                conn_max_age=600,
+            )
+        }
 
 
 # Password validation
@@ -191,7 +185,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
-if DEBUG:
+if DEBUG and not IS_KUBERNETES:
     STATIC_URL = 'static/'
     STATICFILES_DIRS = (
         BASE_DIR / 'staticfiles',
@@ -204,14 +198,19 @@ else:
 
 # Media files
 
-if DEBUG:
+if DEBUG and not IS_KUBERNETES:
     MEDIA_ROOT = BASE_DIR / 'mediafiles'
     MEDIA_URL = "/media/"
 else:
     MEDIA_ROOT = os.path.join(BASE_DIR, 'mediafiles')
     MEDIA_URL = '/media/'
 
-DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+if DEBUG:
+    # Local dev and local Kubernetes: use filesystem, no Cloudinary needed
+    DEFAULT_FILE_STORAGE = 'django.core.files.storage.FileSystemStorage'
+else:
+    # Production: Cloudinary
+    DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 cloudinary.config(
     cloud_name=os.environ.get('CLOUDINARY_NAME'),

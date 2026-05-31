@@ -1,0 +1,105 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: alfa-romeo-web
+  namespace: alfa-romeo
+  labels:
+    app: alfa-romeo-web
+spec:
+  replicas: 2
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  selector:
+    matchLabels:
+      app: alfa-romeo-web
+  template:
+    metadata:
+      labels:
+        app: alfa-romeo-web
+    spec:
+      serviceAccountName: default
+      securityContext:
+        runAsUser: 1000
+      initContainers:
+      # Wait for PostgreSQL to be ready
+      - name: wait-for-db
+        image: busybox:1.35
+        command:
+        - sh
+        - -c
+        - |
+          echo "Waiting for PostgreSQL to be ready..."
+          for i in $(seq 1 30); do
+            nc -z alfa-romeo-db 5432 && echo "Database is ready!" && exit 0
+            echo "Attempt $i: Database not ready, retrying in 2 seconds..."
+            sleep 2
+          done
+          echo "Failed to connect to database after 30 attempts"
+          exit 1
+      containers:
+      - name: alfa-romeo-web
+        image: miroslavvalsorim/alfawebapp:latest
+        imagePullPolicy: Always
+        ports:
+        - name: http
+          containerPort: 8000
+          protocol: TCP
+        envFrom:
+        - configMapRef:
+            name: django-config
+        - secretRef:
+            name: django-secret
+        volumeMounts:
+        - name: django-storage
+          mountPath: /app/mediafiles
+          subPath: mediafiles
+        # Production WSGI server (Gunicorn)
+        command: ["gunicorn"]
+        args:
+        - "--bind=0.0.0.0:8000"
+        - "--workers=4"
+        - "--worker-class=sync"
+        - "--worker-tmp-dir=/dev/shm"
+        - "--max-requests=1000"
+        - "--max-requests-jitter=50"
+        - "--timeout=30"
+        - "--access-logfile=-"
+        - "--error-logfile=-"
+        - "alfa_romeo_web.wsgi:application"
+        # Liveness probe - checks if container is alive
+        livenessProbe:
+          tcpSocket:
+            port: 8000
+          initialDelaySeconds: 60
+          periodSeconds: 10
+          timeoutSeconds: 5
+          failureThreshold: 3
+        # Readiness probe - checks if container is ready to receive traffic
+        readinessProbe:
+          tcpSocket:
+            port: 8000
+          initialDelaySeconds: 30
+          periodSeconds: 5
+          timeoutSeconds: 3
+          failureThreshold: 3
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "250m"
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
+        securityContext:
+          allowPrivilegeEscalation: false
+          readOnlyRootFilesystem: false
+          capabilities:
+            drop:
+            - ALL
+      volumes:
+      - name: django-storage
+        persistentVolumeClaim:
+          claimName: django-pvc
+      terminationGracePeriodSeconds: 30
