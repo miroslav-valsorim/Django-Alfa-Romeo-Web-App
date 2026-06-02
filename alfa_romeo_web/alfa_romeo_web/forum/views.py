@@ -80,7 +80,7 @@ def create_post(request):
 @require_name
 @login_required
 def posts(request, slug):
-    category = ForumCategory.objects.get(slug=slug)
+    category = get_object_or_404(ForumCategory, slug=slug)
     post = Post.objects.filter(categories=category, approved=True)
 
     paginator = Paginator(post, 5)
@@ -124,7 +124,7 @@ def details(request, slug):
 
     if "comment-form" in request.POST:
         comment = request.POST.get("comment").strip()
-        if comment:
+        if comment and len(comment) <= Comment.MAX_CONTENT_LENGTH:
             new_comment = Comment.objects.create(user=author, content=comment)
             post.comments.add(new_comment)
             return redirect(request.path)
