@@ -16,72 +16,72 @@
         <nav class="navigation">
         
             <ul class="list" role="list">
-               
+
                 <div class="dropdown">
-                
-                    <li class="nav-item">
-                    
+
+                    <li class="nav-item {% if '/museum/' in request.path %}active{% endif %}">
+
                         <a href="{% url "museum_categories" %}">Museum <i class="fa-solid fa-angles-down"></i></a>
-                    
+
                         <div class="dropdown-content">
-                        
+
                             {% for category in museum_categories %}
                                 <a href="{% url 'museum_listing' %}?category={{ category.id }}">{{ category.name }}</a>
                             {% endfor %}
-                        
+
                         </div>
-                    
+
                     </li>
-                
+
                 </div>
-            
+
                 <div class="dropdown">
-                
-                    <li class="nav-item">
-                    
+
+                    <li class="nav-item {% if '/history/' in request.path %}active{% endif %}">
+
                         <a href="{% url 'history_categories' %}">History <i class="fa-solid fa-angles-down"></i></a>
-                    
+
                         <div class="dropdown-content">
-                                {% for category in history_categories %}
-                                    <a href="{% url 'history_list' %}?category={{ category.id }}">{{ category.name }}</a>
-                                {% endfor %}
+                            {% for category in history_categories %}
+                                <a href="{% url 'history_list' %}?category={{ category.id }}">{{ category.name }}</a>
+                            {% endfor %}
                         </div>
-                    
+
                     </li>
-                
+
                 </div>
-            
-                <li class="nav-item">
+
+                <li class="nav-item {% if '/events/' in request.path %}active{% endif %}">
                     <a href="{% url 'events_list' %}">Events</a>
                 </li>
-            
-                 <li class="nav-item">
+
+                <li class="nav-item {% if '/news/' in request.path %}active{% endif %}">
                     <a href="{% url 'news_list' %}">News</a>
                 </li>
-            
-                <li class="nav-item">
+
+                <li class="nav-item {% if '/products/tickets/' in request.path %}active{% endif %}">
                     <a href="{% url 'tickets_list' %}">Tickets</a>
                 </li>
-            
+
                 <div class="dropdown">
-                
-                    <li class="nav-item">
-                    
+
+                    <li class="nav-item {% if '/products/' in request.path and '/products/tickets/' not in request.path %}active{% endif %}">
+
                         <a href="{% url 'products_list' %}">Store <i class="fa-solid fa-angles-down"></i></a>
-                    
+
                         <div class="dropdown-content">
-                        
+
                             {% for category in product_categories %}
                                 <a href="{% url 'products_list' %}?category={{ category.id }}">{{category.name}}</a>
                             {% endfor %}
-                        
+
                         </div>
-                    
+
                     </li>
-                
+
                 </div>
-            
-                <li class="nav-item">
+
+                <li class="nav-item {% if '/forum/' in request.path %}active{% endif %}">
                     <a href="{% url 'forum_main_page' %}">Forum</a>
                 </li>
             
@@ -138,30 +138,36 @@
  </div>
 
 <script>
-  
+
     document.addEventListener("DOMContentLoaded", function() {
         var dropdownBtn = document.querySelector('.drop-btn');
         var dropdownContent = document.getElementById('dropdownContent');
-        var isDropdownOpen = false; 
-        
+        var icon = dropdownBtn.querySelector('i');
+        var isDropdownOpen = false;
+
         function toggleDropdown() {
             if (window.innerWidth <= 600) {
-                if (isDropdownOpen) {
-                    dropdownContent.style.display = "block";
-                } else {
-                    dropdownContent.style.display = "none";
-                }
+                dropdownContent.style.display = isDropdownOpen ? "block" : "none";
             } else {
-                dropdownContent.style.display = "block"; 
+                dropdownContent.style.display = "block";
             }
         }
-        
+
         dropdownBtn.addEventListener('click', function() {
             isDropdownOpen = !isDropdownOpen;
+            icon.classList.toggle('fa-bars', !isDropdownOpen);
+            icon.classList.toggle('fa-times', isDropdownOpen);
             toggleDropdown();
         });
-        
-        window.addEventListener('resize', toggleDropdown);
+
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 600 && isDropdownOpen) {
+                isDropdownOpen = false;
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+            toggleDropdown();
+        });
     });
-    
+
 </script>
