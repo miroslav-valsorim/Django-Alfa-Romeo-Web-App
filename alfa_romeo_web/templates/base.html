@@ -42,8 +42,18 @@
     <footer>
 
         {% include 'partials/footer.html' %}
-        
+
     </footer>
+
+    <script>
+        (function () {
+            var header = document.querySelector('.header');
+            if (!header) return;
+            window.addEventListener('scroll', function () {
+                header.classList.toggle('scrolled', window.scrollY > 50);
+            }, { passive: true });
+        })();
+    </script>
 
 </body>
 

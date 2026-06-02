@@ -612,3 +612,133 @@
 
 }
 
+/* ===== Hero text entrance animation ===== */
+@keyframes heroFadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.hero-text {
+    animation: heroFadeUp 0.8s ease forwards;
+}
+
+.hero-description {
+    animation: heroFadeUp 0.8s ease 0.3s both;
+}
+
+.content-buttons {
+    animation: heroFadeUp 0.8s ease 0.6s both;
+}
+
+/* ===== Slider prev/next arrows ===== */
+.slider-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.4);
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    border-radius: 50%;
+    width: 46px;
+    height: 46px;
+    font-size: 16px;
+    cursor: pointer;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s, border-color 0.3s;
+}
+
+.slider-arrow:hover {
+    background: rgba(175, 30, 45, 0.85);
+    border-color: #af1e2d;
+}
+
+.slider-prev { left: 20px; }
+.slider-next { right: 20px; }
+
+/* ===== Slide dots ===== */
+.slider-controls {
+    position: absolute;
+    bottom: 55px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+}
+
+.slider-dots {
+    display: flex;
+    gap: 12px;
+}
+
+.slider-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.45);
+    cursor: pointer;
+    border: none;
+    transition: background 0.3s, transform 0.3s;
+}
+
+.slider-dot.active {
+    background: #af1e2d;
+    transform: scale(1.3);
+}
+
+.slider-dot:hover:not(.active) {
+    background: rgba(255, 255, 255, 0.8);
+}
+
+/* ===== Progress bar ===== */
+.slider-progress-wrap {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: rgba(255, 255, 255, 0.15);
+    z-index: 2;
+}
+
+.slider-progress {
+    height: 100%;
+    width: 0%;
+    background: #af1e2d;
+}
+
+/* ===== Scroll reveal ===== */
+.reveal-card {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease var(--delay, 0ms), transform 0.6s ease var(--delay, 0ms);
+}
+
+.reveal-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.reveal-heading {
+    opacity: 0;
+    transform: translateY(15px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal-heading.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@media (max-width: 480px) {
+    .slider-arrow {
+        width: 36px;
+        height: 36px;
+        font-size: 13px;
+    }
+
+    .slider-prev { left: 8px; }
+    .slider-next { right: 8px; }
+}
+
