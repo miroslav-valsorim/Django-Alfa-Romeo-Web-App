@@ -56,7 +56,7 @@
 
                         <a class='links' href="{% url 'password-change' pk=object.pk %}">Change Password <i class="fa-solid fa-key"></i></a>
 
-                        <a class='links' href="{% url 'logout-user' %}">Log Out <i class="fa-solid fa-right-from-bracket"></i></a>
+                        <form method="post" action="{% url 'logout-user' %}" style="margin:0">{% csrf_token %}<button type="submit" class="links">Log Out <i class="fa-solid fa-right-from-bracket"></i></button></form>
 
                         {% if request.user.is_superuser %}
 

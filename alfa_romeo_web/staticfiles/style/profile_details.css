@@ -61,7 +61,8 @@
     overflow: hidden;
 }
 
-.personal a:hover{
+.personal a:hover,
+.personal .links:hover{
     background-color: red;
 }
 
