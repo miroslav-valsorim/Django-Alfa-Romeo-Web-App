@@ -109,7 +109,7 @@
                         
                             <div class="dropdown-content">
                             
-                                <a href="{% url 'logout-user' %}">Log Out</a>
+                                <form method="post" action="{% url 'logout-user' %}">{% csrf_token %}<button type="submit" class="dropdown-logout-btn">Log Out</button></form>
                                 <a href="{% url 'edit-profile' pk=request.user.pk %}">Edit Profile</a>
                                 <a href="{% url 'details-profile' pk=request.user.pk %}">View Profile</a>
                                 <a href="{% url 'password-change' pk=request.user.pk %}">Change Password</a>

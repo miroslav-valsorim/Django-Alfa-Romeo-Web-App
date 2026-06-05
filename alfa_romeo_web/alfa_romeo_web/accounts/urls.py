@@ -1,7 +1,7 @@
 from django.urls import path, include
 from django.contrib.auth import views as auth_views
 
-from alfa_romeo_web.accounts.views import (LoginUserView, RegisterUserView, logout_view, ProfileDetailsView,
+from alfa_romeo_web.accounts.views import (LoginUserView, RegisterUserView, ProfileDetailsView,
                                            ProfileEditView, ProfileDeleteView, ProfileChangePasswordView,
                                            StaffPanelView, ProfileOrdersView)
 
@@ -16,7 +16,7 @@ urlpatterns = (
     path('staff_panel/', StaffPanelView.as_view(), name='staff_panel'),
     path("login/", LoginUserView.as_view(), name='login-user'),
     path('register/', RegisterUserView.as_view(), name='register-user'),
-    path('logout/', logout_view, name='logout-user'),
+    path('logout/', auth_views.LogoutView.as_view(), name='logout-user'),
     path(
         'profile/<int:pk>/',
         include([

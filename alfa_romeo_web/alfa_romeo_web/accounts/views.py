@@ -1,4 +1,4 @@
-from django.contrib.auth import views as auth_views, get_user_model, logout, login
+from django.contrib.auth import views as auth_views, get_user_model, login
 from django.contrib.auth import forms as auth_forms
 from django.forms import DateInput
 from django.urls import reverse_lazy, reverse
@@ -34,11 +34,6 @@ class RegisterUserView(views.CreateView):
         login(self.request, form.instance)
 
         return result
-
-
-def logout_view(request):
-    logout(request)
-    return redirect('main_page')
 
 
 class ProfileDetailsView(auth_mixins.LoginRequiredMixin, OwnerRequiredMixin, views.DetailView):
