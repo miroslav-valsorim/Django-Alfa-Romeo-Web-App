@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: django-config
+  namespace: alfa-romeo
+data:
+  DEBUG: "True"
+  ALLOWED_HOSTS: "localhost 127.0.0.1 alfa-romeo-web.local .minikube.local"
+  DATABASE_ENGINE: "django.db.backends.postgresql"
+  DATABASE_HOST: "alfa-romeo-db"
+  DATABASE_PORT: "5432"
+  DATABASE_NAME: "alfa_romeo_db"
+  DATABASE_SSL_MODE: "disable"
+  STATIC_URL: "/static/"
+  MEDIA_URL: "/media/"
+  REDIS_URL: "redis://redis:6379/1"

@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: alfa-romeo-web
+  namespace: alfa-romeo
+  labels:
+    app: alfa-romeo-web
+spec:
+  type: LoadBalancer
+  selector:
+    app: alfa-romeo-web
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 8000
+    name: http
+  sessionAffinity: ClientIP
+  sessionAffinityConfig:
+    clientIP:
+      timeoutSeconds: 10800
