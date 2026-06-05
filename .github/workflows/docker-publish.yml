@@ -1,0 +1,38 @@
+name: Build and Push Docker Image
+
+on:
+  workflow_run:
+    workflows: ["Alfa Romeo Django Web App CI/CD"]
+    types:
+      - completed
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build-push:
+    runs-on: ubuntu-latest
+    if: >
+      github.event_name == 'workflow_dispatch' ||
+      (github.event_name == 'workflow_run' && github.event.workflow_run.conclusion == 'success')
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set short SHA
+      run: echo "SHORT_SHA=${GITHUB_SHA::8}" >> $GITHUB_ENV
+
+    - name: Log in to Docker Hub
+      uses: docker/login-action@v3
+      with:
+        username: ${{ secrets.DOCKERHUB_USERNAME }}
+        password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+    - name: Build and push image
+      uses: docker/build-push-action@v5
+      with:
+        context: ./alfa_romeo_web
+        push: true
+        tags: |
+          miroslavvalsorim/alfawebapp:latest
+          miroslavvalsorim/alfawebapp:${{ env.SHORT_SHA }}

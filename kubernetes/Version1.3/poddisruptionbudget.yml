@@ -1,0 +1,10 @@
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: alfa-romeo-web-pdb
+  namespace: alfa-romeo
+spec:
+  minAvailable: 1
+  selector:
+    matchLabels:
+      app: alfa-romeo-web
